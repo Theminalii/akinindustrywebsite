@@ -43,7 +43,7 @@ const navItems = [
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
-  const { currentAdmin, isAuthenticated, isReady, login, logout } = useAdmin()
+  const { currentAdmin, isAuthenticated, isReady, persistenceError, login, logout } = useAdmin()
   const [email, setEmail] = useState(currentAdmin?.email ?? 'admin')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -179,7 +179,14 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           </div>
         </aside>
 
-        <section className="min-w-0">{children}</section>
+        <section className="min-w-0">
+          {persistenceError && (
+            <div role="alert" className="mb-6 rounded-2xl border border-red-300 bg-red-50 px-5 py-4 text-sm font-medium text-red-800">
+              {persistenceError} Bu xəta düzəlmədən paneldə edilən dəyişiklik saxlanılmayacaq.
+            </div>
+          )}
+          {children}
+        </section>
       </div>
     </div>
   )
