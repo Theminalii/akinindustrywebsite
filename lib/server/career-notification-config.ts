@@ -1,14 +1,9 @@
-import { mkdir, readFile, writeFile } from 'fs/promises'
-import path from 'path'
-
 import {
   defaultCareerNotificationSettings,
   type CareerNotificationSettings,
 } from '@/lib/career-notifications'
 import { readCareerNotificationEnv } from '@/lib/server/env'
-
-const DATA_DIR = path.join(process.cwd(), 'data')
-const CONFIG_PATH = path.join(DATA_DIR, 'career-notifications.json')
+import { readSetting, writeSetting } from '@/lib/server/admin-database'
 
 function mergeConfig(
   config?: Partial<CareerNotificationSettings>
@@ -35,19 +30,14 @@ function mergeConfig(
 }
 
 export async function readCareerNotificationConfig(): Promise<CareerNotificationSettings> {
-  try {
-    const content = await readFile(CONFIG_PATH, 'utf8')
-    return mergeConfig(JSON.parse(content))
-  } catch {
-    return defaultCareerNotificationSettings
-  }
+  return mergeConfig(
+    (await readSetting<CareerNotificationSettings>('career-notifications')) ?? undefined
+  )
 }
 
 export async function writeCareerNotificationConfig(
   config: CareerNotificationSettings
 ): Promise<CareerNotificationSettings> {
   const normalized = mergeConfig(config)
-  await mkdir(DATA_DIR, { recursive: true })
-  await writeFile(CONFIG_PATH, JSON.stringify(normalized, null, 2), 'utf8')
-  return normalized
+  return writeSetting('career-notifications', normalized)
 }
