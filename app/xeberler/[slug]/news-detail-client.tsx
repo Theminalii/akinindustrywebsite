@@ -15,20 +15,13 @@ import {
 
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-import { news as seededNews } from '@/lib/data'
 import { formatLocalizedDate, translateNewsArticle } from '@/lib/site-translations'
 import type { NewsArticle } from '@/lib/types'
 
 const targetSlug = 'akin-industry-partners-with-pocketvc-venture-studio'
 
 function mergeNews(adminNews: NewsArticle[], locale: 'en' | 'az') {
-  const merged = new Map<string, NewsArticle>()
-
-  for (const article of [...adminNews, ...seededNews]) {
-    merged.set(article.slug, translateNewsArticle(article, locale))
-  }
-
-  return [...merged.values()].sort(
+  return adminNews.map((article) => translateNewsArticle(article, locale)).sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   )
 }

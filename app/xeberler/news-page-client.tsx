@@ -8,22 +8,14 @@ import { PageHeader } from '@/components/shared/page-header'
 import { Card, CardContent } from '@/components/ui/card'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-import { news as seededNews } from '@/lib/data'
 import { formatLocalizedDate, translateNewsArticle } from '@/lib/site-translations'
-import type { NewsArticle } from '@/lib/types'
 
 export function NewsPageClient() {
   const { news, isReady } = useAdmin()
   const { locale } = useLanguage()
 
   const sortedNews = useMemo(() => {
-    const merged = new Map<string, NewsArticle>()
-
-    for (const article of [...news, ...seededNews]) {
-      merged.set(article.slug, article)
-    }
-
-    return [...merged.values()].map((article) => translateNewsArticle(article, locale)).sort((a, b) => {
+    return news.map((article) => translateNewsArticle(article, locale)).sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
   }, [locale, news])
