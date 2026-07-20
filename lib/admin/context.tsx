@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 
 import {
   defaultAdminAccounts,
@@ -9,7 +9,6 @@ import {
   getDefaultAdminContent,
 } from '@/lib/admin/defaults'
 import type { AdminAccount, AdminContentData, ContactInfo } from '@/lib/admin/types'
-import { readPersistedJson, writePersistedJson } from '@/lib/browser-storage'
 import type {
   Certificate,
   CompanyStats,
@@ -71,7 +70,6 @@ interface AdminContextType {
   logout: () => void
 }
 
-const STORAGE_KEY = 'akin_admin_data_v3'
 const AUTH_STORAGE_KEY = 'akin_admin_auth'
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined)
@@ -136,6 +134,8 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   const [adminAccounts, setAdminAccounts] = useState<AdminAccount[]>(defaultData.adminAccounts)
   const [currentAdminEmail, setCurrentAdminEmail] = useState<string | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
+  const hasSkippedInitialSave = useRef(false)
+  const saveQueue = useRef<Promise<void>>(Promise.resolve())
 
   const applyAdminContent = useCallback((data: AdminContentData) => {
     setProjects(data.projects)
@@ -172,27 +172,13 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     const loadAdminData = async () => {
       try {
         const serverPayload = await fetchAdminContent()
-        let resolvedData = mergeAdminContent(serverPayload.data)
-
-        if (!serverPayload.hasStoredData) {
-          const localData = await readPersistedJson<Partial<AdminContentData>>(STORAGE_KEY)
-          if (localData) {
-            resolvedData = mergeAdminContent(localData)
-            await saveAdminContent(resolvedData)
-          }
-        }
+        const resolvedData = mergeAdminContent(serverPayload.data)
 
         if (isMounted) {
           applyAdminContent(resolvedData)
-          await writePersistedJson(STORAGE_KEY, resolvedData)
         }
       } catch (error) {
         console.error('Error loading admin data:', error)
-
-        const localData = await readPersistedJson<Partial<AdminContentData>>(STORAGE_KEY)
-        if (localData && isMounted) {
-          applyAdminContent(mergeAdminContent(localData))
-        }
       } finally {
         if (!isMounted) return
 
@@ -217,13 +203,19 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isLoaded) return
 
-    writePersistedJson(STORAGE_KEY, snapshot).catch((error) => {
-      console.error('Error saving browser cache:', error)
-    })
+    // Loading content must never write it back. Only actual CMS edits are persisted.
+    if (!hasSkippedInitialSave.current) {
+      hasSkippedInitialSave.current = true
+      return
+    }
 
-    saveAdminContent(snapshot).catch((error) => {
-      console.error('Error saving admin data:', error)
-    })
+    // Serialize writes so an older, slower request can never overwrite a newer edit.
+    saveQueue.current = saveQueue.current
+      .catch(() => undefined)
+      .then(() => saveAdminContent(snapshot))
+      .catch((error) => {
+        console.error('Error saving admin data:', error)
+      })
   }, [snapshot, isLoaded])
 
   useEffect(() => {

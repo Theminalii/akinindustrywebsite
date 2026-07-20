@@ -32,6 +32,10 @@ export default function AdminNotificationsPage() {
           fetch('/api/admin/contact-notifications'),
         ])
 
+        if (!careerResponse.ok || !contactResponse.ok) {
+          throw new Error('load_failed')
+        }
+
         const careerData = (await careerResponse.json()) as CareerNotificationSettings
         const contactData = (await contactResponse.json()) as ContactNotificationSettings
 

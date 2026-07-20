@@ -3,7 +3,7 @@ import 'server-only'
 import mysql, { type RowDataPacket } from 'mysql2/promise'
 
 const pool = mysql.createPool({
-  host: process.env.MYSQL_HOST ?? 'srv1368.hstgr.io',
+  host: process.env.MYSQL_HOST ?? 'localhost',
   port: Number(process.env.MYSQL_PORT ?? 3306),
   database: process.env.MYSQL_DATABASE ?? 'u709020705_akinindustry',
   user: process.env.MYSQL_USER ?? 'u709020705_akinindustry',

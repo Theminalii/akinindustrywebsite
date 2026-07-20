@@ -13,13 +13,13 @@ function mergeConfig(
   return {
     gmail: {
       ...defaultContactNotificationSettings.gmail,
-      ...config?.gmail,
       ...envConfig.gmail,
+      ...config?.gmail,
     },
     whatsapp: {
       ...defaultContactNotificationSettings.whatsapp,
-      ...config?.whatsapp,
       ...envConfig.whatsapp,
+      ...config?.whatsapp,
     },
   }
 }

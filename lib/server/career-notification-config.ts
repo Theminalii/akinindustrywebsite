@@ -13,18 +13,18 @@ function mergeConfig(
   return {
     gmail: {
       ...defaultCareerNotificationSettings.gmail,
-      ...config?.gmail,
       ...envConfig.gmail,
+      ...config?.gmail,
     },
     telegram: {
       ...defaultCareerNotificationSettings.telegram,
-      ...config?.telegram,
       ...envConfig.telegram,
+      ...config?.telegram,
     },
     whatsapp: {
       ...defaultCareerNotificationSettings.whatsapp,
-      ...config?.whatsapp,
       ...envConfig.whatsapp,
+      ...config?.whatsapp,
     },
   }
 }
