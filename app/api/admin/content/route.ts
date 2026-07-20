@@ -9,12 +9,26 @@ import {
 export const runtime = 'nodejs'
 
 export async function GET() {
-  const { data, hasStoredData } = await readAdminContentConfig()
-  return NextResponse.json({ data, hasStoredData })
+  try {
+    const { data, hasStoredData } = await readAdminContentConfig()
+    return NextResponse.json({ data, hasStoredData })
+  } catch (error) {
+    const code =
+      typeof error === 'object' && error && 'code' in error ? String(error.code) : 'UNKNOWN'
+    console.error('Admin content database read failed:', error)
+    return NextResponse.json({ error: 'database_unavailable', code }, { status: 503 })
+  }
 }
 
 export async function POST(request: Request) {
-  const body = (await request.json()) as AdminContentData
-  const data = await writeAdminContentConfig(body)
-  return NextResponse.json({ success: true, data })
+  try {
+    const body = (await request.json()) as AdminContentData
+    const data = await writeAdminContentConfig(body)
+    return NextResponse.json({ success: true, data })
+  } catch (error) {
+    const code =
+      typeof error === 'object' && error && 'code' in error ? String(error.code) : 'UNKNOWN'
+    console.error('Admin content database write failed:', error)
+    return NextResponse.json({ error: 'database_unavailable', code }, { status: 503 })
+  }
 }
