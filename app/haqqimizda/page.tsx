@@ -1,11 +1,10 @@
 'use client'
 
 import { PageHeader } from '@/components/shared/page-header'
-import { CheckCircle2, Target, Eye, Shield, Award, Users, Building2, Clock, Image as ImageIcon } from 'lucide-react'
+import { Target, Eye, Shield, Award, Users, Clock } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-import { translateTeamMember } from '@/lib/site-translations'
 
 const valuesEn = [
   {
@@ -26,7 +25,7 @@ const valuesEn = [
   {
     icon: Award,
     title: 'Reliability',
-    description: 'Trust earned through 25 years of experience and hundreds of successful projects.'
+    description: 'Trust earned through 10 years of experience and successful projects.'
   },
 ]
 
@@ -36,19 +35,11 @@ const timelineEn = [
   { year: '2010', title: 'Entry Into the Industrial Sector', description: 'We expanded our portfolio by entering industrial construction.' },
   { year: '2015', title: 'ISO Certification', description: 'We achieved ISO 9001 quality management certification.' },
   { year: '2020', title: 'BIM Technology', description: 'We improved our design process by integrating modern BIM technology.' },
-  { year: '2024', title: '500+ Projects', description: 'Over 500 projects completed successfully across 25 years.' },
-]
-
-const certificationsEn = [
-  'ISO 9001:2015 Quality Management',
-  'ISO 14001:2015 Environmental Management',
-  'ISO 45001:2018 Occupational Health & Safety',
-  'State Construction License (Grade I)',
+  { year: '2026', title: '15+ Projects', description: 'More than 15 projects completed successfully across 10 years.' },
 ]
 
 export default function AboutPage() {
-  const { team, stats: companyStats } = useAdmin()
-  const teamSectionEnabled = true
+  const { stats: companyStats } = useAdmin()
   const { locale } = useLanguage()
   const values =
     locale === 'az'
@@ -56,7 +47,7 @@ export default function AboutPage() {
           { icon: Shield, title: 'Keyfiyyət', description: 'Beynəlxalq standartlara uyğun yüksək keyfiyyətli tikinti həlləri təqdim edirik.' },
           { icon: Clock, title: 'Vaxtında Təhvil', description: 'Layihələri razılaşdırılmış qrafik və büdcə daxilində tamamlayırıq.' },
           { icon: Users, title: 'Peşəkarlıq', description: 'Təcrübəli və yüksək ixtisaslı mütəxəssislərdən ibarət güclü komanda.' },
-          { icon: Award, title: 'Etibarlılıq', description: '25 illik təcrübə və yüzlərlə uğurlu layihə ilə qazanılmış etibar.' },
+          { icon: Award, title: 'Etibarlılıq', description: '10 illik təcrübə və uğurlu layihələrlə qazanılmış etibar.' },
         ]
       : valuesEn
   const timeline =
@@ -67,18 +58,9 @@ export default function AboutPage() {
           { year: '2010', title: 'Sənaye Sektoruna Giriş', description: 'Portfelimizi genişləndirərək sənaye tikintisinə başladıq.' },
           { year: '2015', title: 'ISO Sertifikatı', description: 'ISO 9001 keyfiyyət idarəetmə sertifikatını əldə etdik.' },
           { year: '2020', title: 'BIM Texnologiyası', description: 'Müasir BIM texnologiyasını layihələndirmə prosesimizə inteqrasiya etdik.' },
-          { year: '2024', title: '500+ Layihə', description: '25 il ərzində 500-dən çox layihəni uğurla tamamladıq.' },
+          { year: '2026', title: '15+ Layihə', description: '10 il ərzində 15-dən çox layihəni uğurla tamamladıq.' },
         ]
       : timelineEn
-  const certifications =
-    locale === 'az'
-      ? [
-          'ISO 9001:2015 Keyfiyyət İdarəetməsi',
-          'ISO 14001:2015 Ətraf Mühitin İdarəedilməsi',
-          'ISO 45001:2018 Əməyin Mühafizəsi və Təhlükəsizlik',
-          'Dövlət Tikinti Lisenziyası (I dərəcə)',
-        ]
-      : certificationsEn
   const copy =
     locale === 'az'
       ? {
@@ -91,11 +73,11 @@ export default function AboutPage() {
           visionText:
             'Beynəlxalq standartlara uyğun xidmətlərlə regionun aparıcı tikinti şirkətlərindən birinə çevrilmək və qlobal bazarlarda tanınmaq. Texnoloji yenilikləri tətbiq etməklə tikintinin gələcəyini bu gündən formalaşdırırıq.',
           storyBadge: 'Hekayəmiz',
-          storyTitle: '25 İllik Uğur Yolu',
+          storyTitle: '10 İllik Uğur Yolu',
           storyLead:
-            '1999-cu ildə kiçik bir tikinti şirkəti olaraq fəaliyyətə başlayan Akin Industry, bu gün Azərbaycanın ən etibarlı tikinti şirkətlərindən birinə çevrilmişdir.',
+            '10 ildən artıq təcrübəyə malik Akin Industry Azərbaycanın etibarlı tikinti şirkətlərindən birinə çevrilmişdir.',
           storyText:
-            'İllər ərzində yaşayış binalarından sənaye komplekslərinə, yol infrastrukturundan kommersiya mərkəzlərinə qədər müxtəlif sahələrdə 500-dən çox layihəni uğurla tamamlamışıq. Hər layihədə keyfiyyət və müştəri məmnuniyyətini əsas tutaraq, sektorda etibarlı bir mövqe qazanmışıq.',
+            'İllər ərzində müxtəlif sahələrdə 15-dən çox layihəni uğurla tamamlamışıq. Hər layihədə keyfiyyət və müştəri məmnuniyyətini əsas tutaraq sektorda etibarlı mövqe qazanmışıq.',
           years: 'İllik Təcrübə',
           projects: 'Tamamlanmış Layihə',
           employees: 'Peşəkar Əməkdaş',
@@ -105,12 +87,7 @@ export default function AboutPage() {
           valuesText: 'Hər layihədə bu dəyərlərə sadiq qalaraq müştərilərimizin etibarını qazanırıq.',
           timelineBadge: 'Tarixçə',
           timelineTitle: 'İnkişaf Yolumuz',
-          teamBadge: 'Komandamız',
-          teamTitle: 'Rəhbərlik Heyəti',
-          teamText: 'Rəhbərlik komandamız təcrübəli peşəkarlardan ibarətdir.',
-          certTitle: 'Sertifikatlar və Lisenziyalar',
-          certText: 'Beynəlxalq standartlara uyğunluğumuzu təsdiqləyən sertifikatlar.',
-          imageAlt: 'Akin Industry-nin 25 illik etibarlı tikinti təcrübəsi',
+          imageAlt: 'Akin Industry-nin 10 illik etibarlı tikinti təcrübəsi',
         }
       : {
           headerTitle: 'About Us',
@@ -122,11 +99,11 @@ export default function AboutPage() {
           visionText:
             'To become a leading construction company in the region and gain recognition in global markets through services aligned with international standards. By applying technological innovation, we help shape the future of construction today.',
           storyBadge: 'Our Story',
-          storyTitle: '25 Years of Growth',
+          storyTitle: '10 Years of Growth',
           storyLead:
-            'Founded in 1999 as a small construction company, Akin Industry has grown into one of Azerbaijan’s most trusted names in the sector.',
+            'With more than 10 years of experience, Akin Industry has grown into one of Azerbaijan’s trusted names in the sector.',
           storyText:
-            'Over the years, we have successfully delivered more than 500 projects across residential buildings, industrial complexes, road infrastructure, and commercial facilities. By maintaining a strong focus on quality and client satisfaction, we have earned a trusted position in the market.',
+            'Over the years, we have successfully delivered more than 15 projects across multiple construction sectors. By maintaining a strong focus on quality and client satisfaction, we have earned a trusted position in the market.',
           years: 'Years of Experience',
           projects: 'Completed Projects',
           employees: 'Skilled Employees',
@@ -136,12 +113,7 @@ export default function AboutPage() {
           valuesText: 'We earn our clients’ trust by staying committed to these values on every project.',
           timelineBadge: 'Timeline',
           timelineTitle: 'Our Development Journey',
-          teamBadge: 'Our Team',
-          teamTitle: 'Leadership Team',
-          teamText: 'Our leadership team is made up of experienced professionals.',
-          certTitle: 'Certifications & Licenses',
-          certText: 'Certifications that validate our compliance with international standards.',
-          imageAlt: 'Akin Industry 25 years of trusted construction experience',
+          imageAlt: 'Akin Industry 10 years of trusted construction experience',
         }
 
   return (
@@ -235,7 +207,6 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      {teamSectionEnabled && (
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -265,7 +236,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      )}
 
       {/* Timeline */}
       <section className="py-20 bg-secondary/30">
@@ -307,77 +277,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              {copy.teamBadge}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-              {copy.teamTitle}
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              {copy.teamText}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((item) => {
-              const member = translateTeamMember(item, locale)
-              return (
-              <Card key={member.id} className="overflow-hidden border-border/50 group">
-                <div className="aspect-[4/5] bg-primary/10 relative">
-                  {member.image ? (
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center text-primary/40">
-                      <ImageIcon className="h-12 w-12" />
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <CardContent className="p-6 text-center">
-                  <h3 className="text-lg font-semibold text-foreground mb-1">{member.name}</h3>
-                  <p className="text-primary font-medium text-sm mb-3">{member.position}</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
-                </CardContent>
-              </Card>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4 text-balance">
-              {copy.certTitle}
-            </h2>
-            <p className="text-primary-foreground/80 text-lg leading-relaxed">
-              {copy.certText}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {certifications.map((cert, index) => (
-              <div 
-                key={index} 
-                className="flex items-center gap-3 bg-primary-foreground/10 rounded-lg p-4"
-              >
-                <CheckCircle2 className="h-6 w-6 text-accent flex-shrink-0" />
-                <span className="text-primary-foreground font-medium">{cert}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   )
 }

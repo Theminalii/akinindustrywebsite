@@ -10,10 +10,10 @@ import type {
 } from './types'
 
 export const companyStats: CompanyStats = {
-  years: 25,
-  projects: 500,
-  employees: 350,
-  clients: 200
+  years: 10,
+  projects: 15,
+  employees: 100,
+  clients: 15
 }
 
 export const services: Service[] = [
@@ -165,6 +165,16 @@ export const projects: Project[] = [
 ]
 
 export const news: NewsArticle[] = [
+  {
+    id: '0',
+    slug: 'akin-industry-partners-with-pocketvc-venture-studio',
+    title: 'Akin Industry Partners with PocketVC Venture Studio to Implement Agentic AI Workflows',
+    excerpt: 'A strategic partnership to develop and implement AI tools that will transform our operations and sales processes.',
+    content: 'We are pleased to announce our latest partnership with Chinara Askerzade, Partner at PocketVC Venture Studio, to support the development and implementation of agentic AI workflows across our operations and sales processes.\n\nThis collaboration will help us streamline internal workflows, improve efficiency, automate key processes, and enhance the way we engage with our clients—driving smarter decisions and sustainable growth.',
+    date: '2026-05-11',
+    image: '/images/akin-pocketvc-hero-new.png',
+    category: 'Partnership Announcement'
+  },
   {
     id: '1',
     slug: 'yeni-layihe-imzalandi',
