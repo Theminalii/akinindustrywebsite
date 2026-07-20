@@ -197,6 +197,23 @@ const projectTranslations: Record<
       area: '4200 m³ beton, 350 ton armatur, 180 ton metal və 5500 m² örtük',
     },
   },
+  'stalcay-production-plant': {
+    az: {
+      title: 'Stalçay İstehsalat Zavodu',
+      description:
+        'Stalçay İstehsalat Zavodunda 104 ədəd elektrik manholu və 54 ədəd hidrant kanalının tikinti işləri tamamlanıb.',
+      location: 'Azərbaycan',
+      area: '104 elektrik manholu və 54 hidrant kanalı',
+    },
+  },
+  'pirallahi-derman-zavodu': {
+    az: {
+      title: 'Pirallahı Dərman Zavodu',
+      description: 'Pirallahı Dərman Zavodunda metal konstruksiya işləri həyata keçirilib.',
+      location: 'Pirallahı, Azərbaycan',
+      area: 'Metal konstruksiya işləri',
+    },
+  },
 }
 
 const newsTranslations: Record<
