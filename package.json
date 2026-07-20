@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
-    "start": "next start",
+    "start": "node .next/standalone/server.js",
     "typecheck": "next typegen && tsc --noEmit",
     "lint": "npm run typecheck"
   },
