@@ -8,32 +8,32 @@ import { PageHeader } from '@/components/shared/page-header'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { MapPin, Calendar, ArrowRight, Building2 } from 'lucide-react'
-import { categoryLabels } from '@/lib/data'
+import { projects as seededProjects } from '@/lib/data'
 import { useAdmin } from '@/lib/admin/context'
+import { useLanguage } from '@/lib/language-context'
+import { getCategoryLabel, getProjectCategories, translateProject } from '@/lib/site-translations'
 import { cn } from '@/lib/utils'
-
-const categories = [
-  { key: 'all', label: 'Hamısı' },
-  { key: 'residential', label: 'Yaşayış' },
-  { key: 'commercial', label: 'Kommersiya' },
-  { key: 'industrial', label: 'Sənaye' },
-  { key: 'infrastructure', label: 'İnfrastruktur' },
-]
 
 export default function ProjectsPage() {
   const { projects } = useAdmin()
+  const { locale } = useLanguage()
   const [activeCategory, setActiveCategory] = useState('all')
+  const categories = getProjectCategories(locale)
+
+  const mergedProjects = Array.from(
+    new Map([...seededProjects, ...projects].map((project) => [project.slug, project])).values()
+  ).map((project) => translateProject(project, locale))
 
   const filteredProjects = activeCategory === 'all' 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory)
+    ? mergedProjects
+    : mergedProjects.filter(p => p.category === activeCategory)
 
   return (
     <>
       <PageHeader
-        title="Layihələrimiz"
-        description="25 il ərzində tamamladığımız layihələr"
-        breadcrumbs={[{ label: 'Layihələr' }]}
+        title={locale === 'az' ? 'Layihələrimiz' : 'Our Projects'}
+        description={locale === 'az' ? '25 il ərzində uğurla təhvil verilmiş layihələr' : 'Projects delivered successfully over 25 years'}
+        breadcrumbs={[{ label: locale === 'az' ? 'Layihələr' : 'Projects' }]}
       />
 
       <section className="py-16 bg-background">
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
                     
                     {/* Category Badge */}
                     <span className="absolute top-4 left-4 px-3 py-1 bg-accent text-accent-foreground text-xs font-medium rounded-full z-10">
-                      {categoryLabels[project.category]}
+                      {getCategoryLabel(project.category, locale)}
                     </span>
 
                     {/* Hover Arrow */}
@@ -112,7 +112,9 @@ export default function ProjectsPage() {
           {filteredProjects.length === 0 && (
             <div className="text-center py-12">
               <Building2 className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <p className="text-muted-foreground">Bu kateqoriyada layihə tapılmadı.</p>
+              <p className="text-muted-foreground">
+                {locale === 'az' ? 'Bu kateqoriyada layihə tapılmadı.' : 'No projects were found in this category.'}
+              </p>
             </div>
           )}
         </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useAdmin } from '@/lib/admin/context'
+import { useLanguage } from '@/lib/language-context'
 
 const styles = `
   @keyframes scroll-left {
@@ -19,6 +20,7 @@ const styles = `
 
 export function PartnersSection() {
   const { partners } = useAdmin()
+  const { locale } = useLanguage()
 
   if (partners.length === 0) {
     return null
@@ -30,10 +32,10 @@ export function PartnersSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-            Tərəfdaşlarımız
+            {locale === 'az' ? 'Tərəfdaşlarımız' : 'Our Partners'}
           </span>
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            Güvənilir Əməkdaşlıq
+            {locale === 'az' ? 'Etibarlı Əməkdaşlıq' : 'Trusted Collaboration'}
           </h2>
         </div>
 

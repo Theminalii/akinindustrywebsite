@@ -1,37 +1,43 @@
 'use client'
 
+import { useMemo } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Calendar, Image as ImageIcon } from 'lucide-react'
 
 import { PageHeader } from '@/components/shared/page-header'
 import { Card, CardContent } from '@/components/ui/card'
 import { useAdmin } from '@/lib/admin/context'
-
-function formatDate(dateString: string) {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('az-AZ', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
-}
+import { useLanguage } from '@/lib/language-context'
+import { news as seededNews } from '@/lib/data'
+import { formatLocalizedDate, translateNewsArticle } from '@/lib/site-translations'
+import type { NewsArticle } from '@/lib/types'
 
 export function NewsPageClient() {
   const { news, isReady } = useAdmin()
+  const { locale } = useLanguage()
 
-  const sortedNews = [...news].sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime()
-  })
+  const sortedNews = useMemo(() => {
+    const merged = new Map<string, NewsArticle>()
 
-  const featuredArticle = sortedNews[0]
-  const gridArticles = sortedNews.slice(1)
+    for (const article of [...news, ...seededNews]) {
+      merged.set(article.slug, article)
+    }
+
+    return [...merged.values()].map((article) => translateNewsArticle(article, locale)).sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    })
+  }, [locale, news])
+
+  const standardOnlySlug = 'akin-industry-partners-with-pocketvc-venture-studio'
+  const featuredArticle = sortedNews.find((article) => article.slug !== standardOnlySlug)
+  const gridArticles = sortedNews.filter((article) => article.slug !== featuredArticle?.slug)
 
   if (!isReady) {
     return (
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="rounded-2xl border border-border/50 bg-card p-8 text-center text-muted-foreground">
-            Xəbərlər yüklənir...
+            {locale === 'az' ? 'Xəbərlər yüklənir...' : 'Loading news...'}
           </div>
         </div>
       </section>
@@ -41,9 +47,9 @@ export function NewsPageClient() {
   return (
     <>
       <PageHeader
-        title="Xəbərlər"
-        description="Şirkətimizin son xəbərləri və yenilikləri"
-        breadcrumbs={[{ label: 'Xəbərlər' }]}
+        title={locale === 'az' ? 'Xəbərlər' : 'News'}
+        description={locale === 'az' ? 'Son şirkət yenilikləri və elanlar' : 'Our latest company updates and announcements'}
+        breadcrumbs={[{ label: locale === 'az' ? 'Xəbərlər' : 'News' }]}
       />
 
       <section className="py-16 bg-background">
@@ -74,7 +80,7 @@ export function NewsPageClient() {
                       </span>
                       <span className="flex items-center gap-1 text-muted-foreground text-sm">
                         <Calendar className="h-4 w-4" />
-                        {formatDate(featuredArticle.date)}
+                        {formatLocalizedDate(featuredArticle.date, locale)}
                       </span>
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
@@ -84,7 +90,7 @@ export function NewsPageClient() {
                       {featuredArticle.excerpt}
                     </p>
                     <div className="flex items-center text-primary font-medium group-hover:gap-2 transition-all">
-                      <span>Ətraflı oxu</span>
+                      <span>{locale === 'az' ? 'Ətraflı oxu' : 'Read more'}</span>
                       <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </CardContent>
@@ -95,9 +101,13 @@ export function NewsPageClient() {
 
           {!featuredArticle && (
             <div className="mb-12 rounded-2xl border border-border/50 bg-card p-8 text-center">
-              <h2 className="text-2xl font-semibold text-foreground">Hələ xəbər yoxdur</h2>
+              <h2 className="text-2xl font-semibold text-foreground">
+                {locale === 'az' ? 'Hələ xəbər yoxdur' : 'No news available yet'}
+              </h2>
               <p className="mt-2 text-muted-foreground">
-                Admin paneldən əlavə etdiyin xəbərlər burada görünəcək.
+                {locale === 'az'
+                  ? 'Admin paneldən əlavə edilən xəbərlər burada görünəcək.'
+                  : 'News items added from the admin panel will appear here.'}
               </p>
             </div>
           )}
@@ -128,7 +138,7 @@ export function NewsPageClient() {
                       </span>
                       <span className="flex items-center gap-1 text-muted-foreground text-sm">
                         <Calendar className="h-4 w-4" />
-                        {formatDate(article.date)}
+                        {formatLocalizedDate(article.date, locale)}
                       </span>
                     </div>
 
@@ -141,7 +151,7 @@ export function NewsPageClient() {
                     </p>
 
                     <div className="mt-4 flex items-center text-primary font-medium text-sm group-hover:gap-2 transition-all">
-                      <span>Ətraflı oxu</span>
+                      <span>{locale === 'az' ? 'Ətraflı oxu' : 'Read more'}</span>
                       <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </CardContent>

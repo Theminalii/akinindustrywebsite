@@ -4,55 +4,152 @@ import { PageHeader } from '@/components/shared/page-header'
 import { CheckCircle2, Target, Eye, Shield, Award, Users, Building2, Clock, Image as ImageIcon } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { useAdmin } from '@/lib/admin/context'
+import { useLanguage } from '@/lib/language-context'
+import { translateTeamMember } from '@/lib/site-translations'
 
-const values = [
+const valuesEn = [
   {
     icon: Shield,
-    title: 'Keyfiyyət',
-    description: 'Beynəlxalq standartlara uyğun yüksək keyfiyyətli tikinti həlləri təqdim edirik.'
+    title: 'Quality',
+    description: 'We deliver high-quality construction solutions aligned with international standards.'
   },
   {
     icon: Clock,
-    title: 'Vaxtında Təhvil',
-    description: 'Layihələri razılaşdırılmış müddətdə, büdcə daxilində tamamlayırıq.'
+    title: 'On-Time Delivery',
+    description: 'Projects are completed within the agreed schedule and budget.'
   },
   {
     icon: Users,
-    title: 'Peşəkarlıq',
-    description: 'Təcrübəli və ixtisaslı mütəxəssislərdən ibarət güclü komanda.'
+    title: 'Professionalism',
+    description: 'A strong team of experienced and highly qualified professionals.'
   },
   {
     icon: Award,
-    title: 'Etibarlılıq',
-    description: '25 illik təcrübə və yüzlərlə uğurlu layihə ilə qazanılmış etibar.'
+    title: 'Reliability',
+    description: 'Trust earned through 25 years of experience and hundreds of successful projects.'
   },
 ]
 
-const timeline = [
-  { year: '1999', title: 'Şirkətin Yaranması', description: 'Akin Industry kiçik bir tikinti şirkəti olaraq fəaliyyətə başladı.' },
-  { year: '2005', title: 'İlk İri Layihə', description: 'Bakıda ilk böyük kommersiya tikinti layihəsini uğurla tamamladıq.' },
-  { year: '2010', title: 'Sənaye Sektoruna Giriş', description: 'Sənaye tikintisi sahəsinə daxil olaraq portfelimizi genişləndirdik.' },
-  { year: '2015', title: 'ISO Sertifikasiyası', description: 'ISO 9001 keyfiyyət idarəetmə sertifikatını aldıq.' },
-  { year: '2020', title: 'BIM Texnologiyası', description: 'Müasir BIM texnologiyasını tətbiq edərək layihələndirmə prosesini təkmilləşdirdik.' },
-  { year: '2024', title: '500+ Layihə', description: '25 il ərzində 500-dən çox layihəni uğurla tamamladıq.' },
+const timelineEn = [
+  { year: '1999', title: 'Company Founded', description: 'Akin Industry began operations as a small construction company.' },
+  { year: '2005', title: 'First Major Project', description: 'We successfully completed our first large commercial construction project in Baku.' },
+  { year: '2010', title: 'Entry Into the Industrial Sector', description: 'We expanded our portfolio by entering industrial construction.' },
+  { year: '2015', title: 'ISO Certification', description: 'We achieved ISO 9001 quality management certification.' },
+  { year: '2020', title: 'BIM Technology', description: 'We improved our design process by integrating modern BIM technology.' },
+  { year: '2024', title: '500+ Projects', description: 'Over 500 projects completed successfully across 25 years.' },
 ]
 
-const certifications = [
-  'ISO 9001:2015 Keyfiyyət İdarəetmə',
-  'ISO 14001:2015 Ətraf Mühit İdarəetmə',
-  'ISO 45001:2018 İş Sağlamlığı və Təhlükəsizliyi',
-  'Dövlət Tikinti Lisenziyası (I Dərəcə)',
+const certificationsEn = [
+  'ISO 9001:2015 Quality Management',
+  'ISO 14001:2015 Environmental Management',
+  'ISO 45001:2018 Occupational Health & Safety',
+  'State Construction License (Grade I)',
 ]
 
 export default function AboutPage() {
   const { team, stats: companyStats } = useAdmin()
+  const teamSectionEnabled = true
+  const { locale } = useLanguage()
+  const values =
+    locale === 'az'
+      ? [
+          { icon: Shield, title: 'Keyfiyyət', description: 'Beynəlxalq standartlara uyğun yüksək keyfiyyətli tikinti həlləri təqdim edirik.' },
+          { icon: Clock, title: 'Vaxtında Təhvil', description: 'Layihələri razılaşdırılmış qrafik və büdcə daxilində tamamlayırıq.' },
+          { icon: Users, title: 'Peşəkarlıq', description: 'Təcrübəli və yüksək ixtisaslı mütəxəssislərdən ibarət güclü komanda.' },
+          { icon: Award, title: 'Etibarlılıq', description: '25 illik təcrübə və yüzlərlə uğurlu layihə ilə qazanılmış etibar.' },
+        ]
+      : valuesEn
+  const timeline =
+    locale === 'az'
+      ? [
+          { year: '1999', title: 'Şirkətin Təsis Edilməsi', description: 'Akin Industry kiçik tikinti şirkəti kimi fəaliyyətə başladı.' },
+          { year: '2005', title: 'İlk Böyük Layihə', description: 'Bakıda ilk iri kommersiya tikinti layihəmizi uğurla tamamladıq.' },
+          { year: '2010', title: 'Sənaye Sektoruna Giriş', description: 'Portfelimizi genişləndirərək sənaye tikintisinə başladıq.' },
+          { year: '2015', title: 'ISO Sertifikatı', description: 'ISO 9001 keyfiyyət idarəetmə sertifikatını əldə etdik.' },
+          { year: '2020', title: 'BIM Texnologiyası', description: 'Müasir BIM texnologiyasını layihələndirmə prosesimizə inteqrasiya etdik.' },
+          { year: '2024', title: '500+ Layihə', description: '25 il ərzində 500-dən çox layihəni uğurla tamamladıq.' },
+        ]
+      : timelineEn
+  const certifications =
+    locale === 'az'
+      ? [
+          'ISO 9001:2015 Keyfiyyət İdarəetməsi',
+          'ISO 14001:2015 Ətraf Mühitin İdarəedilməsi',
+          'ISO 45001:2018 Əməyin Mühafizəsi və Təhlükəsizlik',
+          'Dövlət Tikinti Lisenziyası (I dərəcə)',
+        ]
+      : certificationsEn
+  const copy =
+    locale === 'az'
+      ? {
+          headerTitle: 'Haqqımızda',
+          headerDescription: 'Azərbaycanın tikinti sektorunda etibarlı tərəfdaş',
+          mission: 'Missiyamız',
+          missionText:
+            'Müştəri ehtiyaclarına uyğun yüksək keyfiyyətli, innovativ və dayanıqlı tikinti həlləri təqdim etməklə Azərbaycanın infrastruktur inkişafına töhfə vermək. Hər layihədə mükəmməlliyi, etik dəyərləri və müştəri məmnuniyyətini əsas tuturuq.',
+          vision: 'Vizyonumuz',
+          visionText:
+            'Beynəlxalq standartlara uyğun xidmətlərlə regionun aparıcı tikinti şirkətlərindən birinə çevrilmək və qlobal bazarlarda tanınmaq. Texnoloji yenilikləri tətbiq etməklə tikintinin gələcəyini bu gündən formalaşdırırıq.',
+          storyBadge: 'Hekayəmiz',
+          storyTitle: '25 İllik Uğur Yolu',
+          storyLead:
+            '1999-cu ildə kiçik bir tikinti şirkəti olaraq fəaliyyətə başlayan Akin Industry, bu gün Azərbaycanın ən etibarlı tikinti şirkətlərindən birinə çevrilmişdir.',
+          storyText:
+            'İllər ərzində yaşayış binalarından sənaye komplekslərinə, yol infrastrukturundan kommersiya mərkəzlərinə qədər müxtəlif sahələrdə 500-dən çox layihəni uğurla tamamlamışıq. Hər layihədə keyfiyyət və müştəri məmnuniyyətini əsas tutaraq, sektorda etibarlı bir mövqe qazanmışıq.',
+          years: 'İllik Təcrübə',
+          projects: 'Tamamlanmış Layihə',
+          employees: 'Peşəkar Əməkdaş',
+          clients: 'Məmnun Müştəri',
+          valuesBadge: 'Dəyərlərimiz',
+          valuesTitle: 'Bizi İrəli Aparan Prinsiplər',
+          valuesText: 'Hər layihədə bu dəyərlərə sadiq qalaraq müştərilərimizin etibarını qazanırıq.',
+          timelineBadge: 'Tarixçə',
+          timelineTitle: 'İnkişaf Yolumuz',
+          teamBadge: 'Komandamız',
+          teamTitle: 'Rəhbərlik Heyəti',
+          teamText: 'Rəhbərlik komandamız təcrübəli peşəkarlardan ibarətdir.',
+          certTitle: 'Sertifikatlar və Lisenziyalar',
+          certText: 'Beynəlxalq standartlara uyğunluğumuzu təsdiqləyən sertifikatlar.',
+          imageAlt: 'Akin Industry-nin 25 illik etibarlı tikinti təcrübəsi',
+        }
+      : {
+          headerTitle: 'About Us',
+          headerDescription: 'A trusted partner in Azerbaijan’s construction sector',
+          mission: 'Our Mission',
+          missionText:
+            'To contribute to the development of Azerbaijan’s infrastructure by delivering high-quality, innovative, and sustainable construction solutions tailored to our clients’ needs. We prioritize excellence, ethics, and client satisfaction in every project.',
+          vision: 'Our Vision',
+          visionText:
+            'To become a leading construction company in the region and gain recognition in global markets through services aligned with international standards. By applying technological innovation, we help shape the future of construction today.',
+          storyBadge: 'Our Story',
+          storyTitle: '25 Years of Growth',
+          storyLead:
+            'Founded in 1999 as a small construction company, Akin Industry has grown into one of Azerbaijan’s most trusted names in the sector.',
+          storyText:
+            'Over the years, we have successfully delivered more than 500 projects across residential buildings, industrial complexes, road infrastructure, and commercial facilities. By maintaining a strong focus on quality and client satisfaction, we have earned a trusted position in the market.',
+          years: 'Years of Experience',
+          projects: 'Completed Projects',
+          employees: 'Skilled Employees',
+          clients: 'Satisfied Clients',
+          valuesBadge: 'Our Values',
+          valuesTitle: 'Principles That Guide Us',
+          valuesText: 'We earn our clients’ trust by staying committed to these values on every project.',
+          timelineBadge: 'Timeline',
+          timelineTitle: 'Our Development Journey',
+          teamBadge: 'Our Team',
+          teamTitle: 'Leadership Team',
+          teamText: 'Our leadership team is made up of experienced professionals.',
+          certTitle: 'Certifications & Licenses',
+          certText: 'Certifications that validate our compliance with international standards.',
+          imageAlt: 'Akin Industry 25 years of trusted construction experience',
+        }
 
   return (
     <>
       <PageHeader
-        title="Haqqımızda"
-        description="Azərbaycanda tikinti sektorunun etibarlı tərəfdaşı"
-        breadcrumbs={[{ label: 'Haqqımızda' }]}
+        title={copy.headerTitle}
+        description={copy.headerDescription}
+        breadcrumbs={[{ label: copy.headerTitle }]}
       />
 
       {/* Mission & Vision */}
@@ -64,11 +161,9 @@ export default function AboutPage() {
               <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
                 <Target className="h-7 w-7 text-primary" />
               </div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Missiyamız</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-4">{copy.mission}</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Müştərilərimizin ehtiyaclarına uyğun yüksək keyfiyyətli, innovativ və davamlı 
-                tikinti həlləri təqdim etməklə Azərbaycanın infrastrukturunun inkişafına töhfə 
-                vermək. Hər layihədə mükəmməllik, etika və müştəri məmnuniyyətini əsas tuturuq.
+                {copy.missionText}
               </p>
             </div>
 
@@ -77,11 +172,9 @@ export default function AboutPage() {
               <div className="w-14 h-14 bg-accent/20 rounded-lg flex items-center justify-center mb-6">
                 <Eye className="h-7 w-7 text-accent" />
               </div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">Vizyonumuz</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-4">{copy.vision}</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Regionda tikinti sektorunun lider şirkəti olmaq və beynəlxalq standartlara 
-                uyğun xidmətlərimizlə qlobal bazarlarda tanınmaq. Texnoloji yenilikləri 
-                tətbiq edərək gələcəyin tikinti həllərini bu gündən formalaşdırırıq.
+                {copy.visionText}
               </p>
             </div>
           </div>
@@ -94,47 +187,47 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-                Tariximiz
+                {copy.storyBadge}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-balance">
-                25 İllik Uğur Yolu
+                {copy.storyTitle}
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                1999-cu ildə kiçik bir tikinti şirkəti olaraq fəaliyyətə başlayan Akin Industry, 
-                bu gün Azərbaycanın ən etibarlı tikinti şirkətlərindən birinə çevrilmişdir.
+                {copy.storyLead}
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                İllər ərzində yaşayış binalarından sənaye komplekslərinə, yol infrastrukturundan 
-                kommersiya mərkəzlərinə qədər müxtəlif sahələrdə 500-dən çox layihəni uğurla 
-                tamamlamışıq. Hər layihədə keyfiyyət və müştəri məmnuniyyətini əsas tutaraq, 
-                sektorda etibarlı bir mövqe qazanmışıq.
+                {copy.storyText}
               </p>
 
               {/* Stats */}
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center p-4 bg-card rounded-xl border border-border/50">
                   <div className="text-3xl font-bold text-primary mb-1">{companyStats.years}+</div>
-                  <div className="text-muted-foreground text-sm">İllik Təcrübə</div>
+                  <div className="text-muted-foreground text-sm">{copy.years}</div>
                 </div>
                 <div className="text-center p-4 bg-card rounded-xl border border-border/50">
                   <div className="text-3xl font-bold text-primary mb-1">{companyStats.projects}+</div>
-                  <div className="text-muted-foreground text-sm">Tamamlanmış Layihə</div>
+                  <div className="text-muted-foreground text-sm">{copy.projects}</div>
                 </div>
                 <div className="text-center p-4 bg-card rounded-xl border border-border/50">
                   <div className="text-3xl font-bold text-primary mb-1">{companyStats.employees}+</div>
-                  <div className="text-muted-foreground text-sm">Peşəkar İşçi</div>
+                  <div className="text-muted-foreground text-sm">{copy.employees}</div>
                 </div>
                 <div className="text-center p-4 bg-card rounded-xl border border-border/50">
                   <div className="text-3xl font-bold text-primary mb-1">{companyStats.clients}+</div>
-                  <div className="text-muted-foreground text-sm">Razı Müştəri</div>
+                  <div className="text-muted-foreground text-sm">{copy.clients}</div>
                 </div>
               </div>
             </div>
 
             {/* Image */}
             <div className="relative">
-              <div className="aspect-square rounded-2xl overflow-hidden bg-primary/10">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+              <div className="aspect-square rounded-2xl overflow-hidden bg-linear-to-br from-[#081426] via-[#0b1830] to-[#132642] p-3 shadow-[0_18px_50px_rgba(15,23,42,0.12)] sm:p-4">
+                <img
+                  src="/images/about-history-ai.png"
+                  alt={copy.imageAlt}
+                  className="h-full w-full rounded-xl object-contain object-center"
+                />
               </div>
             </div>
           </div>
@@ -142,17 +235,18 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
+      {teamSectionEnabled && (
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              Dəyərlərimiz
+              {copy.valuesBadge}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-              Bizə Rəhbərlik Edən Prinsiplər
+              {copy.valuesTitle}
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Hər layihədə bu dəyərlərə sadiq qalaraq müştərilərimizin güvənini qazanırıq.
+              {copy.valuesText}
             </p>
           </div>
 
@@ -171,16 +265,17 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Timeline */}
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              Tarix
+              {copy.timelineBadge}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
-              İnkişaf Yolumuz
+              {copy.timelineTitle}
             </h2>
           </div>
 
@@ -217,18 +312,20 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              Komandamız
+              {copy.teamBadge}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-              Rəhbərlik Heyəti
+              {copy.teamTitle}
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Təcrübəli peşəkarlardan ibarət rəhbərlik komandamız.
+              {copy.teamText}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member) => (
+            {team.map((item) => {
+              const member = translateTeamMember(item, locale)
+              return (
               <Card key={member.id} className="overflow-hidden border-border/50 group">
                 <div className="aspect-[4/5] bg-primary/10 relative">
                   {member.image ? (
@@ -250,7 +347,8 @@ export default function AboutPage() {
                   <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
                 </CardContent>
               </Card>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
@@ -260,10 +358,10 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4 text-balance">
-              Sertifikatlar və Lisenziyalar
+              {copy.certTitle}
             </h2>
             <p className="text-primary-foreground/80 text-lg leading-relaxed">
-              Beynəlxalq standartlara uyğunluğumuzu təsdiq edən sertifikatlar.
+              {copy.certText}
             </p>
           </div>
 

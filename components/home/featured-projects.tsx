@@ -4,13 +4,31 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, MapPin, Calendar } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { categoryLabels } from '@/lib/data'
+import { categoryLabels, projects as seededProjects } from '@/lib/data'
 import { useAdmin } from '@/lib/admin/context'
+import { useLanguage } from '@/lib/language-context'
+import { getCategoryLabel, translateProject } from '@/lib/site-translations'
 import { cn } from '@/lib/utils'
 
 export function FeaturedProjects() {
   const { projects } = useAdmin()
-  const featuredProjects = projects.filter(p => p.featured)
+  const { locale } = useLanguage()
+  const mergedProjects = Array.from(
+    new Map([...seededProjects, ...projects].map((project) => [project.slug, project])).values()
+  )
+  const featuredProjects = mergedProjects.filter(p => p.featured).map((project) => translateProject(project, locale))
+  const copy =
+    locale === 'az'
+      ? {
+          badge: 'Layihələrimiz',
+          title: 'Seçilmiş Layihələr',
+          cta: 'Bütün Layihələr',
+        }
+      : {
+          badge: 'Our Projects',
+          title: 'Featured Projects',
+          cta: 'View All Projects',
+        }
   return (
     <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
@@ -18,15 +36,15 @@ export function FeaturedProjects() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
             <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              Layihələrimiz
+              {copy.badge}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
-              Seçilmiş Layihələr
+              {copy.title}
             </h2>
           </div>
           <Button asChild variant="outline" className="group w-fit">
             <Link href="/layiheler">
-              Bütün Layihələr
+              {copy.cta}
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </Button>
@@ -63,8 +81,8 @@ export function FeaturedProjects() {
                 
                 {/* Content */}
                 <div className="relative z-10">
-                  <span className="inline-block px-3 py-1 bg-accent text-accent-foreground text-xs font-medium rounded-full w-fit mb-3">
-                    {categoryLabels[project.category]}
+                    <span className="inline-block px-3 py-1 bg-accent text-accent-foreground text-xs font-medium rounded-full w-fit mb-3">
+                    {getCategoryLabel(project.category, locale) || categoryLabels[project.category]}
                   </span>
                   <h3 className={cn(
                     'font-bold text-white mb-2 wrap-break-word leading-tight tracking-tight',

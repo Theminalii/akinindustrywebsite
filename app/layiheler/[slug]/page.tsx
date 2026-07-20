@@ -7,8 +7,10 @@ import { PageHeader } from '@/components/shared/page-header'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { MapPin, Calendar, Building2, Ruler, Users, ArrowRight, ArrowLeft } from 'lucide-react'
-import { categoryLabels } from '@/lib/data'
+import { projects as seededProjects } from '@/lib/data'
 import { useAdmin } from '@/lib/admin/context'
+import { useLanguage } from '@/lib/language-context'
+import { getCategoryLabel, translateProject } from '@/lib/site-translations'
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 
@@ -28,48 +30,43 @@ interface Project {
 
 export default function ProjectDetailPage() {
   const params = useParams()
-  const slug = decodeURIComponent(params.slug as string).trim()
-  const { projects, isReady } = useAdmin()
-
-  const project = useMemo(
-    () => projects.find((p) => decodeURIComponent(p.slug).trim() === slug),
-    [projects, slug]
+  const slug = params.slug as string
+  const { projects } = useAdmin()
+  const { locale } = useLanguage()
+  const mergedProjects = useMemo(
+    () =>
+      Array.from(new Map([...seededProjects, ...projects].map((project) => [project.slug, project])).values()).map((project) =>
+        translateProject(project, locale)
+      ),
+    [locale, projects]
   )
+
+  const project = useMemo(() => mergedProjects.find((p) => p.slug === slug), [mergedProjects, slug])
   const relatedProjects = useMemo(() => {
     if (!project) return []
-    return projects
+    return mergedProjects
       .filter((p) => project && p.category === project.category && p.id !== project.id)
       .slice(0, 3)
-  }, [projects, project])
-
-  // Admin content is loaded asynchronously. Calling notFound before that request
-  // finishes makes every newly-added project briefly resolve against defaults.
-  if (!isReady) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary/20 border-t-primary" />
-      </div>
-    )
-  }
+  }, [mergedProjects, project])
 
   if (!project) {
     notFound()
   }
 
   const details = [
-    { icon: Users, label: 'Müştəri', value: project.client },
-    { icon: MapPin, label: 'Məkan', value: project.location },
-    { icon: Calendar, label: 'İl', value: project.year.toString() },
-    { icon: Ruler, label: 'Sahə', value: project.area },
+    { icon: Users, label: locale === 'az' ? 'Müştəri' : 'Client', value: project.client },
+    { icon: MapPin, label: locale === 'az' ? 'Məkan' : 'Location', value: project.location },
+    { icon: Calendar, label: locale === 'az' ? 'İl' : 'Year', value: project.year.toString() },
+    { icon: Ruler, label: locale === 'az' ? 'Sahə' : 'Area', value: project.area },
   ]
 
   return (
     <>
       <PageHeader
         title={project.title}
-        description={categoryLabels[project.category]}
+        description={getCategoryLabel(project.category, locale)}
         breadcrumbs={[
-          { label: 'Layihələr', href: '/layiheler' },
+          { label: locale === 'az' ? 'Layihələr' : 'Projects', href: '/layiheler' },
           { label: project.title }
         ]}
       />
@@ -96,14 +93,14 @@ export default function ProjectDetailPage() {
 
               {/* Description */}
               <div className="prose prose-lg max-w-none mb-12">
-                <h2 className="text-2xl font-bold text-foreground mb-4">Layihə Haqqında</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">{locale === 'az' ? 'Layihə Haqqında' : 'About the Project'}</h2>
                 <p className="text-muted-foreground leading-relaxed">{project.description}</p>
               </div>
 
               {/* Gallery */}
               {project.images && project.images.length > 0 && (
                 <div>
-                  <h2 className="text-2xl font-bold text-foreground mb-6">Qalereya</h2>
+                  <h2 className="text-2xl font-bold text-foreground mb-6">{locale === 'az' ? 'Qalereya' : 'Gallery'}</h2>
                   <div className="grid grid-cols-2 gap-4">
                     {project.images.map((image, index) => (
                       <div key={index} className="aspect-4/3 rounded-xl overflow-hidden bg-primary/10 relative">
@@ -125,7 +122,7 @@ export default function ProjectDetailPage() {
               {/* Project Details Card */}
               <Card className="mb-8 sticky top-32">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-6">Layihə Məlumatları</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-6">{locale === 'az' ? 'Layihə Məlumatları' : 'Project Details'}</h3>
                   <div className="space-y-4">
                     {details.map((detail, index) => (
                       <div key={index} className="flex items-start gap-4">
@@ -142,13 +139,13 @@ export default function ProjectDetailPage() {
 
                   <div className="mt-8 pt-6 border-t border-border">
                     <span className="inline-block px-4 py-2 bg-accent/20 text-accent-foreground text-sm font-medium rounded-full">
-                      {categoryLabels[project.category]}
+                      {getCategoryLabel(project.category, locale)}
                     </span>
                   </div>
 
                   <Button asChild className="w-full mt-6">
                     <Link href="/elaqe">
-                      Layihə Sorğusu Göndər
+                      {locale === 'az' ? 'Layihə Sorğusu Göndər' : 'Send Project Inquiry'}
                     </Link>
                   </Button>
                 </CardContent>
@@ -163,10 +160,10 @@ export default function ProjectDetailPage() {
         <section className="py-16 bg-secondary/30">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold text-foreground">Oxşar Layihələr</h2>
+              <h2 className="text-2xl font-bold text-foreground">{locale === 'az' ? 'Oxşar Layihələr' : 'Related Projects'}</h2>
               <Button asChild variant="outline">
                 <Link href="/layiheler">
-                  Bütün Layihələr
+                  {locale === 'az' ? 'Bütün Layihələr' : 'All Projects'}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -200,7 +197,7 @@ export default function ProjectDetailPage() {
           <Button asChild variant="ghost" className="gap-2">
             <Link href="/layiheler">
               <ArrowLeft className="h-4 w-4" />
-              Bütün Layihələrə Qayıt
+              {locale === 'az' ? 'Bütün Layihələrə Qayıt' : 'Back to All Projects'}
             </Link>
           </Button>
         </div>

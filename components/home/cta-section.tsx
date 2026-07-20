@@ -1,8 +1,24 @@
+'use client'
+
 import Link from 'next/link'
 import { Phone, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useLanguage } from '@/lib/language-context'
 
 export function CTASection() {
+  const { locale } = useLanguage()
+  const copy =
+    locale === 'az'
+      ? {
+          title: 'Növbəti Layihənizi Birlikdə Quraq',
+          description: 'Tikinti layihənizi müzakirə etmək və ödənişsiz təklif almaq üçün bizimlə əlaqə saxlayın.',
+          contact: 'Əlaqə',
+        }
+      : {
+          title: 'Ready to Build Your Next Project',
+          description: 'Contact us today to discuss your construction project and receive a free quotation.',
+          contact: 'Contact Us',
+        }
   return (
     <section className="py-20 bg-primary relative overflow-hidden">
       {/* Background Pattern */}
@@ -14,11 +30,10 @@ export function CTASection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6 text-balance">
-            Layihəniz Üçün Hazırıq
+            {copy.title}
           </h2>
           <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed mb-10">
-            Tikinti layihənizi müzakirə etmək və pulsuz qiymət təklifi almaq üçün 
-            bu gün bizimlə əlaqə saxlayın.
+            {copy.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
@@ -27,7 +42,7 @@ export function CTASection() {
               className="bg-accent text-accent-foreground hover:bg-accent/90 group"
             >
               <Link href="/elaqe">
-                Bizimlə Əlaqə
+                {copy.contact}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>

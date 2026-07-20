@@ -1,0 +1,65 @@
+<svg width="1600" height="1100" viewBox="0 0 1600 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1100" rx="32" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="1599" height="1099" rx="31.5" stroke="rgba(255,255,255,0.06)"/>
+
+  <g opacity="0.72">
+    <path d="M-18 910C176 640 360 550 538 587C720 625 862 782 1058 804C1256 827 1420 713 1608 434" stroke="url(#blueWave)" stroke-width="2"/>
+    <path d="M16 940C212 676 394 590 566 626C744 663 890 799 1076 820C1278 843 1450 734 1628 468" stroke="url(#blueWave)" stroke-width="2" opacity="0.85"/>
+    <path d="M52 972C242 714 420 628 592 662C766 697 910 815 1098 840C1294 865 1458 760 1648 514" stroke="url(#blueWave)" stroke-width="2" opacity="0.7"/>
+    <path d="M88 1004C278 748 452 662 622 694C792 728 932 835 1122 860C1312 885 1476 792 1666 560" stroke="url(#blueWave)" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <g opacity="0.78">
+    <path d="M-36 974C174 800 346 770 522 804C708 841 880 968 1080 966C1270 964 1446 844 1646 594" stroke="url(#goldWave)" stroke-width="1.7"/>
+    <path d="M-8 1002C202 834 370 804 548 838C732 872 900 986 1098 987C1288 988 1464 868 1664 626" stroke="url(#goldWave)" stroke-width="1.7" opacity="0.92"/>
+    <path d="M30 1032C236 874 404 846 576 872C756 901 920 1000 1118 1002C1302 1004 1482 896 1684 664" stroke="url(#goldWave)" stroke-width="1.7" opacity="0.82"/>
+    <path d="M70 1064C270 914 434 886 606 906C780 931 944 1016 1138 1018C1324 1020 1500 928 1700 702" stroke="url(#goldWave)" stroke-width="1.7" opacity="0.72"/>
+  </g>
+
+  <g filter="url(#soft)">
+    <text x="162" y="490" fill="white" font-family="Inter, Arial, sans-serif" font-size="98" font-weight="800" letter-spacing="4">AKIN</text>
+    <text x="165" y="564" fill="white" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="400" letter-spacing="18">INDUSTRY</text>
+  </g>
+
+  <path d="M692 450V592" stroke="url(#divider)" stroke-width="2"/>
+  <text x="796" y="516" fill="#D89B22" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="300">×</text>
+
+  <g filter="url(#soft)">
+    <path d="M954 480L1006 428L1058 480L1006 532L954 480Z" stroke="#D89B22" stroke-width="5"/>
+    <path d="M986 446L1038 498L1006 530L954 478" stroke="#D89B22" stroke-width="5"/>
+    <path d="M986 510L1038 458L1070 490L1018 542" stroke="#D89B22" stroke-width="5"/>
+    <text x="1114" y="484" fill="white" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="700">POCKETVC</text>
+    <text x="1116" y="544" fill="white" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="400" letter-spacing="6">VENTURE STUDIO</text>
+  </g>
+
+  <text x="1080" y="818" text-anchor="middle" fill="#D89B22" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="500">Building the future with</text>
+  <text x="1080" y="888" text-anchor="middle" fill="#D89B22" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="500">agentic AI.</text>
+
+  <defs>
+    <filter id="soft" x="120" y="388" width="1260" height="228" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="0.2" result="effect1_foregroundBlur_1_2"/>
+    </filter>
+    <linearGradient id="bg" x1="120" y1="44" x2="1450" y2="1062" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#05101D"/>
+      <stop offset="0.54" stop-color="#071221"/>
+      <stop offset="1" stop-color="#0C1626"/>
+    </linearGradient>
+    <linearGradient id="divider" x1="692.5" y1="450" x2="692.5" y2="592" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B7C1D0" stop-opacity="0.1"/>
+      <stop offset="0.5" stop-color="#8E97A6" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#B7C1D0" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="goldWave" x1="-36" y1="994" x2="1700" y2="706" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D89B22" stop-opacity="0"/>
+      <stop offset="0.58" stop-color="#A9781E"/>
+      <stop offset="1" stop-color="#D89B22" stop-opacity="0.12"/>
+    </linearGradient>
+    <linearGradient id="blueWave" x1="-18" y1="916" x2="1608" y2="442" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1244A5" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#154AB4" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#1244A5" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

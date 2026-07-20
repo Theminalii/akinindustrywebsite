@@ -3,26 +3,55 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, Mail, Linkedin } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { useAdmin } from '@/lib/admin/context'
+import { useLanguage, type Locale } from '@/lib/language-context'
 import { cn } from '@/lib/utils'
 
-const navigation = [
-  { name: 'Əsas səhifə', href: '/' },
-  { name: 'Haqqımızda', href: '/haqqimizda' },
-  { name: 'Layihələr', href: '/layiheler' },
-  { name: 'Xidmətlər', href: '/xidmetler' },
-  { name: 'Xəbərlər', href: '/xeberler' },
-  { name: 'Karyera', href: '/karyera' },
-  { name: 'Əlaqə', href: '/elaqe' },
-]
+const labels: Record<Locale, {
+  navigation: Array<{ name: string; href: string }>
+  companyType: string
+  cta: string
+}> = {
+  en: {
+    navigation: [
+      { name: 'Home', href: '/' },
+      { name: 'About Us', href: '/haqqimizda' },
+      { name: 'Projects', href: '/layiheler' },
+      { name: 'Services', href: '/xidmetler' },
+      { name: 'News', href: '/xeberler' },
+      { name: 'Careers', href: '/karyera' },
+      { name: 'Contact', href: '/elaqe' },
+    ],
+    companyType: 'Construction Company',
+    cta: 'Contact Us',
+  },
+  az: {
+    navigation: [
+      { name: 'Əsas səhifə', href: '/' },
+      { name: 'Haqqımızda', href: '/haqqimizda' },
+      { name: 'Layihələr', href: '/layiheler' },
+      { name: 'Xidmətlər', href: '/xidmetler' },
+      { name: 'Xəbərlər', href: '/xeberler' },
+      { name: 'Karyera', href: '/karyera' },
+      { name: 'Əlaqə', href: '/elaqe' },
+    ],
+    companyType: 'Tikinti Şirkəti',
+    cta: 'Bizimlə Əlaqə',
+  },
+}
 
 export function Header() {
   const { contact } = useAdmin()
+  const { locale, setLocale } = useLanguage()
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const copy = labels[locale]
+  const isPocketVcArticle = pathname === '/xeberler/akin-industry-partners-with-pocketvc-venture-studio'
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
@@ -35,13 +64,25 @@ export function Header() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-white shadow-md' : 'bg-transparent backdrop-blur-md'
+        isPocketVcArticle
+          ? isScrolled
+            ? 'bg-white shadow-md'
+            : 'bg-primary shadow-md'
+          : isScrolled
+            ? 'bg-white shadow-md'
+            : 'bg-transparent backdrop-blur-md'
       )}
     >
       <div
         className={cn(
           'border-b border-border/50 transition-all duration-300',
-          isScrolled ? 'py-1 bg-white text-foreground' : 'py-2 bg-primary/90 text-white'
+          isPocketVcArticle
+            ? isScrolled
+              ? 'py-1 bg-white text-foreground'
+              : 'py-1 bg-primary text-white border-white/10'
+            : isScrolled
+              ? 'py-1 bg-white text-foreground'
+              : 'py-2 bg-primary/90 text-white'
         )}
       >
         <div className="container mx-auto px-4 flex items-center justify-between text-sm">
@@ -93,13 +134,13 @@ export function Header() {
                 Akin Industry
               </span>
               <span className={cn('text-xs transition-all', isScrolled ? 'text-muted-foreground' : 'text-white/70')}>
-                Tikinti Şirkəti
+                {copy.companyType}
               </span>
             </div>
           </Link>
 
           <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
-            {navigation.map((item) => (
+            {copy.navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
@@ -116,6 +157,30 @@ export function Header() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
+            <div
+              className={cn(
+                'flex items-center rounded-full border px-1 py-1 transition-all duration-300',
+                isScrolled ? 'border-border bg-white' : 'border-white/15 bg-white/8'
+              )}
+            >
+              {(['en', 'az'] as Locale[]).map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => setLocale(option)}
+                  className={cn(
+                    'rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] transition-colors',
+                    locale === option
+                      ? 'bg-accent text-accent-foreground'
+                      : isScrolled
+                        ? 'text-muted-foreground hover:text-foreground'
+                        : 'text-white/70 hover:text-white'
+                  )}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
             <a
               href={`tel:${contact.phone1}`}
               className={cn(
@@ -152,7 +217,7 @@ export function Header() {
               <Linkedin className="h-5 w-5" />
             </a>
             <Button asChild className="rounded-full px-5 py-3 font-semibold transition-all duration-300 bg-accent text-accent-foreground">
-              <Link href="/elaqe">Bizimlə Əlaqə</Link>
+              <Link href="/elaqe">{copy.cta}</Link>
             </Button>
           </div>
 
@@ -172,7 +237,24 @@ export function Header() {
         )}
       >
         <div className="container mx-auto px-4 space-y-2">
-          {navigation.map((item) => (
+          <div className="flex items-center justify-end pb-2">
+            <div className="flex items-center rounded-full border border-border bg-card px-1 py-1">
+              {(['en', 'az'] as Locale[]).map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => setLocale(option)}
+                  className={cn(
+                    'rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] transition-colors',
+                    locale === option ? 'bg-accent text-accent-foreground' : 'text-muted-foreground'
+                  )}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          </div>
+          {copy.navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
@@ -206,7 +288,7 @@ export function Header() {
           </div>
           <div className="pt-4">
             <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link href="/elaqe">Bizimlə Əlaqə</Link>
+              <Link href="/elaqe">{copy.cta}</Link>
             </Button>
           </div>
         </div>

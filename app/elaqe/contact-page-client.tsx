@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { useAdmin } from '@/lib/admin/context'
+import { useLanguage } from '@/lib/language-context'
 
 const socialLinks = [
   { icon: Facebook, href: '#', label: 'Facebook' },
@@ -36,33 +37,99 @@ const emptyForm: ContactFormState = {
 
 export function ContactPageClient() {
   const { contact } = useAdmin()
+  const { locale } = useLanguage()
   const [formData, setFormData] = useState<ContactFormState>(emptyForm)
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
 
+  const copy =
+    locale === 'az'
+      ? {
+          headerTitle: 'Əlaqə',
+          headerDescription: 'Layihənizi müzakirə etmək üçün bizimlə əlaqə saxlayın',
+          phone: 'Telefon',
+          email: 'E-poçt',
+          address: 'Ünvan',
+          hours: 'İş Saatları',
+          formBadge: 'Əlaqə Formu',
+          formTitle: 'Bizə Mesaj Göndərin',
+          formDescription: 'Layihəniz haqqında məlumat verin, komandamız qısa zamanda sizinlə əlaqə saxlasın.',
+          fullName: 'Ad Soyad *',
+          fullNamePlaceholder: 'Ad və soyadınızı daxil edin',
+          emailLabel: 'E-poçt *',
+          phoneLabel: 'Telefon *',
+          subject: 'Mövzu',
+          subjectPlaceholder: 'Mesajın mövzusu',
+          message: 'Mesaj *',
+          messagePlaceholder: 'Layihəniz haqqında ətraflı məlumat paylaşın...',
+          sending: 'Göndərilir...',
+          send: 'Göndər',
+          locationBadge: 'Məkan',
+          locationTitle: 'Ofisimizi Ziyarət Edin',
+          locationDescription: 'Baş ofisimiz Bakının mərkəzində yerləşir. Görüş üçün əvvəlcədən zəng etməyiniz xahiş olunur.',
+          follow: 'Bizi izləyin:',
+          ctaTitle: 'Layihəniz Haqqında Danışaq',
+          ctaDescription: 'Ödənişsiz konsultasiya üçün bu gün bizimlə əlaqə saxlayın',
+          sent: 'Mesaj göndərildi.',
+          sentChannels: 'Mesaj göndərildi. Aktiv kanallar:',
+          sendError: 'Mesaj göndərilə bilmədi.',
+          notificationError: 'Mesaj göndərilə bilmədi. Bildiriş ayarlarını yoxlayın.',
+        }
+      : {
+          headerTitle: 'Contact',
+          headerDescription: 'Get in touch with us to discuss your project',
+          phone: 'Phone',
+          email: 'Email',
+          address: 'Address',
+          hours: 'Working Hours',
+          formBadge: 'Contact Form',
+          formTitle: 'Send Us a Message',
+          formDescription: 'Tell us about your project and our team will get back to you shortly.',
+          fullName: 'Full Name *',
+          fullNamePlaceholder: 'Enter your full name',
+          emailLabel: 'Email *',
+          phoneLabel: 'Phone *',
+          subject: 'Subject',
+          subjectPlaceholder: 'Subject of your message',
+          message: 'Message *',
+          messagePlaceholder: 'Share details about your project...',
+          sending: 'Sending...',
+          send: 'Send',
+          locationBadge: 'Location',
+          locationTitle: 'Visit Our Office',
+          locationDescription: 'Our main office is located in central Baku. Please call ahead to schedule a meeting.',
+          follow: 'Follow us:',
+          ctaTitle: 'Let’s Talk About Your Project',
+          ctaDescription: 'Contact us today for a free consultation',
+          sent: 'Message sent.',
+          sentChannels: 'Message sent. Active channels:',
+          sendError: 'Message could not be sent.',
+          notificationError: 'Message could not be sent. Please check the notification settings.',
+        }
+
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Telefon',
+      title: copy.phone,
       details: [contact.phone1, contact.phone2].filter(Boolean),
       actionPrefix: 'tel:',
     },
     {
       icon: Mail,
-      title: 'E-poçt',
+      title: copy.email,
       details: [contact.email1, contact.email2].filter(Boolean),
       actionPrefix: 'mailto:',
     },
     {
       icon: MapPin,
-      title: 'Ünvan',
+      title: copy.address,
       details: contact.address.split(',').map((item) => item.trim()).filter(Boolean),
       actionPrefix: null,
     },
     {
       icon: Clock,
-      title: 'İş Saatları',
+      title: copy.hours,
       details: contact.workingHours.split(',').map((item) => item.trim()).filter(Boolean),
       actionPrefix: null,
     },
@@ -88,7 +155,7 @@ export function ContactPageClient() {
       }
 
       if (!response.ok || !result.success) {
-        throw new Error(result.message || 'Mesaj göndərilmədi.')
+        throw new Error(result.message || copy.sendError)
       }
 
       const successfulChannels = result.results
@@ -99,15 +166,15 @@ export function ContactPageClient() {
       setSubmitted(true)
       setSubmitMessage(
         successfulChannels
-          ? `Mesaj göndərildi. Aktiv kanallar: ${successfulChannels}.`
-          : result.message || 'Mesaj göndərildi.'
+          ? `Message sent. Active channels: ${successfulChannels}.`
+          : result.message || copy.sent
       )
       setFormData(emptyForm)
     } catch (error) {
       setSubmitMessage(
         error instanceof Error
           ? error.message
-          : 'Mesaj göndərilə bilmədi. Bildiriş ayarlarını yoxla.'
+          : copy.notificationError
       )
     } finally {
       setSubmitting(false)
@@ -117,9 +184,9 @@ export function ContactPageClient() {
   return (
     <>
       <PageHeader
-        title="Əlaqə"
-        description="Bizimlə əlaqə saxlayın, layihəniz haqqında danışaq"
-        breadcrumbs={[{ label: 'Əlaqə' }]}
+        title={copy.headerTitle}
+        description={copy.headerDescription}
+        breadcrumbs={[{ label: copy.headerTitle }]}
       />
 
       <section className="py-16 bg-background">
@@ -162,11 +229,11 @@ export function ContactPageClient() {
             <div>
               <div className="mb-8">
                 <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-                  Əlaqə Formu
+                  {copy.formBadge}
                 </span>
-                <h2 className="text-3xl font-bold text-foreground mb-4">Bizə Yazın</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-4">{copy.formTitle}</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Layihəniz haqqında məlumat verin, qısa müddətdə sizinlə əlaqə saxlayacağıq.
+                  {copy.formDescription}
                 </p>
               </div>
 
@@ -175,17 +242,17 @@ export function ContactPageClient() {
                   <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="fullName">Ad, Soyad *</Label>
+                        <Label htmlFor="fullName">{copy.fullName}</Label>
                         <Input
                           id="fullName"
                           value={formData.fullName}
                           onChange={(e) => setFormData((prev) => ({ ...prev, fullName: e.target.value }))}
-                          placeholder="Adınızı daxil edin"
+                          placeholder={copy.fullNamePlaceholder}
                           required
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">E-poçt *</Label>
+                        <Label htmlFor="email">{copy.emailLabel}</Label>
                         <Input
                           id="email"
                           type="email"
@@ -199,7 +266,7 @@ export function ContactPageClient() {
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="phone">Telefon *</Label>
+                        <Label htmlFor="phone">{copy.phoneLabel}</Label>
                         <Input
                           id="phone"
                           value={formData.phone}
@@ -209,23 +276,23 @@ export function ContactPageClient() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="subject">Mövzu</Label>
+                        <Label htmlFor="subject">{copy.subject}</Label>
                         <Input
                           id="subject"
                           value={formData.subject}
                           onChange={(e) => setFormData((prev) => ({ ...prev, subject: e.target.value }))}
-                          placeholder="Müraciətin mövzusu"
+                          placeholder={copy.subjectPlaceholder}
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Mesaj *</Label>
+                      <Label htmlFor="message">{copy.message}</Label>
                       <Textarea
                         id="message"
                         value={formData.message}
                         onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
-                        placeholder="Layihəniz haqqında ətraflı məlumat verin..."
+                        placeholder={copy.messagePlaceholder}
                         rows={5}
                         required
                       />
@@ -238,7 +305,7 @@ export function ContactPageClient() {
                     )}
 
                     <Button type="submit" size="lg" className="w-full group" disabled={submitting}>
-                      {submitting ? 'Göndərilir...' : 'Göndər'}
+                      {submitting ? copy.sending : copy.send}
                       <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </form>
@@ -249,18 +316,18 @@ export function ContactPageClient() {
             <div>
               <div className="mb-8">
                 <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-                  Məkan
+                  {copy.locationBadge}
                 </span>
-                <h2 className="text-3xl font-bold text-foreground mb-4">Ofisimizi Ziyarət Edin</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-4">{copy.locationTitle}</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Əsas ofisimiz Bakı şəhərinin mərkəzində yerləşir. Görüş üçün əvvəlcədən zəng edin.
+                  {copy.locationDescription}
                 </p>
               </div>
 
               <Card className="border-border/50 overflow-hidden mb-8">
                 {contact.googleMapEmbedUrl ? (
                   <iframe
-                    title="Akin Industry xəritə"
+                    title="Akin Industry map"
                     src={contact.googleMapEmbedUrl}
                     className="aspect-4/3 w-full border-0"
                     loading="lazy"
@@ -279,7 +346,7 @@ export function ContactPageClient() {
               </Card>
 
               <div className="flex items-center justify-center gap-4">
-                <span className="text-foreground font-medium">Bizi izləyin:</span>
+                <span className="text-foreground font-medium">{copy.follow}</span>
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
@@ -299,10 +366,10 @@ export function ContactPageClient() {
       <section className="py-16 bg-primary">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            Layihəniz Haqqında Danışaq
+            {copy.ctaTitle}
           </h2>
           <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
-            Pulsuz məsləhət üçün bu gün bizimlə əlaqə saxlayın
+            {copy.ctaDescription}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
@@ -315,7 +382,7 @@ export function ContactPageClient() {
               asChild
               size="lg"
               variant="outline"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+              className="border-primary-foreground/30 bg-white text-black hover:bg-white hover:text-black"
             >
               <a href={`mailto:${contact.email1}`}>
                 <Mail className="mr-2 h-4 w-4" />
