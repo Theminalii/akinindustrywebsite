@@ -3,6 +3,9 @@
 import { useEffect, useState } from 'react'
 import { useLanguage } from '@/lib/language-context'
 import { cn } from '@/lib/utils'
+import hero1 from '@/public/images/hero/hero-1.webp'
+import hero2 from '@/public/images/hero/hero-2.webp'
+import hero3 from '@/public/images/hero/hero-3.webp'
 
 const slides = {
   en: [
@@ -10,19 +13,19 @@ const slides = {
       id: 1,
       title: 'High-Quality Construction Solutions',
       description: 'We bring ambitious ideas to life with modern technology and a highly skilled team.',
-      image: '/images/hero/hero-1.webp',
+      image: hero1,
     },
     {
       id: 2,
       title: 'A Leader in Industrial Construction',
       description: 'A trusted partner for factories, warehouses, and large-scale industrial facilities.',
-      image: '/images/hero/hero-2.webp',
+      image: hero2,
     },
     {
       id: 3,
       title: 'Modern Living Spaces',
       description: 'We create comfortable and contemporary spaces designed for modern life.',
-      image: '/images/hero/hero-3.webp',
+      image: hero3,
     },
   ],
   az: [
@@ -30,19 +33,19 @@ const slides = {
       id: 1,
       title: 'Yüksək Keyfiyyətli Tikinti Həlləri',
       description: 'Müasir texnologiya və güclü peşəkar komanda ilə böyük ideyaları reallığa çeviririk.',
-      image: '/images/hero/hero-1.webp',
+      image: hero1,
     },
     {
       id: 2,
       title: 'Sənaye Tikintisində Etibarlı Lider',
       description: 'Zavodlar, anbarlar və iri sənaye obyektləri üçün güvənilən tərəfdaş.',
-      image: '/images/hero/hero-2.webp',
+      image: hero2,
     },
     {
       id: 3,
       title: 'Müasir Yaşam Məkanları',
       description: 'Müasir həyat üçün rahat və funksional məkanlar yaradırıq.',
-      image: '/images/hero/hero-3.webp',
+      image: hero3,
     },
   ],
 }
@@ -78,7 +81,7 @@ export function HeroCarousel() {
           {/* Background Image with Overlay */}
           <div 
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slide.image})` }}
+            style={{ backgroundImage: `url(${slide.image.src})` }}
           >
             <div className="absolute inset-0 bg-linear-to-r from-primary/90 via-primary/70 to-primary/40" />
           </div>
