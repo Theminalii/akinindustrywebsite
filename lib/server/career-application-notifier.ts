@@ -26,6 +26,15 @@ function truncate(text: string, maxLength: number) {
   return `${text.slice(0, maxLength - 3)}...`
 }
 
+function escapeHtml(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+}
+
 function formatApplicationLines(application: CareerApplicationPayload, attachment?: Attachment) {
   return [
     'Yeni vakansiya müraciəti',
@@ -77,7 +86,7 @@ function formatApplicationHtml(application: CareerApplicationPayload, attachment
       ${lines
         .map((line) =>
           line
-            ? `<p style="margin: 0 0 10px;">${line.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</p>`
+            ? `<p style="margin: 0 0 10px;">${escapeHtml(line)}</p>`
             : '<div style="height: 8px;"></div>'
         )
         .join('')}
@@ -108,6 +117,9 @@ async function sendViaGmail(
       user: senderEmail,
       pass: appPassword,
     },
+    connectionTimeout: 15_000,
+    greetingTimeout: 15_000,
+    socketTimeout: 30_000,
   })
 
   await transporter.sendMail({
@@ -157,6 +169,7 @@ async function sendViaTelegram(
       chat_id: chatId,
       text: truncate(text, 4000),
     }),
+    signal: AbortSignal.timeout(15_000),
   })
 
   if (!sendMessageResponse.ok) {
@@ -177,6 +190,7 @@ async function sendViaTelegram(
     const sendDocumentResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendDocument`, {
       method: 'POST',
       body: telegramForm,
+      signal: AbortSignal.timeout(30_000),
     })
 
     if (!sendDocumentResponse.ok) {
@@ -209,6 +223,7 @@ async function uploadWhatsAppMedia(
         Authorization: `Bearer ${settings.whatsapp.accessToken}`,
       },
       body: mediaForm,
+      signal: AbortSignal.timeout(30_000),
     }
   )
 
@@ -257,6 +272,7 @@ async function sendViaWhatsApp(
           body: truncate(formatApplicationText(application, attachment), 3500),
         },
       }),
+      signal: AbortSignal.timeout(15_000),
     }
   )
 
@@ -287,6 +303,7 @@ async function sendViaWhatsApp(
             filename: attachment.filename,
           },
         }),
+        signal: AbortSignal.timeout(15_000),
       }
     )
 

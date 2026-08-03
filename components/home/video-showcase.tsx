@@ -48,6 +48,12 @@ export function VideoShowcase() {
   useEffect(() => {
     const currentVideo = videoRefs.current[current]
     if (currentVideo && isVisible) {
+      videoRefs.current.forEach((video, index) => {
+        if (video && index !== current) {
+          video.pause()
+          video.currentTime = 0
+        }
+      })
       currentVideo.play().catch(() => {
         // Handle play promise rejection (e.g., autoplay blocked)
       })
@@ -69,7 +75,7 @@ export function VideoShowcase() {
           key={index}
           ref={(el) => { videoRefs.current[index] = el }}
           src={video}
-          autoPlay
+          preload={index === current ? 'metadata' : 'none'}
           muted
           playsInline
           controls={false}

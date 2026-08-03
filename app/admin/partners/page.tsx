@@ -38,17 +38,16 @@ export default function AdminPartnersPage() {
     e.target.value = ''
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.name || !formData.logo) {
       alert('Şirkət adı və logo mütləqdir.')
       return
     }
 
-    if (editingId) {
-      updatePartner(editingId, formData)
-    } else {
-      addPartner({ id: Date.now().toString(), ...formData })
-    }
+    const result = editingId
+      ? await updatePartner(editingId, formData)
+      : await addPartner({ id: crypto.randomUUID(), ...formData })
+    if (!result.success) return alert(result.message)
 
     handleCancel()
   }

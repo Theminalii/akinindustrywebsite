@@ -20,6 +20,15 @@ function truncate(text: string, maxLength: number) {
   return `${text.slice(0, maxLength - 3)}...`
 }
 
+function escapeHtml(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+}
+
 function formatContactLines(payload: ContactFormPayload) {
   return [
     'Yeni əlaqə müraciəti',
@@ -44,7 +53,7 @@ function formatContactHtml(payload: ContactFormPayload) {
       ${lines
         .map((line) =>
           line
-            ? `<p style="margin: 0 0 10px;">${line.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</p>`
+            ? `<p style="margin: 0 0 10px;">${escapeHtml(line)}</p>`
             : '<div style="height: 8px;"></div>'
         )
         .join('')}
@@ -74,6 +83,9 @@ async function sendViaGmail(
       user: senderEmail,
       pass: appPassword,
     },
+    connectionTimeout: 15_000,
+    greetingTimeout: 15_000,
+    socketTimeout: 30_000,
   })
 
   await transporter.sendMail({
@@ -119,6 +131,7 @@ async function sendViaWhatsApp(
           body: truncate(formatContactText(payload), 3500),
         },
       }),
+      signal: AbortSignal.timeout(15_000),
     }
   )
 

@@ -11,7 +11,6 @@ import {
   FileText,
   Hammer,
   Handshake,
-  Image as ImageIcon,
   LayoutDashboard,
   LockKeyhole,
   LogOut,
@@ -35,7 +34,6 @@ const navItems = [
   { href: '/admin/jobs', label: 'Vakansiyalar', icon: Briefcase },
   { href: '/admin/certificates', label: 'Sertifikatlar', icon: Award },
   { href: '/admin/partners', label: 'Tərəfdaşlar', icon: Handshake },
-  { href: '/admin/images', label: 'Şəkillər', icon: ImageIcon },
   { href: '/admin/contact', label: 'Əlaqə', icon: Phone },
   { href: '/admin/notifications', label: 'Bildirişlər', icon: BellRing },
   { href: '/admin/settings', label: 'Ayarlar', icon: Settings },
@@ -48,10 +46,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const isLoggedIn = login(email, password)
+    const isLoggedIn = await login(email, password)
     if (!isLoggedIn) {
       setError('Email və ya şifrə yanlışdır.')
       return

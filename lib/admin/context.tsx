@@ -27,51 +27,49 @@ interface ActionResult {
 
 interface AdminContextType {
   projects: Project[]
-  addProject: (project: Project) => void
-  updateProject: (id: string, project: Partial<Project>) => void
-  deleteProject: (id: string) => void
+  addProject: (project: Project) => Promise<ActionResult>
+  updateProject: (id: string, project: Partial<Project>) => Promise<ActionResult>
+  deleteProject: (id: string) => Promise<ActionResult>
   news: NewsArticle[]
-  addNews: (article: NewsArticle) => void
-  updateNews: (id: string, article: Partial<NewsArticle>) => void
-  deleteNews: (id: string) => void
+  addNews: (article: NewsArticle) => Promise<ActionResult>
+  updateNews: (id: string, article: Partial<NewsArticle>) => Promise<ActionResult>
+  deleteNews: (id: string) => Promise<ActionResult>
   team: TeamMember[]
-  addTeam: (member: TeamMember) => void
-  updateTeam: (id: string, member: Partial<TeamMember>) => void
-  deleteTeam: (id: string) => void
+  addTeam: (member: TeamMember) => Promise<ActionResult>
+  updateTeam: (id: string, member: Partial<TeamMember>) => Promise<ActionResult>
+  deleteTeam: (id: string) => Promise<ActionResult>
   services: Service[]
-  addService: (service: Service) => void
-  updateService: (id: string, service: Partial<Service>) => void
-  deleteService: (id: string) => void
+  addService: (service: Service) => Promise<ActionResult>
+  updateService: (id: string, service: Partial<Service>) => Promise<ActionResult>
+  deleteService: (id: string) => Promise<ActionResult>
   jobs: JobPosition[]
-  addJob: (job: JobPosition) => void
-  updateJob: (id: string, job: Partial<JobPosition>) => void
-  deleteJob: (id: string) => void
+  addJob: (job: JobPosition) => Promise<ActionResult>
+  updateJob: (id: string, job: Partial<JobPosition>) => Promise<ActionResult>
+  deleteJob: (id: string) => Promise<ActionResult>
   certificates: Certificate[]
-  addCertificate: (certificate: Certificate) => void
-  updateCertificate: (id: string, certificate: Partial<Certificate>) => void
-  deleteCertificate: (id: string) => void
+  addCertificate: (certificate: Certificate) => Promise<ActionResult>
+  updateCertificate: (id: string, certificate: Partial<Certificate>) => Promise<ActionResult>
+  deleteCertificate: (id: string) => Promise<ActionResult>
   partners: Partner[]
-  addPartner: (partner: Partner) => void
-  updatePartner: (id: string, partner: Partial<Partner>) => void
-  deletePartner: (id: string) => void
+  addPartner: (partner: Partner) => Promise<ActionResult>
+  updatePartner: (id: string, partner: Partial<Partner>) => Promise<ActionResult>
+  deletePartner: (id: string) => Promise<ActionResult>
   contact: ContactInfo
-  updateContact: (info: ContactInfo) => void
+  updateContact: (info: ContactInfo) => Promise<ActionResult>
   stats: CompanyStats
-  updateStats: (stats: CompanyStats) => void
+  updateStats: (stats: CompanyStats) => Promise<ActionResult>
   adminAccounts: AdminAccount[]
-  addAdminAccount: (account: Omit<AdminAccount, 'id'>) => ActionResult
-  updateAdminAccountPassword: (id: string, password: string) => ActionResult
-  changeCurrentAdminPassword: (currentPassword: string, newPassword: string) => ActionResult
-  deleteAdminAccount: (id: string) => ActionResult
+  addAdminAccount: (account: Omit<AdminAccount, 'id'>) => Promise<ActionResult>
+  updateAdminAccountPassword: (id: string, password: string) => Promise<ActionResult>
+  changeCurrentAdminPassword: (currentPassword: string, newPassword: string) => Promise<ActionResult>
+  deleteAdminAccount: (id: string) => Promise<ActionResult>
   currentAdmin: AdminAccount | null
   isAuthenticated: boolean
   isReady: boolean
   persistenceError: string | null
-  login: (email: string, password: string) => boolean
+  login: (email: string, password: string) => Promise<boolean>
   logout: () => void
 }
-
-const AUTH_STORAGE_KEY = 'akin_admin_auth'
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined)
 
@@ -105,6 +103,12 @@ async function fetchAdminContent() {
     data: AdminContentData
     hasStoredData: boolean
   }
+}
+
+async function fetchAdminSession() {
+  const response = await fetch('/api/admin/auth', { cache: 'no-store' })
+  if (!response.ok) return { authenticated: false, email: null }
+  return (await response.json()) as { authenticated: boolean; email: string | null }
 }
 
 async function saveAdminContent(data: AdminContentData) {
@@ -161,11 +165,15 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
 
     const loadAdminData = async () => {
       try {
-        const serverPayload = await fetchAdminContent()
+        const [session, serverPayload] = await Promise.all([
+          fetchAdminSession(),
+          fetchAdminContent(),
+        ])
         const resolvedData = mergeAdminContent(serverPayload.data)
 
         if (isMounted) {
           applyAdminContent(resolvedData)
+          setCurrentAdminEmail(session.authenticated ? session.email : null)
           setPersistenceError(null)
         }
       } catch (error) {
@@ -175,13 +183,6 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
         }
       } finally {
         if (!isMounted) return
-
-        const auth = localStorage.getItem(AUTH_STORAGE_KEY)
-        if (auth) {
-          const normalizedEmail =
-            auth === 'true' ? defaultAdminAccounts[0].email : auth.trim().toLowerCase()
-          setCurrentAdminEmail(normalizedEmail)
-        }
 
         setIsLoaded(true)
       }
@@ -195,43 +196,29 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   }, [applyAdminContent])
 
   const commitAdminContent = useCallback(
-    (update: (current: AdminContentData) => AdminContentData) => {
-      saveQueue.current = saveQueue.current
+    (update: (current: AdminContentData) => AdminContentData): Promise<ActionResult> => {
+      const operation = saveQueue.current
         .catch(() => undefined)
         .then(async () => {
           const next = update(contentRef.current)
           const saved = await saveAdminContent(next)
           applyAdminContent(mergeAdminContent(saved))
           setPersistenceError(null)
+          return { success: true } satisfies ActionResult
         })
         .catch((error) => {
           console.error('Error saving admin data:', error)
           setPersistenceError('MySQL-ə yazmaq mümkün olmadı. Dəyişiklik tətbiq edilmədi.')
+          return {
+            success: false,
+            message: 'MySQL-ə yazmaq mümkün olmadı. Dəyişiklik yadda saxlanmadı.',
+          } satisfies ActionResult
         })
+      saveQueue.current = operation.then(() => undefined)
+      return operation
     },
     [applyAdminContent]
   )
-
-  useEffect(() => {
-    if (!isLoaded) return
-
-    if (!currentAdminEmail) {
-      localStorage.removeItem(AUTH_STORAGE_KEY)
-      return
-    }
-
-    const exists = adminAccounts.some(
-      (account) => account.email.trim().toLowerCase() === currentAdminEmail.trim().toLowerCase()
-    )
-
-    if (!exists) {
-      setCurrentAdminEmail(null)
-      localStorage.removeItem(AUTH_STORAGE_KEY)
-      return
-    }
-
-    localStorage.setItem(AUTH_STORAGE_KEY, currentAdminEmail)
-  }, [adminAccounts, currentAdminEmail, isLoaded])
 
   const currentAdmin = useMemo(
     () =>
@@ -243,110 +230,113 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   )
 
   const addProject = useCallback((project: Project) => {
-    commitAdminContent((current) => ({ ...current, projects: [...current.projects, project] }))
+    return commitAdminContent((current) => ({ ...current, projects: [...current.projects, project] }))
   }, [commitAdminContent])
 
   const updateProject = useCallback((id: string, updates: Partial<Project>) => {
-    commitAdminContent((current) => ({ ...current, projects: current.projects.map((project) =>
+    return commitAdminContent((current) => ({ ...current, projects: current.projects.map((project) =>
       project.id === id ? { ...project, ...updates } : project) }))
   }, [commitAdminContent])
 
   const deleteProject = useCallback((id: string) => {
-    commitAdminContent((current) => ({ ...current, projects: current.projects.filter((project) => project.id !== id) }))
+    return commitAdminContent((current) => ({ ...current, projects: current.projects.filter((project) => project.id !== id) }))
   }, [commitAdminContent])
 
   const addNews = useCallback((article: NewsArticle) => {
-    commitAdminContent((current) => ({ ...current, news: [...current.news, article] }))
+    return commitAdminContent((current) => ({ ...current, news: [...current.news, article] }))
   }, [commitAdminContent])
 
   const updateNews = useCallback((id: string, updates: Partial<NewsArticle>) => {
-    commitAdminContent((current) => ({ ...current, news: current.news.map((article) =>
+    return commitAdminContent((current) => ({ ...current, news: current.news.map((article) =>
       article.id === id ? { ...article, ...updates } : article) }))
   }, [commitAdminContent])
 
   const deleteNews = useCallback((id: string) => {
-    commitAdminContent((current) => ({ ...current, news: current.news.filter((article) => article.id !== id) }))
+    return commitAdminContent((current) => ({ ...current, news: current.news.filter((article) => article.id !== id) }))
   }, [commitAdminContent])
 
   const addTeam = useCallback((member: TeamMember) => {
-    commitAdminContent((current) => ({ ...current, team: [...current.team, member] }))
+    return commitAdminContent((current) => ({ ...current, team: [...current.team, member] }))
   }, [commitAdminContent])
 
   const updateTeam = useCallback((id: string, updates: Partial<TeamMember>) => {
-    commitAdminContent((current) => ({ ...current, team: current.team.map((member) =>
+    return commitAdminContent((current) => ({ ...current, team: current.team.map((member) =>
       member.id === id ? { ...member, ...updates } : member) }))
   }, [commitAdminContent])
 
   const deleteTeam = useCallback((id: string) => {
-    commitAdminContent((current) => ({ ...current, team: current.team.filter((member) => member.id !== id) }))
+    return commitAdminContent((current) => ({ ...current, team: current.team.filter((member) => member.id !== id) }))
   }, [commitAdminContent])
 
   const addService = useCallback((service: Service) => {
-    commitAdminContent((current) => ({ ...current, services: [...current.services, service] }))
+    return commitAdminContent((current) => ({ ...current, services: [...current.services, service] }))
   }, [commitAdminContent])
 
   const updateService = useCallback((id: string, updates: Partial<Service>) => {
-    commitAdminContent((current) => ({ ...current, services: current.services.map((service) =>
+    return commitAdminContent((current) => ({ ...current, services: current.services.map((service) =>
       service.id === id ? { ...service, ...updates } : service) }))
   }, [commitAdminContent])
 
   const deleteService = useCallback((id: string) => {
-    commitAdminContent((current) => ({ ...current, services: current.services.filter((service) => service.id !== id) }))
+    return commitAdminContent((current) => ({ ...current, services: current.services.filter((service) => service.id !== id) }))
   }, [commitAdminContent])
 
   const addJob = useCallback((job: JobPosition) => {
-    commitAdminContent((current) => ({ ...current, jobs: [...current.jobs, job] }))
+    return commitAdminContent((current) => ({ ...current, jobs: [...current.jobs, job] }))
   }, [commitAdminContent])
 
   const updateJob = useCallback((id: string, updates: Partial<JobPosition>) => {
-    commitAdminContent((current) => ({ ...current, jobs: current.jobs.map((job) =>
+    return commitAdminContent((current) => ({ ...current, jobs: current.jobs.map((job) =>
       job.id === id ? { ...job, ...updates } : job) }))
   }, [commitAdminContent])
 
   const deleteJob = useCallback((id: string) => {
-    commitAdminContent((current) => ({ ...current, jobs: current.jobs.filter((job) => job.id !== id) }))
+    return commitAdminContent((current) => ({ ...current, jobs: current.jobs.filter((job) => job.id !== id) }))
   }, [commitAdminContent])
 
   const addCertificate = useCallback((certificate: Certificate) => {
-    commitAdminContent((current) => ({ ...current, certificates: [...current.certificates, certificate] }))
+    return commitAdminContent((current) => ({ ...current, certificates: [...current.certificates, certificate] }))
   }, [commitAdminContent])
 
   const updateCertificate = useCallback((id: string, updates: Partial<Certificate>) => {
-    commitAdminContent((current) => ({ ...current, certificates: current.certificates.map((certificate) =>
+    return commitAdminContent((current) => ({ ...current, certificates: current.certificates.map((certificate) =>
       certificate.id === id ? { ...certificate, ...updates } : certificate) }))
   }, [commitAdminContent])
 
   const deleteCertificate = useCallback((id: string) => {
-    commitAdminContent((current) => ({ ...current, certificates: current.certificates.filter((certificate) => certificate.id !== id) }))
+    return commitAdminContent((current) => ({ ...current, certificates: current.certificates.filter((certificate) => certificate.id !== id) }))
   }, [commitAdminContent])
 
   const addPartner = useCallback((partner: Partner) => {
-    commitAdminContent((current) => ({ ...current, partners: [...current.partners, partner] }))
+    return commitAdminContent((current) => ({ ...current, partners: [...current.partners, partner] }))
   }, [commitAdminContent])
 
   const updatePartner = useCallback((id: string, updates: Partial<Partner>) => {
-    commitAdminContent((current) => ({ ...current, partners: current.partners.map((partner) =>
+    return commitAdminContent((current) => ({ ...current, partners: current.partners.map((partner) =>
       partner.id === id ? { ...partner, ...updates } : partner) }))
   }, [commitAdminContent])
 
   const deletePartner = useCallback((id: string) => {
-    commitAdminContent((current) => ({ ...current, partners: current.partners.filter((partner) => partner.id !== id) }))
+    return commitAdminContent((current) => ({ ...current, partners: current.partners.filter((partner) => partner.id !== id) }))
   }, [commitAdminContent])
 
   const updateContact = useCallback((info: ContactInfo) => {
-    commitAdminContent((current) => ({ ...current, contact: info }))
+    return commitAdminContent((current) => ({ ...current, contact: info }))
   }, [commitAdminContent])
 
   const updateStats = useCallback((newStats: CompanyStats) => {
-    commitAdminContent((current) => ({ ...current, stats: newStats }))
+    return commitAdminContent((current) => ({ ...current, stats: newStats }))
   }, [commitAdminContent])
 
   const addAdminAccount = useCallback(
-    (account: Omit<AdminAccount, 'id'>): ActionResult => {
+    async (account: Omit<AdminAccount, 'id'>): Promise<ActionResult> => {
       const normalizedEmail = account.email.trim().toLowerCase()
 
       if (!account.name.trim() || !normalizedEmail || !account.password.trim()) {
         return { success: false, message: 'Ad, email və şifrə mütləqdir.' }
+      }
+      if (account.password.length < 12) {
+        return { success: false, message: 'Şifrə minimum 12 simvol olmalıdır.' }
       }
 
       const exists = adminAccounts.some((item) => item.email.trim().toLowerCase() === normalizedEmail)
@@ -355,34 +345,39 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
         return { success: false, message: 'Bu email ilə hesab artıq mövcuddur.' }
       }
 
-      commitAdminContent((current) => ({
+      const result = await commitAdminContent((current) => ({
         ...current,
         adminAccounts: [...current.adminAccounts, {
-          id: Date.now().toString(),
+          id: crypto.randomUUID(),
           name: account.name.trim(),
           email: normalizedEmail,
           password: account.password,
         }],
       }))
 
-      return { success: true, message: 'Yeni hesab əlavə olundu.' }
+      return result.success
+        ? { success: true, message: 'Yeni hesab əlavə olundu.' }
+        : result
     },
     [adminAccounts, commitAdminContent]
   )
 
-  const updateAdminAccountPassword = useCallback((id: string, password: string): ActionResult => {
+  const updateAdminAccountPassword = useCallback(async (id: string, password: string): Promise<ActionResult> => {
     if (!password.trim()) {
       return { success: false, message: 'Şifrə boş ola bilməz.' }
     }
+    if (password.length < 12) {
+      return { success: false, message: 'Şifrə minimum 12 simvol olmalıdır.' }
+    }
 
-    commitAdminContent((current) => ({ ...current, adminAccounts: current.adminAccounts.map((account) =>
+    const result = await commitAdminContent((current) => ({ ...current, adminAccounts: current.adminAccounts.map((account) =>
       account.id === id ? { ...account, password } : account) }))
 
-    return { success: true, message: 'Şifrə yeniləndi.' }
+    return result.success ? { success: true, message: 'Şifrə yeniləndi.' } : result
   }, [commitAdminContent])
 
   const changeCurrentAdminPassword = useCallback(
-    (currentPassword: string, newPassword: string): ActionResult => {
+    async (currentPassword: string, newPassword: string): Promise<ActionResult> => {
       const activeAdmin = adminAccounts.find(
         (account) => account.email.trim().toLowerCase() === currentAdminEmail?.trim().toLowerCase()
       )
@@ -394,6 +389,9 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       if (!currentPassword.trim() || !newPassword.trim()) {
         return { success: false, message: 'Bütün şifrə sahələri doldurulmalıdır.' }
       }
+      if (newPassword.length < 12) {
+        return { success: false, message: 'Yeni şifrə minimum 12 simvol olmalıdır.' }
+      }
 
       if (activeAdmin.password !== currentPassword) {
         return { success: false, message: 'Mövcud şifrə yanlışdır.' }
@@ -403,17 +401,19 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
         return { success: false, message: 'Yeni şifrə əvvəlki ilə eyni ola bilməz.' }
       }
 
-      commitAdminContent((content) => ({ ...content, adminAccounts: content.adminAccounts.map((account) =>
+      const result = await commitAdminContent((content) => ({ ...content, adminAccounts: content.adminAccounts.map((account) =>
           account.id === activeAdmin.id ? { ...account, password: newPassword } : account
         ) }))
 
-      return { success: true, message: 'Login şifrəsi uğurla dəyişdirildi.' }
+      return result.success
+        ? { success: true, message: 'Login şifrəsi uğurla dəyişdirildi.' }
+        : result
     },
     [adminAccounts, currentAdminEmail, commitAdminContent]
   )
 
   const deleteAdminAccount = useCallback(
-    (id: string): ActionResult => {
+    async (id: string): Promise<ActionResult> => {
       if (adminAccounts.length === 1) {
         return { success: false, message: 'Son hesabı silmək olmaz.' }
       }
@@ -423,11 +423,11 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
         return { success: false, message: 'Hesab tapılmadı.' }
       }
 
-      commitAdminContent((current) => ({ ...current, adminAccounts: current.adminAccounts.filter((account) => account.id !== id) }))
+      const result = await commitAdminContent((current) => ({ ...current, adminAccounts: current.adminAccounts.filter((account) => account.id !== id) }))
+      if (!result.success) return result
 
       if (accountToDelete.email.trim().toLowerCase() === currentAdminEmail?.trim().toLowerCase()) {
         setCurrentAdminEmail(null)
-        localStorage.removeItem(AUTH_STORAGE_KEY)
         return { success: true, message: 'Aktiv hesab silindi, sessiya bağlandı.' }
       }
 
@@ -437,27 +437,28 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   )
 
   const login = useCallback(
-    (email: string, password: string) => {
-      const normalizedEmail = email.trim().toLowerCase()
-      const matchedAccount = adminAccounts.find(
-        (account) =>
-          account.email.trim().toLowerCase() === normalizedEmail && account.password === password
-      )
-
-      if (!matchedAccount) {
+    async (email: string, password: string) => {
+      const response = await fetch('/api/admin/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      })
+      if (!response.ok) {
         return false
       }
 
-      setCurrentAdminEmail(matchedAccount.email)
-      localStorage.setItem(AUTH_STORAGE_KEY, matchedAccount.email)
+      const session = (await response.json()) as { email: string }
+      const serverPayload = await fetchAdminContent()
+      applyAdminContent(mergeAdminContent(serverPayload.data))
+      setCurrentAdminEmail(session.email)
       return true
     },
-    [adminAccounts]
+    [applyAdminContent]
   )
 
   const logout = useCallback(() => {
+    void fetch('/api/admin/auth', { method: 'DELETE' })
     setCurrentAdminEmail(null)
-    localStorage.removeItem(AUTH_STORAGE_KEY)
   }, [])
 
   const value: AdminContextType = {

@@ -4,9 +4,11 @@ import Link from 'next/link'
 import { Phone, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/lib/language-context'
+import { useAdmin } from '@/lib/admin/context'
 
 export function CTASection() {
   const { locale } = useLanguage()
+  const { contact } = useAdmin()
   const copy =
     locale === 'az'
       ? {
@@ -52,9 +54,9 @@ export function CTASection() {
               variant="outline"
               className="bg-white text-black hover:bg-white/90 hover:text-primary"
             >
-              <a href="tel:+994123456789">
+              <a href={`tel:${contact.phone1}`}>
                 <Phone className="mr-2 h-4 w-4" />
-                +994 55 350 30 69
+                {contact.phone1}
               </a>
             </Button>
           </div>

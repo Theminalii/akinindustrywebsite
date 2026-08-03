@@ -225,15 +225,17 @@ function GenericNewsPage({ article, locale }: { article: NewsArticle; locale: 'e
         </h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">{article.excerpt}</p>
 
-        <div className="relative mt-10 overflow-hidden rounded-[24px] bg-[#0d1624] shadow-[0_25px_60px_rgba(15,23,42,0.18)]">
-          <Image
-            src={article.image}
-            alt={article.title}
-            width={1600}
-            height={960}
-            className="h-full w-full object-cover"
-          />
-        </div>
+        {article.image && (
+          <div className="relative mt-10 overflow-hidden rounded-[24px] bg-[#0d1624] shadow-[0_25px_60px_rgba(15,23,42,0.18)]">
+            <Image
+              src={article.image}
+              alt={article.title}
+              width={1600}
+              height={960}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        )}
 
         <article className="mt-10 rounded-[24px] bg-card p-7 shadow-[0_20px_50px_rgba(15,23,42,0.08)] sm:p-10">
           {paragraphs.map((paragraph, index) => (

@@ -46,17 +46,25 @@ export default function AdminCertificatesPage() {
     e.target.value = ''
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.title || !formData.slug || !formData.description) {
       alert('Başlıq, slug və təsvir sahələri mütləqdir.')
       return
     }
 
-    if (editingId) {
-      updateCertificate(editingId, formData)
-    } else {
-      addCertificate({ id: Date.now().toString(), ...formData })
+    const payload = {
+      ...formData,
+      slug: formData.slug
+        .trim()
+        .toLocaleLowerCase('az')
+        .replace(/\s+/g, '-')
+        .replace(/[^a-z0-9əğıöşüç-]/g, '')
+        .replace(/-+/g, '-'),
     }
+    const result = editingId
+      ? await updateCertificate(editingId, payload)
+      : await addCertificate({ id: crypto.randomUUID(), ...payload })
+    if (!result.success) return alert(result.message)
 
     handleCancel()
   }

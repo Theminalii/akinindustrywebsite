@@ -33,17 +33,25 @@ export default function AdminNewsPage() {
   const [editingId, setEditingId] = useState<string | null>(null)
   const [formData, setFormData] = useState<NewsFormData>(emptyForm)
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.title || !formData.slug || !formData.excerpt) {
       alert('Basliq, slug ve qisa tesvir doldurulmalidir.')
       return
     }
 
-    if (editingId) {
-      updateNews(editingId, formData)
-    } else {
-      addNews({ id: Date.now().toString(), ...formData })
+    const payload = {
+      ...formData,
+      slug: formData.slug
+        .trim()
+        .toLocaleLowerCase('az')
+        .replace(/\s+/g, '-')
+        .replace(/[^a-z0-9əğıöşüç-]/g, '')
+        .replace(/-+/g, '-'),
     }
+    const result = editingId
+      ? await updateNews(editingId, payload)
+      : await addNews({ id: crypto.randomUUID(), ...payload })
+    if (!result.success) return alert(result.message)
 
     handleCancel()
   }

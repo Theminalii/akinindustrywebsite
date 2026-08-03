@@ -5,7 +5,7 @@ import { PageHeader } from '@/components/shared/page-header'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Building2, PencilRuler, Wrench, Route, ClipboardCheck, Factory, CheckCircle2, ArrowRight, Phone } from 'lucide-react'
-import { services } from '@/lib/data'
+import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
 import { translateService } from '@/lib/site-translations'
 
@@ -46,17 +46,9 @@ const processStepsEn = [
   },
 ]
 
-const advantagesEn = [
-  'ISO 9001:2015 certified quality management system',
-  'Construction materials aligned with international standards',
-  '350+ professional engineers and field specialists',
-  'Modern construction technologies and equipment',
-  '25 years of sector experience and successful delivery',
-  'Projects completed on time and within budget',
-]
-
 export default function ServicesPage() {
   const { locale } = useLanguage()
+  const { services, contact, stats } = useAdmin()
   const processSteps =
     locale === 'az'
       ? [
@@ -72,12 +64,19 @@ export default function ServicesPage() {
       ? [
           'ISO 9001:2015 sertifikatlı keyfiyyət idarəetmə sistemi',
           'Beynəlxalq standartlara uyğun tikinti materialları',
-          '350+ peşəkar mühəndis və sahə mütəxəssisi',
+          `${stats.employees}+ peşəkar mühəndis və sahə mütəxəssisi`,
           'Müasir tikinti texnologiyaları və avadanlıqları',
-          '25 illik sektor təcrübəsi və uğurlu təhvil',
+          `${stats.years} illik sektor təcrübəsi və uğurlu təhvil`,
           'Vaxtında və büdcə daxilində tamamlanan layihələr',
         ]
-      : advantagesEn
+      : [
+          'ISO 9001:2015 certified quality management system',
+          'Construction materials aligned with international standards',
+          `${stats.employees}+ professional engineers and field specialists`,
+          'Modern construction technologies and equipment',
+          `${stats.years} years of sector experience and successful delivery`,
+          'Projects completed on time and within budget',
+        ]
   const copy =
     locale === 'az'
       ? {
@@ -93,7 +92,7 @@ export default function ServicesPage() {
           whyBadge: 'Niyə Biz?',
           whyTitle: 'Etibarlı Tikinti Tərəfdaşınız',
           whyDescription:
-            '25 ildən artıq təcrübə və yüzlərlə tamamlanmış layihə ilə peşəkar komandamız sizin tikinti ehtiyaclarınız üçün doğru seçimdir.',
+            `${stats.years} ildən artıq təcrübə və ${stats.projects}+ tamamlanmış layihə ilə peşəkar komandamız sizin tikinti ehtiyaclarınız üçün doğru seçimdir.`,
           success: 'Uğurlu Layihə',
           ctaTitle: 'Layihəniz Üçün Ödənişsiz Təklif Alın',
           ctaDescription: 'Layihənizi müzakirə etmək və ətraflı təklif almaq üçün bizimlə əlaqə saxlayın.',
@@ -112,7 +111,7 @@ export default function ServicesPage() {
           whyBadge: 'Why Us?',
           whyTitle: 'Your Reliable Construction Partner',
           whyDescription:
-            'With more than 25 years of experience and hundreds of completed projects, our professional team is the right choice for your construction needs.',
+            `With more than ${stats.years} years of experience and ${stats.projects}+ completed projects, our professional team is the right choice for your construction needs.`,
           success: 'Successful Projects',
           ctaTitle: 'Get a Free Quote for Your Project',
           ctaDescription: 'Contact us today to discuss your project and receive a detailed quotation.',
@@ -225,8 +224,8 @@ export default function ServicesPage() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 md:bottom-8 md:-right-8 bg-accent text-accent-foreground p-6 rounded-xl shadow-xl">
-                <div className="text-4xl font-bold">500+</div>
+              <div className="absolute -bottom-6 right-0 md:bottom-8 md:-right-8 bg-accent text-accent-foreground p-6 rounded-xl shadow-xl">
+                <div className="text-4xl font-bold">{stats.projects}+</div>
                 <div className="text-sm">{copy.success}</div>
               </div>
             </div>
@@ -283,9 +282,9 @@ export default function ServicesPage() {
                 variant="outline"
                 className="border-primary-foreground/30 bg-white text-black hover:bg-white hover:text-black"
               >
-                <a href="tel:+994123456789">
+                <a href={`tel:${contact.phone1}`}>
                   <Phone className="mr-2 h-4 w-4" />
-                  +994 55 350 30 69
+                  {contact.phone1}
                 </a>
               </Button>
             </div>

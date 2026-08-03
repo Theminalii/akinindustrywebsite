@@ -42,17 +42,16 @@ export default function AdminTeamPage() {
     e.target.value = ''
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.name || !formData.position) {
       alert('Ad ve vezife sahesi bos qala bilmez.')
       return
     }
 
-    if (editingId) {
-      updateTeam(editingId, formData)
-    } else {
-      addTeam({ id: Date.now().toString(), ...formData })
-    }
+    const result = editingId
+      ? await updateTeam(editingId, formData)
+      : await addTeam({ id: crypto.randomUUID(), ...formData })
+    if (!result.success) return alert(result.message)
 
     handleCancel()
   }

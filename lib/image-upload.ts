@@ -2,6 +2,7 @@
 
 const DEFAULT_MAX_DIMENSION = 1600
 const DEFAULT_QUALITY = 0.82
+const MAX_DATA_URL_LENGTH = 1_500_000
 
 function readFileAsDataUrl(file: File) {
   return new Promise<string>((resolve, reject) => {
@@ -50,6 +51,11 @@ export async function optimizeImageFile(
   context.drawImage(image, 0, 0, width, height)
 
   const compressedDataUrl = canvas.toDataURL('image/webp', quality)
+  const result = compressedDataUrl.length < sourceDataUrl.length ? compressedDataUrl : sourceDataUrl
 
-  return compressedDataUrl.length < sourceDataUrl.length ? compressedDataUrl : sourceDataUrl
+  if (result.length > MAX_DATA_URL_LENGTH) {
+    throw new Error('Şəkil sıxıldıqdan sonra da çox böyükdür. Maksimum 1 MB şəkil seçin.')
+  }
+
+  return result
 }

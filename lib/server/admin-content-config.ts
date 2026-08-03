@@ -6,6 +6,25 @@ import {
 import type { AdminContentData } from '@/lib/admin/types'
 import { readAdminState, writeAdminState } from '@/lib/server/admin-database'
 
+function withBootstrapAdmin(data: AdminContentData): AdminContentData {
+  if (data.adminAccounts.some((account) => account.password.trim())) return data
+
+  const password = process.env.ADMIN_INITIAL_PASSWORD?.trim()
+  if (!password) return data
+
+  return {
+    ...data,
+    adminAccounts: [
+      {
+        id: 'admin-bootstrap',
+        name: process.env.ADMIN_INITIAL_NAME?.trim() || 'Admin',
+        email: process.env.ADMIN_INITIAL_EMAIL?.trim().toLowerCase() || 'admin',
+        password,
+      },
+    ],
+  }
+}
+
 function mergeAdminContent(config?: Partial<AdminContentData>): AdminContentData {
   const defaults = getDefaultAdminContent()
 
@@ -30,12 +49,12 @@ export async function readAdminContentConfig() {
   const content = await readAdminState<Partial<AdminContentData>>()
   if (content) {
     return {
-      data: mergeAdminContent(content),
+      data: withBootstrapAdmin(mergeAdminContent(content)),
       hasStoredData: true,
     }
   }
 
-  return { data: getDefaultAdminContent(), hasStoredData: false }
+  return { data: withBootstrapAdmin(getDefaultAdminContent()), hasStoredData: false }
 }
 
 export async function writeAdminContentConfig(config: AdminContentData) {

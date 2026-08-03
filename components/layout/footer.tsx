@@ -2,13 +2,13 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from 'lucide-react'
+import { Linkedin, Mail, MapPin, Phone } from 'lucide-react'
 
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
 
 export function Footer() {
-  const { contact } = useAdmin()
+  const { contact, stats } = useAdmin()
   const { locale } = useLanguage()
 
   const quickLinks =
@@ -71,28 +71,22 @@ export function Footer() {
             </div>
             <p className="text-primary-foreground/80 leading-relaxed">
               {locale === 'en'
-                ? 'One of Azerbaijan’s leading construction companies, backed by more than 25 years of experience. Quality and reliability remain our top priorities.'
-                : '25 ildən artıq təcrübə ilə Azərbaycanda tikinti sektorunun lider şirkətlərindən biri. Keyfiyyət və etibarlılıq bizim prioritetimizdir.'}
+                ? `An experienced construction company in Azerbaijan, backed by more than ${stats.years} years of work. Quality and reliability remain our top priorities.`
+                : `${stats.years} ildən artıq təcrübə ilə Azərbaycanda fəaliyyət göstərən tikinti şirkəti. Keyfiyyət və etibarlılıq bizim prioritetimizdir.`}
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href={contact.linkedinUrl || '#'}
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors">
-                <Youtube className="h-5 w-5" />
-              </a>
-            </div>
+            {contact.linkedinUrl && (
+              <div className="flex gap-4">
+                <a
+                  href={contact.linkedinUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </div>
+            )}
           </div>
 
           <div>
@@ -169,13 +163,13 @@ export function Footer() {
                 <span className="font-semibold">CER Vision</span>
               </span>
             </p>
-            <div className="flex gap-6 text-sm">
-              <Link href="#" className="text-primary-foreground/60 hover:text-accent transition-colors">
+            <div className="flex gap-6 text-sm text-primary-foreground/60">
+              <span>
                 {locale === 'en' ? 'Privacy Policy' : 'Məxfilik Siyasəti'}
-              </Link>
-              <Link href="#" className="text-primary-foreground/60 hover:text-accent transition-colors">
+              </span>
+              <span>
                 {locale === 'en' ? 'Terms of Use' : 'İstifadə Şərtləri'}
-              </Link>
+              </span>
             </div>
           </div>
         </div>

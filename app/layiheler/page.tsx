@@ -15,7 +15,7 @@ import { getCategoryLabel, getProjectCategories, translateProject } from '@/lib/
 import { cn } from '@/lib/utils'
 
 export default function ProjectsPage() {
-  const { projects } = useAdmin()
+  const { projects, stats } = useAdmin()
   const { locale } = useLanguage()
   const [activeCategory, setActiveCategory] = useState('all')
   const categories = getProjectCategories(locale)
@@ -32,7 +32,11 @@ export default function ProjectsPage() {
     <>
       <PageHeader
         title={locale === 'az' ? 'Layihələrimiz' : 'Our Projects'}
-        description={locale === 'az' ? '25 il ərzində uğurla təhvil verilmiş layihələr' : 'Projects delivered successfully over 25 years'}
+        description={
+          locale === 'az'
+            ? `${stats.years} il ərzində uğurla təhvil verilmiş layihələr`
+            : `Projects delivered successfully over ${stats.years} years`
+        }
         breadcrumbs={[{ label: locale === 'az' ? 'Layihələr' : 'Projects' }]}
       />
 

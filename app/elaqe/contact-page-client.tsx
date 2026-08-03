@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Clock, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send, Youtube } from 'lucide-react'
+import { Clock, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react'
 
 import { PageHeader } from '@/components/shared/page-header'
 import { Button } from '@/components/ui/button'
@@ -11,13 +11,6 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-
-const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
-]
 
 type ContactFormState = {
   fullName: string
@@ -345,19 +338,20 @@ export function ContactPageClient() {
                 )}
               </Card>
 
-              <div className="flex items-center justify-center gap-4">
-                <span className="text-foreground font-medium">{copy.follow}</span>
-                {socialLinks.map((social, index) => (
+              {contact.linkedinUrl && (
+                <div className="flex items-center justify-center gap-4">
+                  <span className="text-foreground font-medium">{copy.follow}</span>
                   <a
-                    key={index}
-                    href={social.label === 'LinkedIn' ? contact.linkedinUrl || '#' : social.href}
+                    href={contact.linkedinUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                    aria-label={social.label}
+                    aria-label="LinkedIn"
                   >
-                    <social.icon className="h-5 w-5" />
+                    <Linkedin className="h-5 w-5" />
                   </a>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { PageHeader } from '@/components/shared/page-header'
-import { Target, Eye, Shield, Award, Users, Clock } from 'lucide-react'
+import { Target, Eye, Shield, Award, Users, Clock, UserRound } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
@@ -39,7 +39,7 @@ const timelineEn = [
 ]
 
 export default function AboutPage() {
-  const { stats: companyStats } = useAdmin()
+  const { stats: companyStats, team } = useAdmin()
   const { locale } = useLanguage()
   const values =
     locale === 'az'
@@ -238,6 +238,45 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
+      {team.length > 0 && (
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto mb-12 max-w-3xl text-center">
+              <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                {locale === 'az' ? 'Komandamız' : 'Our Team'}
+              </span>
+              <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+                {locale === 'az' ? 'Peşəkar komandamız' : 'Meet our professionals'}
+              </h2>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {team.map((member) => (
+                <Card key={member.id} className="overflow-hidden border-border/50">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="h-72 w-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-72 items-center justify-center bg-secondary/40">
+                      <UserRound className="h-16 w-16 text-muted-foreground/40" />
+                    </div>
+                  )}
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-foreground">{member.name}</h3>
+                    <p className="mt-1 text-sm font-medium text-primary">{member.position}</p>
+                    {member.bio && (
+                      <p className="mt-4 text-sm leading-6 text-muted-foreground">{member.bio}</p>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">

@@ -9,7 +9,6 @@ import {
   FileText,
   Hammer,
   Handshake,
-  Image as ImageIcon,
   KeyRound,
   Newspaper,
   Phone,
@@ -100,14 +99,6 @@ export default function AdminDashboard() {
       icon: Handshake,
       accent: 'text-teal-600',
     },
-    {
-      label: 'Şəkillər',
-      description: 'Media ve qalereya qeydlari',
-      value: stats.clients,
-      href: '/admin/images',
-      icon: ImageIcon,
-      accent: 'text-cyan-600',
-    },
   ]
 
   const quickLinks = [
@@ -125,7 +116,7 @@ export default function AdminDashboard() {
     },
   ]
 
-  const handlePasswordSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handlePasswordSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setPasswordMessage('')
     setPasswordError('')
@@ -135,7 +126,7 @@ export default function AdminDashboard() {
       return
     }
 
-    const result = changeCurrentAdminPassword(
+    const result = await changeCurrentAdminPassword(
       passwordForm.currentPassword,
       passwordForm.newPassword
     )

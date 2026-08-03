@@ -9,12 +9,12 @@ export const metadata: Metadata = {
     default: 'Akin Industry - Tikinti Şirkəti',
     template: '%s | Akin Industry'
   },
-  description: '25 ildən artıq təcrübə ilə Azərbaycanda tikinti sektorunun lider şirkəti. Yaşayış, kommersiya və sənaye tikintisi üzrə xidmətlər.',
+  description: 'Azərbaycanda yaşayış, kommersiya və sənaye tikintisi üzrə peşəkar həllər təqdim edən Akin Industry.',
   keywords: ['tikinti', 'inşaat', 'Azərbaycan', 'Bakı', 'layihə', 'memarlıq', 'yaşayış binası', 'kommersiya'],
   authors: [{ name: 'Akin Industry' }],
   openGraph: {
     title: 'Akin Industry - Tikinti Şirkəti',
-    description: '25 ildən artıq təcrübə ilə Azərbaycanda tikinti sektorunun lider şirkəti.',
+    description: 'Azərbaycanda yaşayış, kommersiya və sənaye tikintisi üzrə peşəkar həllər təqdim edən Akin Industry.',
     locale: 'az_AZ',
     type: 'website',
   },
@@ -31,7 +31,7 @@ export default function RootLayout({
         <Providers>
           <SiteShell>{children}</SiteShell>
         </Providers>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.VERCEL === '1' && <Analytics />}
       </body>
     </html>
   )

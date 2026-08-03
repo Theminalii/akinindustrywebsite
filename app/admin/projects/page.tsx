@@ -44,7 +44,7 @@ export default function ProjectsAdmin() {
     e.target.value = ''
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.title || !formData.slug) return alert('Başlıq və slug mütləqdir')
     const normalizedFormData = {
       ...formData,
@@ -55,12 +55,10 @@ export default function ProjectsAdmin() {
         .replace(/[^a-z0-9əğıöşüç-]/g, '')
         .replace(/-+/g, '-'),
     }
-    if (editingId) {
-      updateProject(editingId, normalizedFormData)
-      setEditingId(null)
-    } else {
-      addProject({ ...normalizedFormData, id: Date.now().toString() })
-    }
+    const result = editingId
+      ? await updateProject(editingId, normalizedFormData)
+      : await addProject({ ...normalizedFormData, id: crypto.randomUUID() })
+    if (!result.success) return alert(result.message)
     handleCancel()
   }
 

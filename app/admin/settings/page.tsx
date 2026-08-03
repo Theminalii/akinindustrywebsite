@@ -41,14 +41,18 @@ export default function SettingsAdmin() {
     setSaved(false)
   }
 
-  const handleSave = () => {
-    updateStats(localStats)
+  const handleSave = async () => {
+    const result = await updateStats(localStats)
+    if (!result.success) {
+      setAccountMessage(result.message ?? 'Statistika yadda saxlanmadı.')
+      return
+    }
     setSaved(true)
     setTimeout(() => setSaved(false), 2000)
   }
 
-  const handleAddAccount = () => {
-    const result = addAdminAccount({
+  const handleAddAccount = async () => {
+    const result = await addAdminAccount({
       name: newAccount.name,
       email: newAccount.email,
       password: newAccount.password,
@@ -61,13 +65,13 @@ export default function SettingsAdmin() {
     }
   }
 
-  const handlePasswordUpdate = (id: string) => {
-    const result = updateAdminAccountPassword(id, passwordEdits[id] ?? '')
+  const handlePasswordUpdate = async (id: string) => {
+    const result = await updateAdminAccountPassword(id, passwordEdits[id] ?? '')
     setAccountMessage(result.message ?? '')
   }
 
-  const handleDeleteAccount = (id: string) => {
-    const result = deleteAdminAccount(id)
+  const handleDeleteAccount = async (id: string) => {
+    const result = await deleteAdminAccount(id)
     setAccountMessage(result.message ?? '')
   }
 

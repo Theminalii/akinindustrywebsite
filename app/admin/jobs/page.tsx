@@ -31,7 +31,7 @@ export default function AdminJobsPage() {
   const [editingId, setEditingId] = useState<string | null>(null)
   const [formData, setFormData] = useState<JobFormData>(emptyForm)
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.title || !formData.department || !formData.description) {
       alert('Vəzifə, şöbə və təsvir sahələri vacibdir.')
       return
@@ -49,11 +49,10 @@ export default function AdminJobsPage() {
         .filter(Boolean),
     }
 
-    if (editingId) {
-      updateJob(editingId, payload)
-    } else {
-      addJob({ id: Date.now().toString(), ...payload })
-    }
+    const result = editingId
+      ? await updateJob(editingId, payload)
+      : await addJob({ id: crypto.randomUUID(), ...payload })
+    if (!result.success) return alert(result.message)
 
     handleCancel()
   }

@@ -27,32 +27,13 @@ export const defaultAdminAccounts: AdminAccount[] = [
     id: 'admin-default',
     name: 'Admin',
     email: 'admin',
-    password: 'admin1234',
+    // Fail closed until an admin password is configured in persistent storage.
+    password: '',
   },
 ]
 
 export function ensureDefaultAdminAccount(accounts?: AdminAccount[]) {
-  if (!accounts?.length) {
-    return defaultAdminAccounts
-  }
-
-  const defaultAccount = defaultAdminAccounts[0]
-  const hasDefaultId = accounts.some((account) => account.id === defaultAccount.id)
-
-  if (hasDefaultId) {
-    return accounts.map((account) =>
-      account.id === defaultAccount.id
-        ? {
-            ...account,
-            name: defaultAccount.name,
-            email: defaultAccount.email,
-            password: defaultAccount.password,
-          }
-        : account
-    )
-  }
-
-  return [defaultAccount, ...accounts]
+  return accounts?.length ? accounts : defaultAdminAccounts
 }
 
 export function getDefaultAdminContent(): AdminContentData {

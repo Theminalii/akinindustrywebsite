@@ -9,13 +9,13 @@ npm run dev
 
 ## Admin login
 
-App daxilindəki admin login:
+Admin giriş məlumatlarını repoya və ya README faylına yazmayın. Mövcud admin
+hesabının şifrəsini admin paneldən dəyişin və yalnız təhlükəsiz şifrə
+menecerində saxlayın.
 
-- Login: `admin`
-- Password: `admin1234`
-
-Əgər brauzerdə ayrıca `Giriş Yap: domain.com:443` popup-u çıxırsa, bu tətbiqin login-i deyil.
-Bu, hosting tərəfində açılmış `Basic Auth` qorumasıdır və Hostinger panelindən söndürülməlidir.
+Əgər brauzerdə ayrıca `Giriş Yap: domain.com:443` popup-u çıxırsa, bu tətbiqin
+login-i deyil. Bu, hosting tərəfində açılmış `Basic Auth` qorumasıdır və
+Hostinger panelindən idarə edilməlidir.
 
 ## Environment variables
 

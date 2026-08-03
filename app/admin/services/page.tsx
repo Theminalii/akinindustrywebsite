@@ -27,7 +27,7 @@ export default function AdminServicesPage() {
   const [editingId, setEditingId] = useState<string | null>(null)
   const [formData, setFormData] = useState<ServiceFormData>(emptyForm)
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.title || !formData.description) {
       alert('Xidmət başlığı və təsviri vacibdir.')
       return
@@ -43,11 +43,10 @@ export default function AdminServicesPage() {
         .filter(Boolean),
     }
 
-    if (editingId) {
-      updateService(editingId, payload)
-    } else {
-      addService({ id: Date.now().toString(), ...payload })
-    }
+    const result = editingId
+      ? await updateService(editingId, payload)
+      : await addService({ id: crypto.randomUUID(), ...payload })
+    if (!result.success) return alert(result.message)
 
     handleCancel()
   }

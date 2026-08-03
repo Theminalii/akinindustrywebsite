@@ -31,7 +31,7 @@ interface Project {
 export default function ProjectDetailPage() {
   const params = useParams()
   const slug = params.slug as string
-  const { projects } = useAdmin()
+  const { projects, isReady } = useAdmin()
   const { locale } = useLanguage()
   const mergedProjects = useMemo(
     () =>
@@ -48,6 +48,16 @@ export default function ProjectDetailPage() {
       .filter((p) => project && p.category === project.category && p.id !== project.id)
       .slice(0, 3)
   }, [mergedProjects, project])
+
+  if (!isReady) {
+    return (
+      <section className="bg-background px-4 py-32">
+        <div className="mx-auto max-w-3xl rounded-3xl bg-card p-10 text-center text-muted-foreground shadow-sm">
+          {locale === 'az' ? 'Layihə yüklənir...' : 'Loading project...'}
+        </div>
+      </section>
+    )
+  }
 
   if (!project) {
     notFound()

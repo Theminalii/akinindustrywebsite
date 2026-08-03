@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Building2, PencilRuler, Wrench, Route, ClipboardCheck, Factory, ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { services } from '@/lib/data'
+import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
 import { translateService } from '@/lib/site-translations'
 
@@ -19,6 +19,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function ServicesPreview() {
   const { locale } = useLanguage()
+  const { services } = useAdmin()
   const copy =
     locale === 'az'
       ? {

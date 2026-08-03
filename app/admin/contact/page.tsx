@@ -10,13 +10,19 @@ export default function AdminContactPage() {
   const { contact, updateContact } = useAdmin()
   const [formData, setFormData] = useState<ContactInfo>(contact)
   const [saved, setSaved] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     setFormData(contact)
   }, [contact])
 
-  const handleSave = () => {
-    updateContact(formData)
+  const handleSave = async () => {
+    setError('')
+    const result = await updateContact(formData)
+    if (!result.success) {
+      setError(result.message ?? 'Dəyişiklik yadda saxlanmadı.')
+      return
+    }
     setSaved(true)
     setTimeout(() => setSaved(false), 2000)
   }
@@ -98,6 +104,7 @@ export default function AdminContactPage() {
           <div className="flex items-center gap-3">
             <Button onClick={handleSave}>Yadda saxla</Button>
             {saved && <span className="text-sm text-green-600">Dəyişiklik saxlanıldı</span>}
+            {error && <span className="text-sm text-red-600">{error}</span>}
           </div>
         </CardContent>
       </Card>
