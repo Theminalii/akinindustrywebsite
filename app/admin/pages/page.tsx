@@ -122,31 +122,34 @@ function normalizedPairTitle(meta: CatalogMeta) {
 }
 
 function groupEntries(entries: Entry[]) {
-  const used = new Set<string>()
-  const byPairKey = new Map<string, Entry>()
+  const grouped = new Map<string, { az: Entry[]; en: Entry[]; other: Entry[] }>()
+  const groupOrder: string[] = []
   const groups: FieldGroup[] = []
 
   for (const entry of entries) {
     const [key, meta] = entry
     const language = fieldLanguage(meta)
     const pairKey = `${sectionKey(key)}::${normalizedPairTitle(meta)}::${isImageField('', meta) ? 'image' : 'text'}`
-    const waiting = byPairKey.get(pairKey)
-
-    if (language && waiting && fieldLanguage(waiting[1]) !== language) {
-      const primary = fieldLanguage(waiting[1]) === 'İngilis dili' ? waiting : entry
-      const secondary = primary === waiting ? entry : waiting
-      groups.push({ primary, secondary })
-      used.add(waiting[0])
-      used.add(key)
-      byPairKey.delete(pairKey)
-      continue
+    if (!grouped.has(pairKey)) {
+      grouped.set(pairKey, { az: [], en: [], other: [] })
+      groupOrder.push(pairKey)
     }
-
-    if (language) byPairKey.set(pairKey, entry)
+    const bucket = grouped.get(pairKey)!
+    if (language === 'Azərbaycan dili') bucket.az.push(entry)
+    else if (language === 'İngilis dili') bucket.en.push(entry)
+    else bucket.other.push(entry)
   }
 
-  for (const entry of entries) {
-    if (!used.has(entry[0])) groups.push({ primary: entry })
+  for (const key of groupOrder) {
+    const bucket = grouped.get(key)!
+    const pairCount = Math.max(bucket.az.length, bucket.en.length)
+    for (let index = 0; index < pairCount; index++) {
+      const en = bucket.en[index]
+      const az = bucket.az[index]
+      if (en && az) groups.push({ primary: en, secondary: az })
+      else groups.push({ primary: en ?? az })
+    }
+    for (const entry of bucket.other) groups.push({ primary: entry })
   }
 
   return groups
