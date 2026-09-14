@@ -2,7 +2,7 @@
 
 import type { FormEvent, ReactNode } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import {
   Award,
@@ -27,7 +27,14 @@ import { useAdmin } from '@/lib/admin/context'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/admin/pages', label: 'Səhifələrin məzmunu', icon: FileText },
+  { href: '/admin/pages?page=home%2F', label: 'Ana səhifə', icon: FileText },
+  { href: '/admin/pages?page=haqqimizda%2F', label: 'Haqqımızda', icon: FileText },
+  { href: '/admin/pages?page=layiheler%2F', label: 'Layihələr səhifəsi', icon: FileText },
+  { href: '/admin/pages?page=xidmetler%2F', label: 'Xidmətlər səhifəsi', icon: FileText },
+  { href: '/admin/pages?page=xeberler%2F', label: 'Xəbərlər səhifəsi', icon: FileText },
+  { href: '/admin/pages?page=karyera%2F', label: 'Karyera səhifəsi', icon: FileText },
+  { href: '/admin/pages?page=elaqe%2F', label: 'Əlaqə səhifəsi', icon: FileText },
+  { href: '/admin/pages?page=layout%2F', label: 'Menyu və footer', icon: FileText },
   { href: '/admin/projects', label: 'Layihələr', icon: FileText },
   { href: '/admin/news', label: 'Xəbərlər', icon: Newspaper },
   { href: '/admin/team', label: 'Komanda', icon: Users },
@@ -42,6 +49,7 @@ const navItems = [
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const { currentAdmin, isAuthenticated, isReady, persistenceError, login, logout } = useAdmin()
   const [email, setEmail] = useState(currentAdmin?.email ?? 'admin')
   const [password, setPassword] = useState('')
@@ -140,10 +148,14 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
           <nav className="mt-4 space-y-1">
             {navItems.map((item) => {
+              const currentHref =
+                pathname === '/admin/pages'
+                  ? `${pathname}?page=${encodeURIComponent(searchParams.get('page') ?? 'home/')}`
+                  : pathname
               const isActive =
                 item.href === '/admin'
                   ? pathname === item.href
-                  : pathname === item.href || pathname.startsWith(`${item.href}/`)
+                  : currentHref === item.href || pathname === item.href || pathname.startsWith(`${item.href}/`)
 
               return (
                 <Link
