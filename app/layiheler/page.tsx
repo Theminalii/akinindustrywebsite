@@ -8,7 +8,7 @@ import Image from 'next/image'
 import { PageHeader } from '@/components/shared/page-header'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { MapPin, Calendar, ArrowRight, Building2 } from 'lucide-react'
+import { MapPin, Calendar, ArrowRight, Building2, PlayCircle } from 'lucide-react'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
 import { useSiteTranslations } from '@/lib/site-translations'
@@ -83,6 +83,12 @@ export default function ProjectsPage() {
                     <span className="absolute top-4 left-4 px-3 py-1 bg-accent text-accent-foreground text-xs font-medium rounded-full z-10">
                       {getCategoryLabel(project.category, locale)}
                     </span>
+                    {(project.videos?.length ?? 0) > 0 && (
+                      <span className="absolute bottom-4 left-4 z-10 inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1 text-xs font-medium text-white backdrop-blur">
+                        <PlayCircle className="h-4 w-4" />
+                        Video
+                      </span>
+                    )}
 
                     {/* Hover Arrow */}
                     <div className="absolute top-4 right-4 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full 

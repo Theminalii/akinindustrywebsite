@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useMemo } from 'react'
 import { PageHeader } from '@/components/shared/page-header'
+import { VideoEmbed } from '@/components/shared/video-embed'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { MapPin, Calendar, Building2, Ruler, Users, ArrowRight, ArrowLeft } from 'lucide-react'
@@ -25,6 +26,7 @@ interface Project {
   year: number
   area: string
   images: string[]
+  videos?: string[]
   featured?: boolean
 }
 
@@ -112,7 +114,7 @@ export default function ProjectDetailPage() {
 
               {/* Gallery */}
               {project.images && project.images.length > 0 && (
-                <div>
+                <div className="mb-12">
                   <h2 className="text-2xl font-bold text-foreground mb-6">{locale === 'az' ? cmsText("layiheler/[slug]/page.016") : cmsText("layiheler/[slug]/page.017")}</h2>
                   <div className="grid grid-cols-2 gap-4">
                     {project.images.map((image, index) => (
@@ -123,6 +125,21 @@ export default function ProjectDetailPage() {
                           fill
                           className="object-cover"
                         />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {project.videos && project.videos.length > 0 && (
+                <div>
+                  <h2 className="mb-6 text-2xl font-bold text-foreground">
+                    {locale === 'az' ? 'Layihə videoları' : 'Project Videos'}
+                  </h2>
+                  <div className="grid gap-4">
+                    {project.videos.map((video, index) => (
+                      <div key={`${video}-${index}`} className="aspect-video overflow-hidden rounded-2xl bg-black">
+                        <VideoEmbed url={video} title={`${project.title} video ${index + 1}`} />
                       </div>
                     ))}
                   </div>

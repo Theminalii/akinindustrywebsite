@@ -9,6 +9,7 @@ export interface Project {
   year: number
   area: string
   images: string[]
+  videos?: string[]
   featured?: boolean
 }
 

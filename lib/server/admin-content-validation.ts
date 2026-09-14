@@ -19,6 +19,7 @@ const project = z.object({
   year: z.number().int().min(1900).max(2200),
   area: z.string().max(500),
   images: z.array(imageValue).max(20),
+  videos: z.array(z.string().max(5_000)).max(20).optional().default([]),
   featured: z.boolean().optional(),
 })
 const news = z.object({

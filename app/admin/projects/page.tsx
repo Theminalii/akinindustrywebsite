@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useAdmin } from '@/lib/admin/context'
 import { optimizeImageFile } from '@/lib/image-upload'
-import { Edit, Trash2, Plus, X, Upload, Image as ImageIcon } from 'lucide-react'
+import { Edit, Trash2, Plus, X, Upload, Video } from 'lucide-react'
 
 export default function ProjectsAdmin() {
   const { projects, addProject, updateProject, deleteProject } = useAdmin()
@@ -21,8 +21,10 @@ export default function ProjectsAdmin() {
     year: new Date().getFullYear(), 
     area: '', 
     images: [] as string[],
+    videos: [] as string[],
     featured: false
   })
+  const [videoUrl, setVideoUrl] = useState('')
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
@@ -48,6 +50,7 @@ export default function ProjectsAdmin() {
     if (!formData.title || !formData.slug) return alert('Başlıq və slug mütləqdir')
     const normalizedFormData = {
       ...formData,
+      videos: formData.videos.map((video) => video.trim()).filter(Boolean),
       slug: formData.slug
         .trim()
         .toLocaleLowerCase('az')
@@ -63,7 +66,7 @@ export default function ProjectsAdmin() {
   }
 
   const handleEdit = (project: any) => {
-    setFormData(project)
+    setFormData({ ...project, videos: project.videos ?? [] })
     setEditingId(project.id)
     setShowForm(true)
   }
@@ -71,7 +74,8 @@ export default function ProjectsAdmin() {
   const handleCancel = () => {
     setShowForm(false)
     setEditingId(null)
-    setFormData({ title: '', slug: '', category: 'residential', description: '', client: '', location: '', year: new Date().getFullYear(), area: '', images: [], featured: false })
+    setVideoUrl('')
+    setFormData({ title: '', slug: '', category: 'residential', description: '', client: '', location: '', year: new Date().getFullYear(), area: '', images: [], videos: [], featured: false })
   }
 
   return (
@@ -132,6 +136,51 @@ export default function ProjectsAdmin() {
               <p className="text-xs text-slate-500">Şəkillər avtomatik sıxılır ki, hostingdə səhifə çökməsin.</p>
             </div>
 
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Videolar</label>
+              <div className="space-y-3 rounded border bg-white p-3">
+                <div className="flex gap-2">
+                  <input
+                    placeholder="YouTube/Vimeo linki və ya /videos/layihe.mp4"
+                    value={videoUrl}
+                    onChange={(e) => setVideoUrl(e.target.value)}
+                    className="flex-1 rounded border p-2"
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => {
+                      const url = videoUrl.trim()
+                      if (!url) return
+                      setFormData((prev) => ({ ...prev, videos: [...prev.videos, url] }))
+                      setVideoUrl('')
+                    }}
+                  >
+                    <Plus className="h-4 w-4" />
+                    Əlavə et
+                  </Button>
+                </div>
+                {formData.videos.length > 0 && (
+                  <div className="space-y-2">
+                    {formData.videos.map((video, index) => (
+                      <div key={`${video}-${index}`} className="flex items-center gap-3 rounded-lg border bg-slate-50 px-3 py-2">
+                        <Video className="h-4 w-4 shrink-0 text-slate-500" />
+                        <span className="min-w-0 flex-1 truncate text-sm">{video}</span>
+                        <button
+                          type="button"
+                          onClick={() => setFormData((prev) => ({ ...prev, videos: prev.videos.filter((_, itemIndex) => itemIndex !== index) }))}
+                          className="rounded-full bg-red-500 p-1 text-white"
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <p className="text-xs text-slate-500">Böyük video fayllarını Hostinger File Manager-ə yükləyib linkini yazın. YouTube/Vimeo linkləri də işləyir.</p>
+            </div>
+
             <textarea placeholder="Təsvir" rows={3} value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full p-2 border rounded bg-white" />
             
             <div className="flex gap-2">
@@ -146,7 +195,10 @@ export default function ProjectsAdmin() {
         <thead className="bg-slate-50 border-b"><tr><th className="p-4 text-left font-semibold">Layihə</th><th className="p-4 text-left font-semibold">Kateqoriya</th><th className="p-4 text-right font-semibold">Əməliyyatlar</th></tr></thead>
         <tbody>{projects.map(p => (
           <tr key={p.id} className="border-b hover:bg-slate-50">
-            <td className="p-4 font-medium">{p.title}</td><td className="p-4 text-slate-500">{p.category}</td>
+            <td className="p-4 font-medium">
+              <div>{p.title}</div>
+              {(p.videos?.length ?? 0) > 0 && <div className="mt-1 text-xs text-slate-500">{p.videos?.length} video</div>}
+            </td><td className="p-4 text-slate-500">{p.category}</td>
             <td className="p-4 text-right space-x-2">
               <Button variant="ghost" size="sm" onClick={() => handleEdit(p)}><Edit size={16} /></Button>
               <Button variant="ghost" size="sm" onClick={() => deleteProject(p.id)} className="text-red-500 hover:bg-red-50"><Trash2 size={16} /></Button>

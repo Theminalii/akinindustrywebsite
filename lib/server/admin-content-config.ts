@@ -32,7 +32,10 @@ function mergeAdminContent(config?: Partial<AdminContentData>): AdminContentData
   return {
     pageContent: { ...defaults.pageContent, ...config?.pageContent },
     pageVisibility: { ...defaultPageVisibility, ...config?.pageVisibility },
-    projects: config?.projects ?? defaults.projects,
+    projects: (config?.projects ?? defaults.projects).map((project) => ({
+      ...project,
+      videos: project.videos ?? [],
+    })),
     news: config?.news ?? defaults.news,
     team: config?.team ?? defaults.team,
     services: config?.services ?? defaults.services,
