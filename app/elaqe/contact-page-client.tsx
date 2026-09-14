@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import { useState } from 'react'
 import { Clock, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react'
@@ -29,6 +30,9 @@ const emptyForm: ContactFormState = {
 }
 
 export function ContactPageClient() {
+  const cmsText = useCmsText()
+  
+
   const { contact } = useAdmin()
   const { locale } = useLanguage()
   const [formData, setFormData] = useState<ContactFormState>(emptyForm)
@@ -39,66 +43,66 @@ export function ContactPageClient() {
   const copy =
     locale === 'az'
       ? {
-          headerTitle: 'Əlaqə',
-          headerDescription: 'Layihənizi müzakirə etmək üçün bizimlə əlaqə saxlayın',
-          phone: 'Telefon',
-          email: 'E-poçt',
-          address: 'Ünvan',
-          hours: 'İş Saatları',
-          formBadge: 'Əlaqə Formu',
-          formTitle: 'Bizə Mesaj Göndərin',
-          formDescription: 'Layihəniz haqqında məlumat verin, komandamız qısa zamanda sizinlə əlaqə saxlasın.',
-          fullName: 'Ad Soyad *',
-          fullNamePlaceholder: 'Ad və soyadınızı daxil edin',
-          emailLabel: 'E-poçt *',
-          phoneLabel: 'Telefon *',
-          subject: 'Mövzu',
-          subjectPlaceholder: 'Mesajın mövzusu',
-          message: 'Mesaj *',
-          messagePlaceholder: 'Layihəniz haqqında ətraflı məlumat paylaşın...',
-          sending: 'Göndərilir...',
-          send: 'Göndər',
-          locationBadge: 'Məkan',
-          locationTitle: 'Ofisimizi Ziyarət Edin',
-          locationDescription: 'Baş ofisimiz Bakının mərkəzində yerləşir. Görüş üçün əvvəlcədən zəng etməyiniz xahiş olunur.',
-          follow: 'Bizi izləyin:',
-          ctaTitle: 'Layihəniz Haqqında Danışaq',
-          ctaDescription: 'Ödənişsiz konsultasiya üçün bu gün bizimlə əlaqə saxlayın',
-          sent: 'Mesaj göndərildi.',
-          sentChannels: 'Mesaj göndərildi. Aktiv kanallar:',
-          sendError: 'Mesaj göndərilə bilmədi.',
-          notificationError: 'Mesaj göndərilə bilmədi. Bildiriş ayarlarını yoxlayın.',
+          headerTitle: cmsText("elaqe/contact-page-client.001"),
+          headerDescription: cmsText("elaqe/contact-page-client.002"),
+          phone: cmsText("elaqe/contact-page-client.003"),
+          email: cmsText("elaqe/contact-page-client.004"),
+          address: cmsText("elaqe/contact-page-client.005"),
+          hours: cmsText("elaqe/contact-page-client.006"),
+          formBadge: cmsText("elaqe/contact-page-client.007"),
+          formTitle: cmsText("elaqe/contact-page-client.008"),
+          formDescription: cmsText("elaqe/contact-page-client.009"),
+          fullName: cmsText("elaqe/contact-page-client.010"),
+          fullNamePlaceholder: cmsText("elaqe/contact-page-client.011"),
+          emailLabel: cmsText("elaqe/contact-page-client.012"),
+          phoneLabel: cmsText("elaqe/contact-page-client.013"),
+          subject: cmsText("elaqe/contact-page-client.014"),
+          subjectPlaceholder: cmsText("elaqe/contact-page-client.015"),
+          message: cmsText("elaqe/contact-page-client.016"),
+          messagePlaceholder: cmsText("elaqe/contact-page-client.017"),
+          sending: cmsText("elaqe/contact-page-client.018"),
+          send: cmsText("elaqe/contact-page-client.019"),
+          locationBadge: cmsText("elaqe/contact-page-client.020"),
+          locationTitle: cmsText("elaqe/contact-page-client.021"),
+          locationDescription: cmsText("elaqe/contact-page-client.022"),
+          follow: cmsText("elaqe/contact-page-client.023"),
+          ctaTitle: cmsText("elaqe/contact-page-client.024"),
+          ctaDescription: cmsText("elaqe/contact-page-client.025"),
+          sent: cmsText("elaqe/contact-page-client.026"),
+          sentChannels: cmsText("elaqe/contact-page-client.027"),
+          sendError: cmsText("elaqe/contact-page-client.028"),
+          notificationError: cmsText("elaqe/contact-page-client.029"),
         }
       : {
-          headerTitle: 'Contact',
-          headerDescription: 'Get in touch with us to discuss your project',
-          phone: 'Phone',
-          email: 'Email',
-          address: 'Address',
-          hours: 'Working Hours',
-          formBadge: 'Contact Form',
-          formTitle: 'Send Us a Message',
-          formDescription: 'Tell us about your project and our team will get back to you shortly.',
-          fullName: 'Full Name *',
-          fullNamePlaceholder: 'Enter your full name',
-          emailLabel: 'Email *',
-          phoneLabel: 'Phone *',
-          subject: 'Subject',
-          subjectPlaceholder: 'Subject of your message',
-          message: 'Message *',
-          messagePlaceholder: 'Share details about your project...',
-          sending: 'Sending...',
-          send: 'Send',
-          locationBadge: 'Location',
-          locationTitle: 'Visit Our Office',
-          locationDescription: 'Our main office is located in central Baku. Please call ahead to schedule a meeting.',
-          follow: 'Follow us:',
-          ctaTitle: 'Let’s Talk About Your Project',
-          ctaDescription: 'Contact us today for a free consultation',
-          sent: 'Message sent.',
-          sentChannels: 'Message sent. Active channels:',
-          sendError: 'Message could not be sent.',
-          notificationError: 'Message could not be sent. Please check the notification settings.',
+          headerTitle: cmsText("elaqe/contact-page-client.030"),
+          headerDescription: cmsText("elaqe/contact-page-client.031"),
+          phone: cmsText("elaqe/contact-page-client.032"),
+          email: cmsText("elaqe/contact-page-client.033"),
+          address: cmsText("elaqe/contact-page-client.034"),
+          hours: cmsText("elaqe/contact-page-client.035"),
+          formBadge: cmsText("elaqe/contact-page-client.036"),
+          formTitle: cmsText("elaqe/contact-page-client.037"),
+          formDescription: cmsText("elaqe/contact-page-client.038"),
+          fullName: cmsText("elaqe/contact-page-client.039"),
+          fullNamePlaceholder: cmsText("elaqe/contact-page-client.040"),
+          emailLabel: cmsText("elaqe/contact-page-client.041"),
+          phoneLabel: cmsText("elaqe/contact-page-client.042"),
+          subject: cmsText("elaqe/contact-page-client.043"),
+          subjectPlaceholder: cmsText("elaqe/contact-page-client.044"),
+          message: cmsText("elaqe/contact-page-client.045"),
+          messagePlaceholder: cmsText("elaqe/contact-page-client.046"),
+          sending: cmsText("elaqe/contact-page-client.047"),
+          send: cmsText("elaqe/contact-page-client.048"),
+          locationBadge: cmsText("elaqe/contact-page-client.049"),
+          locationTitle: cmsText("elaqe/contact-page-client.050"),
+          locationDescription: cmsText("elaqe/contact-page-client.051"),
+          follow: cmsText("elaqe/contact-page-client.052"),
+          ctaTitle: cmsText("elaqe/contact-page-client.053"),
+          ctaDescription: cmsText("elaqe/contact-page-client.054"),
+          sent: cmsText("elaqe/contact-page-client.055"),
+          sentChannels: cmsText("elaqe/contact-page-client.056"),
+          sendError: cmsText("elaqe/contact-page-client.057"),
+          notificationError: cmsText("elaqe/contact-page-client.058"),
         }
 
   const contactInfo = [
@@ -106,13 +110,13 @@ export function ContactPageClient() {
       icon: Phone,
       title: copy.phone,
       details: [contact.phone1, contact.phone2].filter(Boolean),
-      actionPrefix: 'tel:',
+      actionPrefix: cmsText("elaqe/contact-page-client.059"),
     },
     {
       icon: Mail,
       title: copy.email,
       details: [contact.email1, contact.email2].filter(Boolean),
-      actionPrefix: 'mailto:',
+      actionPrefix: cmsText("elaqe/contact-page-client.060"),
     },
     {
       icon: MapPin,
@@ -137,7 +141,7 @@ export function ContactPageClient() {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
 
@@ -159,7 +163,7 @@ export function ContactPageClient() {
       setSubmitted(true)
       setSubmitMessage(
         successfulChannels
-          ? `Message sent. Active channels: ${successfulChannels}.`
+          ? cmsText("elaqe/contact-page-client.template1", { channels: successfulChannels })
           : result.message || copy.sent
       )
       setFormData(emptyForm)
@@ -251,7 +255,7 @@ export function ContactPageClient() {
                           type="email"
                           value={formData.email}
                           onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-                          placeholder="email@example.com"
+                          placeholder={cmsText("elaqe/contact-page-client.063")}
                           required
                         />
                       </div>
@@ -264,7 +268,7 @@ export function ContactPageClient() {
                           id="phone"
                           value={formData.phone}
                           onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
-                          placeholder="+994 XX XXX XX XX"
+                          placeholder={cmsText("elaqe/contact-page-client.064")}
                           required
                         />
                       </div>
@@ -320,7 +324,7 @@ export function ContactPageClient() {
               <Card className="border-border/50 overflow-hidden mb-8">
                 {contact.googleMapEmbedUrl ? (
                   <iframe
-                    title="Akin Industry map"
+                    title={cmsText("elaqe/contact-page-client.065")}
                     src={contact.googleMapEmbedUrl}
                     className="aspect-4/3 w-full border-0"
                     loading="lazy"
@@ -346,7 +350,7 @@ export function ContactPageClient() {
                     target="_blank"
                     rel="noreferrer"
                     className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                    aria-label="LinkedIn"
+                    aria-label={cmsText("elaqe/contact-page-client.066")}
                   >
                     <Linkedin className="h-5 w-5" />
                   </a>

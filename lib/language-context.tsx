@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
 
 export type Locale = 'en' | 'az'
 
@@ -11,24 +11,14 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined)
 
-const STORAGE_KEY = 'akin_locale'
-
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>('en')
-
-  useEffect(() => {
-    const savedLocale = window.localStorage.getItem(STORAGE_KEY)
-    if (savedLocale === 'en' || savedLocale === 'az') {
-      setLocaleState(savedLocale)
-    }
-  }, [])
 
   const value = useMemo(
     () => ({
       locale,
       setLocale: (nextLocale: Locale) => {
         setLocaleState(nextLocale)
-        window.localStorage.setItem(STORAGE_KEY, nextLocale)
       },
     }),
     [locale]

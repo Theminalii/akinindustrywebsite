@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,43 +9,46 @@ import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
 
 export function Footer() {
+  const cmsText = useCmsText()
+  
+
   const { contact, stats } = useAdmin()
   const { locale } = useLanguage()
 
   const quickLinks =
     locale === 'en'
       ? [
-          { name: 'About Us', href: '/haqqimizda' },
-          { name: 'Projects', href: '/layiheler' },
-          { name: 'Services', href: '/xidmetler' },
-          { name: 'News', href: '/xeberler' },
-          { name: 'Careers', href: '/karyera' },
-          { name: 'Contact', href: '/elaqe' },
+          { name: cmsText("layout/footer.001"), href: cmsText("layout/footer.002") },
+          { name: cmsText("layout/footer.003"), href: cmsText("layout/footer.004") },
+          { name: cmsText("layout/footer.005"), href: cmsText("layout/footer.006") },
+          { name: cmsText("layout/footer.007"), href: cmsText("layout/footer.008") },
+          { name: cmsText("layout/footer.009"), href: cmsText("layout/footer.010") },
+          { name: cmsText("layout/footer.011"), href: cmsText("layout/footer.012") },
         ]
       : [
-          { name: 'Haqqımızda', href: '/haqqimizda' },
-          { name: 'Layihələr', href: '/layiheler' },
-          { name: 'Xidmətlər', href: '/xidmetler' },
-          { name: 'Xəbərlər', href: '/xeberler' },
-          { name: 'Karyera', href: '/karyera' },
-          { name: 'Əlaqə', href: '/elaqe' },
+          { name: cmsText("layout/footer.013"), href: cmsText("layout/footer.014") },
+          { name: cmsText("layout/footer.015"), href: cmsText("layout/footer.016") },
+          { name: cmsText("layout/footer.017"), href: cmsText("layout/footer.018") },
+          { name: cmsText("layout/footer.019"), href: cmsText("layout/footer.020") },
+          { name: cmsText("layout/footer.021"), href: cmsText("layout/footer.022") },
+          { name: cmsText("layout/footer.023"), href: cmsText("layout/footer.024") },
         ]
 
   const services =
     locale === 'en'
       ? [
-          { name: 'Construction Services', href: '/xidmetler' },
-          { name: 'Design & Engineering', href: '/xidmetler' },
-          { name: 'Renovation & Fit-Out', href: '/xidmetler' },
-          { name: 'Infrastructure', href: '/xidmetler' },
-          { name: 'Consulting', href: '/xidmetler' },
+          { name: cmsText("layout/footer.025"), href: cmsText("layout/footer.026") },
+          { name: cmsText("layout/footer.027"), href: cmsText("layout/footer.028") },
+          { name: cmsText("layout/footer.029"), href: cmsText("layout/footer.030") },
+          { name: cmsText("layout/footer.031"), href: cmsText("layout/footer.032") },
+          { name: cmsText("layout/footer.033"), href: cmsText("layout/footer.034") },
         ]
       : [
-          { name: 'Tikinti Xidmətləri', href: '/xidmetler' },
-          { name: 'Layihələndirmə', href: '/xidmetler' },
-          { name: 'Təmir və Yenidənqurma', href: '/xidmetler' },
-          { name: 'İnfrastruktur', href: '/xidmetler' },
-          { name: 'Konsaltinq', href: '/xidmetler' },
+          { name: cmsText("layout/footer.035"), href: cmsText("layout/footer.036") },
+          { name: cmsText("layout/footer.037"), href: cmsText("layout/footer.038") },
+          { name: cmsText("layout/footer.039"), href: cmsText("layout/footer.040") },
+          { name: cmsText("layout/footer.041"), href: cmsText("layout/footer.042") },
+          { name: cmsText("layout/footer.043"), href: cmsText("layout/footer.044") },
         ]
 
   return (
@@ -55,24 +59,24 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-transparent rounded-lg flex items-center justify-center overflow-hidden">
                 <Image
-                  src="/logo.png"
-                  alt="Akin Industry Logo"
+                  src={cmsText("layout/footer.045")}
+                  alt={cmsText("layout/footer.046")}
                   width={48}
                   height={48}
                   className="h-auto w-auto object-contain"
                 />
               </div>
               <div>
-                <h3 className="font-bold text-xl">Akin Industry</h3>
+                <h3 className="font-bold text-xl">{cmsText("layout/footer.047")}</h3>
                 <p className="text-primary-foreground/70 text-sm">
-                  {locale === 'en' ? 'Construction Company' : 'Tikinti Şirkəti'}
+                  {locale === 'en' ? cmsText("layout/footer.048") : cmsText("layout/footer.049")}
                 </p>
               </div>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed">
               {locale === 'en'
-                ? `An experienced construction company in Azerbaijan, backed by more than ${stats.years} years of work. Quality and reliability remain our top priorities.`
-                : `${stats.years} ildən artıq təcrübə ilə Azərbaycanda fəaliyyət göstərən tikinti şirkəti. Keyfiyyət və etibarlılıq bizim prioritetimizdir.`}
+                ? cmsText("layout/footer.template1", { years: stats.years })
+                : cmsText("layout/footer.template2", { years: stats.years })}
             </p>
             {contact.linkedinUrl && (
               <div className="flex gap-4">
@@ -80,7 +84,7 @@ export function Footer() {
                   href={contact.linkedinUrl}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="LinkedIn"
+                  aria-label={cmsText("layout/footer.050")}
                   className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
                 >
                   <Linkedin className="h-5 w-5" />
@@ -91,7 +95,7 @@ export function Footer() {
 
           <div>
             <h4 className="font-semibold text-lg mb-6">
-              {locale === 'en' ? 'Quick Links' : 'Əsas Səhifələr'}
+              {locale === 'en' ? cmsText("layout/footer.051") : cmsText("layout/footer.052")}
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -106,7 +110,7 @@ export function Footer() {
 
           <div>
             <h4 className="font-semibold text-lg mb-6">
-              {locale === 'en' ? 'Our Services' : 'Xidmətlərimiz'}
+              {locale === 'en' ? cmsText("layout/footer.053") : cmsText("layout/footer.054")}
             </h4>
             <ul className="space-y-3">
               {services.map((service) => (
@@ -120,7 +124,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-6">{locale === 'en' ? 'Contact' : 'Əlaqə'}</h4>
+            <h4 className="font-semibold text-lg mb-6">{locale === 'en' ? cmsText("layout/footer.055") : cmsText("layout/footer.056")}</h4>
             <ul className="space-y-4">
               <li>
                 <a href={`tel:${contact.phone1}`} className="flex items-start gap-3 text-primary-foreground/80 hover:text-accent transition-colors">
@@ -149,26 +153,26 @@ export function Footer() {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-primary-foreground/60 text-sm flex items-center gap-2">
-              © {new Date().getFullYear()} Akin Industry. {locale === 'en' ? 'All rights reserved.' : 'Bütün hüquqlar qorunur.'}
-              <span className="text-primary-foreground/40">•</span>
+              {cmsText("layout/footer.057")}{new Date().getFullYear()} {cmsText("layout/footer.058")}{locale === 'en' ? cmsText("layout/footer.059") : cmsText("layout/footer.060")}
+              <span className="text-primary-foreground/40">{cmsText("layout/footer.061")}</span>
               <span className="flex items-center gap-1 hover:text-accent transition-colors cursor-pointer">
-                <span>Site By</span>
+                <span>{cmsText("layout/footer.062")}</span>
                 <Image
-                  src="/cervision.webp"
-                  alt="CER Vision"
+                  src={cmsText("layout/footer.063")}
+                  alt={cmsText("layout/footer.064")}
                   width={60}
                   height={24}
                   className="object-contain h-5 w-auto"
                 />
-                <span className="font-semibold">CER Vision</span>
+                <span className="font-semibold">{cmsText("layout/footer.065")}</span>
               </span>
             </p>
             <div className="flex gap-6 text-sm text-primary-foreground/60">
               <span>
-                {locale === 'en' ? 'Privacy Policy' : 'Məxfilik Siyasəti'}
+                {locale === 'en' ? cmsText("layout/footer.066") : cmsText("layout/footer.067")}
               </span>
               <span>
-                {locale === 'en' ? 'Terms of Use' : 'İstifadə Şərtləri'}
+                {locale === 'en' ? cmsText("layout/footer.068") : cmsText("layout/footer.069")}
               </span>
             </div>
           </div>

@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
@@ -19,6 +20,9 @@ const styles = `
 `
 
 export function PartnersSection() {
+  const cmsText = useCmsText()
+  
+
   const { partners } = useAdmin()
   const { locale } = useLanguage()
 
@@ -32,10 +36,10 @@ export function PartnersSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-            {locale === 'az' ? 'Tərəfdaşlarımız' : 'Our Partners'}
+            {locale === 'az' ? cmsText("home/partners-section.001") : cmsText("home/partners-section.002")}
           </span>
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            {locale === 'az' ? 'Etibarlı Əməkdaşlıq' : 'Trusted Collaboration'}
+            {locale === 'az' ? cmsText("home/partners-section.003") : cmsText("home/partners-section.004")}
           </h2>
         </div>
 

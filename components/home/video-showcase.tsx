@@ -1,13 +1,18 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import { useEffect, useState, useRef } from 'react'
 
-const videos = [
-  '/video1.mp4',
-  '/video2.mp4'
-]
+
 
 export function VideoShowcase() {
+  const cmsText = useCmsText()
+  
+
+const videos = [
+  cmsText("home/video-showcase.001"),
+  cmsText("home/video-showcase.002")
+]
   const [current, setCurrent] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
@@ -75,12 +80,12 @@ export function VideoShowcase() {
           key={index}
           ref={(el) => { videoRefs.current[index] = el }}
           src={video}
-          preload={index === current ? 'metadata' : 'none'}
+          preload={index === current ? "metadata" : "none"}
           muted
           playsInline
           controls={false}
           className={`absolute top-0 left-0 w-full h-full object-cover transition-all duration-1000 ${
-            index === current ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-105'
+            index === current ? "opacity-100 z-10 scale-100" : "opacity-0 z-0 scale-105"
           }`}
           style={{ transform: isVisible ? 'rotateX(0deg)' : 'rotateX(10deg)' }}
         />
@@ -93,13 +98,11 @@ export function VideoShowcase() {
       <div className="absolute inset-0 z-30 flex flex-col justify-center px-10 md:px-20 text-white">
         <h1 className="text-4xl md:text-6xl font-montserrat font-light mb-4 transform transition-transform duration-1000" 
             style={{ transform: isVisible ? 'translateY(0)' : 'translateY(20px)' }}>
-          Building the Future
-        </h1>
+          {cmsText("home/video-showcase.007")}</h1>
 
         <p className="text-lg md:text-2xl font-inter max-w-2xl mb-6 transform transition-transform duration-1000 delay-200" 
            style={{ transform: isVisible ? 'translateY(0)' : 'translateY(20px)' }}>
-          Precision. Quality. Trust.
-        </p>
+          {cmsText("home/video-showcase.008")}</p>
       </div>
 
       {/* SLIDER LINE (alt progress kimi) */}

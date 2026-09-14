@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import type { AdminContentData } from '@/lib/admin/types'
 import {
+  contentVersion,
   readAdminContentConfig,
   writeAdminContentConfig,
 } from '@/lib/server/admin-content-config'
@@ -45,7 +46,7 @@ export async function GET(request: NextRequest) {
           ...data,
           adminAccounts: [],
         }
-    return NextResponse.json({ data: safeData, hasStoredData }, { headers: noStoreHeaders })
+    return NextResponse.json({ data: safeData, hasStoredData, version: contentVersion(data) }, { headers: noStoreHeaders })
   } catch (error) {
     const { code } = databaseErrorDetails(error)
     console.error('Admin content database read failed:', error)
@@ -85,9 +86,10 @@ export async function POST(request: NextRequest) {
         { status: 400, headers: noStoreHeaders }
       )
     }
-    const data = await writeAdminContentConfig(parsed.data as AdminContentData)
+    const data = await writeAdminContentConfig(parsed.data as AdminContentData, request.headers.get('If-Match') ?? '')
     return NextResponse.json({ success: true, data }, { headers: noStoreHeaders })
   } catch (error) {
+    if (error instanceof Error && error.message === 'content_conflict') return NextResponse.json({ error: 'content_conflict' }, { status: 409, headers: noStoreHeaders })
     const { code } = databaseErrorDetails(error)
     console.error('Admin content database write failed:', error)
     return NextResponse.json(

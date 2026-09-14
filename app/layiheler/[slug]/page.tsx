@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -7,10 +8,9 @@ import { PageHeader } from '@/components/shared/page-header'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { MapPin, Calendar, Building2, Ruler, Users, ArrowRight, ArrowLeft } from 'lucide-react'
-import { projects as seededProjects } from '@/lib/data'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-import { getCategoryLabel, translateProject } from '@/lib/site-translations'
+import { useSiteTranslations } from '@/lib/site-translations'
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 
@@ -29,16 +29,19 @@ interface Project {
 }
 
 export default function ProjectDetailPage() {
+  const cmsText = useCmsText()
+  const { getCategoryLabel, translateProject } = useSiteTranslations()
+
   const params = useParams()
   const slug = params.slug as string
   const { projects, isReady } = useAdmin()
   const { locale } = useLanguage()
   const mergedProjects = useMemo(
     () =>
-      Array.from(new Map([...seededProjects, ...projects].map((project) => [project.slug, project])).values()).map((project) =>
+      projects.map((project) =>
         translateProject(project, locale)
       ),
-    [locale, projects]
+    [locale, projects, translateProject]
   )
 
   const project = useMemo(() => mergedProjects.find((p) => p.slug === slug), [mergedProjects, slug])
@@ -53,7 +56,7 @@ export default function ProjectDetailPage() {
     return (
       <section className="bg-background px-4 py-32">
         <div className="mx-auto max-w-3xl rounded-3xl bg-card p-10 text-center text-muted-foreground shadow-sm">
-          {locale === 'az' ? 'Layihə yüklənir...' : 'Loading project...'}
+          {locale === 'az' ? cmsText("layiheler/[slug]/page.001") : cmsText("layiheler/[slug]/page.002")}
         </div>
       </section>
     )
@@ -64,10 +67,10 @@ export default function ProjectDetailPage() {
   }
 
   const details = [
-    { icon: Users, label: locale === 'az' ? 'Müştəri' : 'Client', value: project.client },
-    { icon: MapPin, label: locale === 'az' ? 'Məkan' : 'Location', value: project.location },
-    { icon: Calendar, label: locale === 'az' ? 'İl' : 'Year', value: project.year.toString() },
-    { icon: Ruler, label: locale === 'az' ? 'Sahə' : 'Area', value: project.area },
+    { icon: Users, label: locale === 'az' ? cmsText("layiheler/[slug]/page.003") : cmsText("layiheler/[slug]/page.004"), value: project.client },
+    { icon: MapPin, label: locale === 'az' ? cmsText("layiheler/[slug]/page.005") : cmsText("layiheler/[slug]/page.006"), value: project.location },
+    { icon: Calendar, label: locale === 'az' ? cmsText("layiheler/[slug]/page.007") : cmsText("layiheler/[slug]/page.008"), value: project.year.toString() },
+    { icon: Ruler, label: locale === 'az' ? cmsText("layiheler/[slug]/page.009") : cmsText("layiheler/[slug]/page.010"), value: project.area },
   ]
 
   return (
@@ -76,7 +79,7 @@ export default function ProjectDetailPage() {
         title={project.title}
         description={getCategoryLabel(project.category, locale)}
         breadcrumbs={[
-          { label: locale === 'az' ? 'Layihələr' : 'Projects', href: '/layiheler' },
+          { label: locale === 'az' ? cmsText("layiheler/[slug]/page.011") : cmsText("layiheler/[slug]/page.012"), href: cmsText("layiheler/[slug]/page.013") },
           { label: project.title }
         ]}
       />
@@ -103,14 +106,14 @@ export default function ProjectDetailPage() {
 
               {/* Description */}
               <div className="prose prose-lg max-w-none mb-12">
-                <h2 className="text-2xl font-bold text-foreground mb-4">{locale === 'az' ? 'Layihə Haqqında' : 'About the Project'}</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">{locale === 'az' ? cmsText("layiheler/[slug]/page.014") : cmsText("layiheler/[slug]/page.015")}</h2>
                 <p className="text-muted-foreground leading-relaxed">{project.description}</p>
               </div>
 
               {/* Gallery */}
               {project.images && project.images.length > 0 && (
                 <div>
-                  <h2 className="text-2xl font-bold text-foreground mb-6">{locale === 'az' ? 'Qalereya' : 'Gallery'}</h2>
+                  <h2 className="text-2xl font-bold text-foreground mb-6">{locale === 'az' ? cmsText("layiheler/[slug]/page.016") : cmsText("layiheler/[slug]/page.017")}</h2>
                   <div className="grid grid-cols-2 gap-4">
                     {project.images.map((image, index) => (
                       <div key={index} className="aspect-4/3 rounded-xl overflow-hidden bg-primary/10 relative">
@@ -132,7 +135,7 @@ export default function ProjectDetailPage() {
               {/* Project Details Card */}
               <Card className="mb-8 sticky top-32">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-6">{locale === 'az' ? 'Layihə Məlumatları' : 'Project Details'}</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-6">{locale === 'az' ? cmsText("layiheler/[slug]/page.018") : cmsText("layiheler/[slug]/page.019")}</h3>
                   <div className="space-y-4">
                     {details.map((detail, index) => (
                       <div key={index} className="flex items-start gap-4">
@@ -154,8 +157,8 @@ export default function ProjectDetailPage() {
                   </div>
 
                   <Button asChild className="w-full mt-6">
-                    <Link href="/elaqe">
-                      {locale === 'az' ? 'Layihə Sorğusu Göndər' : 'Send Project Inquiry'}
+                    <Link href={cmsText("layiheler/[slug]/page.020")}>
+                      {locale === 'az' ? cmsText("layiheler/[slug]/page.021") : cmsText("layiheler/[slug]/page.022")}
                     </Link>
                   </Button>
                 </CardContent>
@@ -170,10 +173,10 @@ export default function ProjectDetailPage() {
         <section className="py-16 bg-secondary/30">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold text-foreground">{locale === 'az' ? 'Oxşar Layihələr' : 'Related Projects'}</h2>
+              <h2 className="text-2xl font-bold text-foreground">{locale === 'az' ? cmsText("layiheler/[slug]/page.023") : cmsText("layiheler/[slug]/page.024")}</h2>
               <Button asChild variant="outline">
-                <Link href="/layiheler">
-                  {locale === 'az' ? 'Bütün Layihələr' : 'All Projects'}
+                <Link href={cmsText("layiheler/[slug]/page.025")}>
+                  {locale === 'az' ? cmsText("layiheler/[slug]/page.026") : cmsText("layiheler/[slug]/page.027")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -205,9 +208,9 @@ export default function ProjectDetailPage() {
       <section className="py-8 bg-background border-t border-border">
         <div className="container mx-auto px-4">
           <Button asChild variant="ghost" className="gap-2">
-            <Link href="/layiheler">
+            <Link href={cmsText("layiheler/[slug]/page.028")}>
               <ArrowLeft className="h-4 w-4" />
-              {locale === 'az' ? 'Bütün Layihələrə Qayıt' : 'Back to All Projects'}
+              {locale === 'az' ? cmsText("layiheler/[slug]/page.029") : cmsText("layiheler/[slug]/page.030")}
             </Link>
           </Button>
         </div>

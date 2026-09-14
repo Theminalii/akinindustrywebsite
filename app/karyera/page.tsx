@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import { type ChangeEvent, useMemo, useState } from 'react'
 import Link from 'next/link'
@@ -23,21 +24,11 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-import { translateJob } from '@/lib/site-translations'
+import { useSiteTranslations } from '@/lib/site-translations'
 
-const benefitsEn = [
-  'Opportunity to contribute to major construction and industrial projects',
-  'Growth environment alongside a professional technical team',
-  'Work system aligned with safety and quality standards',
-  'Career progression and rotation opportunities across new projects',
-]
 
-const processStepsEn = [
-  'Choose a suitable vacancy and complete the application form.',
-  'HR and the technical team review your experience and documents.',
-  'Qualified candidates are invited to a technical and project-focused interview.',
-  'At the final stage, an offer and onboarding plan are presented.',
-]
+
+
 
 type ApplicationForm = {
   fullName: string
@@ -98,6 +89,21 @@ const emptyForm: ApplicationForm = {
 }
 
 export default function CareersPage() {
+  const cmsText = useCmsText()
+  const { translateJob } = useSiteTranslations()
+
+const benefitsEn = [
+  cmsText("karyera/page.001"),
+  cmsText("karyera/page.002"),
+  cmsText("karyera/page.003"),
+  cmsText("karyera/page.004"),
+]
+const processStepsEn = [
+  cmsText("karyera/page.005"),
+  cmsText("karyera/page.006"),
+  cmsText("karyera/page.007"),
+  cmsText("karyera/page.008"),
+]
   const { jobs } = useAdmin()
   const { locale } = useLanguage()
   const [formData, setFormData] = useState<ApplicationForm>(emptyForm)
@@ -105,74 +111,74 @@ export default function CareersPage() {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
-  const localizedJobs = useMemo(() => jobs.map((job) => translateJob(job, locale)), [jobs, locale])
+  const localizedJobs = useMemo(() => jobs.map((job) => translateJob(job, locale)), [jobs, locale, translateJob])
   const benefits =
     locale === 'az'
       ? [
-          'Böyük tikinti və sənaye layihələrinə töhfə vermək imkanı',
-          'Peşəkar texniki komanda ilə birlikdə inkişaf mühiti',
-          'Təhlükəsizlik və keyfiyyət standartlarına uyğun iş sistemi',
-          'Yeni layihələr üzrə karyera inkişafı və rotasiya imkanları',
+          cmsText("karyera/page.009"),
+          cmsText("karyera/page.010"),
+          cmsText("karyera/page.011"),
+          cmsText("karyera/page.012"),
         ]
       : benefitsEn
   const processSteps =
     locale === 'az'
       ? [
-          'Uyğun vakansiyanı seçin və müraciət formasını tamamlayın.',
-          'HR və texniki komanda təcrübənizi və sənədlərinizi qiymətləndirir.',
-          'Uyğun namizədlər texniki və layihə yönümlü müsahibəyə dəvət olunur.',
-          'Son mərhələdə təklif və onboarding planı təqdim edilir.',
+          cmsText("karyera/page.013"),
+          cmsText("karyera/page.014"),
+          cmsText("karyera/page.015"),
+          cmsText("karyera/page.016"),
         ]
       : processStepsEn
   const copy =
     locale === 'az'
       ? {
-          headerTitle: 'Karyera',
-          headerDescription: 'Peşəkar komandamıza qoşulun',
-          heroBadge: 'Tikinti komandamıza qoşulun',
-          heroTitle: 'Sahə və ofis rolları üçün güclü peşəkarlar axtarırıq',
+          headerTitle: cmsText("karyera/page.017"),
+          headerDescription: cmsText("karyera/page.018"),
+          heroBadge: cmsText("karyera/page.019"),
+          heroTitle: cmsText("karyera/page.020"),
           heroText:
-            'Mühəndislik, layihə idarəetməsi, HSE, BIM, satınalma və sahə icrası üzrə peşəkarlar üçün daha sistemli müraciət prosesi qurmuşuq.',
-          processTitle: 'Müraciət Prosesi',
-          apply: 'Bu vakansiyaya müraciət et',
-          requirements: 'Tələblər:',
-          formBadge: 'Ətraflı Müraciət Forması',
-          formTitle: 'Layihələrimizə uyğunluğunuzu ətraflı paylaşın',
+            cmsText("karyera/page.021"),
+          processTitle: cmsText("karyera/page.022"),
+          apply: cmsText("karyera/page.023"),
+          requirements: cmsText("karyera/page.024"),
+          formBadge: cmsText("karyera/page.025"),
+          formTitle: cmsText("karyera/page.026"),
           formText:
-            'Bu forma texniki bacarıqlarınızı, sahə təcrübənizi, təhlükəsizlik hazırlığınızı və ümumi uyğunluğunuzu daha düzgün qiymətləndirməyimiz üçün hazırlanıb.',
-          successPrefix: 'Müraciət göndərildi. Aktiv kanallar:',
-          success: 'Müraciət göndərildi.',
-          submitError: 'Müraciət göndərilə bilmədi.',
-          submitError2: 'Müraciət göndərilə bilmədi. Bildiriş ayarlarını yoxlayın.',
-          sending: 'Göndərilir...',
-          submit: 'Müraciəti göndər',
-          contactPrefix: 'Təcili müraciətlər üçün',
-          contactLink: 'əlaqə',
-          contactSuffix: 'səhifəsi ilə də bizimlə əlaqə saxlaya bilərsiniz.',
+            cmsText("karyera/page.027"),
+          successPrefix: cmsText("karyera/page.028"),
+          success: cmsText("karyera/page.029"),
+          submitError: cmsText("karyera/page.030"),
+          submitError2: cmsText("karyera/page.031"),
+          sending: cmsText("karyera/page.032"),
+          submit: cmsText("karyera/page.033"),
+          contactPrefix: cmsText("karyera/page.034"),
+          contactLink: cmsText("karyera/page.035"),
+          contactSuffix: cmsText("karyera/page.036"),
         }
       : {
-          headerTitle: 'Careers',
-          headerDescription: 'Join our professional team',
-          heroBadge: 'Join our construction team',
-          heroTitle: 'We are looking for strong professionals for both site and office roles',
+          headerTitle: cmsText("karyera/page.037"),
+          headerDescription: cmsText("karyera/page.038"),
+          heroBadge: cmsText("karyera/page.039"),
+          heroTitle: cmsText("karyera/page.040"),
           heroText:
-            'We have built a more structured application process for professionals in engineering, project management, HSE, BIM, procurement, and site execution.',
-          processTitle: 'Application Process',
-          apply: 'Apply for this role',
-          requirements: 'Requirements:',
-          formBadge: 'Detailed Application Form',
-          formTitle: 'Share your fit for our construction projects in detail',
+            cmsText("karyera/page.041"),
+          processTitle: cmsText("karyera/page.042"),
+          apply: cmsText("karyera/page.043"),
+          requirements: cmsText("karyera/page.044"),
+          formBadge: cmsText("karyera/page.045"),
+          formTitle: cmsText("karyera/page.046"),
           formText:
-            'This form is designed to help us better evaluate your technical skills, field experience, safety readiness, and overall suitability for our projects.',
-          successPrefix: 'Application sent. Active channels:',
-          success: 'Application sent.',
-          submitError: 'Submission failed.',
-          submitError2: 'Application could not be sent. Please check the notification settings.',
-          sending: 'Sending...',
-          submit: 'Submit application',
-          contactPrefix: 'For urgent applications, you can also contact us through the',
-          contactLink: 'contact',
-          contactSuffix: 'page.',
+            cmsText("karyera/page.047"),
+          successPrefix: cmsText("karyera/page.048"),
+          success: cmsText("karyera/page.049"),
+          submitError: cmsText("karyera/page.050"),
+          submitError2: cmsText("karyera/page.051"),
+          sending: cmsText("karyera/page.052"),
+          submit: cmsText("karyera/page.053"),
+          contactPrefix: cmsText("karyera/page.054"),
+          contactLink: "contact",
+          contactSuffix: cmsText("karyera/page.056"),
         }
 
   const departmentOptions = useMemo(() => {
@@ -196,7 +202,7 @@ export default function CareersPage() {
       employmentType: type,
     }))
     setSubmitted(false)
-    document.getElementById('career-application-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    document.getElementById('career-application-form')?.scrollIntoView({ behavior: "smooth", block: "start" })
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -380,7 +386,7 @@ export default function CareersPage() {
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     <div className="space-y-2 xl:col-span-2">
-                      <Label htmlFor="fullName">{locale === 'az' ? 'Ad soyad' : 'Full name'}</Label>
+                      <Label htmlFor="fullName">{locale === 'az' ? cmsText("karyera/page.059") : cmsText("karyera/page.060")}</Label>
                       <Input
                         id="fullName"
                         value={formData.fullName}
@@ -389,7 +395,7 @@ export default function CareersPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">{locale === 'az' ? 'E-poçt' : 'Email'}</Label>
+                      <Label htmlFor="email">{locale === 'az' ? cmsText("karyera/page.061") : cmsText("karyera/page.062")}</Label>
                       <Input
                         id="email"
                         type="email"
@@ -399,7 +405,7 @@ export default function CareersPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="phone">{locale === 'az' ? 'Telefon' : 'Phone'}</Label>
+                      <Label htmlFor="phone">{locale === 'az' ? cmsText("karyera/page.063") : cmsText("karyera/page.064")}</Label>
                       <Input
                         id="phone"
                         value={formData.phone}
@@ -411,7 +417,7 @@ export default function CareersPage() {
 
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     <div className="space-y-2">
-                      <Label htmlFor="city">{locale === 'az' ? 'Şəhər / Region' : 'City / Region'}</Label>
+                      <Label htmlFor="city">{locale === 'az' ? cmsText("karyera/page.065") : cmsText("karyera/page.066")}</Label>
                       <Input
                         id="city"
                         value={formData.city}
@@ -419,7 +425,7 @@ export default function CareersPage() {
                       />
                     </div>
                     <div className="space-y-2 xl:col-span-2">
-                      <Label htmlFor="position">{locale === 'az' ? 'Müraciət olunan vəzifə' : 'Position applied for'}</Label>
+                      <Label htmlFor="position">{locale === 'az' ? cmsText("karyera/page.067") : cmsText("karyera/page.068")}</Label>
                       <select
                         id="position"
                         value={formData.position}
@@ -427,7 +433,7 @@ export default function CareersPage() {
                         className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none"
                         required
                       >
-                        <option value="">{locale === 'az' ? 'Vakansiya seçin' : 'Select a vacancy'}</option>
+                        <option value="">{locale === 'az' ? cmsText("karyera/page.069") : cmsText("karyera/page.070")}</option>
                         {localizedJobs.map((job) => (
                           <option key={job.id} value={job.title}>
                             {job.title}
@@ -436,14 +442,14 @@ export default function CareersPage() {
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="department">{locale === 'az' ? 'Şöbə' : 'Department'}</Label>
+                      <Label htmlFor="department">{locale === 'az' ? cmsText("karyera/page.071") : cmsText("karyera/page.072")}</Label>
                       <select
                         id="department"
                         value={formData.department}
                         onChange={(e) => setFormData((prev) => ({ ...prev, department: e.target.value }))}
                         className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none"
                       >
-                        <option value="">{locale === 'az' ? 'Şöbə seçin' : 'Select a department'}</option>
+                        <option value="">{locale === 'az' ? cmsText("karyera/page.073") : cmsText("karyera/page.074")}</option>
                         {departmentOptions.map((department) => (
                           <option key={department} value={department}>
                             {department}
@@ -455,52 +461,52 @@ export default function CareersPage() {
 
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     <div className="space-y-2">
-                      <Label htmlFor="experienceYears">{locale === 'az' ? 'İş təcrübəsi (il)' : 'Years of experience'}</Label>
+                      <Label htmlFor="experienceYears">{locale === 'az' ? cmsText("karyera/page.075") : cmsText("karyera/page.076")}</Label>
                       <Input
                         id="experienceYears"
                         value={formData.experienceYears}
                         onChange={(e) => setFormData((prev) => ({ ...prev, experienceYears: e.target.value }))}
-                        placeholder={locale === 'az' ? 'Məsələn: 7' : 'Example: 7'}
+                        placeholder={locale === 'az' ? cmsText("karyera/page.077") : cmsText("karyera/page.078")}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="education">{locale === 'az' ? 'Təhsil' : 'Education'}</Label>
+                      <Label htmlFor="education">{locale === 'az' ? cmsText("karyera/page.079") : cmsText("karyera/page.080")}</Label>
                       <Input
                         id="education"
                         value={formData.education}
                         onChange={(e) => setFormData((prev) => ({ ...prev, education: e.target.value }))}
-                        placeholder={locale === 'az' ? 'Məsələn: İnşaat mühəndisliyi' : 'Example: Civil engineering'}
+                        placeholder={locale === 'az' ? cmsText("karyera/page.081") : cmsText("karyera/page.082")}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="specialization">{locale === 'az' ? 'İxtisaslaşma' : 'Specialization'}</Label>
+                      <Label htmlFor="specialization">{locale === 'az' ? cmsText("karyera/page.083") : cmsText("karyera/page.084")}</Label>
                       <Input
                         id="specialization"
                         value={formData.specialization}
                         onChange={(e) => setFormData((prev) => ({ ...prev, specialization: e.target.value }))}
-                        placeholder={locale === 'az' ? 'BIM, HSE, sahə icrası və s.' : 'BIM, HSE, site execution, etc.'}
+                        placeholder={locale === 'az' ? cmsText("karyera/page.085") : cmsText("karyera/page.086")}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="englishLevel">{locale === 'az' ? 'İngilis dili səviyyəsi' : 'English level'}</Label>
+                      <Label htmlFor="englishLevel">{locale === 'az' ? cmsText("karyera/page.087") : cmsText("karyera/page.088")}</Label>
                       <select
                         id="englishLevel"
                         value={formData.englishLevel}
                         onChange={(e) => setFormData((prev) => ({ ...prev, englishLevel: e.target.value }))}
                         className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none"
                       >
-                        <option value="basic">{locale === 'az' ? 'Başlanğıc' : 'Basic'}</option>
-                        <option value="intermediate">{locale === 'az' ? 'Orta' : 'Intermediate'}</option>
-                        <option value="advanced">{locale === 'az' ? 'Yaxşı' : 'Advanced'}</option>
-                        <option value="fluent">{locale === 'az' ? 'Sərbəst' : 'Fluent'}</option>
+                        <option value="basic">{locale === 'az' ? cmsText("karyera/page.089") : cmsText("karyera/page.090")}</option>
+                        <option value="intermediate">{locale === 'az' ? cmsText("karyera/page.091") : cmsText("karyera/page.092")}</option>
+                        <option value="advanced">{locale === 'az' ? cmsText("karyera/page.093") : cmsText("karyera/page.094")}</option>
+                        <option value="fluent">{locale === 'az' ? cmsText("karyera/page.095") : cmsText("karyera/page.096")}</option>
                       </select>
                     </div>
                   </div>
 
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     <div className="space-y-2 xl:col-span-2">
-                      <Label htmlFor="currentCompany">{locale === 'az' ? 'Hazırkı şirkət' : 'Current company'}</Label>
+                      <Label htmlFor="currentCompany">{locale === 'az' ? cmsText("karyera/page.097") : cmsText("karyera/page.098")}</Label>
                       <Input
                         id="currentCompany"
                         value={formData.currentCompany}
@@ -508,7 +514,7 @@ export default function CareersPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="currentRole">{locale === 'az' ? 'Hazırkı vəzifə' : 'Current role'}</Label>
+                      <Label htmlFor="currentRole">{locale === 'az' ? cmsText("karyera/page.099") : cmsText("karyera/page.100")}</Label>
                       <Input
                         id="currentRole"
                         value={formData.currentRole}
@@ -516,19 +522,19 @@ export default function CareersPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="expectedSalary">{locale === 'az' ? 'Gözlənilən əməkhaqqı' : 'Expected salary'}</Label>
+                      <Label htmlFor="expectedSalary">{locale === 'az' ? cmsText("karyera/page.101") : cmsText("karyera/page.102")}</Label>
                       <Input
                         id="expectedSalary"
                         value={formData.expectedSalary}
                         onChange={(e) => setFormData((prev) => ({ ...prev, expectedSalary: e.target.value }))}
-                        placeholder="AZN"
+                        placeholder={cmsText("karyera/page.103")}
                       />
                     </div>
                   </div>
 
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     <div className="space-y-2">
-                      <Label htmlFor="availability">{locale === 'az' ? 'Başlama tarixi' : 'Availability date'}</Label>
+                      <Label htmlFor="availability">{locale === 'az' ? cmsText("karyera/page.104") : cmsText("karyera/page.105")}</Label>
                       <Input
                         id="availability"
                         type="date"
@@ -537,80 +543,80 @@ export default function CareersPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="employmentType">{locale === 'az' ? 'Məşğulluq növü' : 'Employment type'}</Label>
+                      <Label htmlFor="employmentType">{locale === 'az' ? cmsText("karyera/page.106") : cmsText("karyera/page.107")}</Label>
                       <select
                         id="employmentType"
                         value={formData.employmentType}
                         onChange={(e) => setFormData((prev) => ({ ...prev, employmentType: e.target.value }))}
                         className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none"
                       >
-                        <option value="full-time">{locale === 'az' ? 'Tam ştat' : 'Full-time'}</option>
-                        <option value="part-time">{locale === 'az' ? 'Yarım ştat' : 'Part-time'}</option>
-                        <option value="contract">{locale === 'az' ? 'Müqavilə' : 'Contract'}</option>
-                        <option value="rotation">{locale === 'az' ? 'Rotasiya / növbəli' : 'Rotation / shift'}</option>
+                        <option value="full-time">{locale === 'az' ? cmsText("karyera/page.108") : cmsText("karyera/page.109")}</option>
+                        <option value="part-time">{locale === 'az' ? cmsText("karyera/page.110") : cmsText("karyera/page.111")}</option>
+                        <option value="contract">{locale === 'az' ? cmsText("karyera/page.112") : cmsText("karyera/page.113")}</option>
+                        <option value="rotation">{locale === 'az' ? cmsText("karyera/page.114") : cmsText("karyera/page.115")}</option>
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="travelReady">{locale === 'az' ? 'Ezamiyyətə hazırdır?' : 'Available for travel?'}</Label>
+                      <Label htmlFor="travelReady">{locale === 'az' ? cmsText("karyera/page.116") : cmsText("karyera/page.117")}</Label>
                       <select
                         id="travelReady"
                         value={formData.travelReady}
                         onChange={(e) => setFormData((prev) => ({ ...prev, travelReady: e.target.value }))}
                         className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none"
                       >
-                        <option value="yes">{locale === 'az' ? 'Bəli' : 'Yes'}</option>
-                        <option value="no">{locale === 'az' ? 'Xeyr' : 'No'}</option>
-                        <option value="partly">{locale === 'az' ? 'Qismən' : 'Partly'}</option>
+                        <option value="yes">{locale === 'az' ? cmsText("karyera/page.118") : cmsText("karyera/page.119")}</option>
+                        <option value="no">{locale === 'az' ? cmsText("karyera/page.120") : cmsText("karyera/page.121")}</option>
+                        <option value="partly">{locale === 'az' ? cmsText("karyera/page.122") : cmsText("karyera/page.123")}</option>
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="shiftReady">{locale === 'az' ? 'Növbəli işə hazırdır?' : 'Available for shift work?'}</Label>
+                      <Label htmlFor="shiftReady">{locale === 'az' ? cmsText("karyera/page.124") : cmsText("karyera/page.125")}</Label>
                       <select
                         id="shiftReady"
                         value={formData.shiftReady}
                         onChange={(e) => setFormData((prev) => ({ ...prev, shiftReady: e.target.value }))}
                         className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none"
                       >
-                        <option value="yes">{locale === 'az' ? 'Bəli' : 'Yes'}</option>
-                        <option value="no">{locale === 'az' ? 'Xeyr' : 'No'}</option>
-                        <option value="if-needed">{locale === 'az' ? 'Lazım olduqda' : 'If needed'}</option>
+                        <option value="yes">{locale === 'az' ? cmsText("karyera/page.126") : cmsText("karyera/page.127")}</option>
+                        <option value="no">{locale === 'az' ? cmsText("karyera/page.128") : cmsText("karyera/page.129")}</option>
+                        <option value="if-needed">{locale === 'az' ? cmsText("karyera/page.130") : cmsText("karyera/page.131")}</option>
                       </select>
                     </div>
                   </div>
 
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     <div className="space-y-2">
-                      <Label htmlFor="drivingLicense">{locale === 'az' ? 'Sürücülük vəsiqəsi' : 'Driving license'}</Label>
+                      <Label htmlFor="drivingLicense">{locale === 'az' ? cmsText("karyera/page.132") : cmsText("karyera/page.133")}</Label>
                       <select
                         id="drivingLicense"
                         value={formData.drivingLicense}
                         onChange={(e) => setFormData((prev) => ({ ...prev, drivingLicense: e.target.value }))}
                         className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none"
                       >
-                        <option value="yes">{locale === 'az' ? 'Bəli' : 'Yes'}</option>
-                        <option value="no">{locale === 'az' ? 'Xeyr' : 'No'}</option>
+                        <option value="yes">{locale === 'az' ? cmsText("karyera/page.134") : cmsText("karyera/page.135")}</option>
+                        <option value="no">{locale === 'az' ? cmsText("karyera/page.136") : cmsText("karyera/page.137")}</option>
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="hseTraining">{locale === 'az' ? 'HSE / təhlükəsizlik təlimi' : 'HSE / safety training'}</Label>
+                      <Label htmlFor="hseTraining">{locale === 'az' ? cmsText("karyera/page.138") : cmsText("karyera/page.139")}</Label>
                       <select
                         id="hseTraining"
                         value={formData.hseTraining}
                         onChange={(e) => setFormData((prev) => ({ ...prev, hseTraining: e.target.value }))}
                         className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none"
                       >
-                        <option value="yes">{locale === 'az' ? 'Tamamlanıb' : 'Completed'}</option>
-                        <option value="no">{locale === 'az' ? 'Tamamlanmayıb' : 'Not completed'}</option>
-                        <option value="expired">{locale === 'az' ? 'Vaxtı bitib' : 'Expired'}</option>
+                        <option value="yes">{locale === 'az' ? cmsText("karyera/page.140") : cmsText("karyera/page.141")}</option>
+                        <option value="no">{locale === 'az' ? cmsText("karyera/page.142") : cmsText("karyera/page.143")}</option>
+                        <option value="expired">{locale === 'az' ? cmsText("karyera/page.144") : cmsText("karyera/page.145")}</option>
                       </select>
                     </div>
                     <div className="space-y-2 xl:col-span-2">
-                      <Label htmlFor="cvUpload">{locale === 'az' ? 'CV / Resume' : 'CV / Resume'}</Label>
+                      <Label htmlFor="cvUpload">{locale === 'az' ? cmsText("karyera/page.146") : cmsText("karyera/page.147")}</Label>
                       <label className="flex h-10 cursor-pointer items-center justify-between rounded-md border border-input bg-background px-3 text-sm text-muted-foreground">
-                        <span>{formData.cvFileName || (locale === 'az' ? 'Kompüterinizdən fayl seçin' : 'Choose a file from your computer')}</span>
+                        <span>{formData.cvFileName || (locale === 'az' ? cmsText("karyera/page.148") : cmsText("karyera/page.149"))}</span>
                         <span className="inline-flex items-center gap-2 text-foreground">
                           <FileText className="h-4 w-4" />
-                          {locale === 'az' ? 'Fayl yüklə' : 'Upload file'}
+                          {locale === 'az' ? cmsText("karyera/page.150") : cmsText("karyera/page.151")}
                         </span>
                         <input type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={handleCvUpload} />
                       </label>
@@ -619,69 +625,69 @@ export default function CareersPage() {
 
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="softwareSkills">{locale === 'az' ? 'Proqram bilikləri' : 'Software skills'}</Label>
+                      <Label htmlFor="softwareSkills">{locale === 'az' ? cmsText("karyera/page.152") : cmsText("karyera/page.153")}</Label>
                       <Textarea
                         id="softwareSkills"
                         rows={4}
                         value={formData.softwareSkills}
                         onChange={(e) => setFormData((prev) => ({ ...prev, softwareSkills: e.target.value }))}
-                        placeholder={locale === 'az' ? 'AutoCAD, Revit, Primavera, MS Project, Excel və s.' : 'AutoCAD, Revit, Primavera, MS Project, Excel, etc.'}
+                        placeholder={locale === 'az' ? cmsText("karyera/page.154") : cmsText("karyera/page.155")}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="certifications">{locale === 'az' ? 'Sertifikat və lisenziyalar' : 'Certifications and licenses'}</Label>
+                      <Label htmlFor="certifications">{locale === 'az' ? cmsText("karyera/page.156") : cmsText("karyera/page.157")}</Label>
                       <Textarea
                         id="certifications"
                         rows={4}
                         value={formData.certifications}
                         onChange={(e) => setFormData((prev) => ({ ...prev, certifications: e.target.value }))}
-                        placeholder={locale === 'az' ? 'HSE, PMP, ISO, qaynaq sertifikatı və s.' : 'HSE, PMP, ISO, welding certification, etc.'}
+                        placeholder={locale === 'az' ? cmsText("karyera/page.158") : cmsText("karyera/page.159")}
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="projectExperience">{locale === 'az' ? 'İştirak etdiyiniz tikinti layihələri' : 'Construction projects you have worked on'}</Label>
+                    <Label htmlFor="projectExperience">{locale === 'az' ? cmsText("karyera/page.160") : cmsText("karyera/page.161")}</Label>
                     <Textarea
                       id="projectExperience"
                       rows={5}
                       value={formData.projectExperience}
                       onChange={(e) => setFormData((prev) => ({ ...prev, projectExperience: e.target.value }))}
-                      placeholder={locale === 'az' ? 'Layihə növünü, miqyasını, rolunuzu, komanda ölçüsünü və əsas nailiyyətləri yazın.' : 'Describe project type, scale, your role, team size, and key achievements.'}
+                      placeholder={locale === 'az' ? cmsText("karyera/page.162") : cmsText("karyera/page.163")}
                     />
                   </div>
 
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="languages">{locale === 'az' ? 'Dil bilikləri' : 'Languages'}</Label>
+                      <Label htmlFor="languages">{locale === 'az' ? cmsText("karyera/page.164") : cmsText("karyera/page.165")}</Label>
                       <Textarea
                         id="languages"
                         rows={4}
                         value={formData.languages}
                         onChange={(e) => setFormData((prev) => ({ ...prev, languages: e.target.value }))}
-                        placeholder={locale === 'az' ? 'Azərbaycan, ingilis, rus və s.' : 'Azerbaijani, English, Russian, etc.'}
+                        placeholder={locale === 'az' ? cmsText("karyera/page.166") : cmsText("karyera/page.167")}
                       />
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="references">{locale === 'az' ? 'Referanslar' : 'References'}</Label>
+                        <Label htmlFor="references">{locale === 'az' ? cmsText("karyera/page.168") : cmsText("karyera/page.169")}</Label>
                       <Textarea
                         id="references"
                         rows={4}
                         value={formData.references}
                         onChange={(e) => setFormData((prev) => ({ ...prev, references: e.target.value }))}
-                        placeholder={locale === 'az' ? 'Əvvəlki rəhbər, layihə meneceri və ya HR əlaqəsi' : 'Previous manager, project manager, or HR contact'}
+                        placeholder={locale === 'az' ? cmsText("karyera/page.170") : cmsText("karyera/page.171")}
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="coverLetter">{locale === 'az' ? 'Özünüz və bu vəzifəyə uyğunluğunuz haqqında qısa məlumat verin' : 'Briefly describe yourself and your suitability for this role'}</Label>
+                    <Label htmlFor="coverLetter">{locale === 'az' ? cmsText("karyera/page.172") : cmsText("karyera/page.173")}</Label>
                     <Textarea
                       id="coverLetter"
                       rows={6}
                       value={formData.coverLetter}
                       onChange={(e) => setFormData((prev) => ({ ...prev, coverLetter: e.target.value }))}
-                      placeholder={locale === 'az' ? 'Texniki güclü tərəflərinizi, sahə təcrübənizi və niyə bu komandaya uyğun olduğunuzu paylaşın.' : 'Share your technical strengths, field experience, and why you are a fit for this team.'}
+                      placeholder={locale === 'az' ? cmsText("karyera/page.174") : cmsText("karyera/page.175")}
                       required
                     />
                   </div>
@@ -690,34 +696,34 @@ export default function CareersPage() {
                     <div className="rounded-2xl border border-border/50 bg-card p-4">
                       <div className="flex items-center gap-3">
                         <Users className="h-5 w-5 text-primary" />
-                        <p className="text-sm font-medium text-foreground">{locale === 'az' ? 'Komanda işi' : 'Teamwork'}</p>
+                        <p className="text-sm font-medium text-foreground">{locale === 'az' ? cmsText("karyera/page.176") : cmsText("karyera/page.177")}</p>
                       </div>
                       <p className="mt-2 text-sm leading-6 text-muted-foreground">
                         {locale === 'az'
-                          ? 'Məktub hissəsində sahə və ofis koordinasiyası təcrübənizi qeyd edin.'
-                          : 'Mention your experience with field and office coordination in the cover letter section.'}
+                          ? cmsText("karyera/page.178")
+                          : cmsText("karyera/page.179")}
                       </p>
                     </div>
                     <div className="rounded-2xl border border-border/50 bg-card p-4">
                       <div className="flex items-center gap-3">
                         <ShieldCheck className="h-5 w-5 text-primary" />
-                        <p className="text-sm font-medium text-foreground">{locale === 'az' ? 'Təhlükəsizlik' : 'Safety'}</p>
+                        <p className="text-sm font-medium text-foreground">{locale === 'az' ? cmsText("karyera/page.180") : cmsText("karyera/page.181")}</p>
                       </div>
                       <p className="mt-2 text-sm leading-6 text-muted-foreground">
                         {locale === 'az'
-                          ? 'HSE və təhlükəsizlik prosedurları ilə iş təcrübəsi bizim üçün vacibdir.'
-                          : 'Experience working with HSE and safety procedures is important to us.'}
+                          ? cmsText("karyera/page.182")
+                          : cmsText("karyera/page.183")}
                       </p>
                     </div>
                     <div className="rounded-2xl border border-border/50 bg-card p-4">
                       <div className="flex items-center gap-3">
                         <CalendarClock className="h-5 w-5 text-primary" />
-                        <p className="text-sm font-medium text-foreground">{locale === 'az' ? 'Mövcudluq' : 'Availability'}</p>
+                        <p className="text-sm font-medium text-foreground">{locale === 'az' ? cmsText("karyera/page.184") : cmsText("karyera/page.185")}</p>
                       </div>
                       <p className="mt-2 text-sm leading-6 text-muted-foreground">
                         {locale === 'az'
-                          ? 'Başlama tarixiniz və ezamiyyət imkanınız layihə planlamasında nəzərə alınır.'
-                          : 'Your start date and travel availability are considered in project planning.'}
+                          ? cmsText("karyera/page.186")
+                          : cmsText("karyera/page.187")}
                       </p>
                     </div>
                   </div>
@@ -725,7 +731,7 @@ export default function CareersPage() {
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <p className="text-sm text-muted-foreground">
                       {copy.contactPrefix}{' '}
-                      <Link href="/elaqe" className="text-primary underline">
+                      <Link href={cmsText("karyera/page.188")} className="text-primary underline">
                         {copy.contactLink}
                       </Link>{' '}
                       {copy.contactSuffix}

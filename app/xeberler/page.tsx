@@ -1,10 +1,11 @@
+import { readAdminContentConfig } from '@/lib/server/admin-content-config'
 import type { Metadata } from 'next'
 
 import { NewsPageClient } from './news-page-client'
 
-export const metadata: Metadata = {
-  title: 'Xəbərlər',
-  description: 'Akin Industry - Şirkət xəbərləri, layihə yenilikləri və sektordakı son inkişaflar.',
+export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await readAdminContentConfig()
+  return { title: data.pageContent['seo/news.title'], description: data.pageContent['seo/news.description'] }
 }
 
 export default function NewsPage() {

@@ -1,10 +1,12 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import { useEffect, useRef, useState, useMemo } from 'react'
 import { Building2, Users, Briefcase, Award } from 'lucide-react'
 import { useAdmin } from '@/lib/admin/context'
 
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
+
   const [displayValue, setDisplayValue] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLSpanElement>(null)
@@ -55,34 +57,37 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export function StatsSection() {
+  const cmsText = useCmsText()
+  
+
   const { stats: adminStats } = useAdmin()
 
   const stats = useMemo(() => [
     { 
       icon: Building2, 
       value: adminStats.projects, 
-      suffix: '+', 
-      label: 'Tamamlanmış Layihə' 
+      suffix: cmsText("home/stats-section.001"), 
+      label: cmsText("home/stats-section.002") 
     },
     { 
       icon: Users, 
       value: adminStats.employees, 
-      suffix: '+', 
-      label: 'Peşəkar İşçi' 
+      suffix: cmsText("home/stats-section.003"), 
+      label: cmsText("home/stats-section.004") 
     },
     { 
       icon: Briefcase, 
       value: adminStats.years, 
       suffix: '', 
-      label: 'İllik Təcrübə' 
+      label: cmsText("home/stats-section.005") 
     },
     { 
       icon: Award, 
       value: adminStats.clients, 
-      suffix: '+', 
-      label: 'Razı Müştəri' 
+      suffix: cmsText("home/stats-section.006"), 
+      label: cmsText("home/stats-section.007") 
     },
-  ], [adminStats])
+  ], [adminStats, cmsText])
 
   return (
     <section className="py-16 bg-slate-50">

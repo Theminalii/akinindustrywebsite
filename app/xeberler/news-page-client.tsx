@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import { useMemo } from 'react'
 import Link from 'next/link'
@@ -8,9 +9,12 @@ import { PageHeader } from '@/components/shared/page-header'
 import { Card, CardContent } from '@/components/ui/card'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-import { formatLocalizedDate, translateNewsArticle } from '@/lib/site-translations'
+import { useSiteTranslations, formatLocalizedDate } from '@/lib/site-translations'
 
 export function NewsPageClient() {
+  const cmsText = useCmsText()
+  const { translateNewsArticle } = useSiteTranslations()
+
   const { news, isReady } = useAdmin()
   const { locale } = useLanguage()
 
@@ -18,7 +22,7 @@ export function NewsPageClient() {
     return news.map((article) => translateNewsArticle(article, locale)).sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
-  }, [locale, news])
+  }, [locale, news, translateNewsArticle])
 
   const standardOnlySlug = 'akin-industry-partners-with-pocketvc-venture-studio'
   const featuredArticle = sortedNews.find((article) => article.slug !== standardOnlySlug)
@@ -29,7 +33,7 @@ export function NewsPageClient() {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="rounded-2xl border border-border/50 bg-card p-8 text-center text-muted-foreground">
-            {locale === 'az' ? 'Xəbərlər yüklənir...' : 'Loading news...'}
+            {locale === 'az' ? cmsText("xeberler/news-page-client.001") : cmsText("xeberler/news-page-client.002")}
           </div>
         </div>
       </section>
@@ -39,9 +43,9 @@ export function NewsPageClient() {
   return (
     <>
       <PageHeader
-        title={locale === 'az' ? 'Xəbərlər' : 'News'}
-        description={locale === 'az' ? 'Son şirkət yenilikləri və elanlar' : 'Our latest company updates and announcements'}
-        breadcrumbs={[{ label: locale === 'az' ? 'Xəbərlər' : 'News' }]}
+        title={locale === 'az' ? cmsText("xeberler/news-page-client.003") : cmsText("xeberler/news-page-client.004")}
+        description={locale === 'az' ? cmsText("xeberler/news-page-client.005") : cmsText("xeberler/news-page-client.006")}
+        breadcrumbs={[{ label: locale === 'az' ? cmsText("xeberler/news-page-client.007") : cmsText("xeberler/news-page-client.008") }]}
       />
 
       <section className="py-16 bg-background">
@@ -82,7 +86,7 @@ export function NewsPageClient() {
                       {featuredArticle.excerpt}
                     </p>
                     <div className="flex items-center text-primary font-medium group-hover:gap-2 transition-all">
-                      <span>{locale === 'az' ? 'Ətraflı oxu' : 'Read more'}</span>
+                      <span>{locale === 'az' ? cmsText("xeberler/news-page-client.009") : cmsText("xeberler/news-page-client.010")}</span>
                       <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </CardContent>
@@ -94,12 +98,12 @@ export function NewsPageClient() {
           {!featuredArticle && (
             <div className="mb-12 rounded-2xl border border-border/50 bg-card p-8 text-center">
               <h2 className="text-2xl font-semibold text-foreground">
-                {locale === 'az' ? 'Hələ xəbər yoxdur' : 'No news available yet'}
+                {locale === 'az' ? cmsText("xeberler/news-page-client.011") : cmsText("xeberler/news-page-client.012")}
               </h2>
               <p className="mt-2 text-muted-foreground">
                 {locale === 'az'
-                  ? 'Admin paneldən əlavə edilən xəbərlər burada görünəcək.'
-                  : 'News items added from the admin panel will appear here.'}
+                  ? cmsText("xeberler/news-page-client.013")
+                  : cmsText("xeberler/news-page-client.014")}
               </p>
             </div>
           )}
@@ -143,7 +147,7 @@ export function NewsPageClient() {
                     </p>
 
                     <div className="mt-4 flex items-center text-primary font-medium text-sm group-hover:gap-2 transition-all">
-                      <span>{locale === 'az' ? 'Ətraflı oxu' : 'Read more'}</span>
+                      <span>{locale === 'az' ? cmsText("xeberler/news-page-client.015") : cmsText("xeberler/news-page-client.016")}</span>
                       <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </CardContent>

@@ -27,6 +27,7 @@ import { useAdmin } from '@/lib/admin/context'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/admin/pages', label: 'Səhifələrin məzmunu', icon: FileText },
   { href: '/admin/projects', label: 'Layihələr', icon: FileText },
   { href: '/admin/news', label: 'Xəbərlər', icon: Newspaper },
   { href: '/admin/team', label: 'Komanda', icon: Users },

@@ -1,33 +1,34 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, MapPin, Calendar } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { categoryLabels, projects as seededProjects } from '@/lib/data'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-import { getCategoryLabel, translateProject } from '@/lib/site-translations'
+import { useSiteTranslations } from '@/lib/site-translations'
 import { cn } from '@/lib/utils'
 
 export function FeaturedProjects() {
+  const cmsText = useCmsText()
+  const { getCategoryLabel, translateProject } = useSiteTranslations()
+
   const { projects } = useAdmin()
   const { locale } = useLanguage()
-  const mergedProjects = Array.from(
-    new Map([...seededProjects, ...projects].map((project) => [project.slug, project])).values()
-  )
+  const mergedProjects = projects
   const featuredProjects = mergedProjects.filter(p => p.featured).map((project) => translateProject(project, locale))
   const copy =
     locale === 'az'
       ? {
-          badge: 'Layihələrimiz',
-          title: 'Seçilmiş Layihələr',
-          cta: 'Bütün Layihələr',
+          badge: cmsText("home/featured-projects.001"),
+          title: cmsText("home/featured-projects.002"),
+          cta: cmsText("home/featured-projects.003"),
         }
       : {
-          badge: 'Our Projects',
-          title: 'Featured Projects',
-          cta: 'View All Projects',
+          badge: cmsText("home/featured-projects.004"),
+          title: cmsText("home/featured-projects.005"),
+          cta: cmsText("home/featured-projects.006"),
         }
   return (
     <section className="py-20 bg-secondary/30">
@@ -43,7 +44,7 @@ export function FeaturedProjects() {
             </h2>
           </div>
           <Button asChild variant="outline" className="group w-fit">
-            <Link href="/layiheler">
+            <Link href={cmsText("home/featured-projects.007")}>
               {copy.cta}
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -64,10 +65,10 @@ export function FeaturedProjects() {
               {/* Image */}
               <div className={cn(
                 'relative overflow-hidden w-full h-full',
-                index === 0 ? 'aspect-16/10' : 'aspect-4/3'
+                index === 0 ? "aspect-16/10" : "aspect-4/3"
               )}>
                 <Image
-                  src={project.images[0] || `https://picsum.photos/800/600?random=${project.id}`}
+                  src={project.images[0] || '/placeholder.svg'}
                   alt={project.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -82,7 +83,7 @@ export function FeaturedProjects() {
                 {/* Content */}
                 <div className="relative z-10">
                     <span className="inline-block px-3 py-1 bg-accent text-accent-foreground text-xs font-medium rounded-full w-fit mb-3">
-                    {getCategoryLabel(project.category, locale) || categoryLabels[project.category]}
+                    {getCategoryLabel(project.category, locale)}
                   </span>
                   <h3 className={cn(
                     'font-bold text-white mb-2 wrap-break-word leading-tight tracking-tight',

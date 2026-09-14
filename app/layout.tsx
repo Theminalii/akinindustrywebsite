@@ -1,23 +1,22 @@
+import { readAdminContentConfig } from '@/lib/server/admin-content-config'
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { SiteShell } from '@/components/layout/site-shell'
 import { Providers } from './providers'
 import './globals.css'
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Akin Industry - Tikinti Şirkəti',
-    template: '%s | Akin Industry'
-  },
-  description: 'Azərbaycanda yaşayış, kommersiya və sənaye tikintisi üzrə peşəkar həllər təqdim edən Akin Industry.',
-  keywords: ['tikinti', 'inşaat', 'Azərbaycan', 'Bakı', 'layihə', 'memarlıq', 'yaşayış binası', 'kommersiya'],
-  authors: [{ name: 'Akin Industry' }],
-  openGraph: {
-    title: 'Akin Industry - Tikinti Şirkəti',
-    description: 'Azərbaycanda yaşayış, kommersiya və sənaye tikintisi üzrə peşəkar həllər təqdim edən Akin Industry.',
-    locale: 'az_AZ',
-    type: 'website',
-  },
+export const dynamic = 'force-dynamic'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await readAdminContentConfig()
+  const content = data.pageContent
+  return {
+    title: { default: content['seo/site.title'], template: '%s | ' + content['seo/site.author'] },
+    description: content['seo/site.description'],
+    keywords: content['seo/site.keywords'].split(',').map(value => value.trim()),
+    authors: [{ name: content['seo/site.author'] }],
+    openGraph: { title: content['seo/site.title'], description: content['seo/site.description'], locale: 'az_AZ', type: 'website' },
+  }
 }
 
 export default function RootLayout({

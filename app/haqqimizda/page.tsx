@@ -1,4 +1,6 @@
 'use client'
+import { useSiteTranslations } from '@/lib/site-translations'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import { PageHeader } from '@/components/shared/page-header'
 import { Target, Eye, Shield, Award, Users, Clock, UserRound } from 'lucide-react'
@@ -6,114 +8,121 @@ import { Card, CardContent } from '@/components/ui/card'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
 
+
+
+
+
+export default function AboutPage() {
+  const cmsText = useCmsText()
+  
+
 const valuesEn = [
   {
     icon: Shield,
-    title: 'Quality',
-    description: 'We deliver high-quality construction solutions aligned with international standards.'
+    title: cmsText("haqqimizda/page.001"),
+    description: cmsText("haqqimizda/page.002")
   },
   {
     icon: Clock,
-    title: 'On-Time Delivery',
-    description: 'Projects are completed within the agreed schedule and budget.'
+    title: cmsText("haqqimizda/page.003"),
+    description: cmsText("haqqimizda/page.004")
   },
   {
     icon: Users,
-    title: 'Professionalism',
-    description: 'A strong team of experienced and highly qualified professionals.'
+    title: cmsText("haqqimizda/page.005"),
+    description: cmsText("haqqimizda/page.006")
   },
   {
     icon: Award,
-    title: 'Reliability',
-    description: 'Trust earned through 10 years of experience and successful projects.'
+    title: cmsText("haqqimizda/page.007"),
+    description: cmsText("haqqimizda/page.008")
   },
 ]
-
 const timelineEn = [
-  { year: '1999', title: 'Company Founded', description: 'Akin Industry began operations as a small construction company.' },
-  { year: '2005', title: 'First Major Project', description: 'We successfully completed our first large commercial construction project in Baku.' },
-  { year: '2010', title: 'Entry Into the Industrial Sector', description: 'We expanded our portfolio by entering industrial construction.' },
-  { year: '2015', title: 'ISO Certification', description: 'We achieved ISO 9001 quality management certification.' },
-  { year: '2020', title: 'BIM Technology', description: 'We improved our design process by integrating modern BIM technology.' },
-  { year: '2026', title: '15+ Projects', description: 'More than 15 projects completed successfully across 10 years.' },
+  { year: cmsText("haqqimizda/page.009"), title: cmsText("haqqimizda/page.010"), description: cmsText("haqqimizda/page.011") },
+  { year: cmsText("haqqimizda/page.012"), title: cmsText("haqqimizda/page.013"), description: cmsText("haqqimizda/page.014") },
+  { year: cmsText("haqqimizda/page.015"), title: cmsText("haqqimizda/page.016"), description: cmsText("haqqimizda/page.017") },
+  { year: cmsText("haqqimizda/page.018"), title: cmsText("haqqimizda/page.019"), description: cmsText("haqqimizda/page.020") },
+  { year: cmsText("haqqimizda/page.021"), title: cmsText("haqqimizda/page.022"), description: cmsText("haqqimizda/page.023") },
+  { year: cmsText("haqqimizda/page.024"), title: cmsText("haqqimizda/page.025"), description: cmsText("haqqimizda/page.026") },
 ]
-
-export default function AboutPage() {
-  const { stats: companyStats, team } = useAdmin()
+  const { stats: companyStats, team: teamData } = useAdmin()
+  const { translateTeamMember } = useSiteTranslations()
   const { locale } = useLanguage()
+  const team = teamData.map(member => translateTeamMember(member, locale))
   const values =
     locale === 'az'
       ? [
-          { icon: Shield, title: 'Keyfiyyət', description: 'Beynəlxalq standartlara uyğun yüksək keyfiyyətli tikinti həlləri təqdim edirik.' },
-          { icon: Clock, title: 'Vaxtında Təhvil', description: 'Layihələri razılaşdırılmış qrafik və büdcə daxilində tamamlayırıq.' },
-          { icon: Users, title: 'Peşəkarlıq', description: 'Təcrübəli və yüksək ixtisaslı mütəxəssislərdən ibarət güclü komanda.' },
-          { icon: Award, title: 'Etibarlılıq', description: '10 illik təcrübə və uğurlu layihələrlə qazanılmış etibar.' },
+          { icon: Shield, title: cmsText("haqqimizda/page.027"), description: cmsText("haqqimizda/page.028") },
+          { icon: Clock, title: cmsText("haqqimizda/page.029"), description: cmsText("haqqimizda/page.030") },
+          { icon: Users, title: cmsText("haqqimizda/page.031"), description: cmsText("haqqimizda/page.032") },
+          { icon: Award, title: cmsText("haqqimizda/page.033"), description: cmsText("haqqimizda/page.034") },
         ]
       : valuesEn
   const timeline =
     locale === 'az'
       ? [
-          { year: '1999', title: 'Şirkətin Təsis Edilməsi', description: 'Akin Industry kiçik tikinti şirkəti kimi fəaliyyətə başladı.' },
-          { year: '2005', title: 'İlk Böyük Layihə', description: 'Bakıda ilk iri kommersiya tikinti layihəmizi uğurla tamamladıq.' },
-          { year: '2010', title: 'Sənaye Sektoruna Giriş', description: 'Portfelimizi genişləndirərək sənaye tikintisinə başladıq.' },
-          { year: '2015', title: 'ISO Sertifikatı', description: 'ISO 9001 keyfiyyət idarəetmə sertifikatını əldə etdik.' },
-          { year: '2020', title: 'BIM Texnologiyası', description: 'Müasir BIM texnologiyasını layihələndirmə prosesimizə inteqrasiya etdik.' },
-          { year: '2026', title: '15+ Layihə', description: '10 il ərzində 15-dən çox layihəni uğurla tamamladıq.' },
+          { year: cmsText("haqqimizda/page.035"), title: cmsText("haqqimizda/page.036"), description: cmsText("haqqimizda/page.037") },
+          { year: cmsText("haqqimizda/page.038"), title: cmsText("haqqimizda/page.039"), description: cmsText("haqqimizda/page.040") },
+          { year: cmsText("haqqimizda/page.041"), title: cmsText("haqqimizda/page.042"), description: cmsText("haqqimizda/page.043") },
+          { year: cmsText("haqqimizda/page.044"), title: cmsText("haqqimizda/page.045"), description: cmsText("haqqimizda/page.046") },
+          { year: cmsText("haqqimizda/page.047"), title: cmsText("haqqimizda/page.048"), description: cmsText("haqqimizda/page.049") },
+          { year: cmsText("haqqimizda/page.050"), title: cmsText("haqqimizda/page.051"), description: cmsText("haqqimizda/page.052") },
         ]
       : timelineEn
   const copy =
     locale === 'az'
       ? {
-          headerTitle: 'Haqqımızda',
-          headerDescription: 'Azərbaycanın tikinti sektorunda etibarlı tərəfdaş',
-          mission: 'Missiyamız',
+          headerTitle: cmsText("haqqimizda/page.053"),
+          headerDescription: cmsText("haqqimizda/page.054"),
+          mission: cmsText("haqqimizda/page.055"),
           missionText:
-            'Müştəri ehtiyaclarına uyğun yüksək keyfiyyətli, innovativ və dayanıqlı tikinti həlləri təqdim etməklə Azərbaycanın infrastruktur inkişafına töhfə vermək. Hər layihədə mükəmməlliyi, etik dəyərləri və müştəri məmnuniyyətini əsas tuturuq.',
-          vision: 'Vizyonumuz',
+            cmsText("haqqimizda/page.056"),
+          vision: cmsText("haqqimizda/page.057"),
           visionText:
-            'Beynəlxalq standartlara uyğun xidmətlərlə regionun aparıcı tikinti şirkətlərindən birinə çevrilmək və qlobal bazarlarda tanınmaq. Texnoloji yenilikləri tətbiq etməklə tikintinin gələcəyini bu gündən formalaşdırırıq.',
-          storyBadge: 'Hekayəmiz',
-          storyTitle: '10 İllik Uğur Yolu',
+            cmsText("haqqimizda/page.058"),
+          storyBadge: cmsText("haqqimizda/page.059"),
+          storyTitle: cmsText("haqqimizda/page.060"),
           storyLead:
-            '10 ildən artıq təcrübəyə malik Akin Industry Azərbaycanın etibarlı tikinti şirkətlərindən birinə çevrilmişdir.',
+            cmsText("haqqimizda/page.061"),
           storyText:
-            'İllər ərzində müxtəlif sahələrdə 15-dən çox layihəni uğurla tamamlamışıq. Hər layihədə keyfiyyət və müştəri məmnuniyyətini əsas tutaraq sektorda etibarlı mövqe qazanmışıq.',
-          years: 'İllik Təcrübə',
-          projects: 'Tamamlanmış Layihə',
-          employees: 'Peşəkar Əməkdaş',
-          clients: 'Məmnun Müştəri',
-          valuesBadge: 'Dəyərlərimiz',
-          valuesTitle: 'Bizi İrəli Aparan Prinsiplər',
-          valuesText: 'Hər layihədə bu dəyərlərə sadiq qalaraq müştərilərimizin etibarını qazanırıq.',
-          timelineBadge: 'Tarixçə',
-          timelineTitle: 'İnkişaf Yolumuz',
-          imageAlt: 'Akin Industry-nin 10 illik etibarlı tikinti təcrübəsi',
+            cmsText("haqqimizda/page.062"),
+          years: cmsText("haqqimizda/page.063"),
+          projects: cmsText("haqqimizda/page.064"),
+          employees: cmsText("haqqimizda/page.065"),
+          clients: cmsText("haqqimizda/page.066"),
+          valuesBadge: cmsText("haqqimizda/page.067"),
+          valuesTitle: cmsText("haqqimizda/page.068"),
+          valuesText: cmsText("haqqimizda/page.069"),
+          timelineBadge: cmsText("haqqimizda/page.070"),
+          timelineTitle: cmsText("haqqimizda/page.071"),
+          imageAlt: cmsText("haqqimizda/page.072"),
         }
       : {
-          headerTitle: 'About Us',
-          headerDescription: 'A trusted partner in Azerbaijan’s construction sector',
-          mission: 'Our Mission',
+          headerTitle: cmsText("haqqimizda/page.073"),
+          headerDescription: cmsText("haqqimizda/page.074"),
+          mission: cmsText("haqqimizda/page.075"),
           missionText:
-            'To contribute to the development of Azerbaijan’s infrastructure by delivering high-quality, innovative, and sustainable construction solutions tailored to our clients’ needs. We prioritize excellence, ethics, and client satisfaction in every project.',
-          vision: 'Our Vision',
+            cmsText("haqqimizda/page.076"),
+          vision: cmsText("haqqimizda/page.077"),
           visionText:
-            'To become a leading construction company in the region and gain recognition in global markets through services aligned with international standards. By applying technological innovation, we help shape the future of construction today.',
-          storyBadge: 'Our Story',
-          storyTitle: '10 Years of Growth',
+            cmsText("haqqimizda/page.078"),
+          storyBadge: cmsText("haqqimizda/page.079"),
+          storyTitle: cmsText("haqqimizda/page.080"),
           storyLead:
-            'With more than 10 years of experience, Akin Industry has grown into one of Azerbaijan’s trusted names in the sector.',
+            cmsText("haqqimizda/page.081"),
           storyText:
-            'Over the years, we have successfully delivered more than 15 projects across multiple construction sectors. By maintaining a strong focus on quality and client satisfaction, we have earned a trusted position in the market.',
-          years: 'Years of Experience',
-          projects: 'Completed Projects',
-          employees: 'Skilled Employees',
-          clients: 'Satisfied Clients',
-          valuesBadge: 'Our Values',
-          valuesTitle: 'Principles That Guide Us',
-          valuesText: 'We earn our clients’ trust by staying committed to these values on every project.',
-          timelineBadge: 'Timeline',
-          timelineTitle: 'Our Development Journey',
-          imageAlt: 'Akin Industry 10 years of trusted construction experience',
+            cmsText("haqqimizda/page.082"),
+          years: cmsText("haqqimizda/page.083"),
+          projects: cmsText("haqqimizda/page.084"),
+          employees: cmsText("haqqimizda/page.085"),
+          clients: cmsText("haqqimizda/page.086"),
+          valuesBadge: cmsText("haqqimizda/page.087"),
+          valuesTitle: cmsText("haqqimizda/page.088"),
+          valuesText: cmsText("haqqimizda/page.089"),
+          timelineBadge: cmsText("haqqimizda/page.090"),
+          timelineTitle: cmsText("haqqimizda/page.091"),
+          imageAlt: cmsText("haqqimizda/page.092"),
         }
 
   return (
@@ -174,19 +183,19 @@ export default function AboutPage() {
               {/* Stats */}
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center p-4 bg-card rounded-xl border border-border/50">
-                  <div className="text-3xl font-bold text-primary mb-1">{companyStats.years}+</div>
+                  <div className="text-3xl font-bold text-primary mb-1">{companyStats.years}{cmsText("haqqimizda/page.093")}</div>
                   <div className="text-muted-foreground text-sm">{copy.years}</div>
                 </div>
                 <div className="text-center p-4 bg-card rounded-xl border border-border/50">
-                  <div className="text-3xl font-bold text-primary mb-1">{companyStats.projects}+</div>
+                  <div className="text-3xl font-bold text-primary mb-1">{companyStats.projects}{cmsText("haqqimizda/page.094")}</div>
                   <div className="text-muted-foreground text-sm">{copy.projects}</div>
                 </div>
                 <div className="text-center p-4 bg-card rounded-xl border border-border/50">
-                  <div className="text-3xl font-bold text-primary mb-1">{companyStats.employees}+</div>
+                  <div className="text-3xl font-bold text-primary mb-1">{companyStats.employees}{cmsText("haqqimizda/page.095")}</div>
                   <div className="text-muted-foreground text-sm">{copy.employees}</div>
                 </div>
                 <div className="text-center p-4 bg-card rounded-xl border border-border/50">
-                  <div className="text-3xl font-bold text-primary mb-1">{companyStats.clients}+</div>
+                  <div className="text-3xl font-bold text-primary mb-1">{companyStats.clients}{cmsText("haqqimizda/page.096")}</div>
                   <div className="text-muted-foreground text-sm">{copy.clients}</div>
                 </div>
               </div>
@@ -196,7 +205,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden bg-linear-to-br from-[#081426] via-[#0b1830] to-[#132642] p-3 shadow-[0_18px_50px_rgba(15,23,42,0.12)] sm:p-4">
                 <img
-                  src="/images/about-history-ai.png"
+                  src={cmsText("haqqimizda/page.097")}
                   alt={copy.imageAlt}
                   className="h-full w-full rounded-xl object-contain object-center"
                 />
@@ -243,10 +252,10 @@ export default function AboutPage() {
           <div className="container mx-auto px-4">
             <div className="mx-auto mb-12 max-w-3xl text-center">
               <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
-                {locale === 'az' ? 'Komandamız' : 'Our Team'}
+                {locale === 'az' ? cmsText("haqqimizda/page.098") : cmsText("haqqimizda/page.099")}
               </span>
               <h2 className="text-3xl font-bold text-foreground md:text-4xl">
-                {locale === 'az' ? 'Peşəkar komandamız' : 'Meet our professionals'}
+                {locale === 'az' ? cmsText("haqqimizda/page.100") : cmsText("haqqimizda/page.101")}
               </h2>
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -300,7 +309,7 @@ export default function AboutPage() {
                   <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 z-10" />
 
                   {/* Content */}
-                  <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
+                  <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : "md:pl-12"}`}>
                     <div className="bg-card rounded-xl p-6 border border-border/50 shadow-sm">
                       <span className="inline-block px-3 py-1 bg-accent/20 text-accent-foreground text-sm font-semibold rounded-full mb-3">
                         {item.year}

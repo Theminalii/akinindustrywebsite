@@ -1,0 +1,4649 @@
+{
+  "lib/site-translations.ts.001": {
+    "label": "İngilis dili",
+    "original": "Residential",
+    "record": "categoryLabels"
+  },
+  "lib/site-translations.ts.002": {
+    "label": "İngilis dili",
+    "original": "Commercial",
+    "record": "categoryLabels"
+  },
+  "lib/site-translations.ts.003": {
+    "label": "İngilis dili",
+    "original": "Industrial",
+    "record": "categoryLabels"
+  },
+  "lib/site-translations.ts.004": {
+    "label": "İngilis dili",
+    "original": "Infrastructure",
+    "record": "categoryLabels"
+  },
+  "lib/site-translations.ts.005": {
+    "label": "İngilis dili",
+    "original": "All",
+    "record": "categoryLabels"
+  },
+  "lib/site-translations.ts.006": {
+    "label": "Azərbaycan dili",
+    "original": "Yaşayış",
+    "record": "categoryLabels"
+  },
+  "lib/site-translations.ts.007": {
+    "label": "Azərbaycan dili",
+    "original": "Kommersiya",
+    "record": "categoryLabels"
+  },
+  "lib/site-translations.ts.008": {
+    "label": "Azərbaycan dili",
+    "original": "Sənaye",
+    "record": "categoryLabels"
+  },
+  "lib/site-translations.ts.009": {
+    "label": "Azərbaycan dili",
+    "original": "İnfrastruktur",
+    "record": "categoryLabels"
+  },
+  "lib/site-translations.ts.010": {
+    "label": "Azərbaycan dili",
+    "original": "Hamısı",
+    "record": "categoryLabels"
+  },
+  "lib/site-translations.ts.012": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Konstruktiv Tikinti İşləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.013": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Qəlib, armatur və beton işləri üzrə tam həcmli həllər.",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.014": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Qəlib işləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.015": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Armatur quraşdırılması",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.016": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Beton tökülməsi",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.017": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Keyfiyyətə nəzarət",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.019": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Metal Konstruksiyaların İstehsalı və Montajı",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.020": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Sənaye və infrastruktur layihələri üçün etibarlı metal konstruksiya həlləri.",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.021": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Metal istehsalı",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.022": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Montaj xidmətləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.023": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Çatdırılma və quraşdırma",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.024": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Korroziyadan mühafizə",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.026": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Fasad İşləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.027": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Bütün bina növləri üçün müasir və davamlı fasad sistemləri.",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.028": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "İzolyasiya sistemləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.029": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Keramoqranit üzlük",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.030": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Doğrama quraşdırılması",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.031": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Şüşə fasad sistemləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.033": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Mühəndislik və Layihələndirmə",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.034": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Layihə planlaması, mühəndis hesablamaları və icra sənədləri.",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.035": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Layihələndirmə",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.036": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Mühəndis hesablamaları",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.037": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "BIM modelləşdirmə",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.038": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Texniki sənədləşmə",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.040": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Sendviç Panel Quraşdırılması və İzolyasiya",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.041": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Sendviç panel sistemlərinin sürətli və etibarlı quraşdırılması.",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.042": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Panel quraşdırılması",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.043": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "İzolyasiya tətbiqi",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.044": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Sızdırmazlıq yoxlaması",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.045": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Səth tamamlama işləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.047": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Fit-Out və Landşaft İşləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.048": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Müasir məkanlar üçün interyer və açıq mühit həlləri.",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.049": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Ofis fit-out işləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.050": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Təchizat və dekorasiya",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.051": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Bağ və landşaft dizaynı",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.052": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Təhvil sonrası dəstək",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.054": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Üzlük, Suvaq və Boya İşləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.055": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Daxili və xarici məkanlar üçün tamamlama həlləri.",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.056": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Üzlük təmiri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.057": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Xarici suvaq",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.058": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Daxili boya işləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.059": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Səthin hazırlanması",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.061": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "BMU Quraşdırılması və Servisi",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.062": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Fasada çıxış və təmizləmə sistemlərinin quraşdırılması və xidməti.",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.063": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "BMU quraşdırılması",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.064": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Avadanlıq testləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.065": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Texniki xidmət",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.066": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Təhlükəsizlik yoxlamaları",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.068": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Mexaniki Avadanlıq və Boru Xətlərinin Montajı",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.069": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Mexaniki sistemlər və boru şəbəkələrinin tam quraşdırılması.",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.070": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Boru montajı",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.071": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Mexaniki sistemlər",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.072": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "İstismar testləri",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.073": {
+    "label": "Azərbaycan dili · Xüsusiyyətlər",
+    "original": "Quraşdırma protokolları",
+    "record": "serviceTranslations"
+  },
+  "lib/site-translations.ts.075": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "BMU Sistemi (Metal Konstruksiya və Mexaniki Montaj İşləri)",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.076": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Bakıda yerləşən nüfuzlu biznes mərkəzi üçün müasir memarlıq həlləri və yüksək keyfiyyətli tikinti materialları ilə icra edilmiş layihə.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.077": {
+    "label": "Azərbaycan dili",
+    "original": "Bakı, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.078": {
+    "label": "Azərbaycan dili",
+    "original": "350 ton",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.080": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Çinar Park Dam Konstruksiyası",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.081": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Metal istehsalı və montaj işlərini əhatə edən davam edən layihə.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.082": {
+    "label": "Azərbaycan dili",
+    "original": "Bakı, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.083": {
+    "label": "Azərbaycan dili",
+    "original": "28 ton",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.085": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Crescent Mall Metal İşləri",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.086": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Böyük həcmli qarışıq istifadəli kommersiya obyekti üçün metal istehsalı, montaj və ankeraj işləri.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.087": {
+    "label": "Azərbaycan dili",
+    "original": "Bakı, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.088": {
+    "label": "Azərbaycan dili",
+    "original": "55 ton",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.090": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Mingəçevir Elektrik Stansiyası",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.091": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Beton və metal konstruksiya işləri ilə həyata keçirilmiş iri sənaye infrastrukturu layihəsi.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.092": {
+    "label": "Azərbaycan dili",
+    "original": "Mingəçevir, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.093": {
+    "label": "Azərbaycan dili",
+    "original": "1500 ton beton / 350 ton polad",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.095": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Crescent Mall",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.096": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Böyük ticarət məkanı üçün metal istehsalı, montaj və ankeraj işləri.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.097": {
+    "label": "Azərbaycan dili",
+    "original": "Bakı, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.098": {
+    "label": "Azərbaycan dili",
+    "original": "55 ton",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.100": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Şirvan Elektrik Stansiyası",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.101": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Müasir sənaye həlli çərçivəsində metal və örtük işləri ilə icra olunmuş layihə.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.102": {
+    "label": "Azərbaycan dili",
+    "original": "Şirvan, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.103": {
+    "label": "Azərbaycan dili",
+    "original": "85 ton polad + trapets formalı örtük",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.105": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Azersulfat Turşu Zavodu",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.106": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Azersulfat layihəsi çərçivəsində refrakter montaj işləri.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.107": {
+    "label": "Azərbaycan dili",
+    "original": "Sumqayıt, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.108": {
+    "label": "Azərbaycan dili",
+    "original": "250 ton",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.110": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Şüvəlan Elektrik Stansiyası",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.111": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Şimal-2 estakadasında qumlama və boyama işləri.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.112": {
+    "label": "Azərbaycan dili",
+    "original": "Şüvəlan, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.113": {
+    "label": "Azərbaycan dili",
+    "original": "6000 m²",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.115": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Səngəçal Terminalı",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.116": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "BP Terminalı üçün hasar işləri.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.117": {
+    "label": "Azərbaycan dili",
+    "original": "Səngəçal, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.118": {
+    "label": "Azərbaycan dili",
+    "original": "2500 metr",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.120": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Qazax ADA Universiteti",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.121": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Qazax ADA Universiteti yataqxanasının yenidənqurma işləri.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.122": {
+    "label": "Azərbaycan dili",
+    "original": "Qazax, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.123": {
+    "label": "Azərbaycan dili",
+    "original": "Metal konstruksiya işləri (120 m məhəccər və 7 ton keçid platforması)",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.125": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Qlükometr və Strip İstehsal Binası",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.126": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Metal və fasad işləri daxil olmaqla ventilyasiya sistemli istehsal binası layihəsi.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.127": {
+    "label": "Azərbaycan dili",
+    "original": "Pirallahı, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.128": {
+    "label": "Azərbaycan dili",
+    "original": "150 ton metal işləri və 4000 m² fasad işləri",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.130": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Kalium Sulfat Zavodu",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.131": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "İnşaat, metal konstruksiya və örtük işlərini əhatə edən sənaye layihəsi.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.132": {
+    "label": "Azərbaycan dili",
+    "original": "Sumqayıt, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.133": {
+    "label": "Azərbaycan dili",
+    "original": "4200 m³ beton, 350 ton armatur, 180 ton metal və 5500 m² örtük",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.135": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Stalçay İstehsalat Zavodu",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.136": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Stalçay İstehsalat Zavodunda 104 ədəd elektrik manholu və 54 ədəd hidrant kanalının tikinti işləri tamamlanıb.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.137": {
+    "label": "Azərbaycan dili",
+    "original": "Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.138": {
+    "label": "Azərbaycan dili",
+    "original": "104 elektrik manholu və 54 hidrant kanalı",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.140": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Pirallahı Dərman Zavodu",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.141": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Pirallahı Dərman Zavodunda metal konstruksiya işləri həyata keçirilib.",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.142": {
+    "label": "Azərbaycan dili",
+    "original": "Pirallahı, Azərbaycan",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.143": {
+    "label": "Azərbaycan dili",
+    "original": "Metal konstruksiya işləri",
+    "record": "projectTranslations"
+  },
+  "lib/site-translations.ts.145": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Akin Industry Agentic AI İş Axınlarının Tətbiqi üçün PocketVC Venture Studio ilə Tərəfdaşlıq Edir",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.146": {
+    "label": "Azərbaycan dili · Qısa məzmun",
+    "original": "Əməliyyat və satış proseslərimizi transformasiya edəcək AI alətlərinin hazırlanması və tətbiqi üçün strateji tərəfdaşlıq.",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.147": {
+    "label": "Azərbaycan dili · Məzmun",
+    "original": "PocketVC Venture Studio-nun partnyoru Chinara Askerzade ilə ən son tərəfdaşlığımızı məmnuniyyətlə elan edirik. Bu əməkdaşlıq əməliyyat və satış proseslərimizdə agentic AI iş axınlarının hazırlanması və tətbiqini dəstəkləyəcək.\n\nBu tərəfdaşlıq daxili iş axınlarımızı sadələşdirməyə, səmərəliliyi artırmağa, əsas prosesləri avtomatlaşdırmağa və müştərilərimizlə əlaqə üsulumuzu gücləndirməyə kömək edəcək. Nəticədə daha ağıllı qərarlar və dayanıqlı inkişaf əldə edəcəyik.",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.148": {
+    "label": "Azərbaycan dili",
+    "original": "Tərəfdaşlıq Elanı",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.150": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Yeni İnfrastruktur Layihəsi İmzalandı",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.151": {
+    "label": "Azərbaycan dili · Qısa məzmun",
+    "original": "Akin Industry dəyəri 50 milyon AZN olan və iki il ərzində tamamlanması planlaşdırılan yeni ictimai infrastruktur layihəsinə başlayır.",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.152": {
+    "label": "Azərbaycan dili · Məzmun",
+    "original": "Akin Industry tərəfindən yeni infrastruktur layihəsinin başlanmasını məmnuniyyətlə elan edirik. Layihə Azərbaycan Respublikası Dövlət Yol Agentliyi ilə əməkdaşlıq çərçivəsində icra olunacaq və ölkənin nəqliyyat şəbəkəsinə əhəmiyyətli töhfə verəcək.\n\nLayihə 25 km avtomobil yolunu, 4 körpünü və müasir işıqlandırma sistemini əhatə edir. Tikintinin 2024-cü ilin yazında başlaması və 2026-cı ilin sonuna qədər yekunlaşması planlaşdırılır.",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.153": {
+    "label": "Azərbaycan dili",
+    "original": "Layihələr",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.155": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "ISO 9001:2015 Sertifikatı Əldə Olundu",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.156": {
+    "label": "Azərbaycan dili · Qısa məzmun",
+    "original": "Şirkətimiz keyfiyyət idarəetməsi üzrə beynəlxalq ISO 9001:2015 sertifikatına layiq görülüb.",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.157": {
+    "label": "Azərbaycan dili · Məzmun",
+    "original": "Akin Industry keyfiyyət idarəetmə sistemi üzrə nüfuzlu ISO 9001:2015 sertifikatını əldə edib. Bu sertifikat daxili proseslərimizin beynəlxalq səviyyədə tanınan keyfiyyət standartlarına uyğun olduğunu təsdiqləyir.\n\nSertifikatlaşdırma prosesi TÜV Rheinland tərəfindən aparılıb və sistemlərimizin qlobal ən yaxşı təcrübələrlə uyğunluğu təsdiqlənib. Bu nailiyyət müştərilərimizə daha yüksək keyfiyyətli xidmət göstərmək öhdəliyimizi bir daha gücləndirir.",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.158": {
+    "label": "Azərbaycan dili",
+    "original": "Nailiyyətlər",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.160": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "BIM Texnologiyasına Keçid",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.161": {
+    "label": "Azərbaycan dili · Qısa məzmun",
+    "original": "Akin Industry BIM texnologiyasını layihələndirmə və planlaşdırma proseslərinə tətbiq edir.",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.162": {
+    "label": "Azərbaycan dili · Məzmun",
+    "original": "Layihələndirmə və icra keyfiyyətini daha da artırmaq üçün şirkətimiz BIM texnologiyasına keçid edir. Bu müasir metodologiya daha dəqiq planlama, daha güclü koordinasiya və daha səmərəli xərc idarəçiliyi imkanı yaradır.\n\nBIM vasitəsilə bütün tikinti prosesi virtual şəkildə modelləşdirilir, potensial problemlər erkən mərhələdə aşkarlanır və icraya başlamazdan əvvəl aradan qaldırılır. Bu da daha qısa təhvil müddəti və daha yüksək keyfiyyət deməkdir.",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.163": {
+    "label": "Azərbaycan dili",
+    "original": "Texnologiya",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.165": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "İşə Qəbul Kampaniyası Başladı",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.166": {
+    "label": "Azərbaycan dili · Qısa məzmun",
+    "original": "Böyüyən layihə portfelimizi dəstəkləmək üçün müxtəlif istiqamətlər üzrə yeni komanda üzvləri axtarırıq.",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.167": {
+    "label": "Azərbaycan dili · Məzmun",
+    "original": "Akin Industry komandası genişlənir. Qarşıdakı layihələrimiz üçün mühəndislər, layihə menecerləri və texniki mütəxəssislər axtarırıq.\n\nNamizədlərdən müvafiq tikinti təcrübəsi, güclü komanda işi bacarığı və peşəkar yanaşma gözlənilir. Daha ətraflı məlumat üçün Karyera səhifəmizə baxın.",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.168": {
+    "label": "Azərbaycan dili",
+    "original": "Karyera",
+    "record": "newsTranslations"
+  },
+  "lib/site-translations.ts.170": {
+    "label": "Azərbaycan dili",
+    "original": "Tikinti sahəsində 25 illik təcrübəyə malikdir. Azərbaycan Memarlıq və İnşaat Universitetinin məzunudur.",
+    "record": "teamTranslations"
+  },
+  "lib/site-translations.ts.172": {
+    "label": "Azərbaycan dili",
+    "original": "Beynəlxalq tikinti layihələrində 15 illik təcrübəyə malikdir. Almaniyada təhsil alıb.",
+    "record": "teamTranslations"
+  },
+  "lib/site-translations.ts.174": {
+    "label": "Azərbaycan dili",
+    "original": "Böyükmiqyaslı layihələrin təhvili üzrə ixtisaslaşmış mütəxəssisdir. PMP sertifikatına malikdir.",
+    "record": "teamTranslations"
+  },
+  "lib/site-translations.ts.176": {
+    "label": "Azərbaycan dili",
+    "original": "18 illik maliyyə təcrübəsi olan ACCA üzvüdür.",
+    "record": "teamTranslations"
+  },
+  "lib/site-translations.ts.178": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Baş Mühəndis",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.179": {
+    "label": "Azərbaycan dili",
+    "original": "Tikinti",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.180": {
+    "label": "Azərbaycan dili",
+    "original": "Bakı",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.181": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Böyükmiqyaslı tikinti layihələrinin texniki icrasına rəhbərlik edəcək təcrübəli mühəndis axtarırıq.",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.182": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "Mülki və ya tikinti mühəndisliyi üzrə ali təhsil",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.183": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "Minimum 10 il tikinti təcrübəsi",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.184": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "AutoCAD və Revit bilikləri",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.185": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "Güclü layihə idarəetmə bacarıqları",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.187": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Layihə Meneceri",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.188": {
+    "label": "Azərbaycan dili",
+    "original": "Layihə İdarəetməsi",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.189": {
+    "label": "Azərbaycan dili",
+    "original": "Bakı",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.190": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Kommersiya tikinti layihələrinin icrası üçün peşəkar menecer tələb olunur.",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.191": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "İdarəetmə və ya mühəndislik üzrə ali təhsil",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.192": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "Minimum 5 il layihə idarəetmə təcrübəsi",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.193": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "MS Project və Primavera təcrübəsi",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.194": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "Yüksək kommunikasiya və liderlik bacarıqları",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.196": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "BIM Mütəxəssisi",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.197": {
+    "label": "Azərbaycan dili",
+    "original": "Layihələndirmə",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.198": {
+    "label": "Azərbaycan dili",
+    "original": "Bakı",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.199": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "BIM modelləşdirmə və fənlərarası koordinasiyaya fokuslanan mütəxəssis vakansiyası.",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.200": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "Memarlıq və ya mühəndislik üzrə ali təhsil",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.201": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "Revit, Navisworks və BIM 360 təcrübəsi",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.202": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "BIM standartları üzrə bilik",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.203": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "Güclü əməkdaşlıq bacarıqları",
+    "record": "jobTranslations"
+  },
+  "lib/site-translations.ts.205": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "ISO 9001:2015 Keyfiyyət İdarəetməsi",
+    "record": "certificateTranslations"
+  },
+  "lib/site-translations.ts.206": {
+    "label": "Azərbaycan dili",
+    "original": "Sertifikat",
+    "record": "certificateTranslations"
+  },
+  "lib/site-translations.ts.207": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Müştəri məmnuniyyəti və davamlı inkişaf öhdəliyimizi təsdiqləyən keyfiyyət idarəetmə sistemi üzrə beynəlxalq sertifikat.",
+    "record": "certificateTranslations"
+  },
+  "lib/site-translations.ts.209": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "ISO 45001 Əməyin Mühafizəsi və Təhlükəsizlik",
+    "record": "certificateTranslations"
+  },
+  "lib/site-translations.ts.210": {
+    "label": "Azərbaycan dili",
+    "original": "Sertifikat",
+    "record": "certificateTranslations"
+  },
+  "lib/site-translations.ts.211": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "İşçi rifahı və təhlükəsiz əməliyyatlara verdiyimiz önəmi əks etdirən əməyin mühafizəsi sertifikatı.",
+    "record": "certificateTranslations"
+  },
+  "lib/site-translations.ts.213": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "ISO 14001 Ətraf Mühitin İdarəedilməsi",
+    "record": "certificateTranslations"
+  },
+  "lib/site-translations.ts.214": {
+    "label": "Azərbaycan dili",
+    "original": "Sertifikat",
+    "record": "certificateTranslations"
+  },
+  "lib/site-translations.ts.215": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Davamlılıq və ətraf mühit məsuliyyətinə bağlılığımızı göstərən beynəlxalq ətraf mühit standartı.",
+    "record": "certificateTranslations"
+  },
+  "elaqe/contact-page-client.001": {
+    "label": "Azərbaycan dili · Səhifə başlığı",
+    "original": "Əlaqə",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.002": {
+    "label": "Azərbaycan dili · Səhifə təsviri",
+    "original": "Layihənizi müzakirə etmək üçün bizimlə əlaqə saxlayın",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.003": {
+    "label": "Azərbaycan dili",
+    "original": "Telefon",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.004": {
+    "label": "Azərbaycan dili",
+    "original": "E-poçt",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.005": {
+    "label": "Azərbaycan dili",
+    "original": "Ünvan",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.006": {
+    "label": "Azərbaycan dili",
+    "original": "İş Saatları",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.007": {
+    "label": "Azərbaycan dili",
+    "original": "Əlaqə Formu",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.008": {
+    "label": "Azərbaycan dili",
+    "original": "Bizə Mesaj Göndərin",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.009": {
+    "label": "Azərbaycan dili",
+    "original": "Layihəniz haqqında məlumat verin, komandamız qısa zamanda sizinlə əlaqə saxlasın.",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.010": {
+    "label": "Azərbaycan dili",
+    "original": "Ad Soyad *",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.011": {
+    "label": "Azərbaycan dili",
+    "original": "Ad və soyadınızı daxil edin",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.012": {
+    "label": "Azərbaycan dili",
+    "original": "E-poçt *",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.013": {
+    "label": "Azərbaycan dili",
+    "original": "Telefon *",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.014": {
+    "label": "Azərbaycan dili",
+    "original": "Mövzu",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.015": {
+    "label": "Azərbaycan dili",
+    "original": "Mesajın mövzusu",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.016": {
+    "label": "Azərbaycan dili",
+    "original": "Mesaj *",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.017": {
+    "label": "Azərbaycan dili",
+    "original": "Layihəniz haqqında ətraflı məlumat paylaşın...",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.018": {
+    "label": "Azərbaycan dili",
+    "original": "Göndərilir...",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.019": {
+    "label": "Azərbaycan dili",
+    "original": "Göndər",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.020": {
+    "label": "Azərbaycan dili",
+    "original": "Məkan",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.021": {
+    "label": "Azərbaycan dili",
+    "original": "Ofisimizi Ziyarət Edin",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.022": {
+    "label": "Azərbaycan dili",
+    "original": "Baş ofisimiz Bakının mərkəzində yerləşir. Görüş üçün əvvəlcədən zəng etməyiniz xahiş olunur.",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.023": {
+    "label": "Azərbaycan dili",
+    "original": "Bizi izləyin:",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.024": {
+    "label": "Azərbaycan dili",
+    "original": "Layihəniz Haqqında Danışaq",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.025": {
+    "label": "Azərbaycan dili",
+    "original": "Ödənişsiz konsultasiya üçün bu gün bizimlə əlaqə saxlayın",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.026": {
+    "label": "Azərbaycan dili",
+    "original": "Mesaj göndərildi.",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.027": {
+    "label": "Azərbaycan dili",
+    "original": "Mesaj göndərildi. Aktiv kanallar:",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.028": {
+    "label": "Azərbaycan dili",
+    "original": "Mesaj göndərilə bilmədi.",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.029": {
+    "label": "Azərbaycan dili",
+    "original": "Mesaj göndərilə bilmədi. Bildiriş ayarlarını yoxlayın.",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.030": {
+    "label": "İngilis dili · Səhifə başlığı",
+    "original": "Contact",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.031": {
+    "label": "İngilis dili · Səhifə təsviri",
+    "original": "Get in touch with us to discuss your project",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.032": {
+    "label": "İngilis dili",
+    "original": "Phone",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.033": {
+    "label": "İngilis dili",
+    "original": "Email",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.034": {
+    "label": "İngilis dili",
+    "original": "Address",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.035": {
+    "label": "İngilis dili",
+    "original": "Working Hours",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.036": {
+    "label": "İngilis dili",
+    "original": "Contact Form",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.037": {
+    "label": "İngilis dili",
+    "original": "Send Us a Message",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.038": {
+    "label": "İngilis dili",
+    "original": "Tell us about your project and our team will get back to you shortly.",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.039": {
+    "label": "İngilis dili",
+    "original": "Full Name *",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.040": {
+    "label": "İngilis dili",
+    "original": "Enter your full name",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.041": {
+    "label": "İngilis dili",
+    "original": "Email *",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.042": {
+    "label": "İngilis dili",
+    "original": "Phone *",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.043": {
+    "label": "İngilis dili",
+    "original": "Subject",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.044": {
+    "label": "İngilis dili",
+    "original": "Subject of your message",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.045": {
+    "label": "İngilis dili",
+    "original": "Message *",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.046": {
+    "label": "İngilis dili",
+    "original": "Share details about your project...",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.047": {
+    "label": "İngilis dili",
+    "original": "Sending...",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.048": {
+    "label": "İngilis dili",
+    "original": "Send",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.049": {
+    "label": "İngilis dili",
+    "original": "Location",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.050": {
+    "label": "İngilis dili",
+    "original": "Visit Our Office",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.051": {
+    "label": "İngilis dili",
+    "original": "Our main office is located in central Baku. Please call ahead to schedule a meeting.",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.052": {
+    "label": "İngilis dili",
+    "original": "Follow us:",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.053": {
+    "label": "İngilis dili",
+    "original": "Let’s Talk About Your Project",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.054": {
+    "label": "İngilis dili",
+    "original": "Contact us today for a free consultation",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.055": {
+    "label": "İngilis dili",
+    "original": "Message sent.",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.056": {
+    "label": "İngilis dili",
+    "original": "Message sent. Active channels:",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.057": {
+    "label": "İngilis dili",
+    "original": "Message could not be sent.",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.058": {
+    "label": "İngilis dili",
+    "original": "Message could not be sent. Please check the notification settings.",
+    "record": "copy"
+  },
+  "elaqe/contact-page-client.059": {
+    "label": "",
+    "original": "tel:",
+    "record": "contactInfo"
+  },
+  "elaqe/contact-page-client.060": {
+    "label": "",
+    "original": "mailto:",
+    "record": "contactInfo"
+  },
+  "elaqe/contact-page-client.063": {
+    "label": "",
+    "original": "email@example.com",
+    "record": ""
+  },
+  "elaqe/contact-page-client.064": {
+    "label": "",
+    "original": "+994 XX XXX XX XX",
+    "record": ""
+  },
+  "elaqe/contact-page-client.065": {
+    "label": "",
+    "original": "Akin Industry map",
+    "record": ""
+  },
+  "elaqe/contact-page-client.066": {
+    "label": "",
+    "original": "LinkedIn",
+    "record": ""
+  },
+  "layout/header.001": {
+    "label": "İngilis dili · Ad",
+    "original": "Home",
+    "record": "labels"
+  },
+  "layout/header.002": {
+    "label": "İngilis dili · Keçid",
+    "original": "/",
+    "record": "labels"
+  },
+  "layout/header.003": {
+    "label": "İngilis dili · Ad",
+    "original": "About Us",
+    "record": "labels"
+  },
+  "layout/header.004": {
+    "label": "İngilis dili · Keçid",
+    "original": "/haqqimizda",
+    "record": "labels"
+  },
+  "layout/header.005": {
+    "label": "İngilis dili · Ad",
+    "original": "Projects",
+    "record": "labels"
+  },
+  "layout/header.006": {
+    "label": "İngilis dili · Keçid",
+    "original": "/layiheler",
+    "record": "labels"
+  },
+  "layout/header.007": {
+    "label": "İngilis dili · Ad",
+    "original": "Services",
+    "record": "labels"
+  },
+  "layout/header.008": {
+    "label": "İngilis dili · Keçid",
+    "original": "/xidmetler",
+    "record": "labels"
+  },
+  "layout/header.009": {
+    "label": "İngilis dili · Ad",
+    "original": "News",
+    "record": "labels"
+  },
+  "layout/header.010": {
+    "label": "İngilis dili · Keçid",
+    "original": "/xeberler",
+    "record": "labels"
+  },
+  "layout/header.011": {
+    "label": "İngilis dili · Ad",
+    "original": "Careers",
+    "record": "labels"
+  },
+  "layout/header.012": {
+    "label": "İngilis dili · Keçid",
+    "original": "/karyera",
+    "record": "labels"
+  },
+  "layout/header.013": {
+    "label": "İngilis dili · Ad",
+    "original": "Contact",
+    "record": "labels"
+  },
+  "layout/header.014": {
+    "label": "İngilis dili · Keçid",
+    "original": "/elaqe",
+    "record": "labels"
+  },
+  "layout/header.015": {
+    "label": "İngilis dili",
+    "original": "Construction Company",
+    "record": "labels"
+  },
+  "layout/header.016": {
+    "label": "İngilis dili",
+    "original": "Contact Us",
+    "record": "labels"
+  },
+  "layout/header.017": {
+    "label": "Azərbaycan dili · Ad",
+    "original": "Əsas səhifə",
+    "record": "labels"
+  },
+  "layout/header.018": {
+    "label": "Azərbaycan dili · Keçid",
+    "original": "/",
+    "record": "labels"
+  },
+  "layout/header.019": {
+    "label": "Azərbaycan dili · Ad",
+    "original": "Haqqımızda",
+    "record": "labels"
+  },
+  "layout/header.020": {
+    "label": "Azərbaycan dili · Keçid",
+    "original": "/haqqimizda",
+    "record": "labels"
+  },
+  "layout/header.021": {
+    "label": "Azərbaycan dili · Ad",
+    "original": "Layihələr",
+    "record": "labels"
+  },
+  "layout/header.022": {
+    "label": "Azərbaycan dili · Keçid",
+    "original": "/layiheler",
+    "record": "labels"
+  },
+  "layout/header.023": {
+    "label": "Azərbaycan dili · Ad",
+    "original": "Xidmətlər",
+    "record": "labels"
+  },
+  "layout/header.024": {
+    "label": "Azərbaycan dili · Keçid",
+    "original": "/xidmetler",
+    "record": "labels"
+  },
+  "layout/header.025": {
+    "label": "Azərbaycan dili · Ad",
+    "original": "Xəbərlər",
+    "record": "labels"
+  },
+  "layout/header.026": {
+    "label": "Azərbaycan dili · Keçid",
+    "original": "/xeberler",
+    "record": "labels"
+  },
+  "layout/header.027": {
+    "label": "Azərbaycan dili · Ad",
+    "original": "Karyera",
+    "record": "labels"
+  },
+  "layout/header.028": {
+    "label": "Azərbaycan dili · Keçid",
+    "original": "/karyera",
+    "record": "labels"
+  },
+  "layout/header.029": {
+    "label": "Azərbaycan dili · Ad",
+    "original": "Əlaqə",
+    "record": "labels"
+  },
+  "layout/header.030": {
+    "label": "Azərbaycan dili · Keçid",
+    "original": "/elaqe",
+    "record": "labels"
+  },
+  "layout/header.031": {
+    "label": "Azərbaycan dili",
+    "original": "Tikinti Şirkəti",
+    "record": "labels"
+  },
+  "layout/header.032": {
+    "label": "Azərbaycan dili",
+    "original": "Bizimlə Əlaqə",
+    "record": "labels"
+  },
+  "layout/header.035": {
+    "label": "",
+    "original": "/",
+    "record": ""
+  },
+  "layout/header.038": {
+    "label": "",
+    "original": "/logo.png",
+    "record": ""
+  },
+  "layout/header.039": {
+    "label": "",
+    "original": "Akin Industry Logo",
+    "record": ""
+  },
+  "layout/header.040": {
+    "label": "",
+    "original": "Akin Industry",
+    "record": ""
+  },
+  "layout/header.043": {
+    "label": "",
+    "original": "/elaqe",
+    "record": ""
+  },
+  "layout/header.048": {
+    "label": "",
+    "original": "/elaqe",
+    "record": ""
+  },
+  "layout/footer.001": {
+    "label": "Ad",
+    "original": "About Us",
+    "record": "quickLinks"
+  },
+  "layout/footer.002": {
+    "label": "Keçid",
+    "original": "/haqqimizda",
+    "record": "quickLinks"
+  },
+  "layout/footer.003": {
+    "label": "Ad",
+    "original": "Projects",
+    "record": "quickLinks"
+  },
+  "layout/footer.004": {
+    "label": "Keçid",
+    "original": "/layiheler",
+    "record": "quickLinks"
+  },
+  "layout/footer.005": {
+    "label": "Ad",
+    "original": "Services",
+    "record": "quickLinks"
+  },
+  "layout/footer.006": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "quickLinks"
+  },
+  "layout/footer.007": {
+    "label": "Ad",
+    "original": "News",
+    "record": "quickLinks"
+  },
+  "layout/footer.008": {
+    "label": "Keçid",
+    "original": "/xeberler",
+    "record": "quickLinks"
+  },
+  "layout/footer.009": {
+    "label": "Ad",
+    "original": "Careers",
+    "record": "quickLinks"
+  },
+  "layout/footer.010": {
+    "label": "Keçid",
+    "original": "/karyera",
+    "record": "quickLinks"
+  },
+  "layout/footer.011": {
+    "label": "Ad",
+    "original": "Contact",
+    "record": "quickLinks"
+  },
+  "layout/footer.012": {
+    "label": "Keçid",
+    "original": "/elaqe",
+    "record": "quickLinks"
+  },
+  "layout/footer.013": {
+    "label": "Ad",
+    "original": "Haqqımızda",
+    "record": "quickLinks"
+  },
+  "layout/footer.014": {
+    "label": "Keçid",
+    "original": "/haqqimizda",
+    "record": "quickLinks"
+  },
+  "layout/footer.015": {
+    "label": "Ad",
+    "original": "Layihələr",
+    "record": "quickLinks"
+  },
+  "layout/footer.016": {
+    "label": "Keçid",
+    "original": "/layiheler",
+    "record": "quickLinks"
+  },
+  "layout/footer.017": {
+    "label": "Ad",
+    "original": "Xidmətlər",
+    "record": "quickLinks"
+  },
+  "layout/footer.018": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "quickLinks"
+  },
+  "layout/footer.019": {
+    "label": "Ad",
+    "original": "Xəbərlər",
+    "record": "quickLinks"
+  },
+  "layout/footer.020": {
+    "label": "Keçid",
+    "original": "/xeberler",
+    "record": "quickLinks"
+  },
+  "layout/footer.021": {
+    "label": "Ad",
+    "original": "Karyera",
+    "record": "quickLinks"
+  },
+  "layout/footer.022": {
+    "label": "Keçid",
+    "original": "/karyera",
+    "record": "quickLinks"
+  },
+  "layout/footer.023": {
+    "label": "Ad",
+    "original": "Əlaqə",
+    "record": "quickLinks"
+  },
+  "layout/footer.024": {
+    "label": "Keçid",
+    "original": "/elaqe",
+    "record": "quickLinks"
+  },
+  "layout/footer.025": {
+    "label": "Ad",
+    "original": "Construction Services",
+    "record": "services"
+  },
+  "layout/footer.026": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "services"
+  },
+  "layout/footer.027": {
+    "label": "Ad",
+    "original": "Design & Engineering",
+    "record": "services"
+  },
+  "layout/footer.028": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "services"
+  },
+  "layout/footer.029": {
+    "label": "Ad",
+    "original": "Renovation & Fit-Out",
+    "record": "services"
+  },
+  "layout/footer.030": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "services"
+  },
+  "layout/footer.031": {
+    "label": "Ad",
+    "original": "Infrastructure",
+    "record": "services"
+  },
+  "layout/footer.032": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "services"
+  },
+  "layout/footer.033": {
+    "label": "Ad",
+    "original": "Consulting",
+    "record": "services"
+  },
+  "layout/footer.034": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "services"
+  },
+  "layout/footer.035": {
+    "label": "Ad",
+    "original": "Tikinti Xidmətləri",
+    "record": "services"
+  },
+  "layout/footer.036": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "services"
+  },
+  "layout/footer.037": {
+    "label": "Ad",
+    "original": "Layihələndirmə",
+    "record": "services"
+  },
+  "layout/footer.038": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "services"
+  },
+  "layout/footer.039": {
+    "label": "Ad",
+    "original": "Təmir və Yenidənqurma",
+    "record": "services"
+  },
+  "layout/footer.040": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "services"
+  },
+  "layout/footer.041": {
+    "label": "Ad",
+    "original": "İnfrastruktur",
+    "record": "services"
+  },
+  "layout/footer.042": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "services"
+  },
+  "layout/footer.043": {
+    "label": "Ad",
+    "original": "Konsaltinq",
+    "record": "services"
+  },
+  "layout/footer.044": {
+    "label": "Keçid",
+    "original": "/xidmetler",
+    "record": "services"
+  },
+  "layout/footer.045": {
+    "label": "",
+    "original": "/logo.png",
+    "record": ""
+  },
+  "layout/footer.046": {
+    "label": "",
+    "original": "Akin Industry Logo",
+    "record": ""
+  },
+  "layout/footer.047": {
+    "label": "",
+    "original": "Akin Industry",
+    "record": ""
+  },
+  "layout/footer.048": {
+    "label": "",
+    "original": "Construction Company",
+    "record": ""
+  },
+  "layout/footer.049": {
+    "label": "",
+    "original": "Tikinti Şirkəti",
+    "record": ""
+  },
+  "layout/footer.050": {
+    "label": "",
+    "original": "LinkedIn",
+    "record": ""
+  },
+  "layout/footer.051": {
+    "label": "",
+    "original": "Quick Links",
+    "record": ""
+  },
+  "layout/footer.052": {
+    "label": "",
+    "original": "Əsas Səhifələr",
+    "record": ""
+  },
+  "layout/footer.053": {
+    "label": "",
+    "original": "Our Services",
+    "record": ""
+  },
+  "layout/footer.054": {
+    "label": "",
+    "original": "Xidmətlərimiz",
+    "record": ""
+  },
+  "layout/footer.055": {
+    "label": "",
+    "original": "Contact",
+    "record": ""
+  },
+  "layout/footer.056": {
+    "label": "",
+    "original": "Əlaqə",
+    "record": ""
+  },
+  "layout/footer.057": {
+    "label": "",
+    "original": "©",
+    "record": ""
+  },
+  "layout/footer.058": {
+    "label": "",
+    "original": "Akin Industry.",
+    "record": ""
+  },
+  "layout/footer.059": {
+    "label": "",
+    "original": "All rights reserved.",
+    "record": ""
+  },
+  "layout/footer.060": {
+    "label": "",
+    "original": "Bütün hüquqlar qorunur.",
+    "record": ""
+  },
+  "layout/footer.061": {
+    "label": "",
+    "original": "•",
+    "record": ""
+  },
+  "layout/footer.062": {
+    "label": "",
+    "original": "Site By",
+    "record": ""
+  },
+  "layout/footer.063": {
+    "label": "",
+    "original": "/cervision.webp",
+    "record": ""
+  },
+  "layout/footer.064": {
+    "label": "",
+    "original": "CER Vision",
+    "record": ""
+  },
+  "layout/footer.065": {
+    "label": "",
+    "original": "CER Vision",
+    "record": ""
+  },
+  "layout/footer.066": {
+    "label": "",
+    "original": "Privacy Policy",
+    "record": ""
+  },
+  "layout/footer.067": {
+    "label": "",
+    "original": "Məxfilik Siyasəti",
+    "record": ""
+  },
+  "layout/footer.068": {
+    "label": "",
+    "original": "Terms of Use",
+    "record": ""
+  },
+  "layout/footer.069": {
+    "label": "",
+    "original": "İstifadə Şərtləri",
+    "record": ""
+  },
+  "home/services-preview.001": {
+    "label": "Azərbaycan dili",
+    "original": "Xidmətlərimiz",
+    "record": "copy"
+  },
+  "home/services-preview.002": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Tam Tikinti Həlləri",
+    "record": "copy"
+  },
+  "home/services-preview.003": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Mühəndislikdən tikintiyə, təmirdən konsaltinqə qədər bütün əsas xidmətləri bir çatı altında təqdim edirik.",
+    "record": "copy"
+  },
+  "home/services-preview.004": {
+    "label": "Azərbaycan dili",
+    "original": "Bütün Xidmətlər",
+    "record": "copy"
+  },
+  "home/services-preview.005": {
+    "label": "İngilis dili",
+    "original": "Our Services",
+    "record": "copy"
+  },
+  "home/services-preview.006": {
+    "label": "İngilis dili · Başlıq",
+    "original": "End-to-End Construction Solutions",
+    "record": "copy"
+  },
+  "home/services-preview.007": {
+    "label": "İngilis dili · Təsvir",
+    "original": "From engineering and construction to renovation and consulting, we provide every key service under one roof.",
+    "record": "copy"
+  },
+  "home/services-preview.008": {
+    "label": "İngilis dili",
+    "original": "View All Services",
+    "record": "copy"
+  },
+  "home/services-preview.009": {
+    "label": "",
+    "original": "/xidmetler",
+    "record": ""
+  },
+  "home/partners-section.001": {
+    "label": "Azərbaycan dili",
+    "original": "Tərəfdaşlarımız",
+    "record": ""
+  },
+  "home/partners-section.002": {
+    "label": "İngilis dili",
+    "original": "Our Partners",
+    "record": ""
+  },
+  "home/partners-section.003": {
+    "label": "Azərbaycan dili",
+    "original": "Etibarlı Əməkdaşlıq",
+    "record": ""
+  },
+  "home/partners-section.004": {
+    "label": "İngilis dili",
+    "original": "Trusted Collaboration",
+    "record": ""
+  },
+  "home/cta-section.001": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Növbəti Layihənizi Birlikdə Quraq",
+    "record": "copy"
+  },
+  "home/cta-section.002": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Tikinti layihənizi müzakirə etmək və ödənişsiz təklif almaq üçün bizimlə əlaqə saxlayın.",
+    "record": "copy"
+  },
+  "home/cta-section.003": {
+    "label": "Azərbaycan dili",
+    "original": "Əlaqə",
+    "record": "copy"
+  },
+  "home/cta-section.004": {
+    "label": "İngilis dili · Başlıq",
+    "original": "Ready to Build Your Next Project",
+    "record": "copy"
+  },
+  "home/cta-section.005": {
+    "label": "İngilis dili · Təsvir",
+    "original": "Contact us today to discuss your construction project and receive a free quotation.",
+    "record": "copy"
+  },
+  "home/cta-section.006": {
+    "label": "İngilis dili",
+    "original": "Contact Us",
+    "record": "copy"
+  },
+  "home/cta-section.007": {
+    "label": "",
+    "original": "/elaqe",
+    "record": ""
+  },
+  "home/stats-section.001": {
+    "label": "",
+    "original": "+",
+    "record": "stats"
+  },
+  "home/stats-section.002": {
+    "label": "Etiket",
+    "original": "Tamamlanmış Layihə",
+    "record": "stats"
+  },
+  "home/stats-section.003": {
+    "label": "",
+    "original": "+",
+    "record": "stats"
+  },
+  "home/stats-section.004": {
+    "label": "Etiket",
+    "original": "Peşəkar İşçi",
+    "record": "stats"
+  },
+  "home/stats-section.005": {
+    "label": "Etiket",
+    "original": "İllik Təcrübə",
+    "record": "stats"
+  },
+  "home/stats-section.006": {
+    "label": "",
+    "original": "+",
+    "record": "stats"
+  },
+  "home/stats-section.007": {
+    "label": "Etiket",
+    "original": "Razı Müştəri",
+    "record": "stats"
+  },
+  "home/video-showcase.001": {
+    "label": "",
+    "original": "/video1.mp4",
+    "record": "videos"
+  },
+  "home/video-showcase.002": {
+    "label": "",
+    "original": "/video2.mp4",
+    "record": "videos"
+  },
+  "home/video-showcase.007": {
+    "label": "",
+    "original": "Building the Future",
+    "record": ""
+  },
+  "home/video-showcase.008": {
+    "label": "",
+    "original": "Precision. Quality. Trust.",
+    "record": ""
+  },
+  "home/about-preview.001": {
+    "label": "İngilis dili · Başlıq",
+    "original": "Quality & Safety",
+    "record": "features"
+  },
+  "home/about-preview.002": {
+    "label": "İngilis dili · Təsvir",
+    "original": "We uphold the highest standards on every project.",
+    "record": "features"
+  },
+  "home/about-preview.003": {
+    "label": "İngilis dili · Başlıq",
+    "original": "Modern Technologies",
+    "record": "features"
+  },
+  "home/about-preview.004": {
+    "label": "İngilis dili · Təsvir",
+    "original": "We apply the latest construction technologies.",
+    "record": "features"
+  },
+  "home/about-preview.005": {
+    "label": "İngilis dili · Başlıq",
+    "original": "On-Time Delivery",
+    "record": "features"
+  },
+  "home/about-preview.006": {
+    "label": "İngilis dili · Təsvir",
+    "original": "Projects are completed on time and within budget.",
+    "record": "features"
+  },
+  "home/about-preview.007": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Keyfiyyət və Təhlükəsizlik",
+    "record": "features"
+  },
+  "home/about-preview.008": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Hər layihədə ən yüksək standartlara sadiq qalırıq.",
+    "record": "features"
+  },
+  "home/about-preview.009": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Müasir Texnologiyalar",
+    "record": "features"
+  },
+  "home/about-preview.010": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Ən son tikinti texnologiyalarını tətbiq edirik.",
+    "record": "features"
+  },
+  "home/about-preview.011": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Vaxtında Təhvil",
+    "record": "features"
+  },
+  "home/about-preview.012": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Layihələri vaxtında və büdcəyə uyğun tamamlayırıq.",
+    "record": "features"
+  },
+  "home/about-preview.013": {
+    "label": "Azərbaycan dili",
+    "original": "Azərbaycanın tikinti sektorunda etibarlı lider",
+    "record": "copy"
+  },
+  "home/about-preview.014": {
+    "label": "Azərbaycan dili",
+    "original": "25+ illik təcrübə ilə",
+    "record": "copy"
+  },
+  "home/about-preview.015": {
+    "label": "Azərbaycan dili",
+    "original": "etibarlı",
+    "record": "copy"
+  },
+  "home/about-preview.016": {
+    "label": "Azərbaycan dili",
+    "original": "tikinti həlləri",
+    "record": "copy"
+  },
+  "home/about-preview.017": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Biz Azərbaycanın ən güvənilən tikinti şirkətlərindən biriyik və yaşayış, kommersiya və sənaye layihələrini yüksək keyfiyyətlə həyata keçiririk.",
+    "record": "copy"
+  },
+  "home/about-preview.018": {
+    "label": "Azərbaycan dili",
+    "original": "Layihənizi Bizimlə Reallaşdırın",
+    "record": "copy"
+  },
+  "home/about-preview.019": {
+    "label": "Azərbaycan dili",
+    "original": "Keyfiyyət, təhlükəsizlik və müştəri məmnuniyyəti bizim üçün hər zaman prioritetdir.",
+    "record": "copy"
+  },
+  "home/about-preview.020": {
+    "label": "Azərbaycan dili",
+    "original": "Daha Ətraflı",
+    "record": "copy"
+  },
+  "home/about-preview.021": {
+    "label": "Azərbaycan dili",
+    "original": "Layihələrimiz",
+    "record": "copy"
+  },
+  "home/about-preview.022": {
+    "label": "İngilis dili",
+    "original": "A Leader in Azerbaijan’s Construction Industry",
+    "record": "copy"
+  },
+  "home/about-preview.023": {
+    "label": "İngilis dili",
+    "original": "construction solutions backed by 25+ years of experience",
+    "record": "copy"
+  },
+  "home/about-preview.024": {
+    "label": "İngilis dili",
+    "original": "Reliable",
+    "record": "copy"
+  },
+  "home/about-preview.025": {
+    "label": "İngilis dili · Təsvir",
+    "original": "We are one of Azerbaijan’s most trusted construction companies, delivering high-quality residential, commercial, and industrial projects.",
+    "record": "copy"
+  },
+  "home/about-preview.026": {
+    "label": "İngilis dili",
+    "original": "Bring Your Project to Life With Us",
+    "record": "copy"
+  },
+  "home/about-preview.027": {
+    "label": "İngilis dili",
+    "original": "We put quality, safety, and client satisfaction first to earn long-term trust.",
+    "record": "copy"
+  },
+  "home/about-preview.028": {
+    "label": "İngilis dili",
+    "original": "Learn More",
+    "record": "copy"
+  },
+  "home/about-preview.029": {
+    "label": "İngilis dili",
+    "original": "Our Projects",
+    "record": "copy"
+  },
+  "home/about-preview.030": {
+    "label": "",
+    "original": "/haqqimizda",
+    "record": ""
+  },
+  "home/about-preview.031": {
+    "label": "",
+    "original": "/layiheler",
+    "record": ""
+  },
+  "home/featured-projects.001": {
+    "label": "Azərbaycan dili",
+    "original": "Layihələrimiz",
+    "record": "copy"
+  },
+  "home/featured-projects.002": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Seçilmiş Layihələr",
+    "record": "copy"
+  },
+  "home/featured-projects.003": {
+    "label": "Azərbaycan dili",
+    "original": "Bütün Layihələr",
+    "record": "copy"
+  },
+  "home/featured-projects.004": {
+    "label": "İngilis dili",
+    "original": "Our Projects",
+    "record": "copy"
+  },
+  "home/featured-projects.005": {
+    "label": "İngilis dili · Başlıq",
+    "original": "Featured Projects",
+    "record": "copy"
+  },
+  "home/featured-projects.006": {
+    "label": "İngilis dili",
+    "original": "View All Projects",
+    "record": "copy"
+  },
+  "home/featured-projects.007": {
+    "label": "",
+    "original": "/layiheler",
+    "record": ""
+  },
+  "home/hero-carousel.001": {
+    "label": "İngilis dili · Başlıq",
+    "original": "High-Quality Construction Solutions",
+    "record": "slides"
+  },
+  "home/hero-carousel.002": {
+    "label": "İngilis dili · Təsvir",
+    "original": "We bring ambitious ideas to life with modern technology and a highly skilled team.",
+    "record": "slides"
+  },
+  "home/hero-carousel.003": {
+    "label": "İngilis dili · Şəkil",
+    "original": "/images/hero/hero-1.webp",
+    "record": "slides"
+  },
+  "home/hero-carousel.004": {
+    "label": "İngilis dili · Başlıq",
+    "original": "A Leader in Industrial Construction",
+    "record": "slides"
+  },
+  "home/hero-carousel.005": {
+    "label": "İngilis dili · Təsvir",
+    "original": "A trusted partner for factories, warehouses, and large-scale industrial facilities.",
+    "record": "slides"
+  },
+  "home/hero-carousel.006": {
+    "label": "İngilis dili · Şəkil",
+    "original": "/images/hero/hero-2.webp",
+    "record": "slides"
+  },
+  "home/hero-carousel.007": {
+    "label": "İngilis dili · Başlıq",
+    "original": "Modern Living Spaces",
+    "record": "slides"
+  },
+  "home/hero-carousel.008": {
+    "label": "İngilis dili · Təsvir",
+    "original": "We create comfortable and contemporary spaces designed for modern life.",
+    "record": "slides"
+  },
+  "home/hero-carousel.009": {
+    "label": "İngilis dili · Şəkil",
+    "original": "/images/hero/hero-3.webp",
+    "record": "slides"
+  },
+  "home/hero-carousel.010": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Yüksək Keyfiyyətli Tikinti Həlləri",
+    "record": "slides"
+  },
+  "home/hero-carousel.011": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Müasir texnologiya və güclü peşəkar komanda ilə böyük ideyaları reallığa çeviririk.",
+    "record": "slides"
+  },
+  "home/hero-carousel.012": {
+    "label": "Azərbaycan dili · Şəkil",
+    "original": "/images/hero/hero-1.webp",
+    "record": "slides"
+  },
+  "home/hero-carousel.013": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Sənaye Tikintisində Etibarlı Lider",
+    "record": "slides"
+  },
+  "home/hero-carousel.014": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Zavodlar, anbarlar və iri sənaye obyektləri üçün güvənilən tərəfdaş.",
+    "record": "slides"
+  },
+  "home/hero-carousel.015": {
+    "label": "Azərbaycan dili · Şəkil",
+    "original": "/images/hero/hero-2.webp",
+    "record": "slides"
+  },
+  "home/hero-carousel.016": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Müasir Yaşam Məkanları",
+    "record": "slides"
+  },
+  "home/hero-carousel.017": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Müasir həyat üçün rahat və funksional məkanlar yaradırıq.",
+    "record": "slides"
+  },
+  "home/hero-carousel.018": {
+    "label": "Azərbaycan dili · Şəkil",
+    "original": "/images/hero/hero-3.webp",
+    "record": "slides"
+  },
+  "home/hero-carousel.021": {
+    "label": "Azərbaycan dili",
+    "original": "Sürüşdür",
+    "record": ""
+  },
+  "home/hero-carousel.022": {
+    "label": "İngilis dili",
+    "original": "Scroll",
+    "record": ""
+  },
+  "home/news-preview.001": {
+    "label": "Azərbaycan dili",
+    "original": "Sertifikatlar",
+    "record": "copy"
+  },
+  "home/news-preview.002": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Sertifikatlarımız",
+    "record": "copy"
+  },
+  "home/news-preview.003": {
+    "label": "Azərbaycan dili",
+    "original": "Daha Ətraflı",
+    "record": "copy"
+  },
+  "home/news-preview.004": {
+    "label": "Azərbaycan dili",
+    "original": "Ətraflı oxu",
+    "record": "copy"
+  },
+  "home/news-preview.005": {
+    "label": "İngilis dili",
+    "original": "Certifications",
+    "record": "copy"
+  },
+  "home/news-preview.006": {
+    "label": "İngilis dili · Başlıq",
+    "original": "Our Certifications",
+    "record": "copy"
+  },
+  "home/news-preview.007": {
+    "label": "İngilis dili",
+    "original": "Learn More",
+    "record": "copy"
+  },
+  "home/news-preview.008": {
+    "label": "İngilis dili",
+    "original": "Read more",
+    "record": "copy"
+  },
+  "home/news-preview.009": {
+    "label": "",
+    "original": "/haqqimizda",
+    "record": ""
+  },
+  "haqqimizda/page.001": {
+    "label": "Başlıq",
+    "original": "Quality",
+    "record": "valuesEn"
+  },
+  "haqqimizda/page.002": {
+    "label": "Təsvir",
+    "original": "We deliver high-quality construction solutions aligned with international standards.",
+    "record": "valuesEn"
+  },
+  "haqqimizda/page.003": {
+    "label": "Başlıq",
+    "original": "On-Time Delivery",
+    "record": "valuesEn"
+  },
+  "haqqimizda/page.004": {
+    "label": "Təsvir",
+    "original": "Projects are completed within the agreed schedule and budget.",
+    "record": "valuesEn"
+  },
+  "haqqimizda/page.005": {
+    "label": "Başlıq",
+    "original": "Professionalism",
+    "record": "valuesEn"
+  },
+  "haqqimizda/page.006": {
+    "label": "Təsvir",
+    "original": "A strong team of experienced and highly qualified professionals.",
+    "record": "valuesEn"
+  },
+  "haqqimizda/page.007": {
+    "label": "Başlıq",
+    "original": "Reliability",
+    "record": "valuesEn"
+  },
+  "haqqimizda/page.008": {
+    "label": "Təsvir",
+    "original": "Trust earned through 10 years of experience and successful projects.",
+    "record": "valuesEn"
+  },
+  "haqqimizda/page.009": {
+    "label": "İl",
+    "original": "1999",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.010": {
+    "label": "Başlıq",
+    "original": "Company Founded",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.011": {
+    "label": "Təsvir",
+    "original": "Akin Industry began operations as a small construction company.",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.012": {
+    "label": "İl",
+    "original": "2005",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.013": {
+    "label": "Başlıq",
+    "original": "First Major Project",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.014": {
+    "label": "Təsvir",
+    "original": "We successfully completed our first large commercial construction project in Baku.",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.015": {
+    "label": "İl",
+    "original": "2010",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.016": {
+    "label": "Başlıq",
+    "original": "Entry Into the Industrial Sector",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.017": {
+    "label": "Təsvir",
+    "original": "We expanded our portfolio by entering industrial construction.",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.018": {
+    "label": "İl",
+    "original": "2015",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.019": {
+    "label": "Başlıq",
+    "original": "ISO Certification",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.020": {
+    "label": "Təsvir",
+    "original": "We achieved ISO 9001 quality management certification.",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.021": {
+    "label": "İl",
+    "original": "2020",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.022": {
+    "label": "Başlıq",
+    "original": "BIM Technology",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.023": {
+    "label": "Təsvir",
+    "original": "We improved our design process by integrating modern BIM technology.",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.024": {
+    "label": "İl",
+    "original": "2026",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.025": {
+    "label": "Başlıq",
+    "original": "15+ Projects",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.026": {
+    "label": "Təsvir",
+    "original": "More than 15 projects completed successfully across 10 years.",
+    "record": "timelineEn"
+  },
+  "haqqimizda/page.027": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Keyfiyyət",
+    "record": "values"
+  },
+  "haqqimizda/page.028": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Beynəlxalq standartlara uyğun yüksək keyfiyyətli tikinti həlləri təqdim edirik.",
+    "record": "values"
+  },
+  "haqqimizda/page.029": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Vaxtında Təhvil",
+    "record": "values"
+  },
+  "haqqimizda/page.030": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Layihələri razılaşdırılmış qrafik və büdcə daxilində tamamlayırıq.",
+    "record": "values"
+  },
+  "haqqimizda/page.031": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Peşəkarlıq",
+    "record": "values"
+  },
+  "haqqimizda/page.032": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Təcrübəli və yüksək ixtisaslı mütəxəssislərdən ibarət güclü komanda.",
+    "record": "values"
+  },
+  "haqqimizda/page.033": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Etibarlılıq",
+    "record": "values"
+  },
+  "haqqimizda/page.034": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "10 illik təcrübə və uğurlu layihələrlə qazanılmış etibar.",
+    "record": "values"
+  },
+  "haqqimizda/page.035": {
+    "label": "Azərbaycan dili · İl",
+    "original": "1999",
+    "record": "timeline"
+  },
+  "haqqimizda/page.036": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Şirkətin Təsis Edilməsi",
+    "record": "timeline"
+  },
+  "haqqimizda/page.037": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Akin Industry kiçik tikinti şirkəti kimi fəaliyyətə başladı.",
+    "record": "timeline"
+  },
+  "haqqimizda/page.038": {
+    "label": "Azərbaycan dili · İl",
+    "original": "2005",
+    "record": "timeline"
+  },
+  "haqqimizda/page.039": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "İlk Böyük Layihə",
+    "record": "timeline"
+  },
+  "haqqimizda/page.040": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Bakıda ilk iri kommersiya tikinti layihəmizi uğurla tamamladıq.",
+    "record": "timeline"
+  },
+  "haqqimizda/page.041": {
+    "label": "Azərbaycan dili · İl",
+    "original": "2010",
+    "record": "timeline"
+  },
+  "haqqimizda/page.042": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Sənaye Sektoruna Giriş",
+    "record": "timeline"
+  },
+  "haqqimizda/page.043": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Portfelimizi genişləndirərək sənaye tikintisinə başladıq.",
+    "record": "timeline"
+  },
+  "haqqimizda/page.044": {
+    "label": "Azərbaycan dili · İl",
+    "original": "2015",
+    "record": "timeline"
+  },
+  "haqqimizda/page.045": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "ISO Sertifikatı",
+    "record": "timeline"
+  },
+  "haqqimizda/page.046": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "ISO 9001 keyfiyyət idarəetmə sertifikatını əldə etdik.",
+    "record": "timeline"
+  },
+  "haqqimizda/page.047": {
+    "label": "Azərbaycan dili · İl",
+    "original": "2020",
+    "record": "timeline"
+  },
+  "haqqimizda/page.048": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "BIM Texnologiyası",
+    "record": "timeline"
+  },
+  "haqqimizda/page.049": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Müasir BIM texnologiyasını layihələndirmə prosesimizə inteqrasiya etdik.",
+    "record": "timeline"
+  },
+  "haqqimizda/page.050": {
+    "label": "Azərbaycan dili · İl",
+    "original": "2026",
+    "record": "timeline"
+  },
+  "haqqimizda/page.051": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "15+ Layihə",
+    "record": "timeline"
+  },
+  "haqqimizda/page.052": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "10 il ərzində 15-dən çox layihəni uğurla tamamladıq.",
+    "record": "timeline"
+  },
+  "haqqimizda/page.053": {
+    "label": "Azərbaycan dili · Səhifə başlığı",
+    "original": "Haqqımızda",
+    "record": "copy"
+  },
+  "haqqimizda/page.054": {
+    "label": "Azərbaycan dili · Səhifə təsviri",
+    "original": "Azərbaycanın tikinti sektorunda etibarlı tərəfdaş",
+    "record": "copy"
+  },
+  "haqqimizda/page.055": {
+    "label": "Azərbaycan dili",
+    "original": "Missiyamız",
+    "record": "copy"
+  },
+  "haqqimizda/page.056": {
+    "label": "Azərbaycan dili",
+    "original": "Müştəri ehtiyaclarına uyğun yüksək keyfiyyətli, innovativ və dayanıqlı tikinti həlləri təqdim etməklə Azərbaycanın infrastruktur inkişafına töhfə vermək. Hər layihədə mükəmməlliyi, etik dəyərləri və müştəri məmnuniyyətini əsas tuturuq.",
+    "record": "copy"
+  },
+  "haqqimizda/page.057": {
+    "label": "Azərbaycan dili",
+    "original": "Vizyonumuz",
+    "record": "copy"
+  },
+  "haqqimizda/page.058": {
+    "label": "Azərbaycan dili",
+    "original": "Beynəlxalq standartlara uyğun xidmətlərlə regionun aparıcı tikinti şirkətlərindən birinə çevrilmək və qlobal bazarlarda tanınmaq. Texnoloji yenilikləri tətbiq etməklə tikintinin gələcəyini bu gündən formalaşdırırıq.",
+    "record": "copy"
+  },
+  "haqqimizda/page.059": {
+    "label": "Azərbaycan dili",
+    "original": "Hekayəmiz",
+    "record": "copy"
+  },
+  "haqqimizda/page.060": {
+    "label": "Azərbaycan dili",
+    "original": "10 İllik Uğur Yolu",
+    "record": "copy"
+  },
+  "haqqimizda/page.061": {
+    "label": "Azərbaycan dili",
+    "original": "10 ildən artıq təcrübəyə malik Akin Industry Azərbaycanın etibarlı tikinti şirkətlərindən birinə çevrilmişdir.",
+    "record": "copy"
+  },
+  "haqqimizda/page.062": {
+    "label": "Azərbaycan dili",
+    "original": "İllər ərzində müxtəlif sahələrdə 15-dən çox layihəni uğurla tamamlamışıq. Hər layihədə keyfiyyət və müştəri məmnuniyyətini əsas tutaraq sektorda etibarlı mövqe qazanmışıq.",
+    "record": "copy"
+  },
+  "haqqimizda/page.063": {
+    "label": "Azərbaycan dili",
+    "original": "İllik Təcrübə",
+    "record": "copy"
+  },
+  "haqqimizda/page.064": {
+    "label": "Azərbaycan dili",
+    "original": "Tamamlanmış Layihə",
+    "record": "copy"
+  },
+  "haqqimizda/page.065": {
+    "label": "Azərbaycan dili",
+    "original": "Peşəkar Əməkdaş",
+    "record": "copy"
+  },
+  "haqqimizda/page.066": {
+    "label": "Azərbaycan dili",
+    "original": "Məmnun Müştəri",
+    "record": "copy"
+  },
+  "haqqimizda/page.067": {
+    "label": "Azərbaycan dili",
+    "original": "Dəyərlərimiz",
+    "record": "copy"
+  },
+  "haqqimizda/page.068": {
+    "label": "Azərbaycan dili",
+    "original": "Bizi İrəli Aparan Prinsiplər",
+    "record": "copy"
+  },
+  "haqqimizda/page.069": {
+    "label": "Azərbaycan dili",
+    "original": "Hər layihədə bu dəyərlərə sadiq qalaraq müştərilərimizin etibarını qazanırıq.",
+    "record": "copy"
+  },
+  "haqqimizda/page.070": {
+    "label": "Azərbaycan dili",
+    "original": "Tarixçə",
+    "record": "copy"
+  },
+  "haqqimizda/page.071": {
+    "label": "Azərbaycan dili",
+    "original": "İnkişaf Yolumuz",
+    "record": "copy"
+  },
+  "haqqimizda/page.072": {
+    "label": "Azərbaycan dili",
+    "original": "Akin Industry-nin 10 illik etibarlı tikinti təcrübəsi",
+    "record": "copy"
+  },
+  "haqqimizda/page.073": {
+    "label": "İngilis dili · Səhifə başlığı",
+    "original": "About Us",
+    "record": "copy"
+  },
+  "haqqimizda/page.074": {
+    "label": "İngilis dili · Səhifə təsviri",
+    "original": "A trusted partner in Azerbaijan’s construction sector",
+    "record": "copy"
+  },
+  "haqqimizda/page.075": {
+    "label": "İngilis dili",
+    "original": "Our Mission",
+    "record": "copy"
+  },
+  "haqqimizda/page.076": {
+    "label": "İngilis dili",
+    "original": "To contribute to the development of Azerbaijan’s infrastructure by delivering high-quality, innovative, and sustainable construction solutions tailored to our clients’ needs. We prioritize excellence, ethics, and client satisfaction in every project.",
+    "record": "copy"
+  },
+  "haqqimizda/page.077": {
+    "label": "İngilis dili",
+    "original": "Our Vision",
+    "record": "copy"
+  },
+  "haqqimizda/page.078": {
+    "label": "İngilis dili",
+    "original": "To become a leading construction company in the region and gain recognition in global markets through services aligned with international standards. By applying technological innovation, we help shape the future of construction today.",
+    "record": "copy"
+  },
+  "haqqimizda/page.079": {
+    "label": "İngilis dili",
+    "original": "Our Story",
+    "record": "copy"
+  },
+  "haqqimizda/page.080": {
+    "label": "İngilis dili",
+    "original": "10 Years of Growth",
+    "record": "copy"
+  },
+  "haqqimizda/page.081": {
+    "label": "İngilis dili",
+    "original": "With more than 10 years of experience, Akin Industry has grown into one of Azerbaijan’s trusted names in the sector.",
+    "record": "copy"
+  },
+  "haqqimizda/page.082": {
+    "label": "İngilis dili",
+    "original": "Over the years, we have successfully delivered more than 15 projects across multiple construction sectors. By maintaining a strong focus on quality and client satisfaction, we have earned a trusted position in the market.",
+    "record": "copy"
+  },
+  "haqqimizda/page.083": {
+    "label": "İngilis dili",
+    "original": "Years of Experience",
+    "record": "copy"
+  },
+  "haqqimizda/page.084": {
+    "label": "İngilis dili",
+    "original": "Completed Projects",
+    "record": "copy"
+  },
+  "haqqimizda/page.085": {
+    "label": "İngilis dili",
+    "original": "Skilled Employees",
+    "record": "copy"
+  },
+  "haqqimizda/page.086": {
+    "label": "İngilis dili",
+    "original": "Satisfied Clients",
+    "record": "copy"
+  },
+  "haqqimizda/page.087": {
+    "label": "İngilis dili",
+    "original": "Our Values",
+    "record": "copy"
+  },
+  "haqqimizda/page.088": {
+    "label": "İngilis dili",
+    "original": "Principles That Guide Us",
+    "record": "copy"
+  },
+  "haqqimizda/page.089": {
+    "label": "İngilis dili",
+    "original": "We earn our clients’ trust by staying committed to these values on every project.",
+    "record": "copy"
+  },
+  "haqqimizda/page.090": {
+    "label": "İngilis dili",
+    "original": "Timeline",
+    "record": "copy"
+  },
+  "haqqimizda/page.091": {
+    "label": "İngilis dili",
+    "original": "Our Development Journey",
+    "record": "copy"
+  },
+  "haqqimizda/page.092": {
+    "label": "İngilis dili",
+    "original": "Akin Industry 10 years of trusted construction experience",
+    "record": "copy"
+  },
+  "haqqimizda/page.093": {
+    "label": "",
+    "original": "+",
+    "record": ""
+  },
+  "haqqimizda/page.094": {
+    "label": "",
+    "original": "+",
+    "record": ""
+  },
+  "haqqimizda/page.095": {
+    "label": "",
+    "original": "+",
+    "record": ""
+  },
+  "haqqimizda/page.096": {
+    "label": "",
+    "original": "+",
+    "record": ""
+  },
+  "haqqimizda/page.097": {
+    "label": "",
+    "original": "/images/about-history-ai.png",
+    "record": ""
+  },
+  "haqqimizda/page.098": {
+    "label": "Azərbaycan dili",
+    "original": "Komandamız",
+    "record": ""
+  },
+  "haqqimizda/page.099": {
+    "label": "İngilis dili",
+    "original": "Our Team",
+    "record": ""
+  },
+  "haqqimizda/page.100": {
+    "label": "Azərbaycan dili",
+    "original": "Peşəkar komandamız",
+    "record": ""
+  },
+  "haqqimizda/page.101": {
+    "label": "İngilis dili",
+    "original": "Meet our professionals",
+    "record": ""
+  },
+  "xeberler/news-page-client.001": {
+    "label": "Azərbaycan dili",
+    "original": "Xəbərlər yüklənir...",
+    "record": ""
+  },
+  "xeberler/news-page-client.002": {
+    "label": "İngilis dili",
+    "original": "Loading news...",
+    "record": ""
+  },
+  "xeberler/news-page-client.003": {
+    "label": "Azərbaycan dili",
+    "original": "Xəbərlər",
+    "record": ""
+  },
+  "xeberler/news-page-client.004": {
+    "label": "İngilis dili",
+    "original": "News",
+    "record": ""
+  },
+  "xeberler/news-page-client.005": {
+    "label": "Azərbaycan dili",
+    "original": "Son şirkət yenilikləri və elanlar",
+    "record": ""
+  },
+  "xeberler/news-page-client.006": {
+    "label": "İngilis dili",
+    "original": "Our latest company updates and announcements",
+    "record": ""
+  },
+  "xeberler/news-page-client.007": {
+    "label": "Azərbaycan dili · Etiket",
+    "original": "Xəbərlər",
+    "record": ""
+  },
+  "xeberler/news-page-client.008": {
+    "label": "İngilis dili · Etiket",
+    "original": "News",
+    "record": ""
+  },
+  "xeberler/news-page-client.009": {
+    "label": "Azərbaycan dili",
+    "original": "Ətraflı oxu",
+    "record": ""
+  },
+  "xeberler/news-page-client.010": {
+    "label": "İngilis dili",
+    "original": "Read more",
+    "record": ""
+  },
+  "xeberler/news-page-client.011": {
+    "label": "Azərbaycan dili",
+    "original": "Hələ xəbər yoxdur",
+    "record": ""
+  },
+  "xeberler/news-page-client.012": {
+    "label": "İngilis dili",
+    "original": "No news available yet",
+    "record": ""
+  },
+  "xeberler/news-page-client.013": {
+    "label": "Azərbaycan dili",
+    "original": "Admin paneldən əlavə edilən xəbərlər burada görünəcək.",
+    "record": ""
+  },
+  "xeberler/news-page-client.014": {
+    "label": "İngilis dili",
+    "original": "News items added from the admin panel will appear here.",
+    "record": ""
+  },
+  "xeberler/news-page-client.015": {
+    "label": "Azərbaycan dili",
+    "original": "Ətraflı oxu",
+    "record": ""
+  },
+  "xeberler/news-page-client.016": {
+    "label": "İngilis dili",
+    "original": "Read more",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.001": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Agentic AI İş Axınları",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.002": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Daha ağıllı avtomatlaşdırma və qərarvermə",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.003": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Əməliyyat Mükəmməlliyi",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.004": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Sadələşdirilmiş proseslər və yüksək səmərəlilik",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.005": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Satışların Gücləndirilməsi",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.006": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Daha yaxşı analiz və güclü müştəri əlaqələri",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.007": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Strateji Tərəfdaşlıq",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.008": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Uzunmüddətli təsir üçün innovasiya yönümlü əməkdaşlıq",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.009": {
+    "label": "İngilis dili · Başlıq",
+    "original": "Agentic AI Workflows",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.010": {
+    "label": "İngilis dili · Təsvir",
+    "original": "Smarter automation and decision-making",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.011": {
+    "label": "İngilis dili · Başlıq",
+    "original": "Operational Excellence",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.012": {
+    "label": "İngilis dili · Təsvir",
+    "original": "Streamlined processes and greater efficiency",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.013": {
+    "label": "İngilis dili · Başlıq",
+    "original": "Sales Enablement",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.014": {
+    "label": "İngilis dili · Təsvir",
+    "original": "Better insights and stronger client engagement",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.015": {
+    "label": "İngilis dili · Başlıq",
+    "original": "Strategic Partnership",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.016": {
+    "label": "İngilis dili · Təsvir",
+    "original": "Innovation-focused collaboration for long-term impact",
+    "record": "featureItems"
+  },
+  "xeberler/[slug]/news-detail-client.017": {
+    "label": "Azərbaycan dili",
+    "original": "Əməliyyat və satış proseslərimizi transformasiya edəcək AI alətlərinin hazırlanması və tətbiqi üçün strateji tərəfdaşlıq.",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.018": {
+    "label": "Azərbaycan dili",
+    "original": "PocketVC Venture Studio-nun partnyoru Chinara Askerzade ilə ən son tərəfdaşlığımızı məmnuniyyətlə elan edirik. Bu əməkdaşlıq əməliyyat və satış proseslərimizdə agentic AI iş axınlarının hazırlanması və tətbiqini dəstəkləyəcək.",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.019": {
+    "label": "Azərbaycan dili",
+    "original": "Bu tərəfdaşlıq daxili iş axınlarımızı sadələşdirməyə, səmərəliliyi artırmağa, əsas prosesləri avtomatlaşdırmağa və müştərilərimizlə əlaqə üsulumuzu gücləndirməyə kömək edəcək. Nəticədə daha ağıllı qərarlar və dayanıqlı inkişaf əldə edəcəyik.",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.020": {
+    "label": "Azərbaycan dili",
+    "original": "Akin Industry ilə birlikdə real əməliyyat və kommersiya təsiri yaradan agentic AI həlləri qurmaq və tətbiq etmək bizi çox həyəcanlandırır.",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.021": {
+    "label": "Azərbaycan dili",
+    "original": "Akin Industry və PocketVC Venture Studio tərəfdaşlıq vizualı",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.022": {
+    "label": "Azərbaycan dili",
+    "original": "Chinara Askerzade portreti",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.023": {
+    "label": "İngilis dili",
+    "original": "A strategic partnership to develop and implement AI tools that will transform our operations and sales processes.",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.024": {
+    "label": "İngilis dili",
+    "original": "We are pleased to announce our latest partnership with Chinara Askerzade, Partner at PocketVC Venture Studio, to support the development and implementation of agentic AI workflows across our operations and sales processes.",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.025": {
+    "label": "İngilis dili",
+    "original": "This collaboration will help us streamline internal workflows, improve efficiency, automate key processes, and enhance the way we engage with our clients-driving smarter decisions and sustainable growth.",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.026": {
+    "label": "İngilis dili",
+    "original": "We’re excited to partner with Akin Industry to build and implement agentic AI solutions that drive real operational and commercial impact.",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.027": {
+    "label": "İngilis dili",
+    "original": "Akin Industry and PocketVC Venture Studio partnership visual",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.028": {
+    "label": "İngilis dili",
+    "original": "Chinara Askerzade portrait",
+    "record": "premiumCopy"
+  },
+  "xeberler/[slug]/news-detail-client.029": {
+    "label": "",
+    "original": "/",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.030": {
+    "label": "Azərbaycan dili",
+    "original": "Ana səhifə",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.031": {
+    "label": "İngilis dili",
+    "original": "Home",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.032": {
+    "label": "",
+    "original": "/xeberler",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.033": {
+    "label": "Azərbaycan dili",
+    "original": "Xəbərlər",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.034": {
+    "label": "İngilis dili",
+    "original": "News",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.035": {
+    "label": "Azərbaycan dili",
+    "original": "Akin Industry PocketVC Venture Studio ilə tərəfdaşlıq edir",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.036": {
+    "label": "İngilis dili",
+    "original": "Akin Industry Partners with PocketVC Venture Studio",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.037": {
+    "label": "Azərbaycan dili",
+    "original": "TƏRƏFDAŞLIQ ELANI",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.038": {
+    "label": "İngilis dili",
+    "original": "PARTNERSHIP ANNOUNCEMENT",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.040": {
+    "label": "",
+    "original": "Akin Industry Partners with PocketVC Venture Studio to Implement Agentic AI Workflows",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.041": {
+    "label": "Azərbaycan dili",
+    "original": "11 may 2026",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.042": {
+    "label": "İngilis dili",
+    "original": "May 11th 2026",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.043": {
+    "label": "",
+    "original": "/images/akin-pocketvc-hero-new.png",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.044": {
+    "label": "",
+    "original": "Chinara Askerzade",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.045": {
+    "label": "Azərbaycan dili",
+    "original": "Partnyor, PocketVC Venture Studio",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.046": {
+    "label": "İngilis dili",
+    "original": "Partner, PocketVC Venture Studio",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.047": {
+    "label": "",
+    "original": "/images/chinara-askerzade.jpeg",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.050": {
+    "label": "Azərbaycan dili",
+    "original": "Məqalə yüklənir...",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.051": {
+    "label": "İngilis dili",
+    "original": "Loading article...",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.052": {
+    "label": "Azərbaycan dili",
+    "original": "Məqalə tapılmadı",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.053": {
+    "label": "İngilis dili",
+    "original": "Article not found",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.054": {
+    "label": "Azərbaycan dili",
+    "original": "Bu məqalə mövcud deyil və ya keçidi dəyişib.",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.055": {
+    "label": "İngilis dili",
+    "original": "This article does not exist or its link has changed.",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.056": {
+    "label": "",
+    "original": "/xeberler",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.057": {
+    "label": "Azərbaycan dili",
+    "original": "Bütün xəbərlərə qayıt",
+    "record": ""
+  },
+  "xeberler/[slug]/news-detail-client.058": {
+    "label": "İngilis dili",
+    "original": "Back to all news",
+    "record": ""
+  },
+  "xidmetler/page.001": {
+    "label": "",
+    "original": "01",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.002": {
+    "label": "Başlıq",
+    "original": "Initial Consultation",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.003": {
+    "label": "Təsvir",
+    "original": "We review your project requirements, goals, and expectations.",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.004": {
+    "label": "",
+    "original": "02",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.005": {
+    "label": "Başlıq",
+    "original": "Design & Engineering",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.006": {
+    "label": "Təsvir",
+    "original": "We develop the architectural and engineering solutions.",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.007": {
+    "label": "",
+    "original": "03",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.008": {
+    "label": "Başlıq",
+    "original": "Budget Proposal",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.009": {
+    "label": "Təsvir",
+    "original": "We provide a detailed quotation and execution timeline.",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.010": {
+    "label": "",
+    "original": "04",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.011": {
+    "label": "Başlıq",
+    "original": "Construction",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.012": {
+    "label": "Təsvir",
+    "original": "We execute the works with strict quality control.",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.013": {
+    "label": "",
+    "original": "05",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.014": {
+    "label": "Başlıq",
+    "original": "Handover",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.015": {
+    "label": "Təsvir",
+    "original": "We deliver the completed project together with its documentation.",
+    "record": "processStepsEn"
+  },
+  "xidmetler/page.016": {
+    "label": "Azərbaycan dili",
+    "original": "01",
+    "record": "processSteps"
+  },
+  "xidmetler/page.017": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "İlkin Konsultasiya",
+    "record": "processSteps"
+  },
+  "xidmetler/page.018": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Layihə tələblərinizi, məqsədlərinizi və gözləntilərinizi analiz edirik.",
+    "record": "processSteps"
+  },
+  "xidmetler/page.019": {
+    "label": "Azərbaycan dili",
+    "original": "02",
+    "record": "processSteps"
+  },
+  "xidmetler/page.020": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Layihələndirmə və Mühəndislik",
+    "record": "processSteps"
+  },
+  "xidmetler/page.021": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Memarlıq və mühəndislik həllərini hazırlayırıq.",
+    "record": "processSteps"
+  },
+  "xidmetler/page.022": {
+    "label": "Azərbaycan dili",
+    "original": "03",
+    "record": "processSteps"
+  },
+  "xidmetler/page.023": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Büdcə Təklifi",
+    "record": "processSteps"
+  },
+  "xidmetler/page.024": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Ətraflı qiymət təklifi və icra qrafiki təqdim edirik.",
+    "record": "processSteps"
+  },
+  "xidmetler/page.025": {
+    "label": "Azərbaycan dili",
+    "original": "04",
+    "record": "processSteps"
+  },
+  "xidmetler/page.026": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Tikinti",
+    "record": "processSteps"
+  },
+  "xidmetler/page.027": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "İşləri ciddi keyfiyyət nəzarəti ilə icra edirik.",
+    "record": "processSteps"
+  },
+  "xidmetler/page.028": {
+    "label": "Azərbaycan dili",
+    "original": "05",
+    "record": "processSteps"
+  },
+  "xidmetler/page.029": {
+    "label": "Azərbaycan dili · Başlıq",
+    "original": "Təhvil",
+    "record": "processSteps"
+  },
+  "xidmetler/page.030": {
+    "label": "Azərbaycan dili · Təsvir",
+    "original": "Tamamlanmış layihəni sənədləri ilə birlikdə təhvil veririk.",
+    "record": "processSteps"
+  },
+  "xidmetler/page.031": {
+    "label": "Azərbaycan dili",
+    "original": "ISO 9001:2015 sertifikatlı keyfiyyət idarəetmə sistemi",
+    "record": "advantages"
+  },
+  "xidmetler/page.032": {
+    "label": "Azərbaycan dili",
+    "original": "Beynəlxalq standartlara uyğun tikinti materialları",
+    "record": "advantages"
+  },
+  "xidmetler/page.033": {
+    "label": "Azərbaycan dili",
+    "original": "Müasir tikinti texnologiyaları və avadanlıqları",
+    "record": "advantages"
+  },
+  "xidmetler/page.034": {
+    "label": "Azərbaycan dili",
+    "original": "Vaxtında və büdcə daxilində tamamlanan layihələr",
+    "record": "advantages"
+  },
+  "xidmetler/page.035": {
+    "label": "İngilis dili",
+    "original": "ISO 9001:2015 certified quality management system",
+    "record": "advantages"
+  },
+  "xidmetler/page.036": {
+    "label": "İngilis dili",
+    "original": "Construction materials aligned with international standards",
+    "record": "advantages"
+  },
+  "xidmetler/page.037": {
+    "label": "İngilis dili",
+    "original": "Modern construction technologies and equipment",
+    "record": "advantages"
+  },
+  "xidmetler/page.038": {
+    "label": "İngilis dili",
+    "original": "Projects completed on time and within budget",
+    "record": "advantages"
+  },
+  "xidmetler/page.039": {
+    "label": "Azərbaycan dili · Səhifə başlığı",
+    "original": "Xidmətlərimiz",
+    "record": "copy"
+  },
+  "xidmetler/page.040": {
+    "label": "Azərbaycan dili · Səhifə təsviri",
+    "original": "Tikintinin hər mərhələsi üçün kompleks dəstək",
+    "record": "copy"
+  },
+  "xidmetler/page.041": {
+    "label": "Azərbaycan dili",
+    "original": "Nə Təklif Edirik",
+    "record": "copy"
+  },
+  "xidmetler/page.042": {
+    "label": "Azərbaycan dili",
+    "original": "Tam Tikinti Həlləri",
+    "record": "copy"
+  },
+  "xidmetler/page.043": {
+    "label": "Azərbaycan dili",
+    "original": "Mühəndislikdən tikintiyə, təmirdən konsaltinqə qədər bütün əsas xidmətləri bir çatı altında təqdim edirik.",
+    "record": "copy"
+  },
+  "xidmetler/page.044": {
+    "label": "Azərbaycan dili",
+    "original": "İş Prosesimiz",
+    "record": "copy"
+  },
+  "xidmetler/page.045": {
+    "label": "Azərbaycan dili",
+    "original": "Necə İşləyirik",
+    "record": "copy"
+  },
+  "xidmetler/page.046": {
+    "label": "Azərbaycan dili",
+    "original": "Hər layihədə şəffaf və sistemli iş axını tətbiq edirik.",
+    "record": "copy"
+  },
+  "xidmetler/page.047": {
+    "label": "Azərbaycan dili",
+    "original": "Niyə Biz?",
+    "record": "copy"
+  },
+  "xidmetler/page.048": {
+    "label": "Azərbaycan dili",
+    "original": "Etibarlı Tikinti Tərəfdaşınız",
+    "record": "copy"
+  },
+  "xidmetler/page.049": {
+    "label": "Azərbaycan dili",
+    "original": "Uğurlu Layihə",
+    "record": "copy"
+  },
+  "xidmetler/page.050": {
+    "label": "Azərbaycan dili",
+    "original": "Layihəniz Üçün Ödənişsiz Təklif Alın",
+    "record": "copy"
+  },
+  "xidmetler/page.051": {
+    "label": "Azərbaycan dili",
+    "original": "Layihənizi müzakirə etmək və ətraflı təklif almaq üçün bizimlə əlaqə saxlayın.",
+    "record": "copy"
+  },
+  "xidmetler/page.052": {
+    "label": "Azərbaycan dili",
+    "original": "Əlaqə",
+    "record": "copy"
+  },
+  "xidmetler/page.053": {
+    "label": "İngilis dili · Səhifə başlığı",
+    "original": "Our Services",
+    "record": "copy"
+  },
+  "xidmetler/page.054": {
+    "label": "İngilis dili · Səhifə təsviri",
+    "original": "Comprehensive support across every stage of construction",
+    "record": "copy"
+  },
+  "xidmetler/page.055": {
+    "label": "İngilis dili",
+    "original": "What We Offer",
+    "record": "copy"
+  },
+  "xidmetler/page.056": {
+    "label": "İngilis dili",
+    "original": "End-to-End Construction Solutions",
+    "record": "copy"
+  },
+  "xidmetler/page.057": {
+    "label": "İngilis dili",
+    "original": "From engineering and construction to renovation and consulting, we provide every key service under one roof.",
+    "record": "copy"
+  },
+  "xidmetler/page.058": {
+    "label": "İngilis dili",
+    "original": "Our Process",
+    "record": "copy"
+  },
+  "xidmetler/page.059": {
+    "label": "İngilis dili",
+    "original": "How We Work",
+    "record": "copy"
+  },
+  "xidmetler/page.060": {
+    "label": "İngilis dili",
+    "original": "We apply a transparent and structured workflow to every project.",
+    "record": "copy"
+  },
+  "xidmetler/page.061": {
+    "label": "İngilis dili",
+    "original": "Why Us?",
+    "record": "copy"
+  },
+  "xidmetler/page.062": {
+    "label": "İngilis dili",
+    "original": "Your Reliable Construction Partner",
+    "record": "copy"
+  },
+  "xidmetler/page.063": {
+    "label": "İngilis dili",
+    "original": "Successful Projects",
+    "record": "copy"
+  },
+  "xidmetler/page.064": {
+    "label": "İngilis dili",
+    "original": "Get a Free Quote for Your Project",
+    "record": "copy"
+  },
+  "xidmetler/page.065": {
+    "label": "İngilis dili",
+    "original": "Contact us today to discuss your project and receive a detailed quotation.",
+    "record": "copy"
+  },
+  "xidmetler/page.066": {
+    "label": "İngilis dili",
+    "original": "Contact Us",
+    "record": "copy"
+  },
+  "xidmetler/page.067": {
+    "label": "",
+    "original": "/images/services-whyus-ai.png",
+    "record": ""
+  },
+  "xidmetler/page.068": {
+    "label": "",
+    "original": "Construction team reviewing plans on a modern building site",
+    "record": ""
+  },
+  "xidmetler/page.069": {
+    "label": "",
+    "original": "+",
+    "record": ""
+  },
+  "xidmetler/page.070": {
+    "label": "",
+    "original": "/elaqe",
+    "record": ""
+  },
+  "layiheler/[slug]/page.001": {
+    "label": "Azərbaycan dili",
+    "original": "Layihə yüklənir...",
+    "record": ""
+  },
+  "layiheler/[slug]/page.002": {
+    "label": "İngilis dili",
+    "original": "Loading project...",
+    "record": ""
+  },
+  "layiheler/[slug]/page.003": {
+    "label": "Azərbaycan dili · Etiket",
+    "original": "Müştəri",
+    "record": "details"
+  },
+  "layiheler/[slug]/page.004": {
+    "label": "İngilis dili · Etiket",
+    "original": "Client",
+    "record": "details"
+  },
+  "layiheler/[slug]/page.005": {
+    "label": "Azərbaycan dili · Etiket",
+    "original": "Məkan",
+    "record": "details"
+  },
+  "layiheler/[slug]/page.006": {
+    "label": "İngilis dili · Etiket",
+    "original": "Location",
+    "record": "details"
+  },
+  "layiheler/[slug]/page.007": {
+    "label": "Azərbaycan dili · Etiket",
+    "original": "İl",
+    "record": "details"
+  },
+  "layiheler/[slug]/page.008": {
+    "label": "İngilis dili · Etiket",
+    "original": "Year",
+    "record": "details"
+  },
+  "layiheler/[slug]/page.009": {
+    "label": "Azərbaycan dili · Etiket",
+    "original": "Sahə",
+    "record": "details"
+  },
+  "layiheler/[slug]/page.010": {
+    "label": "İngilis dili · Etiket",
+    "original": "Area",
+    "record": "details"
+  },
+  "layiheler/[slug]/page.011": {
+    "label": "Azərbaycan dili · Etiket",
+    "original": "Layihələr",
+    "record": ""
+  },
+  "layiheler/[slug]/page.012": {
+    "label": "İngilis dili · Etiket",
+    "original": "Projects",
+    "record": ""
+  },
+  "layiheler/[slug]/page.013": {
+    "label": "Keçid",
+    "original": "/layiheler",
+    "record": ""
+  },
+  "layiheler/[slug]/page.014": {
+    "label": "Azərbaycan dili",
+    "original": "Layihə Haqqında",
+    "record": ""
+  },
+  "layiheler/[slug]/page.015": {
+    "label": "İngilis dili",
+    "original": "About the Project",
+    "record": ""
+  },
+  "layiheler/[slug]/page.016": {
+    "label": "Azərbaycan dili",
+    "original": "Qalereya",
+    "record": ""
+  },
+  "layiheler/[slug]/page.017": {
+    "label": "İngilis dili",
+    "original": "Gallery",
+    "record": ""
+  },
+  "layiheler/[slug]/page.018": {
+    "label": "Azərbaycan dili",
+    "original": "Layihə Məlumatları",
+    "record": ""
+  },
+  "layiheler/[slug]/page.019": {
+    "label": "İngilis dili",
+    "original": "Project Details",
+    "record": ""
+  },
+  "layiheler/[slug]/page.020": {
+    "label": "",
+    "original": "/elaqe",
+    "record": ""
+  },
+  "layiheler/[slug]/page.021": {
+    "label": "Azərbaycan dili",
+    "original": "Layihə Sorğusu Göndər",
+    "record": ""
+  },
+  "layiheler/[slug]/page.022": {
+    "label": "İngilis dili",
+    "original": "Send Project Inquiry",
+    "record": ""
+  },
+  "layiheler/[slug]/page.023": {
+    "label": "Azərbaycan dili",
+    "original": "Oxşar Layihələr",
+    "record": ""
+  },
+  "layiheler/[slug]/page.024": {
+    "label": "İngilis dili",
+    "original": "Related Projects",
+    "record": ""
+  },
+  "layiheler/[slug]/page.025": {
+    "label": "",
+    "original": "/layiheler",
+    "record": ""
+  },
+  "layiheler/[slug]/page.026": {
+    "label": "Azərbaycan dili",
+    "original": "Bütün Layihələr",
+    "record": ""
+  },
+  "layiheler/[slug]/page.027": {
+    "label": "İngilis dili",
+    "original": "All Projects",
+    "record": ""
+  },
+  "layiheler/[slug]/page.028": {
+    "label": "",
+    "original": "/layiheler",
+    "record": ""
+  },
+  "layiheler/[slug]/page.029": {
+    "label": "Azərbaycan dili",
+    "original": "Bütün Layihələrə Qayıt",
+    "record": ""
+  },
+  "layiheler/[slug]/page.030": {
+    "label": "İngilis dili",
+    "original": "Back to All Projects",
+    "record": ""
+  },
+  "layiheler/page.001": {
+    "label": "Azərbaycan dili",
+    "original": "Layihələrimiz",
+    "record": ""
+  },
+  "layiheler/page.002": {
+    "label": "İngilis dili",
+    "original": "Our Projects",
+    "record": ""
+  },
+  "layiheler/page.003": {
+    "label": "Azərbaycan dili · Etiket",
+    "original": "Layihələr",
+    "record": ""
+  },
+  "layiheler/page.004": {
+    "label": "İngilis dili · Etiket",
+    "original": "Projects",
+    "record": ""
+  },
+  "layiheler/page.007": {
+    "label": "Azərbaycan dili",
+    "original": "Bu kateqoriyada layihə tapılmadı.",
+    "record": ""
+  },
+  "layiheler/page.008": {
+    "label": "İngilis dili",
+    "original": "No projects were found in this category.",
+    "record": ""
+  },
+  "karyera/page.001": {
+    "label": "",
+    "original": "Opportunity to contribute to major construction and industrial projects",
+    "record": "benefitsEn"
+  },
+  "karyera/page.002": {
+    "label": "",
+    "original": "Growth environment alongside a professional technical team",
+    "record": "benefitsEn"
+  },
+  "karyera/page.003": {
+    "label": "",
+    "original": "Work system aligned with safety and quality standards",
+    "record": "benefitsEn"
+  },
+  "karyera/page.004": {
+    "label": "",
+    "original": "Career progression and rotation opportunities across new projects",
+    "record": "benefitsEn"
+  },
+  "karyera/page.005": {
+    "label": "",
+    "original": "Choose a suitable vacancy and complete the application form.",
+    "record": "processStepsEn"
+  },
+  "karyera/page.006": {
+    "label": "",
+    "original": "HR and the technical team review your experience and documents.",
+    "record": "processStepsEn"
+  },
+  "karyera/page.007": {
+    "label": "",
+    "original": "Qualified candidates are invited to a technical and project-focused interview.",
+    "record": "processStepsEn"
+  },
+  "karyera/page.008": {
+    "label": "",
+    "original": "At the final stage, an offer and onboarding plan are presented.",
+    "record": "processStepsEn"
+  },
+  "karyera/page.009": {
+    "label": "Azərbaycan dili",
+    "original": "Böyük tikinti və sənaye layihələrinə töhfə vermək imkanı",
+    "record": "benefits"
+  },
+  "karyera/page.010": {
+    "label": "Azərbaycan dili",
+    "original": "Peşəkar texniki komanda ilə birlikdə inkişaf mühiti",
+    "record": "benefits"
+  },
+  "karyera/page.011": {
+    "label": "Azərbaycan dili",
+    "original": "Təhlükəsizlik və keyfiyyət standartlarına uyğun iş sistemi",
+    "record": "benefits"
+  },
+  "karyera/page.012": {
+    "label": "Azərbaycan dili",
+    "original": "Yeni layihələr üzrə karyera inkişafı və rotasiya imkanları",
+    "record": "benefits"
+  },
+  "karyera/page.013": {
+    "label": "Azərbaycan dili",
+    "original": "Uyğun vakansiyanı seçin və müraciət formasını tamamlayın.",
+    "record": "processSteps"
+  },
+  "karyera/page.014": {
+    "label": "Azərbaycan dili",
+    "original": "HR və texniki komanda təcrübənizi və sənədlərinizi qiymətləndirir.",
+    "record": "processSteps"
+  },
+  "karyera/page.015": {
+    "label": "Azərbaycan dili",
+    "original": "Uyğun namizədlər texniki və layihə yönümlü müsahibəyə dəvət olunur.",
+    "record": "processSteps"
+  },
+  "karyera/page.016": {
+    "label": "Azərbaycan dili",
+    "original": "Son mərhələdə təklif və onboarding planı təqdim edilir.",
+    "record": "processSteps"
+  },
+  "karyera/page.017": {
+    "label": "Azərbaycan dili · Səhifə başlığı",
+    "original": "Karyera",
+    "record": "copy"
+  },
+  "karyera/page.018": {
+    "label": "Azərbaycan dili · Səhifə təsviri",
+    "original": "Peşəkar komandamıza qoşulun",
+    "record": "copy"
+  },
+  "karyera/page.019": {
+    "label": "Azərbaycan dili",
+    "original": "Tikinti komandamıza qoşulun",
+    "record": "copy"
+  },
+  "karyera/page.020": {
+    "label": "Azərbaycan dili",
+    "original": "Sahə və ofis rolları üçün güclü peşəkarlar axtarırıq",
+    "record": "copy"
+  },
+  "karyera/page.021": {
+    "label": "Azərbaycan dili",
+    "original": "Mühəndislik, layihə idarəetməsi, HSE, BIM, satınalma və sahə icrası üzrə peşəkarlar üçün daha sistemli müraciət prosesi qurmuşuq.",
+    "record": "copy"
+  },
+  "karyera/page.022": {
+    "label": "Azərbaycan dili",
+    "original": "Müraciət Prosesi",
+    "record": "copy"
+  },
+  "karyera/page.023": {
+    "label": "Azərbaycan dili",
+    "original": "Bu vakansiyaya müraciət et",
+    "record": "copy"
+  },
+  "karyera/page.024": {
+    "label": "Azərbaycan dili · Tələblər",
+    "original": "Tələblər:",
+    "record": "copy"
+  },
+  "karyera/page.025": {
+    "label": "Azərbaycan dili",
+    "original": "Ətraflı Müraciət Forması",
+    "record": "copy"
+  },
+  "karyera/page.026": {
+    "label": "Azərbaycan dili",
+    "original": "Layihələrimizə uyğunluğunuzu ətraflı paylaşın",
+    "record": "copy"
+  },
+  "karyera/page.027": {
+    "label": "Azərbaycan dili",
+    "original": "Bu forma texniki bacarıqlarınızı, sahə təcrübənizi, təhlükəsizlik hazırlığınızı və ümumi uyğunluğunuzu daha düzgün qiymətləndirməyimiz üçün hazırlanıb.",
+    "record": "copy"
+  },
+  "karyera/page.028": {
+    "label": "Azərbaycan dili",
+    "original": "Müraciət göndərildi. Aktiv kanallar:",
+    "record": "copy"
+  },
+  "karyera/page.029": {
+    "label": "Azərbaycan dili",
+    "original": "Müraciət göndərildi.",
+    "record": "copy"
+  },
+  "karyera/page.030": {
+    "label": "Azərbaycan dili",
+    "original": "Müraciət göndərilə bilmədi.",
+    "record": "copy"
+  },
+  "karyera/page.031": {
+    "label": "Azərbaycan dili",
+    "original": "Müraciət göndərilə bilmədi. Bildiriş ayarlarını yoxlayın.",
+    "record": "copy"
+  },
+  "karyera/page.032": {
+    "label": "Azərbaycan dili",
+    "original": "Göndərilir...",
+    "record": "copy"
+  },
+  "karyera/page.033": {
+    "label": "Azərbaycan dili",
+    "original": "Müraciəti göndər",
+    "record": "copy"
+  },
+  "karyera/page.034": {
+    "label": "Azərbaycan dili",
+    "original": "Təcili müraciətlər üçün",
+    "record": "copy"
+  },
+  "karyera/page.035": {
+    "label": "Azərbaycan dili",
+    "original": "əlaqə",
+    "record": "copy"
+  },
+  "karyera/page.036": {
+    "label": "Azərbaycan dili",
+    "original": "səhifəsi ilə də bizimlə əlaqə saxlaya bilərsiniz.",
+    "record": "copy"
+  },
+  "karyera/page.037": {
+    "label": "İngilis dili · Səhifə başlığı",
+    "original": "Careers",
+    "record": "copy"
+  },
+  "karyera/page.038": {
+    "label": "İngilis dili · Səhifə təsviri",
+    "original": "Join our professional team",
+    "record": "copy"
+  },
+  "karyera/page.039": {
+    "label": "İngilis dili",
+    "original": "Join our construction team",
+    "record": "copy"
+  },
+  "karyera/page.040": {
+    "label": "İngilis dili",
+    "original": "We are looking for strong professionals for both site and office roles",
+    "record": "copy"
+  },
+  "karyera/page.041": {
+    "label": "İngilis dili",
+    "original": "We have built a more structured application process for professionals in engineering, project management, HSE, BIM, procurement, and site execution.",
+    "record": "copy"
+  },
+  "karyera/page.042": {
+    "label": "İngilis dili",
+    "original": "Application Process",
+    "record": "copy"
+  },
+  "karyera/page.043": {
+    "label": "İngilis dili",
+    "original": "Apply for this role",
+    "record": "copy"
+  },
+  "karyera/page.044": {
+    "label": "İngilis dili · Tələblər",
+    "original": "Requirements:",
+    "record": "copy"
+  },
+  "karyera/page.045": {
+    "label": "İngilis dili",
+    "original": "Detailed Application Form",
+    "record": "copy"
+  },
+  "karyera/page.046": {
+    "label": "İngilis dili",
+    "original": "Share your fit for our construction projects in detail",
+    "record": "copy"
+  },
+  "karyera/page.047": {
+    "label": "İngilis dili",
+    "original": "This form is designed to help us better evaluate your technical skills, field experience, safety readiness, and overall suitability for our projects.",
+    "record": "copy"
+  },
+  "karyera/page.048": {
+    "label": "İngilis dili",
+    "original": "Application sent. Active channels:",
+    "record": "copy"
+  },
+  "karyera/page.049": {
+    "label": "İngilis dili",
+    "original": "Application sent.",
+    "record": "copy"
+  },
+  "karyera/page.050": {
+    "label": "İngilis dili",
+    "original": "Submission failed.",
+    "record": "copy"
+  },
+  "karyera/page.051": {
+    "label": "İngilis dili",
+    "original": "Application could not be sent. Please check the notification settings.",
+    "record": "copy"
+  },
+  "karyera/page.052": {
+    "label": "İngilis dili",
+    "original": "Sending...",
+    "record": "copy"
+  },
+  "karyera/page.053": {
+    "label": "İngilis dili",
+    "original": "Submit application",
+    "record": "copy"
+  },
+  "karyera/page.054": {
+    "label": "İngilis dili",
+    "original": "For urgent applications, you can also contact us through the",
+    "record": "copy"
+  },
+  "karyera/page.056": {
+    "label": "İngilis dili",
+    "original": "page.",
+    "record": "copy"
+  },
+  "karyera/page.059": {
+    "label": "Azərbaycan dili",
+    "original": "Ad soyad",
+    "record": ""
+  },
+  "karyera/page.060": {
+    "label": "İngilis dili",
+    "original": "Full name",
+    "record": ""
+  },
+  "karyera/page.061": {
+    "label": "Azərbaycan dili",
+    "original": "E-poçt",
+    "record": ""
+  },
+  "karyera/page.062": {
+    "label": "İngilis dili",
+    "original": "Email",
+    "record": ""
+  },
+  "karyera/page.063": {
+    "label": "Azərbaycan dili",
+    "original": "Telefon",
+    "record": ""
+  },
+  "karyera/page.064": {
+    "label": "İngilis dili",
+    "original": "Phone",
+    "record": ""
+  },
+  "karyera/page.065": {
+    "label": "Azərbaycan dili",
+    "original": "Şəhər / Region",
+    "record": ""
+  },
+  "karyera/page.066": {
+    "label": "İngilis dili",
+    "original": "City / Region",
+    "record": ""
+  },
+  "karyera/page.067": {
+    "label": "Azərbaycan dili",
+    "original": "Müraciət olunan vəzifə",
+    "record": ""
+  },
+  "karyera/page.068": {
+    "label": "İngilis dili",
+    "original": "Position applied for",
+    "record": ""
+  },
+  "karyera/page.069": {
+    "label": "Azərbaycan dili",
+    "original": "Vakansiya seçin",
+    "record": ""
+  },
+  "karyera/page.070": {
+    "label": "İngilis dili",
+    "original": "Select a vacancy",
+    "record": ""
+  },
+  "karyera/page.071": {
+    "label": "Azərbaycan dili",
+    "original": "Şöbə",
+    "record": ""
+  },
+  "karyera/page.072": {
+    "label": "İngilis dili",
+    "original": "Department",
+    "record": ""
+  },
+  "karyera/page.073": {
+    "label": "Azərbaycan dili",
+    "original": "Şöbə seçin",
+    "record": ""
+  },
+  "karyera/page.074": {
+    "label": "İngilis dili",
+    "original": "Select a department",
+    "record": ""
+  },
+  "karyera/page.075": {
+    "label": "Azərbaycan dili",
+    "original": "İş təcrübəsi (il)",
+    "record": ""
+  },
+  "karyera/page.076": {
+    "label": "İngilis dili",
+    "original": "Years of experience",
+    "record": ""
+  },
+  "karyera/page.077": {
+    "label": "Azərbaycan dili",
+    "original": "Məsələn: 7",
+    "record": ""
+  },
+  "karyera/page.078": {
+    "label": "İngilis dili",
+    "original": "Example: 7",
+    "record": ""
+  },
+  "karyera/page.079": {
+    "label": "Azərbaycan dili",
+    "original": "Təhsil",
+    "record": ""
+  },
+  "karyera/page.080": {
+    "label": "İngilis dili",
+    "original": "Education",
+    "record": ""
+  },
+  "karyera/page.081": {
+    "label": "Azərbaycan dili",
+    "original": "Məsələn: İnşaat mühəndisliyi",
+    "record": ""
+  },
+  "karyera/page.082": {
+    "label": "İngilis dili",
+    "original": "Example: Civil engineering",
+    "record": ""
+  },
+  "karyera/page.083": {
+    "label": "Azərbaycan dili",
+    "original": "İxtisaslaşma",
+    "record": ""
+  },
+  "karyera/page.084": {
+    "label": "İngilis dili",
+    "original": "Specialization",
+    "record": ""
+  },
+  "karyera/page.085": {
+    "label": "Azərbaycan dili",
+    "original": "BIM, HSE, sahə icrası və s.",
+    "record": ""
+  },
+  "karyera/page.086": {
+    "label": "İngilis dili",
+    "original": "BIM, HSE, site execution, etc.",
+    "record": ""
+  },
+  "karyera/page.087": {
+    "label": "Azərbaycan dili",
+    "original": "İngilis dili səviyyəsi",
+    "record": ""
+  },
+  "karyera/page.088": {
+    "label": "İngilis dili",
+    "original": "English level",
+    "record": ""
+  },
+  "karyera/page.089": {
+    "label": "Azərbaycan dili",
+    "original": "Başlanğıc",
+    "record": ""
+  },
+  "karyera/page.090": {
+    "label": "İngilis dili",
+    "original": "Basic",
+    "record": ""
+  },
+  "karyera/page.091": {
+    "label": "Azərbaycan dili",
+    "original": "Orta",
+    "record": ""
+  },
+  "karyera/page.092": {
+    "label": "İngilis dili",
+    "original": "Intermediate",
+    "record": ""
+  },
+  "karyera/page.093": {
+    "label": "Azərbaycan dili",
+    "original": "Yaxşı",
+    "record": ""
+  },
+  "karyera/page.094": {
+    "label": "İngilis dili",
+    "original": "Advanced",
+    "record": ""
+  },
+  "karyera/page.095": {
+    "label": "Azərbaycan dili",
+    "original": "Sərbəst",
+    "record": ""
+  },
+  "karyera/page.096": {
+    "label": "İngilis dili",
+    "original": "Fluent",
+    "record": ""
+  },
+  "karyera/page.097": {
+    "label": "Azərbaycan dili",
+    "original": "Hazırkı şirkət",
+    "record": ""
+  },
+  "karyera/page.098": {
+    "label": "İngilis dili",
+    "original": "Current company",
+    "record": ""
+  },
+  "karyera/page.099": {
+    "label": "Azərbaycan dili",
+    "original": "Hazırkı vəzifə",
+    "record": ""
+  },
+  "karyera/page.100": {
+    "label": "İngilis dili",
+    "original": "Current role",
+    "record": ""
+  },
+  "karyera/page.101": {
+    "label": "Azərbaycan dili",
+    "original": "Gözlənilən əməkhaqqı",
+    "record": ""
+  },
+  "karyera/page.102": {
+    "label": "İngilis dili",
+    "original": "Expected salary",
+    "record": ""
+  },
+  "karyera/page.103": {
+    "label": "",
+    "original": "AZN",
+    "record": ""
+  },
+  "karyera/page.104": {
+    "label": "Azərbaycan dili",
+    "original": "Başlama tarixi",
+    "record": ""
+  },
+  "karyera/page.105": {
+    "label": "İngilis dili",
+    "original": "Availability date",
+    "record": ""
+  },
+  "karyera/page.106": {
+    "label": "Azərbaycan dili",
+    "original": "Məşğulluq növü",
+    "record": ""
+  },
+  "karyera/page.107": {
+    "label": "İngilis dili",
+    "original": "Employment type",
+    "record": ""
+  },
+  "karyera/page.108": {
+    "label": "Azərbaycan dili",
+    "original": "Tam ştat",
+    "record": ""
+  },
+  "karyera/page.109": {
+    "label": "İngilis dili",
+    "original": "Full-time",
+    "record": ""
+  },
+  "karyera/page.110": {
+    "label": "Azərbaycan dili",
+    "original": "Yarım ştat",
+    "record": ""
+  },
+  "karyera/page.111": {
+    "label": "İngilis dili",
+    "original": "Part-time",
+    "record": ""
+  },
+  "karyera/page.112": {
+    "label": "Azərbaycan dili",
+    "original": "Müqavilə",
+    "record": ""
+  },
+  "karyera/page.113": {
+    "label": "İngilis dili",
+    "original": "Contract",
+    "record": ""
+  },
+  "karyera/page.114": {
+    "label": "Azərbaycan dili",
+    "original": "Rotasiya / növbəli",
+    "record": ""
+  },
+  "karyera/page.115": {
+    "label": "İngilis dili",
+    "original": "Rotation / shift",
+    "record": ""
+  },
+  "karyera/page.116": {
+    "label": "Azərbaycan dili",
+    "original": "Ezamiyyətə hazırdır?",
+    "record": ""
+  },
+  "karyera/page.117": {
+    "label": "İngilis dili",
+    "original": "Available for travel?",
+    "record": ""
+  },
+  "karyera/page.118": {
+    "label": "Azərbaycan dili",
+    "original": "Bəli",
+    "record": ""
+  },
+  "karyera/page.119": {
+    "label": "İngilis dili",
+    "original": "Yes",
+    "record": ""
+  },
+  "karyera/page.120": {
+    "label": "Azərbaycan dili",
+    "original": "Xeyr",
+    "record": ""
+  },
+  "karyera/page.121": {
+    "label": "İngilis dili",
+    "original": "No",
+    "record": ""
+  },
+  "karyera/page.122": {
+    "label": "Azərbaycan dili",
+    "original": "Qismən",
+    "record": ""
+  },
+  "karyera/page.123": {
+    "label": "İngilis dili",
+    "original": "Partly",
+    "record": ""
+  },
+  "karyera/page.124": {
+    "label": "Azərbaycan dili",
+    "original": "Növbəli işə hazırdır?",
+    "record": ""
+  },
+  "karyera/page.125": {
+    "label": "İngilis dili",
+    "original": "Available for shift work?",
+    "record": ""
+  },
+  "karyera/page.126": {
+    "label": "Azərbaycan dili",
+    "original": "Bəli",
+    "record": ""
+  },
+  "karyera/page.127": {
+    "label": "İngilis dili",
+    "original": "Yes",
+    "record": ""
+  },
+  "karyera/page.128": {
+    "label": "Azərbaycan dili",
+    "original": "Xeyr",
+    "record": ""
+  },
+  "karyera/page.129": {
+    "label": "İngilis dili",
+    "original": "No",
+    "record": ""
+  },
+  "karyera/page.130": {
+    "label": "Azərbaycan dili",
+    "original": "Lazım olduqda",
+    "record": ""
+  },
+  "karyera/page.131": {
+    "label": "İngilis dili",
+    "original": "If needed",
+    "record": ""
+  },
+  "karyera/page.132": {
+    "label": "Azərbaycan dili",
+    "original": "Sürücülük vəsiqəsi",
+    "record": ""
+  },
+  "karyera/page.133": {
+    "label": "İngilis dili",
+    "original": "Driving license",
+    "record": ""
+  },
+  "karyera/page.134": {
+    "label": "Azərbaycan dili",
+    "original": "Bəli",
+    "record": ""
+  },
+  "karyera/page.135": {
+    "label": "İngilis dili",
+    "original": "Yes",
+    "record": ""
+  },
+  "karyera/page.136": {
+    "label": "Azərbaycan dili",
+    "original": "Xeyr",
+    "record": ""
+  },
+  "karyera/page.137": {
+    "label": "İngilis dili",
+    "original": "No",
+    "record": ""
+  },
+  "karyera/page.138": {
+    "label": "Azərbaycan dili",
+    "original": "HSE / təhlükəsizlik təlimi",
+    "record": ""
+  },
+  "karyera/page.139": {
+    "label": "İngilis dili",
+    "original": "HSE / safety training",
+    "record": ""
+  },
+  "karyera/page.140": {
+    "label": "Azərbaycan dili",
+    "original": "Tamamlanıb",
+    "record": ""
+  },
+  "karyera/page.141": {
+    "label": "İngilis dili",
+    "original": "Completed",
+    "record": ""
+  },
+  "karyera/page.142": {
+    "label": "Azərbaycan dili",
+    "original": "Tamamlanmayıb",
+    "record": ""
+  },
+  "karyera/page.143": {
+    "label": "İngilis dili",
+    "original": "Not completed",
+    "record": ""
+  },
+  "karyera/page.144": {
+    "label": "Azərbaycan dili",
+    "original": "Vaxtı bitib",
+    "record": ""
+  },
+  "karyera/page.145": {
+    "label": "İngilis dili",
+    "original": "Expired",
+    "record": ""
+  },
+  "karyera/page.146": {
+    "label": "Azərbaycan dili",
+    "original": "CV / Resume",
+    "record": ""
+  },
+  "karyera/page.147": {
+    "label": "İngilis dili",
+    "original": "CV / Resume",
+    "record": ""
+  },
+  "karyera/page.148": {
+    "label": "Azərbaycan dili",
+    "original": "Kompüterinizdən fayl seçin",
+    "record": ""
+  },
+  "karyera/page.149": {
+    "label": "İngilis dili",
+    "original": "Choose a file from your computer",
+    "record": ""
+  },
+  "karyera/page.150": {
+    "label": "Azərbaycan dili",
+    "original": "Fayl yüklə",
+    "record": ""
+  },
+  "karyera/page.151": {
+    "label": "İngilis dili",
+    "original": "Upload file",
+    "record": ""
+  },
+  "karyera/page.152": {
+    "label": "Azərbaycan dili",
+    "original": "Proqram bilikləri",
+    "record": ""
+  },
+  "karyera/page.153": {
+    "label": "İngilis dili",
+    "original": "Software skills",
+    "record": ""
+  },
+  "karyera/page.154": {
+    "label": "Azərbaycan dili",
+    "original": "AutoCAD, Revit, Primavera, MS Project, Excel və s.",
+    "record": ""
+  },
+  "karyera/page.155": {
+    "label": "İngilis dili",
+    "original": "AutoCAD, Revit, Primavera, MS Project, Excel, etc.",
+    "record": ""
+  },
+  "karyera/page.156": {
+    "label": "Azərbaycan dili",
+    "original": "Sertifikat və lisenziyalar",
+    "record": ""
+  },
+  "karyera/page.157": {
+    "label": "İngilis dili",
+    "original": "Certifications and licenses",
+    "record": ""
+  },
+  "karyera/page.158": {
+    "label": "Azərbaycan dili",
+    "original": "HSE, PMP, ISO, qaynaq sertifikatı və s.",
+    "record": ""
+  },
+  "karyera/page.159": {
+    "label": "İngilis dili",
+    "original": "HSE, PMP, ISO, welding certification, etc.",
+    "record": ""
+  },
+  "karyera/page.160": {
+    "label": "Azərbaycan dili",
+    "original": "İştirak etdiyiniz tikinti layihələri",
+    "record": ""
+  },
+  "karyera/page.161": {
+    "label": "İngilis dili",
+    "original": "Construction projects you have worked on",
+    "record": ""
+  },
+  "karyera/page.162": {
+    "label": "Azərbaycan dili",
+    "original": "Layihə növünü, miqyasını, rolunuzu, komanda ölçüsünü və əsas nailiyyətləri yazın.",
+    "record": ""
+  },
+  "karyera/page.163": {
+    "label": "İngilis dili",
+    "original": "Describe project type, scale, your role, team size, and key achievements.",
+    "record": ""
+  },
+  "karyera/page.164": {
+    "label": "Azərbaycan dili",
+    "original": "Dil bilikləri",
+    "record": ""
+  },
+  "karyera/page.165": {
+    "label": "İngilis dili",
+    "original": "Languages",
+    "record": ""
+  },
+  "karyera/page.166": {
+    "label": "Azərbaycan dili",
+    "original": "Azərbaycan, ingilis, rus və s.",
+    "record": ""
+  },
+  "karyera/page.167": {
+    "label": "İngilis dili",
+    "original": "Azerbaijani, English, Russian, etc.",
+    "record": ""
+  },
+  "karyera/page.168": {
+    "label": "Azərbaycan dili",
+    "original": "Referanslar",
+    "record": ""
+  },
+  "karyera/page.169": {
+    "label": "İngilis dili",
+    "original": "References",
+    "record": ""
+  },
+  "karyera/page.170": {
+    "label": "Azərbaycan dili",
+    "original": "Əvvəlki rəhbər, layihə meneceri və ya HR əlaqəsi",
+    "record": ""
+  },
+  "karyera/page.171": {
+    "label": "İngilis dili",
+    "original": "Previous manager, project manager, or HR contact",
+    "record": ""
+  },
+  "karyera/page.172": {
+    "label": "Azərbaycan dili",
+    "original": "Özünüz və bu vəzifəyə uyğunluğunuz haqqında qısa məlumat verin",
+    "record": ""
+  },
+  "karyera/page.173": {
+    "label": "İngilis dili",
+    "original": "Briefly describe yourself and your suitability for this role",
+    "record": ""
+  },
+  "karyera/page.174": {
+    "label": "Azərbaycan dili",
+    "original": "Texniki güclü tərəflərinizi, sahə təcrübənizi və niyə bu komandaya uyğun olduğunuzu paylaşın.",
+    "record": ""
+  },
+  "karyera/page.175": {
+    "label": "İngilis dili",
+    "original": "Share your technical strengths, field experience, and why you are a fit for this team.",
+    "record": ""
+  },
+  "karyera/page.176": {
+    "label": "Azərbaycan dili",
+    "original": "Komanda işi",
+    "record": ""
+  },
+  "karyera/page.177": {
+    "label": "İngilis dili",
+    "original": "Teamwork",
+    "record": ""
+  },
+  "karyera/page.178": {
+    "label": "Azərbaycan dili",
+    "original": "Məktub hissəsində sahə və ofis koordinasiyası təcrübənizi qeyd edin.",
+    "record": ""
+  },
+  "karyera/page.179": {
+    "label": "İngilis dili",
+    "original": "Mention your experience with field and office coordination in the cover letter section.",
+    "record": ""
+  },
+  "karyera/page.180": {
+    "label": "Azərbaycan dili",
+    "original": "Təhlükəsizlik",
+    "record": ""
+  },
+  "karyera/page.181": {
+    "label": "İngilis dili",
+    "original": "Safety",
+    "record": ""
+  },
+  "karyera/page.182": {
+    "label": "Azərbaycan dili",
+    "original": "HSE və təhlükəsizlik prosedurları ilə iş təcrübəsi bizim üçün vacibdir.",
+    "record": ""
+  },
+  "karyera/page.183": {
+    "label": "İngilis dili",
+    "original": "Experience working with HSE and safety procedures is important to us.",
+    "record": ""
+  },
+  "karyera/page.184": {
+    "label": "Azərbaycan dili",
+    "original": "Mövcudluq",
+    "record": ""
+  },
+  "karyera/page.185": {
+    "label": "İngilis dili",
+    "original": "Availability",
+    "record": ""
+  },
+  "karyera/page.186": {
+    "label": "Azərbaycan dili",
+    "original": "Başlama tarixiniz və ezamiyyət imkanınız layihə planlamasında nəzərə alınır.",
+    "record": ""
+  },
+  "karyera/page.187": {
+    "label": "İngilis dili",
+    "original": "Your start date and travel availability are considered in project planning.",
+    "record": ""
+  },
+  "karyera/page.188": {
+    "label": "",
+    "original": "/elaqe",
+    "record": ""
+  },
+  "seo/site.title": {
+    "label": "seo/site.title",
+    "original": "Akin Industry - Tikinti Şirkəti"
+  },
+  "seo/site.description": {
+    "label": "seo/site.description",
+    "original": "Azərbaycanda yaşayış, kommersiya və sənaye tikintisi üzrə peşəkar həllər təqdim edən Akin Industry."
+  },
+  "seo/site.keywords": {
+    "label": "seo/site.keywords",
+    "original": "tikinti, inşaat, Azərbaycan, Bakı, layihə, memarlıq, yaşayış binası, kommersiya"
+  },
+  "seo/site.author": {
+    "label": "seo/site.author",
+    "original": "Akin Industry"
+  },
+  "seo/contact.title": {
+    "label": "seo/contact.title",
+    "original": "Əlaqə"
+  },
+  "seo/contact.description": {
+    "label": "seo/contact.description",
+    "original": "Akin Industry ilə əlaqə saxlayın. Tikinti layihəniz üçün pulsuz məsləhət alın."
+  },
+  "seo/news.title": {
+    "label": "seo/news.title",
+    "original": "Xəbərlər"
+  },
+  "seo/news.description": {
+    "label": "seo/news.description",
+    "original": "Akin Industry - Şirkət xəbərləri, layihə yenilikləri və sektordakı son inkişaflar."
+  },
+  "lib/site-translations.ts.position1": {
+    "original": "Baş İcraçı Direktor",
+    "label": "Azərbaycan dili · Vəzifə",
+    "record": "teamTranslations"
+  },
+  "lib/site-translations.ts.position2": {
+    "original": "Texniki Direktor",
+    "label": "Azərbaycan dili · Vəzifə",
+    "record": "teamTranslations"
+  },
+  "lib/site-translations.ts.position3": {
+    "original": "Layihə Direktoru",
+    "label": "Azərbaycan dili · Vəzifə",
+    "record": "teamTranslations"
+  },
+  "lib/site-translations.ts.position4": {
+    "original": "Maliyyə Direktoru",
+    "label": "Azərbaycan dili · Vəzifə",
+    "record": "teamTranslations"
+  },
+  "home/hero-carousel.template1": {
+    "original": "Go to slide {number}",
+    "label": "Mətn — {…} dəyişənlərini saxlayın",
+    "record": ""
+  },
+  "elaqe/contact-page-client.template1": {
+    "original": "Message sent. Active channels: {channels}.",
+    "label": "Mətn — {…} dəyişənlərini saxlayın",
+    "record": ""
+  },
+  "xidmetler/page.template1": {
+    "original": "{employees}+ peşəkar mühəndis və sahə mütəxəssisi",
+    "label": "Mətn — {…} dəyişənlərini saxlayın",
+    "record": ""
+  },
+  "xidmetler/page.template2": {
+    "original": "{years} illik sektor təcrübəsi və uğurlu təhvil",
+    "label": "Mətn — {…} dəyişənlərini saxlayın",
+    "record": ""
+  },
+  "xidmetler/page.template3": {
+    "original": "{employees}+ professional engineers and field specialists",
+    "label": "Mətn — {…} dəyişənlərini saxlayın",
+    "record": ""
+  },
+  "xidmetler/page.template4": {
+    "original": "{years} years of sector experience and successful delivery",
+    "label": "Mətn — {…} dəyişənlərini saxlayın",
+    "record": ""
+  },
+  "xidmetler/page.template5": {
+    "original": "{years} ildən artıq təcrübə və {projects}+ tamamlanmış layihə ilə peşəkar komandamız sizin tikinti ehtiyaclarınız üçün doğru seçimdir.",
+    "label": "Mətn — {…} dəyişənlərini saxlayın",
+    "record": ""
+  },
+  "xidmetler/page.template6": {
+    "original": "With more than {years} years of experience and {projects}+ completed projects, our professional team is the right choice for your construction needs.",
+    "label": "Mətn — {…} dəyişənlərini saxlayın",
+    "record": ""
+  },
+  "layout/footer.template1": {
+    "original": "An experienced construction company in Azerbaijan, backed by more than {years} years of work. Quality and reliability remain our top priorities.",
+    "label": "Mətn — {…} dəyişənlərini saxlayın",
+    "record": ""
+  },
+  "layout/footer.template2": {
+    "original": "{years} ildən artıq təcrübə ilə Azərbaycanda fəaliyyət göstərən tikinti şirkəti. Keyfiyyət və etibarlılıq bizim prioritetimizdir.",
+    "label": "Mətn — {…} dəyişənlərini saxlayın",
+    "record": ""
+  }
+}

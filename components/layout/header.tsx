@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
@@ -11,6 +12,12 @@ import { useAdmin } from '@/lib/admin/context'
 import { useLanguage, type Locale } from '@/lib/language-context'
 import { cn } from '@/lib/utils'
 
+
+
+export function Header() {
+  const cmsText = useCmsText()
+  
+
 const labels: Record<Locale, {
   navigation: Array<{ name: string; href: string }>
   companyType: string
@@ -18,33 +25,31 @@ const labels: Record<Locale, {
 }> = {
   en: {
     navigation: [
-      { name: 'Home', href: '/' },
-      { name: 'About Us', href: '/haqqimizda' },
-      { name: 'Projects', href: '/layiheler' },
-      { name: 'Services', href: '/xidmetler' },
-      { name: 'News', href: '/xeberler' },
-      { name: 'Careers', href: '/karyera' },
-      { name: 'Contact', href: '/elaqe' },
+      { name: cmsText("layout/header.001"), href: cmsText("layout/header.002") },
+      { name: cmsText("layout/header.003"), href: cmsText("layout/header.004") },
+      { name: cmsText("layout/header.005"), href: cmsText("layout/header.006") },
+      { name: cmsText("layout/header.007"), href: cmsText("layout/header.008") },
+      { name: cmsText("layout/header.009"), href: cmsText("layout/header.010") },
+      { name: cmsText("layout/header.011"), href: cmsText("layout/header.012") },
+      { name: cmsText("layout/header.013"), href: cmsText("layout/header.014") },
     ],
-    companyType: 'Construction Company',
-    cta: 'Contact Us',
+    companyType: cmsText("layout/header.015"),
+    cta: cmsText("layout/header.016"),
   },
   az: {
     navigation: [
-      { name: 'Əsas səhifə', href: '/' },
-      { name: 'Haqqımızda', href: '/haqqimizda' },
-      { name: 'Layihələr', href: '/layiheler' },
-      { name: 'Xidmətlər', href: '/xidmetler' },
-      { name: 'Xəbərlər', href: '/xeberler' },
-      { name: 'Karyera', href: '/karyera' },
-      { name: 'Əlaqə', href: '/elaqe' },
+      { name: cmsText("layout/header.017"), href: cmsText("layout/header.018") },
+      { name: cmsText("layout/header.019"), href: cmsText("layout/header.020") },
+      { name: cmsText("layout/header.021"), href: cmsText("layout/header.022") },
+      { name: cmsText("layout/header.023"), href: cmsText("layout/header.024") },
+      { name: cmsText("layout/header.025"), href: cmsText("layout/header.026") },
+      { name: cmsText("layout/header.027"), href: cmsText("layout/header.028") },
+      { name: cmsText("layout/header.029"), href: cmsText("layout/header.030") },
     ],
-    companyType: 'Tikinti Şirkəti',
-    cta: 'Bizimlə Əlaqə',
+    companyType: cmsText("layout/header.031"),
+    cta: cmsText("layout/header.032"),
   },
 }
-
-export function Header() {
   const { contact } = useAdmin()
   const { locale, setLocale } = useLanguage()
   const pathname = usePathname()
@@ -106,19 +111,19 @@ export function Header() {
         </div>
       </div>
 
-      <nav className={cn('transition-all duration-300', isScrolled ? 'py-3' : 'py-4')}>
+      <nav className={cn('transition-all duration-300', isScrolled ? "py-3" : "py-4")}>
         <div className="container mx-auto px-4 flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href={cmsText("layout/header.035")} className="flex items-center gap-3">
             <div
               className={cn(
                 'flex items-center justify-center rounded-lg overflow-hidden transition-all',
-                isScrolled ? 'w-10 h-10' : 'w-12 h-12',
+                isScrolled ? "w-10 h-10" : "w-12 h-12",
                 'bg-transparent'
               )}
             >
               <Image
-                src="/logo.png"
-                alt="Akin Industry Logo"
+                src={cmsText("layout/header.038")}
+                alt={cmsText("layout/header.039")}
                 width={48}
                 height={48}
                 className="h-auto w-auto object-contain"
@@ -131,8 +136,7 @@ export function Header() {
                   isScrolled ? 'text-lg text-foreground' : 'text-xl text-white'
                 )}
               >
-                Akin Industry
-              </span>
+                {cmsText("layout/header.040")}</span>
               <span className={cn('text-xs transition-all', isScrolled ? 'text-muted-foreground' : 'text-white/70')}>
                 {copy.companyType}
               </span>
@@ -163,7 +167,7 @@ export function Header() {
                 isScrolled ? 'border-border bg-white' : 'border-white/15 bg-white/8'
               )}
             >
-              {(['en', 'az'] as Locale[]).map((option) => (
+              {(["en", "az"] as Locale[]).map((option) => (
                 <button
                   key={option}
                   type="button"
@@ -217,7 +221,7 @@ export function Header() {
               <Linkedin className="h-5 w-5" />
             </a>
             <Button asChild className="rounded-full px-5 py-3 font-semibold transition-all duration-300 bg-accent text-accent-foreground">
-              <Link href="/elaqe">{copy.cta}</Link>
+              <Link href={cmsText("layout/header.043")}>{copy.cta}</Link>
             </Button>
           </div>
 
@@ -233,13 +237,13 @@ export function Header() {
       <div
         className={cn(
           'lg:hidden overflow-hidden transition-all duration-300 bg-background border-b border-border',
-          mobileMenuOpen ? 'max-h-screen py-4' : 'max-h-0'
+          mobileMenuOpen ? "max-h-screen py-4" : "max-h-0"
         )}
       >
         <div className="container mx-auto px-4 space-y-2">
           <div className="flex items-center justify-end pb-2">
             <div className="flex items-center rounded-full border border-border bg-card px-1 py-1">
-              {(['en', 'az'] as Locale[]).map((option) => (
+              {(["en", "az"] as Locale[]).map((option) => (
                 <button
                   key={option}
                   type="button"
@@ -288,7 +292,7 @@ export function Header() {
           </div>
           <div className="pt-4">
             <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link href="/elaqe">{copy.cta}</Link>
+              <Link href={cmsText("layout/header.048")}>{copy.cta}</Link>
             </Button>
           </div>
         </div>

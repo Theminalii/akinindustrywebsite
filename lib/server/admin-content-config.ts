@@ -1,10 +1,10 @@
+import { createHash } from 'node:crypto'
 import {
-  defaultContact,
   ensureDefaultAdminAccount,
   getDefaultAdminContent,
 } from '@/lib/admin/defaults'
 import type { AdminContentData } from '@/lib/admin/types'
-import { readAdminState, writeAdminState } from '@/lib/server/admin-database'
+import { readAdminState, updateAdminState } from '@/lib/server/admin-database'
 
 function withBootstrapAdmin(data: AdminContentData): AdminContentData {
   if (data.adminAccounts.some((account) => account.password.trim())) return data
@@ -29,6 +29,7 @@ function mergeAdminContent(config?: Partial<AdminContentData>): AdminContentData
   const defaults = getDefaultAdminContent()
 
   return {
+    pageContent: { ...defaults.pageContent, ...config?.pageContent },
     projects: config?.projects ?? defaults.projects,
     news: config?.news ?? defaults.news,
     team: config?.team ?? defaults.team,
@@ -45,19 +46,26 @@ function mergeAdminContent(config?: Partial<AdminContentData>): AdminContentData
   }
 }
 
-export async function readAdminContentConfig() {
-  const content = await readAdminState<Partial<AdminContentData>>()
-  if (content) {
-    return {
-      data: withBootstrapAdmin(mergeAdminContent(content)),
-      hasStoredData: true,
-    }
-  }
-
-  return { data: withBootstrapAdmin(getDefaultAdminContent()), hasStoredData: false }
+export function contentVersion(data: AdminContentData) {
+  return createHash('sha256').update(JSON.stringify(data)).digest('hex')
 }
 
-export async function writeAdminContentConfig(config: AdminContentData) {
-  const normalized = mergeAdminContent(config)
-  return writeAdminState(normalized)
+export async function readAdminContentConfig() {
+  const stored = await readAdminState<AdminContentData>()
+  if (stored) {
+    const normalized = withBootstrapAdmin(mergeAdminContent(stored))
+    if (JSON.stringify(stored) === JSON.stringify(normalized)) return { data: stored, hasStoredData: true }
+  }
+  // Seed a new database or migrate missing fields without overwriting existing edits.
+  const data = await updateAdminState(withBootstrapAdmin(getDefaultAdminContent()),
+    (current) => withBootstrapAdmin(mergeAdminContent(current)))
+  return { data, hasStoredData: true }
+}
+
+export async function writeAdminContentConfig(config: AdminContentData, expectedVersion: string) {
+  return updateAdminState(withBootstrapAdmin(getDefaultAdminContent()), (current) => {
+    const normalized = withBootstrapAdmin(mergeAdminContent(current))
+    if (contentVersion(normalized) !== expectedVersion) throw new Error('content_conflict')
+    return mergeAdminContent(config)
+  })
 }

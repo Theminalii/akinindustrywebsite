@@ -22,6 +22,7 @@ import { useAdmin } from '@/lib/admin/context'
 
 export default function AdminDashboard() {
   const {
+    pageContent,
     projects,
     news,
     team,
@@ -43,6 +44,7 @@ export default function AdminDashboard() {
   const [passwordError, setPasswordError] = useState('')
 
   const sections = [
+    { label: 'Səhifələrin məzmunu', description: 'Bütün səhifələrin mətnləri, şəkilləri və videoları', value: Object.keys(pageContent).length, href: '/admin/pages', icon: FileText, accent: 'text-blue-600' },
     {
       label: 'Layihələr',
       description: 'Portfel ve secilmis layiheler',

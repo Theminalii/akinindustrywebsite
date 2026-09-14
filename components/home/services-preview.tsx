@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import Link from 'next/link'
 import { Building2, PencilRuler, Wrench, Route, ClipboardCheck, Factory, ArrowRight } from 'lucide-react'
@@ -6,7 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-import { translateService } from '@/lib/site-translations'
+import { useSiteTranslations } from '@/lib/site-translations'
 
 const iconMap: Record<string, React.ElementType> = {
   'building': Building2,
@@ -18,23 +19,26 @@ const iconMap: Record<string, React.ElementType> = {
 }
 
 export function ServicesPreview() {
+  const cmsText = useCmsText()
+  const { translateService } = useSiteTranslations()
+
   const { locale } = useLanguage()
   const { services } = useAdmin()
   const copy =
     locale === 'az'
       ? {
-          badge: 'Xidmətlərimiz',
-          title: 'Tam Tikinti Həlləri',
+          badge: cmsText("home/services-preview.001"),
+          title: cmsText("home/services-preview.002"),
           description:
-            'Mühəndislikdən tikintiyə, təmirdən konsaltinqə qədər bütün əsas xidmətləri bir çatı altında təqdim edirik.',
-          cta: 'Bütün Xidmətlər',
+            cmsText("home/services-preview.003"),
+          cta: cmsText("home/services-preview.004"),
         }
       : {
-          badge: 'Our Services',
-          title: 'End-to-End Construction Solutions',
+          badge: cmsText("home/services-preview.005"),
+          title: cmsText("home/services-preview.006"),
           description:
-            'From engineering and construction to renovation and consulting, we provide every key service under one roof.',
-          cta: 'View All Services',
+            cmsText("home/services-preview.007"),
+          cta: cmsText("home/services-preview.008"),
         }
 
   return (
@@ -90,7 +94,7 @@ export function ServicesPreview() {
         {/* CTA */}
         <div className="text-center mt-12">
           <Button asChild size="lg" variant="outline" className="group">
-              <Link href="/xidmetler">
+              <Link href={cmsText("home/services-preview.009")}>
               {copy.cta}
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>

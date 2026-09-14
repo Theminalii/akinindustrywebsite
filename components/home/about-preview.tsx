@@ -1,76 +1,81 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import Link from 'next/link'
 import { ArrowRight, Wrench, Clock, Shield, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/lib/language-context'
 
+
+
+export function AboutPreview() {
+  const cmsText = useCmsText()
+  
+
 const features = {
   en: [
     {
       icon: Shield,
-      title: 'Quality & Safety',
-      description: 'We uphold the highest standards on every project.',
+      title: cmsText("home/about-preview.001"),
+      description: cmsText("home/about-preview.002"),
     },
     {
       icon: Wrench,
-      title: 'Modern Technologies',
-      description: 'We apply the latest construction technologies.',
+      title: cmsText("home/about-preview.003"),
+      description: cmsText("home/about-preview.004"),
     },
     {
       icon: Clock,
-      title: 'On-Time Delivery',
-      description: 'Projects are completed on time and within budget.',
+      title: cmsText("home/about-preview.005"),
+      description: cmsText("home/about-preview.006"),
     },
   ],
   az: [
     {
       icon: Shield,
-      title: 'Keyfiyyət və Təhlükəsizlik',
-      description: 'Hər layihədə ən yüksək standartlara sadiq qalırıq.',
+      title: cmsText("home/about-preview.007"),
+      description: cmsText("home/about-preview.008"),
     },
     {
       icon: Wrench,
-      title: 'Müasir Texnologiyalar',
-      description: 'Ən son tikinti texnologiyalarını tətbiq edirik.',
+      title: cmsText("home/about-preview.009"),
+      description: cmsText("home/about-preview.010"),
     },
     {
       icon: Clock,
-      title: 'Vaxtında Təhvil',
-      description: 'Layihələri vaxtında və büdcəyə uyğun tamamlayırıq.',
+      title: cmsText("home/about-preview.011"),
+      description: cmsText("home/about-preview.012"),
     },
   ],
 }
-
-export function AboutPreview() {
   const { locale } = useLanguage()
   const copy =
     locale === 'az'
       ? {
-          badge: 'Azərbaycanın tikinti sektorunda etibarlı lider',
-          titleStart: '25+ illik təcrübə ilə',
-          titleAccent: 'etibarlı',
-          titleEnd: 'tikinti həlləri',
+          badge: cmsText("home/about-preview.013"),
+          titleStart: cmsText("home/about-preview.014"),
+          titleAccent: cmsText("home/about-preview.015"),
+          titleEnd: cmsText("home/about-preview.016"),
           description:
-            'Biz Azərbaycanın ən güvənilən tikinti şirkətlərindən biriyik və yaşayış, kommersiya və sənaye layihələrini yüksək keyfiyyətlə həyata keçiririk.',
-          ctaTitle: 'Layihənizi Bizimlə Reallaşdırın',
+            cmsText("home/about-preview.017"),
+          ctaTitle: cmsText("home/about-preview.018"),
           ctaDescription:
-            'Keyfiyyət, təhlükəsizlik və müştəri məmnuniyyəti bizim üçün hər zaman prioritetdir.',
-          learnMore: 'Daha Ətraflı',
-          projects: 'Layihələrimiz',
+            cmsText("home/about-preview.019"),
+          learnMore: cmsText("home/about-preview.020"),
+          projects: cmsText("home/about-preview.021"),
         }
       : {
-          badge: 'A Leader in Azerbaijan’s Construction Industry',
-          titleStart: 'construction solutions backed by 25+ years of experience',
-          titleAccent: 'Reliable',
+          badge: cmsText("home/about-preview.022"),
+          titleStart: cmsText("home/about-preview.023"),
+          titleAccent: cmsText("home/about-preview.024"),
           titleEnd: '',
           description:
-            'We are one of Azerbaijan’s most trusted construction companies, delivering high-quality residential, commercial, and industrial projects.',
-          ctaTitle: 'Bring Your Project to Life With Us',
+            cmsText("home/about-preview.025"),
+          ctaTitle: cmsText("home/about-preview.026"),
           ctaDescription:
-            'We put quality, safety, and client satisfaction first to earn long-term trust.',
-          learnMore: 'Learn More',
-          projects: 'Our Projects',
+            cmsText("home/about-preview.027"),
+          learnMore: cmsText("home/about-preview.028"),
+          projects: cmsText("home/about-preview.029"),
         }
 
   return (
@@ -124,13 +129,13 @@ export function AboutPreview() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="group">
-              <Link href="/haqqimizda">
+              <Link href={cmsText("home/about-preview.030")}>
                 {copy.learnMore}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="/layiheler">{copy.projects}</Link>
+              <Link href={cmsText("home/about-preview.031")}>{copy.projects}</Link>
             </Button>
           </div>
         </div>

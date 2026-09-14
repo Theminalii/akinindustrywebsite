@@ -1,3 +1,4 @@
+import { useCmsText } from '@/lib/admin/page-content'
 import type {
   Certificate,
   JobPosition,
@@ -10,20 +11,24 @@ import type { Locale } from './language-context'
 
 type Localized<T> = Partial<Record<Locale, T>>
 
+export function useSiteTranslations() {
+  const cmsText = useCmsText()
+  
+
 const categoryLabels: Record<Locale, Record<string, string>> = {
   en: {
-    residential: 'Residential',
-    commercial: 'Commercial',
-    industrial: 'Industrial',
-    infrastructure: 'Infrastructure',
-    all: 'All',
+    residential: cmsText("lib/site-translations.ts.001"),
+    commercial: cmsText("lib/site-translations.ts.002"),
+    industrial: cmsText("lib/site-translations.ts.003"),
+    infrastructure: cmsText("lib/site-translations.ts.004"),
+    all: cmsText("lib/site-translations.ts.005"),
   },
   az: {
-    residential: 'Yaşayış',
-    commercial: 'Kommersiya',
-    industrial: 'Sənaye',
-    infrastructure: 'İnfrastruktur',
-    all: 'Hamısı',
+    residential: cmsText("lib/site-translations.ts.006"),
+    commercial: cmsText("lib/site-translations.ts.007"),
+    industrial: cmsText("lib/site-translations.ts.008"),
+    infrastructure: cmsText("lib/site-translations.ts.009"),
+    all: cmsText("lib/site-translations.ts.010"),
   },
 }
 
@@ -31,67 +36,67 @@ const serviceTranslations: Record<
   string,
   Localized<Pick<Service, 'title' | 'description' | 'features'>>
 > = {
-  '1': {
+  "1": {
     az: {
-      title: 'Konstruktiv Tikinti İşləri',
-      description: 'Qəlib, armatur və beton işləri üzrə tam həcmli həllər.',
-      features: ['Qəlib işləri', 'Armatur quraşdırılması', 'Beton tökülməsi', 'Keyfiyyətə nəzarət'],
+      title: cmsText("lib/site-translations.ts.012"),
+      description: cmsText("lib/site-translations.ts.013"),
+      features: [cmsText("lib/site-translations.ts.014"), cmsText("lib/site-translations.ts.015"), cmsText("lib/site-translations.ts.016"), cmsText("lib/site-translations.ts.017")],
     },
   },
-  '2': {
+  "2": {
     az: {
-      title: 'Metal Konstruksiyaların İstehsalı və Montajı',
-      description: 'Sənaye və infrastruktur layihələri üçün etibarlı metal konstruksiya həlləri.',
-      features: ['Metal istehsalı', 'Montaj xidmətləri', 'Çatdırılma və quraşdırma', 'Korroziyadan mühafizə'],
+      title: cmsText("lib/site-translations.ts.019"),
+      description: cmsText("lib/site-translations.ts.020"),
+      features: [cmsText("lib/site-translations.ts.021"), cmsText("lib/site-translations.ts.022"), cmsText("lib/site-translations.ts.023"), cmsText("lib/site-translations.ts.024")],
     },
   },
-  '3': {
+  "3": {
     az: {
-      title: 'Fasad İşləri',
-      description: 'Bütün bina növləri üçün müasir və davamlı fasad sistemləri.',
-      features: ['İzolyasiya sistemləri', 'Keramoqranit üzlük', 'Doğrama quraşdırılması', 'Şüşə fasad sistemləri'],
+      title: cmsText("lib/site-translations.ts.026"),
+      description: cmsText("lib/site-translations.ts.027"),
+      features: [cmsText("lib/site-translations.ts.028"), cmsText("lib/site-translations.ts.029"), cmsText("lib/site-translations.ts.030"), cmsText("lib/site-translations.ts.031")],
     },
   },
-  '4': {
+  "4": {
     az: {
-      title: 'Mühəndislik və Layihələndirmə',
-      description: 'Layihə planlaması, mühəndis hesablamaları və icra sənədləri.',
-      features: ['Layihələndirmə', 'Mühəndis hesablamaları', 'BIM modelləşdirmə', 'Texniki sənədləşmə'],
+      title: cmsText("lib/site-translations.ts.033"),
+      description: cmsText("lib/site-translations.ts.034"),
+      features: [cmsText("lib/site-translations.ts.035"), cmsText("lib/site-translations.ts.036"), cmsText("lib/site-translations.ts.037"), cmsText("lib/site-translations.ts.038")],
     },
   },
-  '5': {
+  "5": {
     az: {
-      title: 'Sendviç Panel Quraşdırılması və İzolyasiya',
-      description: 'Sendviç panel sistemlərinin sürətli və etibarlı quraşdırılması.',
-      features: ['Panel quraşdırılması', 'İzolyasiya tətbiqi', 'Sızdırmazlıq yoxlaması', 'Səth tamamlama işləri'],
+      title: cmsText("lib/site-translations.ts.040"),
+      description: cmsText("lib/site-translations.ts.041"),
+      features: [cmsText("lib/site-translations.ts.042"), cmsText("lib/site-translations.ts.043"), cmsText("lib/site-translations.ts.044"), cmsText("lib/site-translations.ts.045")],
     },
   },
-  '6': {
+  "6": {
     az: {
-      title: 'Fit-Out və Landşaft İşləri',
-      description: 'Müasir məkanlar üçün interyer və açıq mühit həlləri.',
-      features: ['Ofis fit-out işləri', 'Təchizat və dekorasiya', 'Bağ və landşaft dizaynı', 'Təhvil sonrası dəstək'],
+      title: cmsText("lib/site-translations.ts.047"),
+      description: cmsText("lib/site-translations.ts.048"),
+      features: [cmsText("lib/site-translations.ts.049"), cmsText("lib/site-translations.ts.050"), cmsText("lib/site-translations.ts.051"), cmsText("lib/site-translations.ts.052")],
     },
   },
-  '7': {
+  "7": {
     az: {
-      title: 'Üzlük, Suvaq və Boya İşləri',
-      description: 'Daxili və xarici məkanlar üçün tamamlama həlləri.',
-      features: ['Üzlük təmiri', 'Xarici suvaq', 'Daxili boya işləri', 'Səthin hazırlanması'],
+      title: cmsText("lib/site-translations.ts.054"),
+      description: cmsText("lib/site-translations.ts.055"),
+      features: [cmsText("lib/site-translations.ts.056"), cmsText("lib/site-translations.ts.057"), cmsText("lib/site-translations.ts.058"), cmsText("lib/site-translations.ts.059")],
     },
   },
-  '8': {
+  "8": {
     az: {
-      title: 'BMU Quraşdırılması və Servisi',
-      description: 'Fasada çıxış və təmizləmə sistemlərinin quraşdırılması və xidməti.',
-      features: ['BMU quraşdırılması', 'Avadanlıq testləri', 'Texniki xidmət', 'Təhlükəsizlik yoxlamaları'],
+      title: cmsText("lib/site-translations.ts.061"),
+      description: cmsText("lib/site-translations.ts.062"),
+      features: [cmsText("lib/site-translations.ts.063"), cmsText("lib/site-translations.ts.064"), cmsText("lib/site-translations.ts.065"), cmsText("lib/site-translations.ts.066")],
     },
   },
-  '9': {
+  "9": {
     az: {
-      title: 'Mexaniki Avadanlıq və Boru Xətlərinin Montajı',
-      description: 'Mexaniki sistemlər və boru şəbəkələrinin tam quraşdırılması.',
-      features: ['Boru montajı', 'Mexaniki sistemlər', 'İstismar testləri', 'Quraşdırma protokolları'],
+      title: cmsText("lib/site-translations.ts.068"),
+      description: cmsText("lib/site-translations.ts.069"),
+      features: [cmsText("lib/site-translations.ts.070"), cmsText("lib/site-translations.ts.071"), cmsText("lib/site-translations.ts.072"), cmsText("lib/site-translations.ts.073")],
     },
   },
 }
@@ -100,118 +105,118 @@ const projectTranslations: Record<
   string,
   Localized<Pick<Project, 'title' | 'description' | 'location' | 'area'>>
 > = {
-  'port-baku-towers': {
+  "port-baku-towers": {
     az: {
-      title: 'BMU Sistemi (Metal Konstruksiya və Mexaniki Montaj İşləri)',
+      title: cmsText("lib/site-translations.ts.075"),
       description:
-        'Bakıda yerləşən nüfuzlu biznes mərkəzi üçün müasir memarlıq həlləri və yüksək keyfiyyətli tikinti materialları ilə icra edilmiş layihə.',
-      location: 'Bakı, Azərbaycan',
-      area: '350 ton',
+        cmsText("lib/site-translations.ts.076"),
+      location: cmsText("lib/site-translations.ts.077"),
+      area: cmsText("lib/site-translations.ts.078"),
     },
   },
-  'white-city-residences': {
+  "white-city-residences": {
     az: {
-      title: 'Çinar Park Dam Konstruksiyası',
-      description: 'Metal istehsalı və montaj işlərini əhatə edən davam edən layihə.',
-      location: 'Bakı, Azərbaycan',
-      area: '28 ton',
+      title: cmsText("lib/site-translations.ts.080"),
+      description: cmsText("lib/site-translations.ts.081"),
+      location: cmsText("lib/site-translations.ts.082"),
+      area: cmsText("lib/site-translations.ts.083"),
     },
   },
-  'sumgait-industrial-zone': {
+  "sumgait-industrial-zone": {
     az: {
-      title: 'Crescent Mall Metal İşləri',
-      description: 'Böyük həcmli qarışıq istifadəli kommersiya obyekti üçün metal istehsalı, montaj və ankeraj işləri.',
-      location: 'Bakı, Azərbaycan',
-      area: '55 ton',
+      title: cmsText("lib/site-translations.ts.085"),
+      description: cmsText("lib/site-translations.ts.086"),
+      location: cmsText("lib/site-translations.ts.087"),
+      area: cmsText("lib/site-translations.ts.088"),
     },
   },
-  'baku-ring-road': {
+  "baku-ring-road": {
     az: {
-      title: 'Mingəçevir Elektrik Stansiyası',
-      description: 'Beton və metal konstruksiya işləri ilə həyata keçirilmiş iri sənaye infrastrukturu layihəsi.',
-      location: 'Mingəçevir, Azərbaycan',
-      area: '1500 ton beton / 350 ton polad',
+      title: cmsText("lib/site-translations.ts.090"),
+      description: cmsText("lib/site-translations.ts.091"),
+      location: cmsText("lib/site-translations.ts.092"),
+      area: cmsText("lib/site-translations.ts.093"),
     },
   },
-  'flame-towers-renovation': {
+  "flame-towers-renovation": {
     az: {
-      title: 'Crescent Mall',
-      description: 'Böyük ticarət məkanı üçün metal istehsalı, montaj və ankeraj işləri.',
-      location: 'Bakı, Azərbaycan',
-      area: '55 ton',
+      title: cmsText("lib/site-translations.ts.095"),
+      description: cmsText("lib/site-translations.ts.096"),
+      location: cmsText("lib/site-translations.ts.097"),
+      area: cmsText("lib/site-translations.ts.098"),
     },
   },
-  'ganja-shopping-mall': {
+  "ganja-shopping-mall": {
     az: {
-      title: 'Şirvan Elektrik Stansiyası',
-      description: 'Müasir sənaye həlli çərçivəsində metal və örtük işləri ilə icra olunmuş layihə.',
-      location: 'Şirvan, Azərbaycan',
-      area: '85 ton polad + trapets formalı örtük',
+      title: cmsText("lib/site-translations.ts.100"),
+      description: cmsText("lib/site-translations.ts.101"),
+      location: cmsText("lib/site-translations.ts.102"),
+      area: cmsText("lib/site-translations.ts.103"),
     },
   },
-  'azersulfat-tursu-zavodu': {
+  "azersulfat-tursu-zavodu": {
     az: {
-      title: 'Azersulfat Turşu Zavodu',
-      description: 'Azersulfat layihəsi çərçivəsində refrakter montaj işləri.',
-      location: 'Sumqayıt, Azərbaycan',
-      area: '250 ton',
+      title: cmsText("lib/site-translations.ts.105"),
+      description: cmsText("lib/site-translations.ts.106"),
+      location: cmsText("lib/site-translations.ts.107"),
+      area: cmsText("lib/site-translations.ts.108"),
     },
   },
-  'suvelan-elektrik-stansiyasi': {
+  "suvelan-elektrik-stansiyasi": {
     az: {
-      title: 'Şüvəlan Elektrik Stansiyası',
-      description: 'Şimal-2 estakadasında qumlama və boyama işləri.',
-      location: 'Şüvəlan, Azərbaycan',
-      area: '6000 m²',
+      title: cmsText("lib/site-translations.ts.110"),
+      description: cmsText("lib/site-translations.ts.111"),
+      location: cmsText("lib/site-translations.ts.112"),
+      area: cmsText("lib/site-translations.ts.113"),
     },
   },
-  'sangacal-terminal': {
+  "sangacal-terminal": {
     az: {
-      title: 'Səngəçal Terminalı',
-      description: 'BP Terminalı üçün hasar işləri.',
-      location: 'Səngəçal, Azərbaycan',
-      area: '2500 metr',
+      title: cmsText("lib/site-translations.ts.115"),
+      description: cmsText("lib/site-translations.ts.116"),
+      location: cmsText("lib/site-translations.ts.117"),
+      area: cmsText("lib/site-translations.ts.118"),
     },
   },
-  'qazax-ada-universitesi': {
+  "qazax-ada-universitesi": {
     az: {
-      title: 'Qazax ADA Universiteti',
-      description: 'Qazax ADA Universiteti yataqxanasının yenidənqurma işləri.',
-      location: 'Qazax, Azərbaycan',
-      area: 'Metal konstruksiya işləri (120 m məhəccər və 7 ton keçid platforması)',
+      title: cmsText("lib/site-translations.ts.120"),
+      description: cmsText("lib/site-translations.ts.121"),
+      location: cmsText("lib/site-translations.ts.122"),
+      area: cmsText("lib/site-translations.ts.123"),
     },
   },
-  'qlukometr-ve-strip-istehsal-binasi': {
+  "qlukometr-ve-strip-istehsal-binasi": {
     az: {
-      title: 'Qlükometr və Strip İstehsal Binası',
-      description: 'Metal və fasad işləri daxil olmaqla ventilyasiya sistemli istehsal binası layihəsi.',
-      location: 'Pirallahı, Azərbaycan',
-      area: '150 ton metal işləri və 4000 m² fasad işləri',
+      title: cmsText("lib/site-translations.ts.125"),
+      description: cmsText("lib/site-translations.ts.126"),
+      location: cmsText("lib/site-translations.ts.127"),
+      area: cmsText("lib/site-translations.ts.128"),
     },
   },
-  'kalium-sulfat-zavodu': {
+  "kalium-sulfat-zavodu": {
     az: {
-      title: 'Kalium Sulfat Zavodu',
-      description: 'İnşaat, metal konstruksiya və örtük işlərini əhatə edən sənaye layihəsi.',
-      location: 'Sumqayıt, Azərbaycan',
-      area: '4200 m³ beton, 350 ton armatur, 180 ton metal və 5500 m² örtük',
+      title: cmsText("lib/site-translations.ts.130"),
+      description: cmsText("lib/site-translations.ts.131"),
+      location: cmsText("lib/site-translations.ts.132"),
+      area: cmsText("lib/site-translations.ts.133"),
     },
   },
-  'stalcay-production-plant': {
+  "stalcay-production-plant": {
     az: {
-      title: 'Stalçay İstehsalat Zavodu',
+      title: cmsText("lib/site-translations.ts.135"),
       description:
-        'Stalçay İstehsalat Zavodunda 104 ədəd elektrik manholu və 54 ədəd hidrant kanalının tikinti işləri tamamlanıb.',
-      location: 'Azərbaycan',
-      area: '104 elektrik manholu və 54 hidrant kanalı',
+        cmsText("lib/site-translations.ts.136"),
+      location: cmsText("lib/site-translations.ts.137"),
+      area: cmsText("lib/site-translations.ts.138"),
     },
   },
-  'pirallahi-derman-zavodu': {
+  "pirallahi-derman-zavodu": {
     az: {
-      title: 'Pirallahı Dərman Zavodu',
-      description: 'Pirallahı Dərman Zavodunda metal konstruksiya işləri həyata keçirilib.',
-      location: 'Pirallahı, Azərbaycan',
-      area: 'Metal konstruksiya işləri',
+      title: cmsText("lib/site-translations.ts.140"),
+      description: cmsText("lib/site-translations.ts.141"),
+      location: cmsText("lib/site-translations.ts.142"),
+      area: cmsText("lib/site-translations.ts.143"),
     },
   },
 }
@@ -220,81 +225,81 @@ const newsTranslations: Record<
   string,
   Localized<Pick<NewsArticle, 'title' | 'excerpt' | 'content' | 'category'>>
 > = {
-  'akin-industry-partners-with-pocketvc-venture-studio': {
+  "akin-industry-partners-with-pocketvc-venture-studio": {
     az: {
-      title: 'Akin Industry Agentic AI İş Axınlarının Tətbiqi üçün PocketVC Venture Studio ilə Tərəfdaşlıq Edir',
+      title: cmsText("lib/site-translations.ts.145"),
       excerpt:
-        'Əməliyyat və satış proseslərimizi transformasiya edəcək AI alətlərinin hazırlanması və tətbiqi üçün strateji tərəfdaşlıq.',
+        cmsText("lib/site-translations.ts.146"),
       content:
-        'PocketVC Venture Studio-nun partnyoru Chinara Askerzade ilə ən son tərəfdaşlığımızı məmnuniyyətlə elan edirik. Bu əməkdaşlıq əməliyyat və satış proseslərimizdə agentic AI iş axınlarının hazırlanması və tətbiqini dəstəkləyəcək.\n\nBu tərəfdaşlıq daxili iş axınlarımızı sadələşdirməyə, səmərəliliyi artırmağa, əsas prosesləri avtomatlaşdırmağa və müştərilərimizlə əlaqə üsulumuzu gücləndirməyə kömək edəcək. Nəticədə daha ağıllı qərarlar və dayanıqlı inkişaf əldə edəcəyik.',
-      category: 'Tərəfdaşlıq Elanı',
+        cmsText("lib/site-translations.ts.147"),
+      category: cmsText("lib/site-translations.ts.148"),
     },
   },
-  'yeni-layihe-imzalandi': {
+  "yeni-layihe-imzalandi": {
     az: {
-      title: 'Yeni İnfrastruktur Layihəsi İmzalandı',
+      title: cmsText("lib/site-translations.ts.150"),
       excerpt:
-        'Akin Industry dəyəri 50 milyon AZN olan və iki il ərzində tamamlanması planlaşdırılan yeni ictimai infrastruktur layihəsinə başlayır.',
+        cmsText("lib/site-translations.ts.151"),
       content:
-        'Akin Industry tərəfindən yeni infrastruktur layihəsinin başlanmasını məmnuniyyətlə elan edirik. Layihə Azərbaycan Respublikası Dövlət Yol Agentliyi ilə əməkdaşlıq çərçivəsində icra olunacaq və ölkənin nəqliyyat şəbəkəsinə əhəmiyyətli töhfə verəcək.\n\nLayihə 25 km avtomobil yolunu, 4 körpünü və müasir işıqlandırma sistemini əhatə edir. Tikintinin 2024-cü ilin yazında başlaması və 2026-cı ilin sonuna qədər yekunlaşması planlaşdırılır.',
-      category: 'Layihələr',
+        cmsText("lib/site-translations.ts.152"),
+      category: cmsText("lib/site-translations.ts.153"),
     },
   },
-  'iso-sertifikati-alindi': {
+  "iso-sertifikati-alindi": {
     az: {
-      title: 'ISO 9001:2015 Sertifikatı Əldə Olundu',
+      title: cmsText("lib/site-translations.ts.155"),
       excerpt:
-        'Şirkətimiz keyfiyyət idarəetməsi üzrə beynəlxalq ISO 9001:2015 sertifikatına layiq görülüb.',
+        cmsText("lib/site-translations.ts.156"),
       content:
-        'Akin Industry keyfiyyət idarəetmə sistemi üzrə nüfuzlu ISO 9001:2015 sertifikatını əldə edib. Bu sertifikat daxili proseslərimizin beynəlxalq səviyyədə tanınan keyfiyyət standartlarına uyğun olduğunu təsdiqləyir.\n\nSertifikatlaşdırma prosesi TÜV Rheinland tərəfindən aparılıb və sistemlərimizin qlobal ən yaxşı təcrübələrlə uyğunluğu təsdiqlənib. Bu nailiyyət müştərilərimizə daha yüksək keyfiyyətli xidmət göstərmək öhdəliyimizi bir daha gücləndirir.',
-      category: 'Nailiyyətlər',
+        cmsText("lib/site-translations.ts.157"),
+      category: cmsText("lib/site-translations.ts.158"),
     },
   },
-  'yeni-texnologiyalar': {
+  "yeni-texnologiyalar": {
     az: {
-      title: 'BIM Texnologiyasına Keçid',
+      title: cmsText("lib/site-translations.ts.160"),
       excerpt:
-        'Akin Industry BIM texnologiyasını layihələndirmə və planlaşdırma proseslərinə tətbiq edir.',
+        cmsText("lib/site-translations.ts.161"),
       content:
-        'Layihələndirmə və icra keyfiyyətini daha da artırmaq üçün şirkətimiz BIM texnologiyasına keçid edir. Bu müasir metodologiya daha dəqiq planlama, daha güclü koordinasiya və daha səmərəli xərc idarəçiliyi imkanı yaradır.\n\nBIM vasitəsilə bütün tikinti prosesi virtual şəkildə modelləşdirilir, potensial problemlər erkən mərhələdə aşkarlanır və icraya başlamazdan əvvəl aradan qaldırılır. Bu da daha qısa təhvil müddəti və daha yüksək keyfiyyət deməkdir.',
-      category: 'Texnologiya',
+        cmsText("lib/site-translations.ts.162"),
+      category: cmsText("lib/site-translations.ts.163"),
     },
   },
-  'yeni-iscilar-axtarilir': {
+  "yeni-iscilar-axtarilir": {
     az: {
-      title: 'İşə Qəbul Kampaniyası Başladı',
+      title: cmsText("lib/site-translations.ts.165"),
       excerpt:
-        'Böyüyən layihə portfelimizi dəstəkləmək üçün müxtəlif istiqamətlər üzrə yeni komanda üzvləri axtarırıq.',
+        cmsText("lib/site-translations.ts.166"),
       content:
-        'Akin Industry komandası genişlənir. Qarşıdakı layihələrimiz üçün mühəndislər, layihə menecerləri və texniki mütəxəssislər axtarırıq.\n\nNamizədlərdən müvafiq tikinti təcrübəsi, güclü komanda işi bacarığı və peşəkar yanaşma gözlənilir. Daha ətraflı məlumat üçün Karyera səhifəmizə baxın.',
-      category: 'Karyera',
+        cmsText("lib/site-translations.ts.167"),
+      category: cmsText("lib/site-translations.ts.168"),
     },
   },
 }
 
 const teamTranslations: Record<string, Localized<Pick<TeamMember, 'position' | 'bio'>>> = {
-  '1': {
+  "1": {
     az: {
-      position: 'Baş İcraçı Direktor',
-      bio: 'Tikinti sahəsində 25 illik təcrübəyə malikdir. Azərbaycan Memarlıq və İnşaat Universitetinin məzunudur.',
+      position: cmsText("lib/site-translations.ts.position1"),
+      bio: cmsText("lib/site-translations.ts.170"),
     },
   },
-  '2': {
+  "2": {
     az: {
-      position: 'Texniki Direktor',
-      bio: 'Beynəlxalq tikinti layihələrində 15 illik təcrübəyə malikdir. Almaniyada təhsil alıb.',
+      position: cmsText("lib/site-translations.ts.position2"),
+      bio: cmsText("lib/site-translations.ts.172"),
     },
   },
-  '3': {
+  "3": {
     az: {
-      position: 'Layihə Direktoru',
-      bio: 'Böyükmiqyaslı layihələrin təhvili üzrə ixtisaslaşmış mütəxəssisdir. PMP sertifikatına malikdir.',
+      position: cmsText("lib/site-translations.ts.position3"),
+      bio: cmsText("lib/site-translations.ts.174"),
     },
   },
-  '4': {
+  "4": {
     az: {
-      position: 'Maliyyə Direktoru',
-      bio: '18 illik maliyyə təcrübəsi olan ACCA üzvüdür.',
+      position: cmsText("lib/site-translations.ts.position4"),
+      bio: cmsText("lib/site-translations.ts.176"),
     },
   },
 }
@@ -303,48 +308,48 @@ const jobTranslations: Record<
   string,
   Localized<Pick<JobPosition, 'title' | 'department' | 'location' | 'type' | 'description' | 'requirements'>>
 > = {
-  '1': {
+  "1": {
     az: {
-      title: 'Baş Mühəndis',
-      department: 'Tikinti',
-      location: 'Bakı',
+      title: cmsText("lib/site-translations.ts.178"),
+      department: cmsText("lib/site-translations.ts.179"),
+      location: cmsText("lib/site-translations.ts.180"),
       type: 'Tam ştat',
-      description: 'Böyükmiqyaslı tikinti layihələrinin texniki icrasına rəhbərlik edəcək təcrübəli mühəndis axtarırıq.',
+      description: cmsText("lib/site-translations.ts.181"),
       requirements: [
-        'Mülki və ya tikinti mühəndisliyi üzrə ali təhsil',
-        'Minimum 10 il tikinti təcrübəsi',
-        'AutoCAD və Revit bilikləri',
-        'Güclü layihə idarəetmə bacarıqları',
+        cmsText("lib/site-translations.ts.182"),
+        cmsText("lib/site-translations.ts.183"),
+        cmsText("lib/site-translations.ts.184"),
+        cmsText("lib/site-translations.ts.185"),
       ],
     },
   },
-  '2': {
+  "2": {
     az: {
-      title: 'Layihə Meneceri',
-      department: 'Layihə İdarəetməsi',
-      location: 'Bakı',
+      title: cmsText("lib/site-translations.ts.187"),
+      department: cmsText("lib/site-translations.ts.188"),
+      location: cmsText("lib/site-translations.ts.189"),
       type: 'Tam ştat',
-      description: 'Kommersiya tikinti layihələrinin icrası üçün peşəkar menecer tələb olunur.',
+      description: cmsText("lib/site-translations.ts.190"),
       requirements: [
-        'İdarəetmə və ya mühəndislik üzrə ali təhsil',
-        'Minimum 5 il layihə idarəetmə təcrübəsi',
-        'MS Project və Primavera təcrübəsi',
-        'Yüksək kommunikasiya və liderlik bacarıqları',
+        cmsText("lib/site-translations.ts.191"),
+        cmsText("lib/site-translations.ts.192"),
+        cmsText("lib/site-translations.ts.193"),
+        cmsText("lib/site-translations.ts.194"),
       ],
     },
   },
-  '3': {
+  "3": {
     az: {
-      title: 'BIM Mütəxəssisi',
-      department: 'Layihələndirmə',
-      location: 'Bakı',
+      title: cmsText("lib/site-translations.ts.196"),
+      department: cmsText("lib/site-translations.ts.197"),
+      location: cmsText("lib/site-translations.ts.198"),
       type: 'Tam ştat',
-      description: 'BIM modelləşdirmə və fənlərarası koordinasiyaya fokuslanan mütəxəssis vakansiyası.',
+      description: cmsText("lib/site-translations.ts.199"),
       requirements: [
-        'Memarlıq və ya mühəndislik üzrə ali təhsil',
-        'Revit, Navisworks və BIM 360 təcrübəsi',
-        'BIM standartları üzrə bilik',
-        'Güclü əməkdaşlıq bacarıqları',
+        cmsText("lib/site-translations.ts.200"),
+        cmsText("lib/site-translations.ts.201"),
+        cmsText("lib/site-translations.ts.202"),
+        cmsText("lib/site-translations.ts.203"),
       ],
     },
   },
@@ -354,28 +359,28 @@ const certificateTranslations: Record<
   string,
   Localized<Pick<Certificate, 'title' | 'category' | 'description'>>
 > = {
-  '1': {
+  "1": {
     az: {
-      title: 'ISO 9001:2015 Keyfiyyət İdarəetməsi',
-      category: 'Sertifikat',
+      title: cmsText("lib/site-translations.ts.205"),
+      category: cmsText("lib/site-translations.ts.206"),
       description:
-        'Müştəri məmnuniyyəti və davamlı inkişaf öhdəliyimizi təsdiqləyən keyfiyyət idarəetmə sistemi üzrə beynəlxalq sertifikat.',
+        cmsText("lib/site-translations.ts.207"),
     },
   },
-  '2': {
+  "2": {
     az: {
-      title: 'ISO 45001 Əməyin Mühafizəsi və Təhlükəsizlik',
-      category: 'Sertifikat',
+      title: cmsText("lib/site-translations.ts.209"),
+      category: cmsText("lib/site-translations.ts.210"),
       description:
-        'İşçi rifahı və təhlükəsiz əməliyyatlara verdiyimiz önəmi əks etdirən əməyin mühafizəsi sertifikatı.',
+        cmsText("lib/site-translations.ts.211"),
     },
   },
-  '3': {
+  "3": {
     az: {
-      title: 'ISO 14001 Ətraf Mühitin İdarəedilməsi',
-      category: 'Sertifikat',
+      title: cmsText("lib/site-translations.ts.213"),
+      category: cmsText("lib/site-translations.ts.214"),
       description:
-        'Davamlılıq və ətraf mühit məsuliyyətinə bağlılığımızı göstərən beynəlxalq ətraf mühit standartı.',
+        cmsText("lib/site-translations.ts.215"),
     },
   },
 }
@@ -388,11 +393,11 @@ function translateRecord<T extends object>(value: T, locale: Locale, translation
   return { ...value, ...translation }
 }
 
-export function getCategoryLabel(category: string, locale: Locale) {
+function getCategoryLabel(category: string, locale: Locale) {
   return categoryLabels[locale][category] ?? category
 }
 
-export function getProjectCategories(locale: Locale) {
+function getProjectCategories(locale: Locale) {
   return [
     { key: 'all', label: getCategoryLabel('all', locale) },
     { key: 'residential', label: getCategoryLabel('residential', locale) },
@@ -402,30 +407,33 @@ export function getProjectCategories(locale: Locale) {
   ]
 }
 
-export function translateService(service: Service, locale: Locale) {
+function translateService(service: Service, locale: Locale) {
   return translateRecord(service, locale, serviceTranslations[service.id]?.[locale])
 }
 
-export function translateProject(project: Project, locale: Locale) {
+function translateProject(project: Project, locale: Locale) {
   return translateRecord(project, locale, projectTranslations[project.slug]?.[locale])
 }
 
-export function translateNewsArticle(article: NewsArticle, locale: Locale) {
+function translateNewsArticle(article: NewsArticle, locale: Locale) {
   return translateRecord(article, locale, newsTranslations[article.slug]?.[locale])
 }
 
-export function translateTeamMember(member: TeamMember, locale: Locale) {
+function translateTeamMember(member: TeamMember, locale: Locale) {
   return translateRecord(member, locale, teamTranslations[member.id]?.[locale])
 }
 
-export function translateJob(job: JobPosition, locale: Locale) {
+function translateJob(job: JobPosition, locale: Locale) {
   return translateRecord(job, locale, jobTranslations[job.id]?.[locale])
 }
 
-export function translateCertificate(certificate: Certificate, locale: Locale) {
+function translateCertificate(certificate: Certificate, locale: Locale) {
   return translateRecord(certificate, locale, certificateTranslations[certificate.id]?.[locale])
 }
 
+
+return { getCategoryLabel, getProjectCategories, translateService, translateProject, translateNewsArticle, translateTeamMember, translateJob, translateCertificate }
+}
 export function formatLocalizedDate(dateString: string, locale: Locale) {
   const date = new Date(dateString)
 

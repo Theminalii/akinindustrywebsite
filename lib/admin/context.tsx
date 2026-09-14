@@ -3,7 +3,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 
 import {
-  defaultAdminAccounts,
   defaultContact,
   ensureDefaultAdminAccount,
   getDefaultAdminContent,
@@ -26,6 +25,8 @@ interface ActionResult {
 }
 
 interface AdminContextType {
+  pageContent: Record<string, string>
+  updatePageContent: (changes: Record<string, string>) => Promise<ActionResult>
   projects: Project[]
   addProject: (project: Project) => Promise<ActionResult>
   updateProject: (id: string, project: Partial<Project>) => Promise<ActionResult>
@@ -77,6 +78,7 @@ function mergeAdminContent(config?: Partial<AdminContentData>): AdminContentData
   const defaults = getDefaultAdminContent()
 
   return {
+    pageContent: { ...defaults.pageContent, ...config?.pageContent },
     projects: config?.projects ?? defaults.projects,
     news: config?.news ?? defaults.news,
     team: config?.team ?? defaults.team,
@@ -102,6 +104,7 @@ async function fetchAdminContent() {
   return (await response.json()) as {
     data: AdminContentData
     hasStoredData: boolean
+    version: string
   }
 }
 
@@ -111,17 +114,18 @@ async function fetchAdminSession() {
   return (await response.json()) as { authenticated: boolean; email: string | null }
 }
 
-async function saveAdminContent(data: AdminContentData) {
+async function saveAdminContent(data: AdminContentData, version: string) {
   const response = await fetch('/api/admin/content', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'If-Match': version,
     },
     body: JSON.stringify(data),
   })
 
   if (!response.ok) {
-    throw new Error('Admin məlumatları saxlanmadı.')
+    throw new Error(response.status === 409 ? 'Başqa redaktor məlumatı dəyişib. Dəyişikliyinizi yoxlayıb yenidən saxlayın.' : 'Admin məlumatları saxlanmadı.')
   }
 
   const payload = (await response.json()) as { data: AdminContentData }
@@ -130,6 +134,7 @@ async function saveAdminContent(data: AdminContentData) {
 
 export function AdminProvider({ children }: { children: React.ReactNode }) {
   const defaultData = getDefaultAdminContent()
+  const [pageContent, setPageContent] = useState(defaultData.pageContent)
   const [projects, setProjects] = useState<Project[]>(defaultData.projects)
   const [news, setNews] = useState<NewsArticle[]>(defaultData.news)
   const [team, setTeam] = useState<TeamMember[]>(defaultData.team)
@@ -143,11 +148,10 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   const [currentAdminEmail, setCurrentAdminEmail] = useState<string | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const saveQueue = useRef<Promise<void>>(Promise.resolve())
-  const contentRef = useRef<AdminContentData>(defaultData)
   const [persistenceError, setPersistenceError] = useState<string | null>(null)
 
   const applyAdminContent = useCallback((data: AdminContentData) => {
-    contentRef.current = data
+    setPageContent(data.pageContent)
     setProjects(data.projects)
     setNews(data.news)
     setTeam(data.team)
@@ -189,9 +193,25 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     }
 
     loadAdminData()
+    const refresh = () => {
+      // Admin forms keep unsaved drafts; saves fetch the latest database state.
+      if (document.visibilityState !== 'visible' || window.location.pathname.startsWith('/admin')) return
+      saveQueue.current = saveQueue.current.catch(() => undefined).then(async () => {
+        try {
+          const payload = await fetchAdminContent()
+          if (isMounted) { applyAdminContent(mergeAdminContent(payload.data)); setPersistenceError(null) }
+        } catch { if (isMounted) setPersistenceError('Məlumat bazası ilə əlaqə kəsilib. Yenidən qoşulma gözlənilir.') }
+      })
+    }
+    const timer = window.setInterval(refresh, 5000)
+    window.addEventListener('focus', refresh)
+    document.addEventListener('visibilitychange', refresh)
 
     return () => {
       isMounted = false
+      clearInterval(timer)
+      window.removeEventListener('focus', refresh)
+      document.removeEventListener('visibilitychange', refresh)
     }
   }, [applyAdminContent])
 
@@ -200,8 +220,9 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       const operation = saveQueue.current
         .catch(() => undefined)
         .then(async () => {
-          const next = update(contentRef.current)
-          const saved = await saveAdminContent(next)
+          const latest = await fetchAdminContent()
+          const next = update(mergeAdminContent(latest.data))
+          const saved = await saveAdminContent(next, latest.version)
           applyAdminContent(mergeAdminContent(saved))
           setPersistenceError(null)
           return { success: true } satisfies ActionResult
@@ -211,7 +232,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
           setPersistenceError('MySQL-ə yazmaq mümkün olmadı. Dəyişiklik tətbiq edilmədi.')
           return {
             success: false,
-            message: 'MySQL-ə yazmaq mümkün olmadı. Dəyişiklik yadda saxlanmadı.',
+            message: error instanceof Error ? error.message : 'Dəyişiklik yadda saxlanmadı.',
           } satisfies ActionResult
         })
       saveQueue.current = operation.then(() => undefined)
@@ -462,6 +483,8 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const value: AdminContextType = {
+    pageContent,
+    updatePageContent: (changes) => commitAdminContent((current) => ({ ...current, pageContent: { ...current.pageContent, ...changes } })),
     projects,
     addProject,
     updateProject,

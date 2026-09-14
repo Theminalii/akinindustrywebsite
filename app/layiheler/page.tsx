@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import { useState } from 'react'
 import type { Metadata } from 'next'
@@ -8,21 +9,21 @@ import { PageHeader } from '@/components/shared/page-header'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { MapPin, Calendar, ArrowRight, Building2 } from 'lucide-react'
-import { projects as seededProjects } from '@/lib/data'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-import { getCategoryLabel, getProjectCategories, translateProject } from '@/lib/site-translations'
+import { useSiteTranslations } from '@/lib/site-translations'
 import { cn } from '@/lib/utils'
 
 export default function ProjectsPage() {
+  const cmsText = useCmsText()
+  const { getCategoryLabel, getProjectCategories, translateProject } = useSiteTranslations()
+
   const { projects, stats } = useAdmin()
   const { locale } = useLanguage()
   const [activeCategory, setActiveCategory] = useState('all')
   const categories = getProjectCategories(locale)
 
-  const mergedProjects = Array.from(
-    new Map([...seededProjects, ...projects].map((project) => [project.slug, project])).values()
-  ).map((project) => translateProject(project, locale))
+  const mergedProjects = projects.map((project) => translateProject(project, locale))
 
   const filteredProjects = activeCategory === 'all' 
     ? mergedProjects
@@ -31,13 +32,13 @@ export default function ProjectsPage() {
   return (
     <>
       <PageHeader
-        title={locale === 'az' ? 'Layihələrimiz' : 'Our Projects'}
+        title={locale === 'az' ? cmsText("layiheler/page.001") : cmsText("layiheler/page.002")}
         description={
           locale === 'az'
             ? `${stats.years} il ərzində uğurla təhvil verilmiş layihələr`
             : `Projects delivered successfully over ${stats.years} years`
         }
-        breadcrumbs={[{ label: locale === 'az' ? 'Layihələr' : 'Projects' }]}
+        breadcrumbs={[{ label: locale === 'az' ? cmsText("layiheler/page.003") : cmsText("layiheler/page.004") }]}
       />
 
       <section className="py-16 bg-background">
@@ -47,7 +48,7 @@ export default function ProjectsPage() {
             {categories.map((cat) => (
               <Button
                 key={cat.key}
-                variant={activeCategory === cat.key ? 'default' : 'outline'}
+                variant={activeCategory === cat.key ? "default" : "outline"}
                 onClick={() => setActiveCategory(cat.key)}
                 className={cn(
                   'rounded-full',
@@ -117,7 +118,7 @@ export default function ProjectsPage() {
             <div className="text-center py-12">
               <Building2 className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
               <p className="text-muted-foreground">
-                {locale === 'az' ? 'Bu kateqoriyada layihə tapılmadı.' : 'No projects were found in this category.'}
+                {locale === 'az' ? cmsText("layiheler/page.007") : cmsText("layiheler/page.008")}
               </p>
             </div>
           )}

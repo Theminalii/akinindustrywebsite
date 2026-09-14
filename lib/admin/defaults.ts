@@ -1,3 +1,4 @@
+import pageDefaults from '@/lib/admin/page-defaults.json'
 import type { AdminAccount, AdminContentData, ContactInfo } from '@/lib/admin/types'
 import {
   certificates as initialCertificates,
@@ -38,6 +39,7 @@ export function ensureDefaultAdminAccount(accounts?: AdminAccount[]) {
 
 export function getDefaultAdminContent(): AdminContentData {
   return {
+    pageContent: { ...pageDefaults },
     projects: initialProjects,
     news: initialNews,
     team: initialTeam,

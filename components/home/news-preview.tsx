@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import Link from 'next/link'
 import { ArrowRight, Award, Image as ImageIcon } from 'lucide-react'
@@ -7,24 +8,27 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage } from '@/lib/language-context'
-import { translateCertificate } from '@/lib/site-translations'
+import { useSiteTranslations } from '@/lib/site-translations'
 
 export function NewsPreview() {
+  const cmsText = useCmsText()
+  const { translateCertificate } = useSiteTranslations()
+
   const { certificates } = useAdmin()
   const { locale } = useLanguage()
   const copy =
     locale === 'az'
       ? {
-          badge: 'Sertifikatlar',
-          title: 'Sertifikatlarımız',
-          learnMore: 'Daha Ətraflı',
-          readMore: 'Ətraflı oxu',
+          badge: cmsText("home/news-preview.001"),
+          title: cmsText("home/news-preview.002"),
+          learnMore: cmsText("home/news-preview.003"),
+          readMore: cmsText("home/news-preview.004"),
         }
       : {
-          badge: 'Certifications',
-          title: 'Our Certifications',
-          learnMore: 'Learn More',
-          readMore: 'Read more',
+          badge: cmsText("home/news-preview.005"),
+          title: cmsText("home/news-preview.006"),
+          learnMore: cmsText("home/news-preview.007"),
+          readMore: cmsText("home/news-preview.008"),
         }
 
   return (
@@ -40,7 +44,7 @@ export function NewsPreview() {
             </h2>
           </div>
           <Button asChild variant="outline" className="group w-fit">
-            <Link href="/haqqimizda">
+            <Link href={cmsText("home/news-preview.009")}>
               {copy.learnMore}
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>

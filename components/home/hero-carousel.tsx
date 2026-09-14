@@ -1,56 +1,58 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import { useEffect, useState } from 'react'
 import { useLanguage } from '@/lib/language-context'
 import { cn } from '@/lib/utils'
-import hero1 from '@/public/images/hero/hero-1.webp'
-import hero2 from '@/public/images/hero/hero-2.webp'
-import hero3 from '@/public/images/hero/hero-3.webp'
+
+
+
+export function HeroCarousel() {
+  const cmsText = useCmsText()
+  
 
 const slides = {
   en: [
     {
       id: 1,
-      title: 'High-Quality Construction Solutions',
-      description: 'We bring ambitious ideas to life with modern technology and a highly skilled team.',
-      image: hero1,
+      title: cmsText("home/hero-carousel.001"),
+      description: cmsText("home/hero-carousel.002"),
+      image: cmsText("home/hero-carousel.003"),
     },
     {
       id: 2,
-      title: 'A Leader in Industrial Construction',
-      description: 'A trusted partner for factories, warehouses, and large-scale industrial facilities.',
-      image: hero2,
+      title: cmsText("home/hero-carousel.004"),
+      description: cmsText("home/hero-carousel.005"),
+      image: cmsText("home/hero-carousel.006"),
     },
     {
       id: 3,
-      title: 'Modern Living Spaces',
-      description: 'We create comfortable and contemporary spaces designed for modern life.',
-      image: hero3,
+      title: cmsText("home/hero-carousel.007"),
+      description: cmsText("home/hero-carousel.008"),
+      image: cmsText("home/hero-carousel.009"),
     },
   ],
   az: [
     {
       id: 1,
-      title: 'Yüksək Keyfiyyətli Tikinti Həlləri',
-      description: 'Müasir texnologiya və güclü peşəkar komanda ilə böyük ideyaları reallığa çeviririk.',
-      image: hero1,
+      title: cmsText("home/hero-carousel.010"),
+      description: cmsText("home/hero-carousel.011"),
+      image: cmsText("home/hero-carousel.012"),
     },
     {
       id: 2,
-      title: 'Sənaye Tikintisində Etibarlı Lider',
-      description: 'Zavodlar, anbarlar və iri sənaye obyektləri üçün güvənilən tərəfdaş.',
-      image: hero2,
+      title: cmsText("home/hero-carousel.013"),
+      description: cmsText("home/hero-carousel.014"),
+      image: cmsText("home/hero-carousel.015"),
     },
     {
       id: 3,
-      title: 'Müasir Yaşam Məkanları',
-      description: 'Müasir həyat üçün rahat və funksional məkanlar yaradırıq.',
-      image: hero3,
+      title: cmsText("home/hero-carousel.016"),
+      description: cmsText("home/hero-carousel.017"),
+      image: cmsText("home/hero-carousel.018"),
     },
   ],
 }
-
-export function HeroCarousel() {
   const { locale } = useLanguage()
   const [currentSlide, setCurrentSlide] = useState(0)
   const localizedSlides = slides[locale]
@@ -75,13 +77,13 @@ export function HeroCarousel() {
           key={slide.id}
           className={cn(
             'absolute inset-0 transition-opacity duration-1000',
-            index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
           )}
         >
           {/* Background Image with Overlay */}
           <div 
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slide.image.src})` }}
+            style={{ backgroundImage: `url(${slide.image})` }}
           >
             <div className="absolute inset-0 bg-linear-to-r from-primary/90 via-primary/70 to-primary/40" />
           </div>
@@ -114,14 +116,14 @@ export function HeroCarousel() {
               'h-3 rounded-full transition-all',
               index === currentSlide ? 'w-8 bg-accent' : 'w-3 bg-white/50 hover:bg-white/70'
             )}
-            aria-label={`Go to slide ${index + 1}`}
+            aria-label={cmsText("home/hero-carousel.template1", { number: index + 1 })}
           />
         ))}
       </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 right-8 z-20 hidden md:flex flex-col items-center gap-2 text-white/70">
-        <span className="text-xs tracking-widest uppercase">{locale === 'az' ? 'Sürüşdür' : 'Scroll'}</span>
+        <span className="text-xs tracking-widest uppercase">{locale === 'az' ? cmsText("home/hero-carousel.021") : cmsText("home/hero-carousel.022")}</span>
         <div className="w-px h-12 bg-white/30 relative overflow-hidden">
           <div className="absolute inset-0 bg-white animate-pulse" />
         </div>

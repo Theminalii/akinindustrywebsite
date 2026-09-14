@@ -1,4 +1,5 @@
 'use client'
+import { useCmsText } from '@/lib/admin/page-content'
 
 import Link from 'next/link'
 import { Phone, ArrowRight } from 'lucide-react'
@@ -7,19 +8,22 @@ import { useLanguage } from '@/lib/language-context'
 import { useAdmin } from '@/lib/admin/context'
 
 export function CTASection() {
+  const cmsText = useCmsText()
+  
+
   const { locale } = useLanguage()
   const { contact } = useAdmin()
   const copy =
     locale === 'az'
       ? {
-          title: 'Növbəti Layihənizi Birlikdə Quraq',
-          description: 'Tikinti layihənizi müzakirə etmək və ödənişsiz təklif almaq üçün bizimlə əlaqə saxlayın.',
-          contact: 'Əlaqə',
+          title: cmsText("home/cta-section.001"),
+          description: cmsText("home/cta-section.002"),
+          contact: cmsText("home/cta-section.003"),
         }
       : {
-          title: 'Ready to Build Your Next Project',
-          description: 'Contact us today to discuss your construction project and receive a free quotation.',
-          contact: 'Contact Us',
+          title: cmsText("home/cta-section.004"),
+          description: cmsText("home/cta-section.005"),
+          contact: cmsText("home/cta-section.006"),
         }
   return (
     <section className="py-20 bg-primary relative overflow-hidden">
@@ -43,7 +47,7 @@ export function CTASection() {
               size="lg" 
               className="bg-accent text-accent-foreground hover:bg-accent/90 group"
             >
-              <Link href="/elaqe">
+              <Link href={cmsText("home/cta-section.007")}>
                 {copy.contact}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>

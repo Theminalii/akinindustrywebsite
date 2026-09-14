@@ -92,3 +92,26 @@ export async function writeSetting<T>(key: string, value: T): Promise<T> {
   )
   return value
 }
+
+/** Lock the singleton row so concurrent editors cannot overwrite one another. */
+export async function updateAdminState<T>(initial: T, update: (current: T) => T): Promise<T> {
+  await ensureSchema()
+  const connection = await pool.getConnection()
+  try {
+    await connection.beginTransaction()
+    await connection.execute('INSERT IGNORE INTO admin_state (id, data) VALUES (1, ?)', [JSON.stringify(initial)])
+    const [rows] = await connection.execute<(RowDataPacket & { data: string })[]>('SELECT data FROM admin_state WHERE id = 1 FOR UPDATE')
+    const current = JSON.parse(rows[0].data) as T
+    const next = update(current)
+    if (JSON.stringify(current) !== JSON.stringify(next)) {
+      await connection.execute('UPDATE admin_state SET data = ? WHERE id = 1', [JSON.stringify(next)])
+    }
+    await connection.commit()
+    return next
+  } catch (error) {
+    await connection.rollback()
+    throw error
+  } finally {
+    connection.release()
+  }
+}
