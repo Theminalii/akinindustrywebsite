@@ -204,7 +204,16 @@ export default function ProjectDetailPage() {
                 <Link key={relProject.id} href={`/layiheler/${relProject.slug}`}>
                   <Card className="group h-full overflow-hidden border-border/50 hover:border-primary/30 hover:shadow-lg transition-all">
                     <div className="relative aspect-16/10 overflow-hidden">
-                      <div className="absolute inset-0 bg-primary/20" />
+                      {relProject.images && relProject.images.length > 0 ? (
+                        <Image
+                          src={relProject.images[0]}
+                          alt={relProject.title}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-primary/20" />
+                      )}
                       <div className="absolute inset-0 bg-linear-to-t from-primary/80 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                     </div>
                     <CardContent className="p-4">
