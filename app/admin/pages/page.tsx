@@ -47,6 +47,39 @@ const pageVisibilityKeys: Record<string, string> = {
   'elaqe/': 'elaqe',
 }
 
+const explicitLanguagePairs: Record<string, string> = {
+  'xidmetler/page.035': 'xidmetler/page.031',
+  'xidmetler/page.036': 'xidmetler/page.032',
+  'xidmetler/page.037': 'xidmetler/page.033',
+  'xidmetler/page.038': 'xidmetler/page.034',
+  'xidmetler/page.053': 'xidmetler/page.039',
+  'xidmetler/page.054': 'xidmetler/page.040',
+  'xidmetler/page.055': 'xidmetler/page.041',
+  'xidmetler/page.056': 'xidmetler/page.042',
+  'xidmetler/page.057': 'xidmetler/page.043',
+  'xidmetler/page.058': 'xidmetler/page.044',
+  'xidmetler/page.059': 'xidmetler/page.045',
+  'xidmetler/page.060': 'xidmetler/page.046',
+  'xidmetler/page.061': 'xidmetler/page.047',
+  'xidmetler/page.062': 'xidmetler/page.048',
+  'xidmetler/page.063': 'xidmetler/page.049',
+  'xidmetler/page.064': 'xidmetler/page.050',
+  'xidmetler/page.065': 'xidmetler/page.051',
+  'xidmetler/page.066': 'xidmetler/page.052',
+  'xidmetler/page.template3': 'xidmetler/page.template1',
+  'xidmetler/page.template4': 'xidmetler/page.template2',
+  'xidmetler/page.template6': 'xidmetler/page.template5',
+}
+
+const explicitLanguagePairLookup = Object.entries(explicitLanguagePairs).reduce<Record<string, string>>(
+  (lookup, [englishKey, azerbaijaniKey]) => {
+    lookup[englishKey] = azerbaijaniKey
+    lookup[azerbaijaniKey] = englishKey
+    return lookup
+  },
+  {}
+)
+
 const sectionLabels: Record<string, string> = {
   'hero-carousel': 'Əsas slayder',
   'about-preview': 'Haqqımızda bloku',
@@ -122,12 +155,33 @@ function normalizedPairTitle(meta: CatalogMeta) {
 }
 
 function groupEntries(entries: Entry[]) {
+  const entryMap = new Map(entries.map((entry) => [entry[0], entry] as const))
+  const entryOrder = new Map(entries.map(([key], index) => [key, index]))
+  const used = new Set<string>()
+  const explicitGroups: FieldGroup[] = []
   const grouped = new Map<string, { az: Entry[]; en: Entry[]; other: Entry[] }>()
   const groupOrder: string[] = []
   const groups: FieldGroup[] = []
 
   for (const entry of entries) {
     const [key, meta] = entry
+    const pairedKey = explicitLanguagePairLookup[key]
+    if (pairedKey && entryMap.has(pairedKey) && !used.has(key) && !used.has(pairedKey)) {
+      const pairedEntry = entryMap.get(pairedKey)!
+      const primary = fieldLanguage(meta) === 'İngilis dili' || key.includes('template3') || key.includes('template4') || key.includes('template6')
+        ? entry
+        : pairedEntry
+      const secondary = primary === entry ? pairedEntry : entry
+      explicitGroups.push({ primary, secondary })
+      used.add(key)
+      used.add(pairedKey)
+      continue
+    }
+  }
+
+  for (const entry of entries) {
+    const [key, meta] = entry
+    if (used.has(key)) continue
     const language = fieldLanguage(meta)
     const pairKey = `${sectionKey(key)}::${normalizedPairTitle(meta)}::${isImageField('', meta) ? 'image' : 'text'}`
     if (!grouped.has(pairKey)) {
@@ -152,7 +206,11 @@ function groupEntries(entries: Entry[]) {
     for (const entry of bucket.other) groups.push({ primary: entry })
   }
 
-  return groups
+  return [...explicitGroups, ...groups].sort((left, right) => {
+    const leftOrder = entryOrder.get(left.primary[0]) ?? 0
+    const rightOrder = entryOrder.get(right.primary[0]) ?? 0
+    return leftOrder - rightOrder
+  })
 }
 
 function EditableValue({
