@@ -121,6 +121,84 @@ const resourceLinks: Record<string, [string, string][]> = {
 
 const sectionOrder = Object.keys(sectionLabels)
 const sectionKey = (key: string) => key.slice(0, key.lastIndexOf('.'))
+const servicesEnglishOrder = [
+  'xidmetler/page.053',
+  'xidmetler/page.054',
+  'xidmetler/page.055',
+  'xidmetler/page.056',
+  'xidmetler/page.057',
+  'xidmetler/page.058',
+  'xidmetler/page.059',
+  'xidmetler/page.060',
+  'xidmetler/page.001',
+  'xidmetler/page.002',
+  'xidmetler/page.003',
+  'xidmetler/page.004',
+  'xidmetler/page.005',
+  'xidmetler/page.006',
+  'xidmetler/page.007',
+  'xidmetler/page.008',
+  'xidmetler/page.009',
+  'xidmetler/page.010',
+  'xidmetler/page.011',
+  'xidmetler/page.012',
+  'xidmetler/page.013',
+  'xidmetler/page.014',
+  'xidmetler/page.015',
+  'xidmetler/page.061',
+  'xidmetler/page.062',
+  'xidmetler/page.template6',
+  'xidmetler/page.063',
+  'xidmetler/page.035',
+  'xidmetler/page.036',
+  'xidmetler/page.template3',
+  'xidmetler/page.037',
+  'xidmetler/page.template4',
+  'xidmetler/page.038',
+  'xidmetler/page.064',
+  'xidmetler/page.065',
+  'xidmetler/page.066',
+]
+const servicesAzerbaijaniOrder = [
+  'xidmetler/page.039',
+  'xidmetler/page.040',
+  'xidmetler/page.041',
+  'xidmetler/page.042',
+  'xidmetler/page.043',
+  'xidmetler/page.044',
+  'xidmetler/page.045',
+  'xidmetler/page.046',
+  'xidmetler/page.016',
+  'xidmetler/page.017',
+  'xidmetler/page.018',
+  'xidmetler/page.019',
+  'xidmetler/page.020',
+  'xidmetler/page.021',
+  'xidmetler/page.022',
+  'xidmetler/page.023',
+  'xidmetler/page.024',
+  'xidmetler/page.025',
+  'xidmetler/page.026',
+  'xidmetler/page.027',
+  'xidmetler/page.028',
+  'xidmetler/page.029',
+  'xidmetler/page.030',
+  'xidmetler/page.047',
+  'xidmetler/page.048',
+  'xidmetler/page.template5',
+  'xidmetler/page.049',
+  'xidmetler/page.031',
+  'xidmetler/page.032',
+  'xidmetler/page.template1',
+  'xidmetler/page.033',
+  'xidmetler/page.template2',
+  'xidmetler/page.034',
+  'xidmetler/page.050',
+  'xidmetler/page.051',
+  'xidmetler/page.052',
+]
+const servicesAssetOrder = ['xidmetler/page.067', 'xidmetler/page.068', 'xidmetler/page.069', 'xidmetler/page.070']
+const servicesOrder = new Map([...servicesEnglishOrder, ...servicesAzerbaijaniOrder, ...servicesAssetOrder].map((key, index) => [key, index]))
 
 function fieldSectionName(key: string) {
   const name = sectionKey(key).split('/').pop() ?? key
@@ -152,6 +230,20 @@ function normalizedPairTitle(meta: CatalogMeta) {
     .replace('İngilis dili', '')
     .replace(/\s*·\s*/g, ' ')
     .trim()
+}
+
+function servicesLanguage(key: string) {
+  if (servicesEnglishOrder.includes(key)) return 'İngilis dili'
+  if (servicesAzerbaijaniOrder.includes(key)) return 'Azərbaycan dili'
+  return ''
+}
+
+function servicesDisplayTitle(key: string, meta: CatalogMeta) {
+  const cleanTitle = fieldTitle(meta)
+  if (cleanTitle && !['İngilis dili', 'Azərbaycan dili'].includes(cleanTitle)) return cleanTitle
+  if (key.includes('template')) return 'Mətn'
+  if (key.endsWith('.001') || key.endsWith('.004') || key.endsWith('.007') || key.endsWith('.010') || key.endsWith('.013') || key.endsWith('.016') || key.endsWith('.019') || key.endsWith('.022') || key.endsWith('.025') || key.endsWith('.028')) return 'Addım nömrəsi'
+  return 'Mətn'
 }
 
 function groupEntries(entries: Entry[]) {
@@ -230,17 +322,19 @@ function EditableValue({
 }) {
   const text = draft ?? value
   const image = isImageField(text, meta)
+  const language = servicesLanguage(fieldKey) || fieldLanguage(meta)
+  const title = fieldKey.startsWith('xidmetler/page') ? servicesDisplayTitle(fieldKey, meta) : (fieldLanguage(meta) || fieldTitle(meta))
 
   return (
     <div className="space-y-2">
       <label className="block text-sm font-semibold text-slate-700" htmlFor={fieldKey}>
-        {fieldLanguage(meta) || fieldTitle(meta)}
+        {language ? `${language} · ${title}` : title}
       </label>
       {image && (
         <div className="space-y-3">
           {isImageValue(text) && (
             <div className="max-w-sm overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
-              <Image src={text} alt={fieldTitle(meta)} width={560} height={320} className="h-44 w-full object-cover" unoptimized />
+              <Image src={text} alt={title} width={560} height={320} className="h-44 w-full object-cover" unoptimized />
             </div>
           )}
           <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50">
@@ -308,7 +402,9 @@ function ContentGroup({ group, index }: { group: FieldGroup; index: number }) {
             <span>{fieldSectionName(group.primary[0])}</span>
           </div>
           <h3 className="mt-2 text-base font-semibold text-slate-950">{fieldTitle(firstMeta)}</h3>
-          <p className="mt-1 text-xs text-slate-500">{normalizedPairTitle(firstMeta) || firstMeta.label}</p>
+          <p className="mt-1 text-xs text-slate-500">
+            {group.primary[0].startsWith('xidmetler/page') ? servicesDisplayTitle(group.primary[0], firstMeta) : normalizedPairTitle(firstMeta) || firstMeta.label}
+          </p>
         </div>
         {image && (
           <div className="flex shrink-0 items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
@@ -367,6 +463,14 @@ export default function PagesEditor() {
   const entries = useMemo(() => Object.entries(catalog as Record<string, CatalogMeta>)
     .filter(([key, meta]) => key.startsWith(selectedPage) || (meta.record && recordGroups[selectedPage]?.includes(meta.record)))
     .sort(([left], [right]) => {
+      if (selectedPage === 'xidmetler/') {
+        const leftOrder = servicesOrder.get(left) ?? 10_000
+        const rightOrder = servicesOrder.get(right) ?? 10_000
+        const leftLanguage = servicesLanguage(left)
+        const rightLanguage = servicesLanguage(right)
+        const languageRank = (language: string) => language === 'İngilis dili' ? 0 : language === 'Azərbaycan dili' ? 1 : 2
+        return languageRank(leftLanguage) - languageRank(rightLanguage) || leftOrder - rightOrder || left.localeCompare(right)
+      }
       const shared = Number(!left.startsWith(selectedPage)) - Number(!right.startsWith(selectedPage))
       if (shared) return shared
       const rank = (key: string) => {
@@ -382,7 +486,12 @@ export default function PagesEditor() {
     const text = `${pageContent[key] ?? ''} ${meta.original} ${meta.label}`.toLocaleLowerCase('az')
     return (!section || sectionKey(key) === section) && text.includes(query.toLocaleLowerCase('az'))
   })
-  const fieldGroups = groupEntries(visibleEntries)
+  const fieldGroups = selectedPage === 'xidmetler/'
+    ? visibleEntries.map((entry) => ({ primary: entry }))
+    : groupEntries(visibleEntries)
+  const englishGroups = selectedPage === 'xidmetler/' ? fieldGroups.filter((group) => servicesLanguage(group.primary[0]) === 'İngilis dili') : []
+  const azerbaijaniGroups = selectedPage === 'xidmetler/' ? fieldGroups.filter((group) => servicesLanguage(group.primary[0]) === 'Azərbaycan dili') : []
+  const otherGroups = selectedPage === 'xidmetler/' ? fieldGroups.filter((group) => !servicesLanguage(group.primary[0])) : []
 
   return (
     <div className="space-y-6">
@@ -436,9 +545,36 @@ export default function PagesEditor() {
             </div>
           </div>
 
-          <div className="space-y-4">
-            {fieldGroups.map((group, index) => <ContentGroup key={group.primary[0]} group={group} index={index} />)}
-          </div>
+          {selectedPage === 'xidmetler/' ? (
+            <div className="space-y-8">
+              <section className="space-y-4">
+                <div className="rounded-3xl border border-slate-200 bg-slate-950 px-5 py-4 text-white shadow-sm">
+                  <h2 className="text-xl font-bold">İngilis dili</h2>
+                  <p className="mt-1 text-sm text-slate-300">Saytda İngilis dilində yuxarıdan aşağı görünən mətnlər.</p>
+                </div>
+                {englishGroups.map((group, index) => <ContentGroup key={group.primary[0]} group={group} index={index} />)}
+              </section>
+              <section className="space-y-4">
+                <div className="rounded-3xl border border-slate-200 bg-slate-950 px-5 py-4 text-white shadow-sm">
+                  <h2 className="text-xl font-bold">Azərbaycan dili</h2>
+                  <p className="mt-1 text-sm text-slate-300">Saytda Azərbaycan dilində yuxarıdan aşağı görünən mətnlər.</p>
+                </div>
+                {azerbaijaniGroups.map((group, index) => <ContentGroup key={group.primary[0]} group={group} index={index} />)}
+              </section>
+              {otherGroups.length > 0 && (
+                <section className="space-y-4">
+                  <div className="rounded-3xl border border-slate-200 bg-white px-5 py-4 shadow-sm">
+                    <h2 className="text-xl font-bold text-slate-950">Şəkil və keçidlər</h2>
+                  </div>
+                  {otherGroups.map((group, index) => <ContentGroup key={group.primary[0]} group={group} index={index} />)}
+                </section>
+              )}
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {fieldGroups.map((group, index) => <ContentGroup key={group.primary[0]} group={group} index={index} />)}
+            </div>
+          )}
         </main>
 
         {resourceLinks[selectedPage] && (
