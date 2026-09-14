@@ -37,6 +37,16 @@ const pageList: PageConfig[] = [
   { id: 'shared/', label: 'Ümumi başlıqlar', description: 'Səhifələrdə ortaq istifadə olunan başlıq blokları', publicHref: '/' },
 ]
 
+const pageVisibilityKeys: Record<string, string> = {
+  'home/': 'home',
+  'haqqimizda/': 'haqqimizda',
+  'layiheler/': 'layiheler',
+  'xidmetler/': 'xidmetler',
+  'xeberler/': 'xeberler',
+  'karyera/': 'karyera',
+  'elaqe/': 'elaqe',
+}
+
 const sectionLabels: Record<string, string> = {
   'hero-carousel': 'Əsas slayder',
   'about-preview': 'Haqqımızda bloku',
@@ -281,13 +291,17 @@ function ContentGroup({ group, index }: { group: FieldGroup; index: number }) {
 }
 
 export default function PagesEditor() {
-  const { pageContent } = useAdmin()
+  const { pageContent, pageVisibility, updatePageVisibility } = useAdmin()
   const searchParams = useSearchParams()
   const requestedPage = searchParams.get('page') ?? 'home/'
   const selectedPage = pageList.some((item) => item.id === requestedPage) ? requestedPage : 'home/'
   const [section, setSection] = useState('')
   const [query, setQuery] = useState('')
   const pageConfig = pageList.find((item) => item.id === selectedPage) ?? pageList[0]
+  const visibilityKey = pageVisibilityKeys[selectedPage]
+  const pageEnabled = !visibilityKey || pageVisibility[visibilityKey] !== false
+  const [visibilityBusy, setVisibilityBusy] = useState(false)
+  const [visibilityMessage, setVisibilityMessage] = useState('')
 
   const entries = useMemo(() => Object.entries(catalog as Record<string, CatalogMeta>)
     .filter(([key, meta]) => key.startsWith(selectedPage) || (meta.record && recordGroups[selectedPage]?.includes(meta.record)))
@@ -318,7 +332,31 @@ export default function PagesEditor() {
             <h1 className="mt-2 text-3xl font-bold text-slate-950">{pageConfig.label}</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">{pageConfig.description}</p>
           </div>
-          <Button asChild variant="outline"><Link href={pageConfig.publicHref} target="_blank">Saytda aç<ExternalLink className="h-4 w-4" /></Link></Button>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            {visibilityKey && (
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                <label className="flex items-center gap-3 text-sm font-semibold text-slate-800">
+                  <input
+                    type="checkbox"
+                    checked={pageEnabled}
+                    disabled={visibilityBusy}
+                    className="h-5 w-5 accent-slate-950"
+                    onChange={async (event) => {
+                      const enabled = event.target.checked
+                      setVisibilityBusy(true)
+                      setVisibilityMessage('')
+                      const result = await updatePageVisibility(visibilityKey, enabled)
+                      setVisibilityBusy(false)
+                      setVisibilityMessage(result.success ? (enabled ? 'Səhifə aktiv edildi.' : 'Səhifə müvəqqəti bağlandı.') : result.message ?? 'Dəyişiklik saxlanmadı.')
+                    }}
+                  />
+                  {pageEnabled ? 'Səhifə aktivdir' : 'Səhifə bağlıdır'}
+                </label>
+                {visibilityMessage && <p className="mt-1 text-xs text-slate-500">{visibilityMessage}</p>}
+              </div>
+            )}
+            <Button asChild variant="outline"><Link href={pageConfig.publicHref} target="_blank">Saytda aç<ExternalLink className="h-4 w-4" /></Link></Button>
+          </div>
         </div>
       </div>
 

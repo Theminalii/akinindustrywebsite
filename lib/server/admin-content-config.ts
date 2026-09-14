@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto'
 import {
+  defaultPageVisibility,
   ensureDefaultAdminAccount,
   getDefaultAdminContent,
 } from '@/lib/admin/defaults'
@@ -30,6 +31,7 @@ function mergeAdminContent(config?: Partial<AdminContentData>): AdminContentData
 
   return {
     pageContent: { ...defaults.pageContent, ...config?.pageContent },
+    pageVisibility: { ...defaultPageVisibility, ...config?.pageVisibility },
     projects: config?.projects ?? defaults.projects,
     news: config?.news ?? defaults.news,
     team: config?.team ?? defaults.team,

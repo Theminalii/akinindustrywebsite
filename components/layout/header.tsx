@@ -10,6 +10,7 @@ import { Menu, X, Phone, Mail, Linkedin } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useAdmin } from '@/lib/admin/context'
 import { useLanguage, type Locale } from '@/lib/language-context'
+import { isHrefEnabled } from '@/lib/page-visibility'
 import { cn } from '@/lib/utils'
 
 
@@ -50,12 +51,13 @@ const labels: Record<Locale, {
     cta: cmsText("layout/header.032"),
   },
 }
-  const { contact } = useAdmin()
+  const { contact, pageVisibility } = useAdmin()
   const { locale, setLocale } = useLanguage()
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const copy = labels[locale]
+  const navigation = copy.navigation.filter((item) => isHrefEnabled(pageVisibility, item.href))
   const isPocketVcArticle = pathname === '/xeberler/akin-industry-partners-with-pocketvc-venture-studio'
 
   useEffect(() => {
@@ -144,7 +146,7 @@ const labels: Record<Locale, {
           </Link>
 
           <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
-            {copy.navigation.map((item) => (
+            {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
@@ -258,7 +260,7 @@ const labels: Record<Locale, {
               ))}
             </div>
           </div>
-          {copy.navigation.map((item) => (
+          {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}

@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 
 import {
   defaultContact,
+  defaultPageVisibility,
   ensureDefaultAdminAccount,
   getDefaultAdminContent,
 } from '@/lib/admin/defaults'
@@ -27,6 +28,8 @@ interface ActionResult {
 interface AdminContextType {
   pageContent: Record<string, string>
   updatePageContent: (changes: Record<string, string>) => Promise<ActionResult>
+  pageVisibility: Record<string, boolean>
+  updatePageVisibility: (page: string, enabled: boolean) => Promise<ActionResult>
   projects: Project[]
   addProject: (project: Project) => Promise<ActionResult>
   updateProject: (id: string, project: Partial<Project>) => Promise<ActionResult>
@@ -79,6 +82,7 @@ function mergeAdminContent(config?: Partial<AdminContentData>): AdminContentData
 
   return {
     pageContent: { ...defaults.pageContent, ...config?.pageContent },
+    pageVisibility: { ...defaultPageVisibility, ...config?.pageVisibility },
     projects: config?.projects ?? defaults.projects,
     news: config?.news ?? defaults.news,
     team: config?.team ?? defaults.team,
@@ -135,6 +139,7 @@ async function saveAdminContent(data: AdminContentData, version: string) {
 export function AdminProvider({ children }: { children: React.ReactNode }) {
   const defaultData = getDefaultAdminContent()
   const [pageContent, setPageContent] = useState(defaultData.pageContent)
+  const [pageVisibility, setPageVisibility] = useState(defaultData.pageVisibility)
   const [projects, setProjects] = useState<Project[]>(defaultData.projects)
   const [news, setNews] = useState<NewsArticle[]>(defaultData.news)
   const [team, setTeam] = useState<TeamMember[]>(defaultData.team)
@@ -152,6 +157,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
 
   const applyAdminContent = useCallback((data: AdminContentData) => {
     setPageContent(data.pageContent)
+    setPageVisibility({ ...defaultPageVisibility, ...data.pageVisibility })
     setProjects(data.projects)
     setNews(data.news)
     setTeam(data.team)
@@ -485,6 +491,11 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   const value: AdminContextType = {
     pageContent,
     updatePageContent: (changes) => commitAdminContent((current) => ({ ...current, pageContent: { ...current.pageContent, ...changes } })),
+    pageVisibility,
+    updatePageVisibility: (page, enabled) => commitAdminContent((current) => ({
+      ...current,
+      pageVisibility: { ...defaultPageVisibility, ...current.pageVisibility, [page]: enabled },
+    })),
     projects,
     addProject,
     updateProject,

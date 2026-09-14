@@ -78,6 +78,7 @@ const adminAccount = z.object({
 export const adminContentSchema = z
   .object({
     pageContent: z.record(z.string().max(200), z.string().max(1_500_000)),
+    pageVisibility: z.record(z.string().max(100), z.boolean()).optional().default({}),
     projects: z.array(project).max(500),
     news: z.array(news).max(500),
     team: z.array(teamMember).max(500),

@@ -29,6 +29,7 @@ export interface AdminAccount {
 
 export interface AdminContentData {
   pageContent: Record<string, string>
+  pageVisibility: Record<string, boolean>
   projects: Project[]
   news: NewsArticle[]
   team: TeamMember[]

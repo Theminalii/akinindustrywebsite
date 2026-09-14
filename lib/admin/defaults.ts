@@ -33,6 +33,16 @@ export const defaultAdminAccounts: AdminAccount[] = [
   },
 ]
 
+export const defaultPageVisibility = {
+  home: true,
+  haqqimizda: true,
+  layiheler: true,
+  xidmetler: true,
+  xeberler: true,
+  karyera: true,
+  elaqe: true,
+}
+
 export function ensureDefaultAdminAccount(accounts?: AdminAccount[]) {
   return accounts?.length ? accounts : defaultAdminAccounts
 }
@@ -40,6 +50,7 @@ export function ensureDefaultAdminAccount(accounts?: AdminAccount[]) {
 export function getDefaultAdminContent(): AdminContentData {
   return {
     pageContent: { ...pageDefaults },
+    pageVisibility: { ...defaultPageVisibility },
     projects: initialProjects,
     news: initialNews,
     team: initialTeam,
