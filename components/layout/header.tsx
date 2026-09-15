@@ -60,11 +60,14 @@ const labels: Record<Locale, {
   const copy = labels[locale]
   const navigation = copy.navigation.filter((item) => isHrefEnabled(pageVisibility, item.href))
   const mapUrl = contact.googleMapUrl || 'https://maps.app.goo.gl/wh6PTpetRciTJjmS9'
-  const socialLinks = [
-    { label: 'LinkedIn', href: contact.linkedinUrl },
-    { label: 'Facebook', href: contact.facebookUrl },
-    { label: 'Instagram', href: contact.instagramUrl },
-    { label: 'TikTok', href: contact.tiktokUrl },
+  const socialLinks: Array<{ label: string; href: string; icon: React.ElementType; external?: boolean }> = [
+    { label: 'Telefon', href: `tel:${contact.phone1}`, icon: Phone },
+    { label: 'Mail', href: `mailto:${contact.email1}`, icon: Mail },
+    { label: 'Google Map', href: mapUrl, icon: MapPinned, external: true },
+    { label: 'LinkedIn', href: contact.linkedinUrl, icon: Linkedin, external: true },
+    { label: 'Facebook', href: contact.facebookUrl, icon: Share2, external: true },
+    { label: 'Instagram', href: contact.instagramUrl, icon: Share2, external: true },
+    { label: 'TikTok', href: contact.tiktokUrl, icon: Share2, external: true },
   ].filter((item) => item.href)
   const isPocketVcArticle = pathname === '/xeberler/akin-industry-partners-with-pocketvc-venture-studio'
 
@@ -195,67 +198,32 @@ const labels: Record<Locale, {
                 </button>
               ))}
             </div>
-            <a
-              href={`tel:${contact.phone1}`}
-              className={cn(
-                'w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300',
-                isScrolled
-                  ? 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'
-                  : 'bg-white/10 text-white hover:bg-accent hover:text-accent-foreground'
-              )}
-            >
-              <Phone className="h-5 w-5" />
-            </a>
-            <a
-              href={`mailto:${contact.email1}`}
-              className={cn(
-                'w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300',
-                isScrolled
-                  ? 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'
-                  : 'bg-white/10 text-white hover:bg-accent hover:text-accent-foreground'
-              )}
-            >
-              <Mail className="h-5 w-5" />
-            </a>
-            <a
-              href={mapUrl}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Akin Industry map"
-              className={cn(
-                'w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300',
-                isScrolled
-                  ? 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'
-                  : 'bg-white/10 text-white hover:bg-accent hover:text-accent-foreground'
-              )}
-            >
-              <MapPinned className="h-5 w-5" />
-            </a>
             <div className="relative">
               <button
                 type="button"
-                aria-label="Sosial şəbəkələr"
+                aria-label="Əlaqə və sosial linklər"
                 onClick={() => setSocialOpen((open) => !open)}
                 className={cn(
-                  'w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300',
+                  'w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 bg-accent text-accent-foreground hover:bg-accent/90',
                   isScrolled
-                    ? 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'
-                    : 'bg-white/10 text-white hover:bg-accent hover:text-accent-foreground'
+                    ? 'shadow-sm'
+                    : 'shadow-none'
                 )}
               >
                 <Share2 className="h-5 w-5" />
               </button>
               {socialOpen && (
-                <div className="absolute right-0 top-12 w-44 overflow-hidden rounded-2xl border border-border bg-white py-2 text-sm text-foreground shadow-xl">
+                <div className="absolute right-0 top-12 w-56 overflow-hidden rounded-2xl border border-border bg-white py-2 text-sm text-foreground shadow-xl">
                   {socialLinks.map((item) => (
                     <a
                       key={item.label}
                       href={item.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="block px-4 py-2 hover:bg-secondary"
+                      target={item.external ? '_blank' : undefined}
+                      rel={item.external ? 'noreferrer' : undefined}
+                      className="flex items-center gap-3 px-4 py-3 hover:bg-secondary"
                     >
-                      {item.label}
+                      <item.icon className="h-5 w-5 text-primary" />
+                      <span>{item.label}</span>
                     </a>
                   ))}
                   {socialLinks.length === 0 && <span className="block px-4 py-2 text-muted-foreground">Link əlavə edilməyib</span>}
@@ -310,51 +278,20 @@ const labels: Record<Locale, {
               {item.name}
             </Link>
           ))}
-          <div className="grid grid-cols-4 gap-3 pt-2">
-            <a
-              href={`tel:${contact.phone1}`}
-              className="flex items-center justify-center rounded-xl border border-border px-3 py-3 text-foreground"
-            >
-              <Phone className="h-5 w-5" />
-            </a>
-            <a
-              href={`mailto:${contact.email1}`}
-              className="flex items-center justify-center rounded-xl border border-border px-3 py-3 text-foreground"
-            >
-              <Mail className="h-5 w-5" />
-            </a>
-            <a
-              href={mapUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-center rounded-xl border border-border px-3 py-3 text-foreground"
-            >
-              <MapPinned className="h-5 w-5" />
-            </a>
-            <a
-              href={contact.linkedinUrl || '#'}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-center rounded-xl border border-border px-3 py-3 text-foreground"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
+          <div className="grid gap-2 pt-2">
+            {socialLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noreferrer' : undefined}
+                className="flex items-center gap-3 rounded-xl border border-border px-3 py-3 text-foreground"
+              >
+                <item.icon className="h-5 w-5 text-primary" />
+                <span className="text-sm font-medium">{item.label}</span>
+              </a>
+            ))}
           </div>
-          {socialLinks.length > 0 && (
-            <div className="grid grid-cols-3 gap-2 pt-2">
-              {socialLinks.filter((item) => item.label !== 'LinkedIn').map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-xl border border-border px-3 py-2 text-center text-sm font-medium text-foreground"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          )}
           <div className="pt-4">
             <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
               <Link href={cmsText("layout/header.048")}>{copy.cta}</Link>
