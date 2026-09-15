@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import { useAdmin } from '@/lib/admin/context'
 import { Footer } from '@/components/layout/footer'
+import { FloatingSocialMenu } from '@/components/layout/floating-social-menu'
 import { Header } from '@/components/layout/header'
 import { isPageEnabled, pageKeyFromPath } from '@/lib/page-visibility'
 
@@ -26,6 +27,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <>
       {!isAdminRoute && <Header />}
       <main>{children}</main>
+      {!isAdminRoute && <FloatingSocialMenu />}
       {!isAdminRoute && <Footer />}
     </>
   )
