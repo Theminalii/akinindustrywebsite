@@ -2,10 +2,11 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { Mail, MapPinned, Phone, Send } from 'lucide-react'
+import { Mail, MapPinned, Phone, Linkedin } from 'lucide-react'
 
 import { useAdmin } from '@/lib/admin/context'
 import { cn } from '@/lib/utils'
+import styles from './floating-social-menu.module.css'
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -44,44 +45,48 @@ export function FloatingSocialMenu() {
     { label: 'Instagram', href: contact.instagramUrl, icon: InstagramIcon, color: 'bg-pink-500 text-white', show: Boolean(contact.instagramUrl), x: -28, y: 96, external: true },
     { label: 'Facebook', href: contact.facebookUrl, icon: FacebookIcon, color: 'bg-blue-600 text-white', show: Boolean(contact.facebookUrl), x: 58, y: 62, external: true },
     { label: 'TikTok', href: contact.tiktokUrl, icon: TikTokIcon, color: 'bg-slate-950 text-white', show: Boolean(contact.tiktokUrl), x: 82, y: -24, external: true },
-    { label: 'Telegram', href: '', icon: Send, color: 'bg-blue-500 text-white', show: false, x: 44, y: -92, external: true },
+    { label: 'LinkedIn', href: contact.linkedinUrl, icon: Linkedin, color: 'bg-blue-700 text-white', show: Boolean(contact.linkedinUrl), external: true },
   ].filter((item) => item.show)
 
   return (
-    <div className="fixed bottom-6 right-6 z-60 h-48 w-48 pointer-events-none">
-      <div className="absolute bottom-0 right-0 h-16 w-16 pointer-events-auto">
-        {links.map((item, index) => (
-          <a
-            key={item.label}
-            href={item.href}
-            target={item.external ? '_blank' : undefined}
-            rel={item.external ? 'noreferrer' : undefined}
-            aria-label={item.label}
-            className={cn(
-              'absolute right-0 bottom-0 flex h-14 w-14 items-center justify-center rounded-full shadow-xl transition-all duration-300',
-              item.color,
-              open ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
-            )}
-            style={{
-              transform: open
-                ? `translate(${item.x}px, ${item.y}px) rotate(${index * 18}deg)`
-                : 'translate(0, 0) rotate(0deg)',
-            }}
-          >
-            <item.icon className="h-7 w-7" />
-          </a>
-        ))}
+    <div
+      className={styles.menu}
+      data-open={open}
+      onKeyDown={(event) => { if (event.key === 'Escape') setOpen(false) }}
+    >
+      <div className={styles.center}>
+        <div id="floating-contact-links" className={styles.orbit} inert={!open}>
+          {links.map((item, index) => {
+            const angle = (index / links.length) * Math.PI * 2 - Math.PI / 2
+            return (
+              <div
+                key={item.label}
+                className={styles.position}
+                style={{ left: 32 + Math.cos(angle) * 100, top: 32 + Math.sin(angle) * 100 }}
+              >
+                <a
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                  aria-label={item.label}
+                  title={item.label}
+                  className={cn(styles.link, item.color)}
+                >
+                  <item.icon className="h-6 w-6" />
+                </a>
+              </div>
+            )
+          })}
+        </div>
         <button
           type="button"
           aria-label="Sosial və əlaqə linkləri"
+          aria-expanded={open}
+          aria-controls="floating-contact-links"
           onClick={() => setOpen((value) => !value)}
-          className={cn(
-            'relative flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-2xl ring-1 ring-black/10 transition-transform duration-300',
-            open && 'rotate-180'
-          )}
+          className={styles.toggle}
         >
           <Image src="/logo.png" alt="Akin Industry" width={42} height={42} className="h-10 w-10 object-contain" />
-          <span className="absolute inset-0 rounded-full bg-primary/5" />
         </button>
       </div>
     </div>

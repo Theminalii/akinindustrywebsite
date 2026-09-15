@@ -1,0 +1,77 @@
+.menu {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  width: 272px;
+  height: 272px;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.center {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 64px;
+  height: 64px;
+  transition: right 350ms ease, bottom 350ms ease;
+}
+
+.menu[data-open='true'] .center { right: 104px; bottom: 104px; }
+
+.orbit {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 250ms ease;
+  animation: orbit 24s linear infinite paused;
+}
+
+.menu[data-open='true'] .orbit {
+  visibility: visible;
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.position { position: absolute; width: 48px; height: 48px; margin: -24px; }
+
+.link {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px #0003;
+  animation: upright 24s linear infinite paused;
+}
+
+.menu[data-open='true'] .link { pointer-events: auto; animation-play-state: running; }
+.menu:has(.link:hover) .orbit,
+.menu:has(.link:hover) .link,
+.menu:has(.link:focus-visible) .orbit,
+.menu:has(.link:focus-visible) .link { animation-play-state: paused; }
+
+.toggle {
+  position: relative;
+  display: flex;
+  width: 64px;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 6px 24px #0003;
+  border: 1px solid #0002;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.link:focus-visible, .toggle:focus-visible { outline: 3px solid #b61920; outline-offset: 4px; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+@keyframes upright { to { transform: rotate(-360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .orbit, .link { animation: none; }
+  .center { transition: none; }
+}
