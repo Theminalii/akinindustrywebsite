@@ -29,6 +29,16 @@ const emptyForm: ContactFormState = {
   message: '',
 }
 
+function getOfficeMapEmbedUrl(googleMapUrl: string, googleMapEmbedUrl: string) {
+  if (googleMapUrl.includes('wh6PTpetRciTJjmS9')) {
+    return 'https://www.google.com/maps?q=Arena%20Plaza%20Baku&output=embed'
+  }
+
+  if (googleMapEmbedUrl) return googleMapEmbedUrl
+  if (googleMapUrl) return `https://www.google.com/maps?q=${encodeURIComponent(googleMapUrl)}&output=embed`
+  return ''
+}
+
 export function ContactPageClient() {
   const cmsText = useCmsText()
   
@@ -104,6 +114,8 @@ export function ContactPageClient() {
           sendError: cmsText("elaqe/contact-page-client.057"),
           notificationError: cmsText("elaqe/contact-page-client.058"),
         }
+
+  const mapEmbedUrl = getOfficeMapEmbedUrl(contact.googleMapUrl, contact.googleMapEmbedUrl)
 
   const contactInfo = [
     {
@@ -322,10 +334,10 @@ export function ContactPageClient() {
               </div>
 
               <Card className="border-border/50 overflow-hidden mb-8">
-                {contact.googleMapEmbedUrl ? (
+                {mapEmbedUrl ? (
                   <iframe
                     title={cmsText("elaqe/contact-page-client.065")}
-                    src={contact.googleMapEmbedUrl}
+                    src={mapEmbedUrl}
                     className="aspect-4/3 w-full border-0"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
