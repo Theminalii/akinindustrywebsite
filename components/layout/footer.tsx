@@ -14,6 +14,12 @@ export function Footer() {
 
   const { contact, stats } = useAdmin()
   const { locale } = useLanguage()
+  const socialLinks = [
+    { label: 'LinkedIn', href: contact.linkedinUrl },
+    { label: 'Facebook', href: contact.facebookUrl },
+    { label: 'Instagram', href: contact.instagramUrl },
+    { label: 'TikTok', href: contact.tiktokUrl },
+  ].filter((item) => item.href)
 
   const quickLinks =
     locale === 'en'
@@ -78,17 +84,20 @@ export function Footer() {
                 ? cmsText("layout/footer.template1", { years: stats.years })
                 : cmsText("layout/footer.template2", { years: stats.years })}
             </p>
-            {contact.linkedinUrl && (
+            {socialLinks.length > 0 && (
               <div className="flex gap-4">
-                <a
-                  href={contact.linkedinUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={cmsText("layout/footer.050")}
-                  className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
+                {socialLinks.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={item.label}
+                    className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    {item.label === 'LinkedIn' ? <Linkedin className="h-5 w-5" /> : <span className="text-xs font-bold">{item.label.slice(0, 2)}</span>}
+                  </a>
+                ))}
               </div>
             )}
           </div>

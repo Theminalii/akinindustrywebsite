@@ -95,7 +95,11 @@ export const adminContentSchema = z
       address: z.string().max(2_000),
       workingHours: z.string().max(500),
       googleMapEmbedUrl: z.string().max(5_000),
+      googleMapUrl: z.string().max(2_000),
       linkedinUrl: z.string().max(2_000),
+      facebookUrl: z.string().max(2_000).optional().default(''),
+      instagramUrl: z.string().max(2_000).optional().default(''),
+      tiktokUrl: z.string().max(2_000).optional().default(''),
     }),
     stats: z.object({
       years: z.number().int().min(0).max(1_000),

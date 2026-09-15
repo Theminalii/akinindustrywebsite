@@ -17,7 +17,11 @@ export interface ContactInfo {
   address: string
   workingHours: string
   googleMapEmbedUrl: string
+  googleMapUrl: string
   linkedinUrl: string
+  facebookUrl: string
+  instagramUrl: string
+  tiktokUrl: string
 }
 
 export interface AdminAccount {

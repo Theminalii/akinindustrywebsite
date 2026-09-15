@@ -20,7 +20,11 @@ export const defaultContact: ContactInfo = {
   workingHours: 'Bazar ertəsi - Cümə: 09:00 - 18:00',
   googleMapEmbedUrl:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.455627253573!2d49.8456633!3d40.4087192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDI0JzMxLjQiTiA0OcKwNTAnNDQuNCJF!5e0!3m2!1sen!2saz!4v1625567000000!5m2!1sen!2saz',
+  googleMapUrl: 'https://maps.app.goo.gl/wh6PTpetRciTJjmS9',
   linkedinUrl: 'https://www.linkedin.com/',
+  facebookUrl: '',
+  instagramUrl: '',
+  tiktokUrl: '',
 }
 
 export const defaultAdminAccounts: AdminAccount[] = [

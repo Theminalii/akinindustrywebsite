@@ -78,6 +78,36 @@ export default function AdminContactPage() {
             className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2"
           />
 
+          <div className="grid gap-4 md:grid-cols-2">
+            <input
+              placeholder="Google Maps açılış linki"
+              value={formData.googleMapUrl}
+              onChange={(e) => setFormData({ ...formData, googleMapUrl: e.target.value })}
+              className="rounded-xl border border-slate-200 bg-white px-3 py-2"
+            />
+            <input
+              placeholder="Facebook URL"
+              value={formData.facebookUrl}
+              onChange={(e) => setFormData({ ...formData, facebookUrl: e.target.value })}
+              className="rounded-xl border border-slate-200 bg-white px-3 py-2"
+            />
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            <input
+              placeholder="Instagram URL"
+              value={formData.instagramUrl}
+              onChange={(e) => setFormData({ ...formData, instagramUrl: e.target.value })}
+              className="rounded-xl border border-slate-200 bg-white px-3 py-2"
+            />
+            <input
+              placeholder="TikTok URL"
+              value={formData.tiktokUrl}
+              onChange={(e) => setFormData({ ...formData, tiktokUrl: e.target.value })}
+              className="rounded-xl border border-slate-200 bg-white px-3 py-2"
+            />
+          </div>
+
           <textarea
             placeholder="Ünvan"
             rows={3}

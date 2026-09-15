@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Phone, Mail, Linkedin } from 'lucide-react'
+import { Menu, X, Phone, Mail, Linkedin, MapPinned, Share2 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { useAdmin } from '@/lib/admin/context'
@@ -56,8 +56,16 @@ const labels: Record<Locale, {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [socialOpen, setSocialOpen] = useState(false)
   const copy = labels[locale]
   const navigation = copy.navigation.filter((item) => isHrefEnabled(pageVisibility, item.href))
+  const mapUrl = contact.googleMapUrl || 'https://maps.app.goo.gl/wh6PTpetRciTJjmS9'
+  const socialLinks = [
+    { label: 'LinkedIn', href: contact.linkedinUrl },
+    { label: 'Facebook', href: contact.facebookUrl },
+    { label: 'Instagram', href: contact.instagramUrl },
+    { label: 'TikTok', href: contact.tiktokUrl },
+  ].filter((item) => item.href)
   const isPocketVcArticle = pathname === '/xeberler/akin-industry-partners-with-pocketvc-venture-studio'
 
   useEffect(() => {
@@ -210,9 +218,10 @@ const labels: Record<Locale, {
               <Mail className="h-5 w-5" />
             </a>
             <a
-              href={contact.linkedinUrl || '#'}
+              href={mapUrl}
               target="_blank"
               rel="noreferrer"
+              aria-label="Akin Industry map"
               className={cn(
                 'w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300',
                 isScrolled
@@ -220,8 +229,39 @@ const labels: Record<Locale, {
                   : 'bg-white/10 text-white hover:bg-accent hover:text-accent-foreground'
               )}
             >
-              <Linkedin className="h-5 w-5" />
+              <MapPinned className="h-5 w-5" />
             </a>
+            <div className="relative">
+              <button
+                type="button"
+                aria-label="Sosial şəbəkələr"
+                onClick={() => setSocialOpen((open) => !open)}
+                className={cn(
+                  'w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300',
+                  isScrolled
+                    ? 'bg-muted text-foreground hover:bg-accent hover:text-accent-foreground'
+                    : 'bg-white/10 text-white hover:bg-accent hover:text-accent-foreground'
+                )}
+              >
+                <Share2 className="h-5 w-5" />
+              </button>
+              {socialOpen && (
+                <div className="absolute right-0 top-12 w-44 overflow-hidden rounded-2xl border border-border bg-white py-2 text-sm text-foreground shadow-xl">
+                  {socialLinks.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="block px-4 py-2 hover:bg-secondary"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                  {socialLinks.length === 0 && <span className="block px-4 py-2 text-muted-foreground">Link əlavə edilməyib</span>}
+                </div>
+              )}
+            </div>
             <Button asChild className="rounded-full px-5 py-3 font-semibold transition-all duration-300 bg-accent text-accent-foreground">
               <Link href={cmsText("layout/header.043")}>{copy.cta}</Link>
             </Button>
@@ -270,7 +310,7 @@ const labels: Record<Locale, {
               {item.name}
             </Link>
           ))}
-          <div className="grid grid-cols-3 gap-3 pt-2">
+          <div className="grid grid-cols-4 gap-3 pt-2">
             <a
               href={`tel:${contact.phone1}`}
               className="flex items-center justify-center rounded-xl border border-border px-3 py-3 text-foreground"
@@ -284,6 +324,14 @@ const labels: Record<Locale, {
               <Mail className="h-5 w-5" />
             </a>
             <a
+              href={mapUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center rounded-xl border border-border px-3 py-3 text-foreground"
+            >
+              <MapPinned className="h-5 w-5" />
+            </a>
+            <a
               href={contact.linkedinUrl || '#'}
               target="_blank"
               rel="noreferrer"
@@ -292,6 +340,21 @@ const labels: Record<Locale, {
               <Linkedin className="h-5 w-5" />
             </a>
           </div>
+          {socialLinks.length > 0 && (
+            <div className="grid grid-cols-3 gap-2 pt-2">
+              {socialLinks.filter((item) => item.label !== 'LinkedIn').map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-xl border border-border px-3 py-2 text-center text-sm font-medium text-foreground"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          )}
           <div className="pt-4">
             <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
               <Link href={cmsText("layout/header.048")}>{copy.cta}</Link>
