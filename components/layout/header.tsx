@@ -15,6 +15,32 @@ import { cn } from '@/lib/utils'
 
 
 
+function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" {...props}>
+      <rect x="4" y="4" width="16" height="16" rx="4" />
+      <circle cx="12" cy="12" r="3.5" />
+      <path d="M16.8 7.2h.01" />
+    </svg>
+  )
+}
+
+function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M14 8.5V7.1c0-.7.3-1.1 1.2-1.1H17V3.1C16.7 3 15.7 3 14.7 3 12.5 3 11 4.3 11 6.8v1.7H8.5v3.2H11V21h3.2v-9.3h2.5l.4-3.2H14Z" />
+    </svg>
+  )
+}
+
+function TikTokIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M15.7 3c.3 2 1.4 3.3 3.4 3.5v3.1c-1.2.1-2.3-.3-3.4-1v6.2c0 3.1-2 5.2-5 5.2-2.8 0-4.8-1.8-4.8-4.4 0-2.8 2.2-4.6 5.3-4.4v3.2c-1.3-.2-2.1.3-2.1 1.2 0 .8.6 1.3 1.5 1.3 1.1 0 1.8-.7 1.8-2.1V3h3.3Z" />
+    </svg>
+  )
+}
+
 export function Header() {
   const cmsText = useCmsText()
   
@@ -65,9 +91,9 @@ const labels: Record<Locale, {
     { label: 'Mail', href: `mailto:${contact.email1}`, icon: Mail },
     { label: 'Google Map', href: mapUrl, icon: MapPinned, external: true },
     { label: 'LinkedIn', href: contact.linkedinUrl, icon: Linkedin, external: true },
-    { label: 'Facebook', href: contact.facebookUrl, icon: Share2, external: true },
-    { label: 'Instagram', href: contact.instagramUrl, icon: Share2, external: true },
-    { label: 'TikTok', href: contact.tiktokUrl, icon: Share2, external: true },
+    { label: 'Facebook', href: contact.facebookUrl, icon: FacebookIcon, external: true },
+    { label: 'Instagram', href: contact.instagramUrl, icon: InstagramIcon, external: true },
+    { label: 'TikTok', href: contact.tiktokUrl, icon: TikTokIcon, external: true },
   ].filter((item) => item.href)
   const isPocketVcArticle = pathname === '/xeberler/akin-industry-partners-with-pocketvc-venture-studio'
 
