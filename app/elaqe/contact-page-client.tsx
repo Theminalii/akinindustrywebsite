@@ -404,20 +404,6 @@ export function ContactPageClient() {
                 )}
               </Card>
 
-              {contact.linkedinUrl && (
-                <div className="flex items-center justify-center gap-4">
-                  <span className="text-foreground font-medium">{copy.follow}</span>
-                  <a
-                    href={contact.linkedinUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                    aria-label={cmsText("elaqe/contact-page-client.066")}
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                </div>
-              )}
             </div>
           </div>
         </div>
