@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Phone, Mail, Linkedin, MapPinned, Share2 } from 'lucide-react'
+import { Menu, X, Phone, Mail, Linkedin, Share2 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { useAdmin } from '@/lib/admin/context'
@@ -85,11 +85,9 @@ const labels: Record<Locale, {
   const [socialOpen, setSocialOpen] = useState(false)
   const copy = labels[locale]
   const navigation = copy.navigation.filter((item) => isHrefEnabled(pageVisibility, item.href))
-  const mapUrl = contact.googleMapUrl || 'https://maps.app.goo.gl/wh6PTpetRciTJjmS9'
   const socialLinks: Array<{ label: string; href: string; icon: React.ElementType; external?: boolean }> = [
     { label: 'Telefon', href: `tel:${contact.phone1}`, icon: Phone },
     { label: 'Mail', href: `mailto:${contact.email1}`, icon: Mail },
-    { label: 'Google Map', href: mapUrl, icon: MapPinned, external: true },
     { label: 'LinkedIn', href: contact.linkedinUrl, icon: Linkedin, external: true },
     { label: 'Facebook', href: contact.facebookUrl, icon: FacebookIcon, external: true },
     { label: 'Instagram', href: contact.instagramUrl, icon: InstagramIcon, external: true },

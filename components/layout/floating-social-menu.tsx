@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { Mail, MapPinned, Phone, Linkedin } from 'lucide-react'
+import { Mail, Phone, Linkedin } from 'lucide-react'
 
 import { useAdmin } from '@/lib/admin/context'
 import { cn } from '@/lib/utils'
@@ -37,11 +37,9 @@ function TikTokIcon(props: React.SVGProps<SVGSVGElement>) {
 export function FloatingSocialMenu() {
   const { contact } = useAdmin()
   const [open, setOpen] = useState(false)
-  const mapUrl = contact.googleMapUrl || 'https://maps.app.goo.gl/wh6PTpetRciTJjmS9'
   const links = [
     { label: 'Telefon', href: `tel:${contact.phone1}`, icon: Phone, color: 'bg-amber-400 text-white', show: Boolean(contact.phone1), x: -12, y: -92 },
     { label: 'Mail', href: `mailto:${contact.email1}`, icon: Mail, color: 'bg-amber-400 text-white', show: Boolean(contact.email1), x: -92, y: -48 },
-    { label: 'Google Map', href: mapUrl, icon: MapPinned, color: 'bg-blue-500 text-white', show: Boolean(mapUrl), x: -104, y: 44, external: true },
     { label: 'Instagram', href: contact.instagramUrl, icon: InstagramIcon, color: 'bg-pink-500 text-white', show: Boolean(contact.instagramUrl), x: -28, y: 96, external: true },
     { label: 'Facebook', href: contact.facebookUrl, icon: FacebookIcon, color: 'bg-blue-600 text-white', show: Boolean(contact.facebookUrl), x: 58, y: 62, external: true },
     { label: 'TikTok', href: contact.tiktokUrl, icon: TikTokIcon, color: 'bg-slate-950 text-white', show: Boolean(contact.tiktokUrl), x: 82, y: -24, external: true },
